@@ -1,5 +1,7 @@
 package models;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
 
@@ -11,6 +13,7 @@ public class UserModel {
     private String cpf;
     private String email;
     private Boolean isAdmin;
+    private List<TicketModel> seats;
 
     public UserModel(String login, String password, String name, String cpf, String email, Boolean isAdmin) {
         this.id = UUID.randomUUID();
@@ -20,6 +23,7 @@ public class UserModel {
         this.cpf = cpf;
         this.email = email;
         this.isAdmin = isAdmin;
+        this.seats = new ArrayList<TicketModel>();
     }
 
     public UserModel(String login, String password, String name, String cpf, String email) {
@@ -30,6 +34,7 @@ public class UserModel {
         this.cpf = cpf;
         this.email = email;
         this.isAdmin = false;
+        this.seats = new ArrayList<TicketModel>();
     }
 
     public String getLogin() {
@@ -72,6 +77,17 @@ public class UserModel {
         return this.login.equals(login) && this.password.equals(password);
     }
 
+    public void addTicket(TicketModel ticket) {
+        this.seats.add(ticket);
+    }
+
+    public void removeTicket(TicketModel ticket) {
+        this.seats.remove(ticket);
+    }
+
+    public List<TicketModel> getTickets() {
+        return seats;
+    }
 
     @Override
     public boolean equals(Object o) {
