@@ -51,7 +51,7 @@ public class ControllerTest {
     }
 
     @Test
-    public void testComprarIngresso() {
+    public void buyTicketTest() {
         Controller controller = new Controller();
         UserModel usuario = new UserModel("johndoe", "senha123", "John Doe", "12345678901", "john.doe@example.com", false);
 
@@ -72,7 +72,7 @@ public class ControllerTest {
     }
 
     @Test
-    public void testCancelarCompra() {
+    public void cancelTicketTest() {
         Controller controller = new Controller();
         UserModel user = new UserModel("johndoe", "senha123", "John Doe", "12345678901", "john.doe@example.com", false);
 
@@ -93,7 +93,7 @@ public class ControllerTest {
     }
 
     @Test
-    public void testListarEventosDisponiveis() {
+    public void testListAvailableEvents() {
         Controller controller = new Controller();
         UserModel admin = controller.createUser("admin", "senha123", "Admin User", "00000000000", "admin@example.com", true);
 
@@ -114,7 +114,7 @@ public class ControllerTest {
     }
 
     @Test
-    public void testListarIngressosComprados() {
+    public void testListPurchasedTickets() {
         Controller controller = new Controller();
         UserModel user = new UserModel("johndoe", "senha123", "John Doe", "12345678901", "john.doe@example.com", false);
 
