@@ -55,11 +55,8 @@ public class UserRepository implements IRepository<User> {
 
     @Override
     public void save(User user) {
-
         users.add(user);
-
         saveUsers();
-
     }
 
     @Override
@@ -72,6 +69,11 @@ public class UserRepository implements IRepository<User> {
     @Override
     public void delete(UUID id) {
         users.removeIf(user -> user.getId().equals(id));
+        saveUsers();
+    }
+
+    public void deleteAll() {
+        users.clear();
         saveUsers();
     }
 }

@@ -72,4 +72,10 @@ public class EventRepository implements IRepository<Event> {
         events.removeIf(event -> event.getId().equals(id));
         saveEvents();
     }
+
+    @Override
+    public void deleteAll() {
+        events.clear();
+        saveEvents();
+    }
 }

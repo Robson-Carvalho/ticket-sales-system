@@ -4,8 +4,10 @@ import entitys.Event;
 import entitys.Ticket;
 import entitys.User;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 public class Controller {
     private final UserController userController;
@@ -23,7 +25,7 @@ public class Controller {
 
         for(Event event : events){
             if(event.getName().equals(eventName)){
-                return  event;
+                return event;
             }
         }
 
@@ -64,5 +66,42 @@ public class Controller {
         }
 
         return  null;
+    }
+
+    public Boolean cancelBuy(User _user, Ticket _ticket){
+        User user = userController.getById(_user.getId());
+        Ticket ticket = ticketController.getById(_ticket.getId());
+
+        if(user != null && ticket != null){
+            _user.removeTicket(_ticket);
+            userController.update(_user);
+            _ticket.cancel();
+            ticketController.update(_ticket);
+            return true;
+        }
+
+        return false;
+    }
+
+    public List<Event> listAvailableEvents(){
+        return eventController.getAll();
+    }
+
+    public List<Ticket> listPurchasedTickets(User user){
+        List<Ticket> tickets = new ArrayList<Ticket>();
+        List<UUID> ticketIDs = user.getTickets();
+
+        for(UUID id: ticketIDs){
+            Ticket t = ticketController.getById(id);
+            tickets.add(t);
+        }
+
+        return tickets;
+    }
+
+    public void deleteDB(){
+        userController.deleteAll();
+        eventController.deleteAll();
+        ticketController.deleteAll();
     }
 }

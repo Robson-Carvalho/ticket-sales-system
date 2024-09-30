@@ -4,7 +4,6 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import entitys.Ticket;
-import entitys.User;
 
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -72,6 +71,12 @@ public class TicketRepository implements IRepository<Ticket> {
     @Override
     public void delete(UUID id) {
         tickets.removeIf(ticket -> ticket.getId().equals(id));
+        saveTickets();
+    }
+
+    @Override
+    public void deleteAll() {
+        tickets.clear();
         saveTickets();
     }
 }

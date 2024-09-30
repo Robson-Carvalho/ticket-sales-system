@@ -8,6 +8,8 @@ import controllers.Controller;
 import entitys.Event;
 import entitys.Ticket;
 import entitys.User;
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -17,9 +19,21 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertThrows;
 
 public class ControllerTest {
+    private Controller controller;
+
+    @Before
+    public void setUp() {
+        controller = new Controller();
+    }
+
+    @After
+    public void tearDown() {
+        controller.deleteDB();
+    }
+
     @Test
     public void testRegisterEventByAdmin() {
-        Controller controller = new Controller();
+        //Controller controller = new Controller();
         User admin = controller.createUser("admin", "senha123", "Admin User", "00000000000", "admin@example.com", true);
 
         Calendar calendar = Calendar.getInstance();
@@ -32,13 +46,13 @@ public class ControllerTest {
         assertEquals("Show de Rock", event.getName());
         assertEquals("Banda XYZ", event.getDescription());
         assertEquals(data, event.getDate());
+
+        controller.deleteDB();
     }
-
-
 
     @Test
     public void testRegisterEventByCommonUser() {
-        Controller controller = new Controller();
+       // Controller controller = new Controller();
         User user = controller.createUser("johndoe", "senha123", "John Doe", "12345678901", "john.doe@example.com", false);
 
         Calendar calendar = Calendar.getInstance();
@@ -50,11 +64,12 @@ public class ControllerTest {
         });
 
         assertEquals("Somente administradores podem cadastrar eventos.", exception.getMessage());
+        controller.deleteDB();
     }
 
     @Test
     public void buyTicketTest() {
-        Controller controller = new Controller();
+       // Controller controller = new Controller();
         User user = controller.createUser("johndoe", "senha123", "John Doe", "12345678901", "john.doe@example.com", false);
 
         Calendar calendar = Calendar.getInstance();
@@ -71,17 +86,16 @@ public class ControllerTest {
         assertEquals("Show de Rock 1", ticket.getEvent().getName());
         assertEquals("A1", ticket.getCode());
         assertTrue(user.getTickets().contains(ticket.getId()));
+        controller.deleteDB();
     }
 
-    /*
 
     @Test
     public void cancelTicketTest() {
-        Controller controller = new Controller();
-        User user = new User("johndoe", "senha123", "John Doe", "12345678901", "john.doe@example.com", false);
+        User user = controller.createUser("johndoe", "senha123", "John Doe", "12345678901", "john.doe@example.com", false);
 
         Calendar calendar = Calendar.getInstance();
-        calendar.set(2024, Calendar.SEPTEMBER, 30);
+        calendar.set(2025, Calendar.SEPTEMBER, 30);
         Date data = calendar.getTime();
 
         User admin = controller.createUser("admin", "senha123", "Admin User", "00000000000", "admin@example.com", true);
@@ -93,7 +107,7 @@ public class ControllerTest {
 
         assertTrue(canceled);
         assertFalse(ticket.isActive());
-        assertFalse(user.getTickets().contains(ticket));
+        assertFalse(user.getTickets().contains(ticket.getId()));
     }
 
     @Test
@@ -120,7 +134,7 @@ public class ControllerTest {
     @Test
     public void testListPurchasedTickets() {
         Controller controller = new Controller();
-        User user = new User("johndoe", "senha123", "John Doe", "12345678901", "john.doe@example.com", false);
+        User user = controller.createUser("johndoe", "senha123", "John Doe", "12345678901", "john.doe@example.com", false);
 
         Calendar calendar = Calendar.getInstance();
         calendar.set(2024, Calendar.SEPTEMBER, 10);
@@ -135,7 +149,4 @@ public class ControllerTest {
 
         assertEquals(1, tickets.size());
     }
-    */
-
-
 }

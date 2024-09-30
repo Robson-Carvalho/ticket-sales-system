@@ -9,4 +9,5 @@ public interface IRepository<T> {
     void save(T entity);
     void update(T entity);
     void delete(UUID id);
+    void deleteAll();
 }

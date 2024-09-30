@@ -5,6 +5,8 @@ import controllers.EventController;
 import controllers.TicketController;
 import entitys.Event;
 import entitys.Ticket;
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -14,8 +16,20 @@ import java.util.Calendar;
 import java.util.Date;
 
 public class TicketTest {
-    EventController eventController = new EventController();
-    TicketController ticketController = new TicketController();
+    private  EventController eventController;
+    private TicketController ticketController;
+
+    @Before
+    public void setUp() {
+        eventController = new EventController();
+        ticketController = new TicketController();
+    }
+
+    @After
+    public void tearDown() {
+        eventController.deleteAll();
+        ticketController.deleteAll();
+    }
 
     @Test
     public void ticketCreateTest() {
@@ -39,7 +53,7 @@ public class TicketTest {
         calendar.set(2025, Calendar.SEPTEMBER, 30);
         Date data = calendar.getTime();
 
-        Event event = eventController.create("Show de Rock", "Banda XYZ", data);
+        Event event = eventController.create("Show de Rock 1", "Banda XYZ", data);
         Ticket ticket = ticketController.create(event, 100.0, "A1");
 
         assertTrue(ticket.cancel());
@@ -52,9 +66,8 @@ public class TicketTest {
         calendar.set(2020, Calendar.JANUARY, 10);
         Date data = calendar.getTime();
 
-        Event event = eventController.create("Show de Rock", "Banda XYZ", data);
+        Event event = eventController.create("Show de Rock 2", "Banda XYZ", data);
         Ticket ticket = ticketController.create(event, 100.0, "A1");
-
 
         assertFalse(ticket.cancel());
         assertTrue(ticket.isActive());

@@ -41,4 +41,8 @@ public class TicketController {
     public void delete(UUID id) {
         ticketService.delete(id);
     }
+
+    public void deleteAll(){
+        ticketService.deleteAll();
+    }
 }

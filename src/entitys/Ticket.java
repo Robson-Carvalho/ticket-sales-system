@@ -66,14 +66,12 @@ public class Ticket {
 
     public Boolean cancel() {
         Event event = eventService.getById(eventID);
-        System.out.println(event.getName());
         if(event.isActive()){
-            this.status = false;
+            status = false;
             return true;
         }
         return false;
     }
-
 
     @Override
     public boolean equals(Object o) {

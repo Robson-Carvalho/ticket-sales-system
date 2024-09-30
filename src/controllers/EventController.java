@@ -35,4 +35,8 @@ public class EventController {
     public void delete(UUID id) {
         eventService.delete(id);
     }
+
+    public void deleteAll() {
+        eventService.deleteAll();
+    }
 }

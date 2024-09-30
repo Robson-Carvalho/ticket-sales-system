@@ -31,9 +31,11 @@ public class UserController {
         userService.update(user);
     }
 
-
     public void delete(UUID id) {
         userService.delete(id);
     }
 
+    public void deleteAll() {
+        userService.deleteAll();
+    }
 }

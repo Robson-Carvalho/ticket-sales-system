@@ -39,9 +39,7 @@ public class Event {
         return seats;
     }
 
-    public void addSeat(String seat) {
-        seats.add(seat);
-    }
+    public void addSeat(String seat) {seats.add(seat);}
 
     public void removeSeat(String seat) {
         seats.remove(seat);

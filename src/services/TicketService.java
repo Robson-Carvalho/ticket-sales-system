@@ -22,7 +22,6 @@ public class TicketService {
     }
 
     public void create(Ticket ticket) {
-
         ticketRepository.save(ticket);
     }
 
@@ -32,5 +31,9 @@ public class TicketService {
 
     public void delete(UUID id) {
         ticketRepository.delete(id);
+    }
+
+    public void deleteAll() {
+        ticketRepository.deleteAll();
     }
 }

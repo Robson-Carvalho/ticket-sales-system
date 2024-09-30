@@ -32,4 +32,8 @@ public class UserService {
     public void delete(UUID id) {
         userRepository.delete(id);
     }
+
+    public void deleteAll() {
+        userRepository.deleteAll();
+    }
 }
