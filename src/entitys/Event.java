@@ -1,25 +1,22 @@
-package models;
+package entitys;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
-public class EventModel {
-    private UUID id;
-    private String name;
-    private String description;
-    private Date date;
-    private Boolean status;
-    private List<String> seats;
+public class Event {
+    private final UUID id;
+    private final String name;
+    private final String description;
+    private final Date date;
+    private final List<String> seats = new ArrayList<>();
 
-    public EventModel(String name, String description, Date date) {
+    public Event(String name, String description, Date date) {
         this.id = UUID.randomUUID();
         this.name = name;
         this.description = description;
         this.date = date;
-        this.status = true;
-        this.seats = new ArrayList<>();
     }
 
     public UUID getId() {
@@ -53,11 +50,5 @@ public class EventModel {
     public Boolean isActive(){
         Date today = new Date();
         return today.before(this.date);
-    }
-
-    public void cancel(){
-        if(this.isActive()){
-            this.status = false;
-        }
     }
 }

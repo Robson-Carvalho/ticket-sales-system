@@ -1,21 +1,21 @@
-package models;
+package entitys;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
 
-public class UserModel {
-    private UUID id;
-    private String login;
+public class User {
+    private final UUID id;
+    private final String login;
     private String password;
     private String name;
     private String cpf;
     private String email;
-    private Boolean isAdmin;
-    private List<TicketModel> seats;
+    private final Boolean isAdmin;
+    private final List<UUID> tickets = new ArrayList<>();
 
-    public UserModel(String login, String password, String name, String cpf, String email, Boolean isAdmin) {
+    public User(String login, String password, String name, String cpf, String email, Boolean isAdmin) {
         this.id = UUID.randomUUID();
         this.login = login;
         this.password = password;
@@ -23,10 +23,9 @@ public class UserModel {
         this.cpf = cpf;
         this.email = email;
         this.isAdmin = isAdmin;
-        this.seats = new ArrayList<TicketModel>();
     }
 
-    public UserModel(String login, String password, String name, String cpf, String email) {
+    public User(String login, String password, String name, String cpf, String email) {
         this.id = UUID.randomUUID();
         this.login = login;
         this.password = password;
@@ -34,7 +33,10 @@ public class UserModel {
         this.cpf = cpf;
         this.email = email;
         this.isAdmin = false;
-        this.seats = new ArrayList<TicketModel>();
+    }
+
+    public UUID getId(){
+        return this.id;
     }
 
     public String getLogin() {
@@ -69,7 +71,7 @@ public class UserModel {
         this.password = password;
     }
 
-    public void setCpf(String cpf) {
+    public void setCpf(String cpf){
         this.cpf = cpf;
     }
 
@@ -77,23 +79,27 @@ public class UserModel {
         return this.login.equals(login) && this.password.equals(password);
     }
 
-    public void addTicket(TicketModel ticket) {
-        this.seats.add(ticket);
+    public void addTicket(Ticket ticket) {
+        if(!tickets.contains(ticket.getId())) {
+            this.tickets.add(ticket.getId());
+        }
     }
 
-    public void removeTicket(TicketModel ticket) {
-        this.seats.remove(ticket);
+    public void removeTicket(Ticket ticket) {
+        if(tickets.contains(ticket.getId())) {
+            this.tickets.remove(ticket.getId());
+        }
     }
 
-    public List<TicketModel> getTickets() {
-        return seats;
+    public List<UUID> getTickets() {
+        return tickets;
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        UserModel user = (UserModel) o;
+        User user = (User) o;
         return Objects.equals(login, user.login) &&
                 Objects.equals(cpf, user.cpf) &&
                 Objects.equals(email, user.email);

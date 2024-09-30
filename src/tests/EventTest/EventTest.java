@@ -4,7 +4,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Calendar;
 
-import models.EventModel;
+import entitys.Event;
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -18,7 +18,7 @@ public class EventTest {
         calendar.set(2024, Calendar.SEPTEMBER, 10);
         Date data = calendar.getTime();
 
-        EventModel event = new EventModel("Show de Rock", "Banda XYZ", data);
+        Event event = new Event("Show de Rock", "Banda XYZ", data);
 
         assertNotNull(event);
         assertEquals("Show de Rock", event.getName());
@@ -32,7 +32,7 @@ public class EventTest {
         calendar.set(2024, Calendar.SEPTEMBER, 10);
         Date data = calendar.getTime();
 
-        EventModel event = new EventModel("Show de Rock", "Banda XYZ", data);
+        Event event = new Event("Show de Rock", "Banda XYZ", data);
         event.addSeat("A1");
 
         List<String> seats = event.getSeats();
@@ -45,7 +45,7 @@ public class EventTest {
         calendar.set(2024, Calendar.SEPTEMBER, 10);
         Date data = calendar.getTime();
 
-        EventModel event = new EventModel("Show de Rock", "Banda XYZ", data);
+        Event event = new Event("Show de Rock", "Banda XYZ", data);
         event.addSeat("A1");
         event.removeSeat("A1");
 
@@ -59,7 +59,7 @@ public class EventTest {
         calendar.set(2025, Calendar.SEPTEMBER, 1);
         Date data = calendar.getTime();
 
-        EventModel event = new EventModel("Show de Rock", "Banda XYZ", data);
+        Event event = new Event("Show de Rock", "Banda XYZ", data);
 
         assertTrue(event.isActive());
     }
@@ -70,7 +70,7 @@ public class EventTest {
         calendar.set(2023, Calendar.JANUARY, 10);
         Date data = calendar.getTime();
 
-        EventModel event = new EventModel("Show de Rock", "Banda XYZ", data);
+        Event event = new Event("Show de Rock", "Banda XYZ", data);
 
         assertFalse(event.isActive());
     }

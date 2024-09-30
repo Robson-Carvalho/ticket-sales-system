@@ -1,7 +1,10 @@
 package tests.TicketTest;
 
-import models.EventModel;
-import models.TicketModel;
+import controllers.Controller;
+import controllers.EventController;
+import controllers.TicketController;
+import entitys.Event;
+import entitys.Ticket;
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -11,6 +14,8 @@ import java.util.Calendar;
 import java.util.Date;
 
 public class TicketTest {
+    EventController eventController = new EventController();
+    TicketController ticketController = new TicketController();
 
     @Test
     public void ticketCreateTest() {
@@ -18,11 +23,11 @@ public class TicketTest {
         calendar.set(2024, Calendar.SEPTEMBER, 30);
         Date data = calendar.getTime();
 
-        EventModel event = new EventModel("Show de Rock", "Banda XYZ", data);
-        TicketModel ticket = new TicketModel(event, 100.0, "A1");
+        Event event = eventController.create("Show de Rock", "Banda XYZ", data);
+        Ticket ticket = ticketController.create(event, 100.0, "A1");
 
         assertNotNull(ticket);
-        assertEquals(event, ticket.getEvent());
+        assertEquals(event.getId(), ticket.getEvent().getId());
         assertEquals(100.0, ticket.getPrice(), 0.0001);
         assertEquals("A1", ticket.getCode());
         assertTrue(ticket.isActive());
@@ -31,11 +36,11 @@ public class TicketTest {
     @Test
     public void ticketCancelTest() {
         Calendar calendar = Calendar.getInstance();
-        calendar.set(2024, Calendar.SEPTEMBER, 30);
+        calendar.set(2025, Calendar.SEPTEMBER, 30);
         Date data = calendar.getTime();
 
-        EventModel event = new EventModel("Show de Rock", "Banda XYZ", data);
-        TicketModel ticket = new TicketModel(event, 100.0, "A1");
+        Event event = eventController.create("Show de Rock", "Banda XYZ", data);
+        Ticket ticket = ticketController.create(event, 100.0, "A1");
 
         assertTrue(ticket.cancel());
         assertFalse(ticket.isActive());
@@ -47,8 +52,8 @@ public class TicketTest {
         calendar.set(2020, Calendar.JANUARY, 10);
         Date data = calendar.getTime();
 
-        EventModel event = new EventModel("Show de Rock", "Banda XYZ", data);
-        TicketModel ticket = new TicketModel(event, 100.0, "A1");
+        Event event = eventController.create("Show de Rock", "Banda XYZ", data);
+        Ticket ticket = ticketController.create(event, 100.0, "A1");
 
 
         assertFalse(ticket.cancel());
@@ -61,8 +66,8 @@ public class TicketTest {
         calendar.set(2025, Calendar.SEPTEMBER, 30);
         Date data = calendar.getTime();
 
-        EventModel event = new EventModel("Show de Rock", "Banda XYZ", data);
-        TicketModel ticket = new TicketModel(event, 100.0, "A1");
+        Event event = eventController.create("Show de Rock", "Banda XYZ", data);
+        Ticket ticket = ticketController.create(event, 100.0, "A1");
 
         ticket.cancel();
         assertFalse(ticket.isActive());
@@ -77,9 +82,9 @@ public class TicketTest {
         calendar.set(2024, Calendar.SEPTEMBER, 10);
         Date data = calendar.getTime();
 
-        EventModel event = new EventModel("Show de Rock", "Banda XYZ", data);
-        TicketModel firstTicket = new TicketModel(event, 100.0, "A1");
-        TicketModel secondTicket = new TicketModel(event, 100.0, "A1");
+        Event event = eventController.create("Show de Rock", "Banda XYZ", data);
+        Ticket firstTicket = ticketController.create(event, 100.0, "A1");
+        Ticket secondTicket = ticketController.create(event, 100.0, "A1");
 
         assertEquals(firstTicket, secondTicket);
         assertEquals(firstTicket.hashCode(), secondTicket.hashCode());

@@ -1,26 +1,37 @@
-package models;
+package entitys;
+
+import com.google.gson.annotations.Expose;
+import services.EventService;
 
 import java.util.Objects;
 import java.util.UUID;
 
-public class TicketModel {
+public class Ticket {
+    @Expose
     private UUID id;
-    private EventModel event;
+    @Expose
+    private UUID eventID;
+    @Expose
     private Boolean status;
+    @Expose
     private Double price;
+    @Expose
     private String code;
 
-    public TicketModel(EventModel event, Double price, String code) {
+    @Expose(serialize = false)
+    private EventService eventService = new EventService();
+
+    public Ticket(Event event, Double price, String code) {
         this.id = UUID.randomUUID();
-        this.event = event;
+        this.eventID = event.getId();
         this.status = true;
         this.price = price;
         this.code = code;
     }
 
-    public TicketModel(EventModel event, String code) {
+    public Ticket(Event event, String code) {
         this.id = UUID.randomUUID();
-        this.event = event;
+        this.eventID = event.getId();
         this.status = true;
         this.price = 0.0;
         this.code = code;
@@ -30,8 +41,8 @@ public class TicketModel {
         return id;
     }
 
-    public EventModel getEvent() {
-        return event;
+    public Event getEvent() {
+        return eventService.getById(eventID);
     }
 
     public Double getPrice() {
@@ -47,13 +58,16 @@ public class TicketModel {
     }
 
     public void reactive() {
-        if(this.event.isActive()){
+        Event event = eventService.getById(eventID);
+        if(event.isActive()){
             this.status = true;
         }
     }
 
     public Boolean cancel() {
-        if(this.event.isActive()){
+        Event event = eventService.getById(eventID);
+        System.out.println(event.getName());
+        if(event.isActive()){
             this.status = false;
             return true;
         }
@@ -65,14 +79,14 @@ public class TicketModel {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        TicketModel ticket = (TicketModel) o;
+        Ticket ticket = (Ticket) o;
         return Objects.equals(code, ticket.code) &&
-                Objects.equals(event, ticket.event);
+                Objects.equals(eventID, ticket.eventID);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(event, code);
+        return Objects.hash(eventID, code);
     }
 
 }

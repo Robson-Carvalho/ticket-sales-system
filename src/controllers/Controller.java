@@ -1,79 +1,68 @@
 package controllers;
 
-import models.EventModel;
-import models.TicketModel;
-import models.UserModel;
+import entitys.Event;
+import entitys.Ticket;
+import entitys.User;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 public class Controller {
-    private List<EventModel> events = new ArrayList<EventModel>();
+    private final UserController userController;
+    private final EventController eventController;
+    private final TicketController ticketController;
 
-    public UserModel createUser(String login, String password, String name, String cpf, String email, Boolean isAdmin) {
-        return new UserModel(login, password, name, cpf, email, isAdmin);
+    public Controller() {
+        this.userController = new UserController();
+        this.eventController = new EventController();
+        this.ticketController = new TicketController();
     }
 
-    public EventModel createEvent(UserModel admin, String name, String description, Date date) {
-        if(admin.isAdmin()){
-            EventModel event = new EventModel(name, description, date);
-            events.add(event);
-            return event;
-        }
-        throw new SecurityException("Somente administradores podem cadastrar eventos.");
-    }
+    private Event getEventByName(String eventName){
+        List<Event> events = eventController.getAll();
 
-    public void addSeatToEvent(String nameEvent, String seat) {
-        for(EventModel event : events){
-            if(event.getName().equals(nameEvent)){
-                event.addSeat(seat);
+        for(Event event : events){
+            if(event.getName().equals(eventName)){
+                return  event;
             }
         }
-    }
 
-    public TicketModel buyTicket(UserModel user, String nameEvent, String seat) {
-        for (EventModel event : events) {
-            if (event.getName().equals(nameEvent)) {
-                if (event.getSeats().contains(seat)) {
-                    TicketModel ticket = new TicketModel(event, seat);
-                    user.addTicket(ticket);
-                    return ticket;
-                }
-            }
-        }
         return null;
     }
 
-    public boolean cancelBuy(UserModel user, TicketModel ticket) {
-        List<TicketModel> tickets = user.getTickets();
-
-        for (TicketModel ticketI : tickets) {
-            if (ticketI.equals(ticket)) {
-                boolean eventIsActive = ticketI.getEvent().isActive();
-
-                if(eventIsActive){
-                    user.removeTicket(ticket);
-                    return ticket.cancel();
-                }
-            }
-        }
-        return false;
+    public User createUser(String login, String password, String name, String cpf, String email, Boolean isAdmin){
+        return userController.create(login, password, name, cpf, email, isAdmin);
     }
 
-    public List<EventModel> listAvailableEvents(){
-        List<EventModel> availableEvents = new ArrayList<EventModel>();
-
-        for(EventModel event : events){
-            if(event.isActive()){
-                availableEvents.add(event);
-            }
+    public Event createEvent(User admin, String name, String description, Date date){
+        if(admin.isAdmin()){
+            return eventController.create(name, description, date);
         }
 
-        return availableEvents;
+        throw new SecurityException("Somente administradores podem cadastrar eventos.");
     }
 
-    public List<TicketModel> listPurchasedTickets(UserModel user){
-        return user.getTickets();
+
+    public void addSeatToEvent(String eventName, String seat){
+        Event event = getEventByName(eventName);
+
+        if(event != null){
+            event.addSeat(seat);
+            eventController.update(event);
+        }
+    }
+
+    public Ticket buyTicket(User _user, String eventName, String seat) {
+        User user = userController.getById(_user.getId());
+        Event event = getEventByName(eventName);
+
+        if (event != null){
+            Ticket ticket = ticketController.create(event, seat);
+            user.addTicket(ticket);
+            userController.update(user);
+            return ticket;
+        }
+
+        return  null;
     }
 }
