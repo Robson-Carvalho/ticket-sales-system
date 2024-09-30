@@ -1,7 +1,7 @@
-package services;
+package main.java.UEFS.system.services;
 
-import entitys.Event;
-import repositories.EventRepository;
+import main.java.UEFS.system.entitys.Event;
+import main.java.UEFS.system.repositories.EventRepository;
 
 import java.util.List;
 import java.util.UUID;

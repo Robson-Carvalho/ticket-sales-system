@@ -1,8 +1,8 @@
-package controllers;
+package main.java.UEFS.system.controllers;
 
-import entitys.Event;
-import entitys.Ticket;
-import services.TicketService;
+import main.java.UEFS.system.entitys.Event;
+import main.java.UEFS.system.entitys.Ticket;
+import main.java.UEFS.system.services.TicketService;
 
 import java.util.List;
 import java.util.UUID;

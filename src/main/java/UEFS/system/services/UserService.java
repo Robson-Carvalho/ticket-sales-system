@@ -1,7 +1,7 @@
-package services;
+package main.java.UEFS.system.services;
 
-import entitys.User;
-import repositories.UserRepository;
+import main.java.UEFS.system.entitys.User;
+import main.java.UEFS.system.repositories.UserRepository;
 
 import java.util.List;
 import java.util.UUID;

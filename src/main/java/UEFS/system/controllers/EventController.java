@@ -1,7 +1,7 @@
-package controllers;
+package main.java.UEFS.system.controllers;
 
-import entitys.Event;
-import services.EventService;
+import main.java.UEFS.system.entitys.Event;
+import main.java.UEFS.system.services.EventService;
 
 import java.util.Date;
 import java.util.List;

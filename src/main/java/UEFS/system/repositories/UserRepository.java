@@ -1,9 +1,9 @@
-package repositories;
+package main.java.UEFS.system.repositories;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
-import entitys.User;
+import main.java.UEFS.system.entitys.User;
 
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.UUID;
 
 public class UserRepository implements IRepository<User> {
-    private static final String FILE_PATH = "src/storage/users.json";
+    private static final String FILE_PATH = "src/main/java/UEFS/system/storage/users.json";
     private final List<User> users;
 
     public UserRepository() {
@@ -34,9 +34,8 @@ public class UserRepository implements IRepository<User> {
     private void saveUsers() {
         try (FileWriter writer = new FileWriter(FILE_PATH)) {
             Gson gson = new GsonBuilder()
-                    .setPrettyPrinting() // Ativa a formatação "bonita"
+                    .setPrettyPrinting()
                     .create();
-
             gson.toJson(users, writer);
         } catch (Exception e) {
             System.out.println("Error while saving users");

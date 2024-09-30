@@ -1,7 +1,7 @@
-package controllers;
+package main.java.UEFS.system.controllers;
 
-import entitys.User;
-import services.UserService;
+import main.java.UEFS.system.entitys.User;
+import main.java.UEFS.system.services.UserService;
 
 import java.util.List;
 import java.util.UUID;

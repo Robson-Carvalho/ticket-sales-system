@@ -1,13 +1,13 @@
-package tests.ControllerTest;
+package test.java.com.UEFS.system.ControllerTest;
 
 import java.util.Date;
 import java.util.Calendar;
 import java.util.List;
 
-import controllers.Controller;
-import entitys.Event;
-import entitys.Ticket;
-import entitys.User;
+import main.java.UEFS.system.controllers.Controller;
+import main.java.UEFS.system.entitys.Event;
+import main.java.UEFS.system.entitys.Ticket;
+import main.java.UEFS.system.entitys.User;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;

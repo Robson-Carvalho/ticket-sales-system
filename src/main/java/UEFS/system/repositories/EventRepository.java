@@ -1,10 +1,9 @@
-package repositories;
+package main.java.UEFS.system.repositories;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
-import entitys.Event;
-import entitys.User;
+import main.java.UEFS.system.entitys.Event;
 
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -14,7 +13,7 @@ import java.util.List;
 import java.util.UUID;
 
 public class EventRepository implements IRepository<Event> {
-    private static final String FILE_PATH = "src/storage/events.json";
+    private static final String FILE_PATH = "src/main/java/UEFS/system/storage/events.json";
     private final List<Event> events;
 
     public EventRepository() {
@@ -22,12 +21,12 @@ public class EventRepository implements IRepository<Event> {
     }
 
     private List<Event> loadEvents() {
-        List<Event> eventList = new ArrayList<>(); // Inicializa a lista
+        List<Event> eventList = new ArrayList<>();
         try (FileReader reader = new FileReader(FILE_PATH)) {
             Type listType = new TypeToken<ArrayList<Event>>() {}.getType();
             eventList =  new Gson().fromJson(reader, listType);
         } catch (Exception e) {
-            return new ArrayList<>();
+            e.printStackTrace();
         }
         return eventList != null ? eventList : new ArrayList<>();
     }
@@ -35,7 +34,7 @@ public class EventRepository implements IRepository<Event> {
     private void saveEvents() {
         try (FileWriter writer = new FileWriter(FILE_PATH)) {
             Gson gson = new GsonBuilder()
-                    .setPrettyPrinting() // Ativa a formatação "bonita"
+                    .setPrettyPrinting()
                     .create();
             gson.toJson(events, writer);
         } catch (Exception e) {

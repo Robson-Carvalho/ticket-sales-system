@@ -1,7 +1,7 @@
-package services;
+package main.java.UEFS.system.services;
 
-import entitys.Ticket;
-import repositories.TicketRepository;
+import main.java.UEFS.system.entitys.Ticket;
+import main.java.UEFS.system.repositories.TicketRepository;
 
 import java.util.List;
 import java.util.UUID;

@@ -1,9 +1,9 @@
-package repositories;
+package main.java.UEFS.system.repositories;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
-import entitys.Ticket;
+import main.java.UEFS.system.entitys.Ticket;
 
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.UUID;
 
 public class TicketRepository implements IRepository<Ticket> {
-    private static final String FILE_PATH = "src/storage/tickets.json";
+    private static final String FILE_PATH = "src/main/java/UEFS/system/storage/tickets.json";
     private final List<Ticket> tickets;
 
     public TicketRepository() {

@@ -1,8 +1,8 @@
-package controllers;
+package main.java.UEFS.system.controllers;
 
-import entitys.Event;
-import entitys.Ticket;
-import entitys.User;
+import main.java.UEFS.system.entitys.Event;
+import main.java.UEFS.system.entitys.Ticket;
+import main.java.UEFS.system.entitys.User;
 
 import java.util.ArrayList;
 import java.util.Date;

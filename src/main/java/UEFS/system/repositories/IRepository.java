@@ -1,4 +1,4 @@
-package repositories;
+package main.java.UEFS.system.repositories;
 
 import java.util.List;
 import java.util.UUID;

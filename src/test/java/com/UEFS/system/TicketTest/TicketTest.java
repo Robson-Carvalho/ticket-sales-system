@@ -1,10 +1,9 @@
-package tests.TicketTest;
+package test.java.com.UEFS.system.TicketTest;
 
-import controllers.Controller;
-import controllers.EventController;
-import controllers.TicketController;
-import entitys.Event;
-import entitys.Ticket;
+import main.java.UEFS.system.controllers.EventController;
+import main.java.UEFS.system.controllers.TicketController;
+import main.java.UEFS.system.entitys.Event;
+import main.java.UEFS.system.entitys.Ticket;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;

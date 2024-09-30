@@ -1,10 +1,10 @@
-package tests.EventTest;
+package test.java.com.UEFS.system.EventTest;
 
 import java.util.Date;
 import java.util.List;
 import java.util.Calendar;
 
-import entitys.Event;
+import main.java.UEFS.system.entitys.Event;
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;

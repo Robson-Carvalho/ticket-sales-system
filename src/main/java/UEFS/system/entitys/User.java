@@ -1,4 +1,4 @@
-package entitys;
+package main.java.UEFS.system.entitys;
 
 import java.util.ArrayList;
 import java.util.List;
