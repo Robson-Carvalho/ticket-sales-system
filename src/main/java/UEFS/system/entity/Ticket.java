@@ -1,7 +1,7 @@
-package main.java.UEFS.system.entitys;
+package main.java.UEFS.system.entity;
 
 import com.google.gson.annotations.Expose;
-import main.java.UEFS.system.services.EventService;
+import main.java.UEFS.system.service.EventService;
 
 import java.util.Objects;
 import java.util.UUID;

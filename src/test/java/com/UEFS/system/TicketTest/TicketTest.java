@@ -1,9 +1,11 @@
 package test.java.com.UEFS.system.TicketTest;
 
-import main.java.UEFS.system.controllers.EventController;
-import main.java.UEFS.system.controllers.TicketController;
-import main.java.UEFS.system.entitys.Event;
-import main.java.UEFS.system.entitys.Ticket;
+import main.java.UEFS.system.controller.EventController;
+import main.java.UEFS.system.controller.TicketController;
+import main.java.UEFS.system.controller.UserController;
+import main.java.UEFS.system.entity.Event;
+import main.java.UEFS.system.entity.Ticket;
+import main.java.UEFS.system.entity.User;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -15,19 +17,22 @@ import java.util.Calendar;
 import java.util.Date;
 
 public class TicketTest {
-    private  EventController eventController;
+    private EventController eventController;
     private TicketController ticketController;
+    private UserController userController;
 
     @Before
     public void setUp() {
         eventController = new EventController();
         ticketController = new TicketController();
+        userController =  new UserController();
     }
 
     @After
     public void tearDown() {
         eventController.deleteAll();
         ticketController.deleteAll();
+        userController.deleteAll();
     }
 
     @Test
@@ -36,7 +41,9 @@ public class TicketTest {
         calendar.set(2024, Calendar.SEPTEMBER, 30);
         Date data = calendar.getTime();
 
-        Event event = eventController.create("Show de Rock", "Banda XYZ", data);
+        User admin = userController.create("admin", "senha123", "Admin User", "00000000000", "admin@example.com", true);
+
+        Event event = eventController.create(admin, "Show de Rock", "Banda XYZ", data);
         Ticket ticket = ticketController.create(event, 100.0, "A1");
 
         assertNotNull(ticket);
@@ -52,7 +59,9 @@ public class TicketTest {
         calendar.set(2025, Calendar.SEPTEMBER, 30);
         Date data = calendar.getTime();
 
-        Event event = eventController.create("Show de Rock 1", "Banda XYZ", data);
+        User admin = userController.create("admin", "senha123", "Admin User", "00000000000", "admin@example.com", true);
+
+        Event event = eventController.create(admin , "Show de Rock 1", "Banda XYZ", data);
         Ticket ticket = ticketController.create(event, 100.0, "A1");
 
         assertTrue(ticket.cancel());
@@ -65,7 +74,9 @@ public class TicketTest {
         calendar.set(2020, Calendar.JANUARY, 10);
         Date data = calendar.getTime();
 
-        Event event = eventController.create("Show de Rock 2", "Banda XYZ", data);
+        User admin = userController.create("admin", "senha123", "Admin User", "00000000000", "admin@example.com", true);
+
+        Event event = eventController.create(admin, "Show de Rock 2", "Banda XYZ", data);
         Ticket ticket = ticketController.create(event, 100.0, "A1");
 
         assertFalse(ticket.cancel());
@@ -78,7 +89,9 @@ public class TicketTest {
         calendar.set(2025, Calendar.SEPTEMBER, 30);
         Date data = calendar.getTime();
 
-        Event event = eventController.create("Show de Rock", "Banda XYZ", data);
+        User admin = userController.create("admin", "senha123", "Admin User", "00000000000", "admin@example.com", true);
+
+        Event event = eventController.create(admin, "Show de Rock", "Banda XYZ", data);
         Ticket ticket = ticketController.create(event, 100.0, "A1");
 
         ticket.cancel();
@@ -94,7 +107,9 @@ public class TicketTest {
         calendar.set(2024, Calendar.SEPTEMBER, 10);
         Date data = calendar.getTime();
 
-        Event event = eventController.create("Show de Rock", "Banda XYZ", data);
+        User admin = userController.create("admin", "senha123", "Admin User", "00000000000", "admin@example.com", true);
+
+        Event event = eventController.create(admin, "Show de Rock","Banda XYZ", data);
         Ticket firstTicket = ticketController.create(event, 100.0, "A1");
         Ticket secondTicket = ticketController.create(event, 100.0, "A1");
 

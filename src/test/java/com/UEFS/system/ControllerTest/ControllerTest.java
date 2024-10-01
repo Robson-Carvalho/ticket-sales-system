@@ -4,10 +4,10 @@ import java.util.Date;
 import java.util.Calendar;
 import java.util.List;
 
-import main.java.UEFS.system.controllers.Controller;
-import main.java.UEFS.system.entitys.Event;
-import main.java.UEFS.system.entitys.Ticket;
-import main.java.UEFS.system.entitys.User;
+import main.java.UEFS.system.controller.Controller;
+import main.java.UEFS.system.entity.Event;
+import main.java.UEFS.system.entity.Ticket;
+import main.java.UEFS.system.entity.User;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -33,7 +33,6 @@ public class ControllerTest {
 
     @Test
     public void testRegisterEventByAdmin() {
-        //Controller controller = new Controller();
         User admin = controller.createUser("admin", "senha123", "Admin User", "00000000000", "admin@example.com", true);
 
         Calendar calendar = Calendar.getInstance();
@@ -46,13 +45,10 @@ public class ControllerTest {
         assertEquals("Show de Rock", event.getName());
         assertEquals("Banda XYZ", event.getDescription());
         assertEquals(data, event.getDate());
-
-        controller.deleteDB();
     }
 
     @Test
     public void testRegisterEventByCommonUser() {
-       // Controller controller = new Controller();
         User user = controller.createUser("johndoe", "senha123", "John Doe", "12345678901", "john.doe@example.com", false);
 
         Calendar calendar = Calendar.getInstance();
@@ -64,12 +60,10 @@ public class ControllerTest {
         });
 
         assertEquals("Somente administradores podem cadastrar eventos.", exception.getMessage());
-        controller.deleteDB();
     }
 
     @Test
     public void buyTicketTest() {
-       // Controller controller = new Controller();
         User user = controller.createUser("johndoe", "senha123", "John Doe", "12345678901", "john.doe@example.com", false);
 
         Calendar calendar = Calendar.getInstance();
@@ -86,7 +80,6 @@ public class ControllerTest {
         assertEquals("Show de Rock 1", ticket.getEvent().getName());
         assertEquals("A1", ticket.getCode());
         assertTrue(user.getTickets().contains(ticket.getId()));
-        controller.deleteDB();
     }
 
 
@@ -112,7 +105,6 @@ public class ControllerTest {
 
     @Test
     public void testListAvailableEvents() {
-        Controller controller = new Controller();
         User admin = controller.createUser("admin", "senha123", "Admin User", "00000000000", "admin@example.com", true);
 
         Calendar calendar1 = Calendar.getInstance();
@@ -133,7 +125,6 @@ public class ControllerTest {
 
     @Test
     public void testListPurchasedTickets() {
-        Controller controller = new Controller();
         User user = controller.createUser("johndoe", "senha123", "John Doe", "12345678901", "john.doe@example.com", false);
 
         Calendar calendar = Calendar.getInstance();

@@ -1,9 +1,10 @@
-package main.java.UEFS.system.repositories;
+package main.java.UEFS.system.repository;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
-import main.java.UEFS.system.entitys.User;
+import main.java.UEFS.system.entity.User;
+import main.java.UEFS.system.repository.Interface.IRepository;
 
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -44,12 +45,12 @@ public class UserRepository implements IRepository<User> {
 
     @Override
     public User findById(UUID id) {
-        return users.stream().filter(user -> user.getId().equals(id)).findFirst().orElse(null);
+        return loadUsers().stream().filter(user -> user.getId().equals(id)).findFirst().orElse(null);
     }
 
     @Override
     public List<User> findAll() {
-        return users;
+        return loadUsers();
     }
 
     @Override

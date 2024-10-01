@@ -1,4 +1,4 @@
-package main.java.UEFS.system.entitys;
+package main.java.UEFS.system.entity;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -12,7 +12,7 @@ public class Event {
     private final Date date;
     private final List<String> seats = new ArrayList<>();
 
-    public Event(String name, String description, Date date) {
+    public  Event(String name, String description, Date date) {
         this.id = UUID.randomUUID();
         this.name = name;
         this.description = description;
@@ -49,4 +49,6 @@ public class Event {
         Date today = new Date();
         return today.before(this.date);
     }
+
+
 }

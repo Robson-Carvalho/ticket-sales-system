@@ -1,9 +1,10 @@
-package main.java.UEFS.system.repositories;
+package main.java.UEFS.system.repository;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
-import main.java.UEFS.system.entitys.Ticket;
+import main.java.UEFS.system.entity.Ticket;
+import main.java.UEFS.system.repository.Interface.IRepository;
 
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -47,12 +48,12 @@ public class TicketRepository implements IRepository<Ticket> {
 
     @Override
     public Ticket findById(UUID id) {
-        return tickets.stream().filter(ticket -> ticket.getId().equals(id)).findFirst().orElse(null);
+        return loadTickets().stream().filter(ticket -> ticket.getId().equals(id)).findFirst().orElse(null);
     }
 
     @Override
     public List<Ticket> findAll() {
-        return tickets;
+        return loadTickets();
     }
 
     @Override

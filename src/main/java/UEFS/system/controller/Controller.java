@@ -1,8 +1,8 @@
-package main.java.UEFS.system.controllers;
+package main.java.UEFS.system.controller;
 
-import main.java.UEFS.system.entitys.Event;
-import main.java.UEFS.system.entitys.Ticket;
-import main.java.UEFS.system.entitys.User;
+import main.java.UEFS.system.entity.Event;
+import main.java.UEFS.system.entity.Ticket;
+import main.java.UEFS.system.entity.User;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -38,7 +38,7 @@ public class Controller {
 
     public Event createEvent(User admin, String name, String description, Date date){
         if(admin.isAdmin()){
-            return eventController.create(name, description, date);
+            return eventController.create(admin, name, description, date);
         }
 
         throw new SecurityException("Somente administradores podem cadastrar eventos.");
@@ -54,8 +54,11 @@ public class Controller {
         }
     }
 
-    public Ticket buyTicket(User _user, String eventName, String seat) {
-        User user = userController.getById(_user.getId());
+    public Ticket buyTicket(User user, String eventName, String seat) {
+        if(userController.getById(user.getId()) == null){
+            return null;
+        }
+
         Event event = getEventByName(eventName);
 
         if (event != null){
@@ -89,7 +92,8 @@ public class Controller {
 
     public List<Ticket> listPurchasedTickets(User user){
         List<Ticket> tickets = new ArrayList<Ticket>();
-        List<UUID> ticketIDs = user.getTickets();
+        User _user = userController.getById(user.getId());
+        List<UUID> ticketIDs = _user.getTickets();
 
         for(UUID id: ticketIDs){
             Ticket t = ticketController.getById(id);

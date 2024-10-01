@@ -1,6 +1,6 @@
 package test.java.com.UEFS.system.UserTest;
 
-import main.java.UEFS.system.entitys.User;
+import main.java.UEFS.system.entity.User;
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;

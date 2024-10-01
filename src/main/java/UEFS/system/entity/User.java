@@ -1,9 +1,10 @@
-package main.java.UEFS.system.entitys;
+package main.java.UEFS.system.entity;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
+
 
 public class User {
     private final UUID id;
