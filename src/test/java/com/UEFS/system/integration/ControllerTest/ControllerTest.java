@@ -1,4 +1,4 @@
-package test.java.com.UEFS.system.ControllerTest;
+package test.java.com.UEFS.system.integration.ControllerTest;
 
 import java.util.Date;
 import java.util.Calendar;

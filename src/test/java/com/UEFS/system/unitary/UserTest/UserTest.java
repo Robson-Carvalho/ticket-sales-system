@@ -1,4 +1,4 @@
-package test.java.com.UEFS.system.UserTest;
+package test.java.com.UEFS.system.unitary.UserTest;
 
 import main.java.UEFS.system.model.User;
 import org.junit.Test;

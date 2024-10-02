@@ -59,7 +59,5 @@ public class CommentService implements IService<Comment> {
     public void deleteAll() {
         commentRepository.deleteAll();
     }
-
-
 }
 

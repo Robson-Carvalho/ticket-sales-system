@@ -1,4 +1,4 @@
-package test.java.com.UEFS.system.CommentTest;
+package test.java.com.UEFS.system.unitary.CommentTest;
 
 import main.java.UEFS.system.controller.CommentController;
 import main.java.UEFS.system.controller.EventController;

@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.UUID;
 
 public class CommentController {
-    private CommentService commentService;
+    private final CommentService commentService;
 
     public CommentController() {
         this.commentService = new CommentService();
