@@ -1,6 +1,6 @@
 package main.java.UEFS.system.controller;
 
-import main.java.UEFS.system.entity.Comment;
+import main.java.UEFS.system.model.Comment;
 import main.java.UEFS.system.service.CommentService;
 
 import java.util.List;

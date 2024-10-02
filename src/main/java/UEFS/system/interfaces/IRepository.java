@@ -1,4 +1,4 @@
-package main.java.UEFS.system.repository.Interface;
+package main.java.UEFS.system.interfaces;
 
 import java.util.List;
 import java.util.UUID;

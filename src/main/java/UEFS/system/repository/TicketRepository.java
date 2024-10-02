@@ -3,8 +3,8 @@ package main.java.UEFS.system.repository;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
-import main.java.UEFS.system.entity.Ticket;
-import main.java.UEFS.system.repository.Interface.IRepository;
+import main.java.UEFS.system.interfaces.IRepository;
+import main.java.UEFS.system.model.Ticket;
 
 import java.io.FileReader;
 import java.io.FileWriter;

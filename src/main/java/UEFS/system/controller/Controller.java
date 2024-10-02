@@ -1,8 +1,8 @@
 package main.java.UEFS.system.controller;
 
-import main.java.UEFS.system.entity.Event;
-import main.java.UEFS.system.entity.Ticket;
-import main.java.UEFS.system.entity.User;
+import main.java.UEFS.system.model.Event;
+import main.java.UEFS.system.model.Ticket;
+import main.java.UEFS.system.model.User;
 
 import java.util.ArrayList;
 import java.util.Date;

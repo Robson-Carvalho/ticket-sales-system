@@ -5,9 +5,9 @@ import java.util.Calendar;
 import java.util.List;
 
 import main.java.UEFS.system.controller.Controller;
-import main.java.UEFS.system.entity.Event;
-import main.java.UEFS.system.entity.Ticket;
-import main.java.UEFS.system.entity.User;
+import main.java.UEFS.system.model.Event;
+import main.java.UEFS.system.model.Ticket;
+import main.java.UEFS.system.model.User;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;

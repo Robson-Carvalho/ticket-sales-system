@@ -1,4 +1,4 @@
-package main.java.UEFS.system.entity;
+package main.java.UEFS.system.model;
 
 import java.util.UUID;
 

@@ -1,4 +1,4 @@
-package main.java.UEFS.system.entity;
+package main.java.UEFS.system.model;
 
 import com.google.gson.annotations.Expose;
 import main.java.UEFS.system.service.EventService;

@@ -1,6 +1,6 @@
 package main.java.UEFS.system.controller;
 
-import main.java.UEFS.system.entity.User;
+import main.java.UEFS.system.model.User;
 import main.java.UEFS.system.service.UserService;
 
 import java.util.List;
@@ -15,8 +15,7 @@ public class UserController {
 
     public User create(String login, String password, String name, String cpf, String email, Boolean isAdmin){
         User user = new User(login, password, name, cpf, email, isAdmin);
-        userService.create(user);
-        return user;
+        return userService.create(user);
     }
 
     public User getById(UUID id){
