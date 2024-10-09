@@ -1,4 +1,5 @@
 package main.java.UEFS.system.controller;
 
-public class MailBoxController {
+public class MailController {
+
 }

@@ -67,7 +67,7 @@ public class Ticket {
     public Boolean cancel() {
         Event event = eventService.getById(eventID);
         if(event.isActive()){
-            status = false;
+            this.status = false;
             return true;
         }
         return false;

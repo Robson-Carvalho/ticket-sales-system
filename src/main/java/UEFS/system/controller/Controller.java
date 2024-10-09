@@ -1,5 +1,6 @@
 package main.java.UEFS.system.controller;
 
+import main.java.UEFS.system.exception.UserException;
 import main.java.UEFS.system.model.Event;
 import main.java.UEFS.system.model.Ticket;
 import main.java.UEFS.system.model.User;
@@ -13,11 +14,19 @@ public class Controller {
     private final UserController userController;
     private final EventController eventController;
     private final TicketController ticketController;
+    private final CardController cardController;
+    private final TransactionController transactionController;
+    private final MailController mailBoxController;
+    private final CommentController commentController;
 
     public Controller() {
         this.userController = new UserController();
         this.eventController = new EventController();
         this.ticketController = new TicketController();
+        this.cardController = new CardController();
+        this.transactionController = new TransactionController();
+        this.mailBoxController = new MailController();
+        this.commentController = new CommentController();
     }
 
     private Event getEventByName(String eventName){
@@ -32,7 +41,7 @@ public class Controller {
         return null;
     }
 
-    public User createUser(String login, String password, String name, String cpf, String email, Boolean isAdmin){
+    public User createUser(String login, String password, String name, String cpf, String email, Boolean isAdmin) throws UserException {
         return userController.create(login, password, name, cpf, email, isAdmin);
     }
 
@@ -54,7 +63,7 @@ public class Controller {
         }
     }
 
-    public Ticket buyTicket(User user, String eventName, String seat) {
+    public Ticket buyTicket(User user, String eventName, String seat) throws UserException {
         if(userController.getById(user.getId()) == null){
             return null;
         }
@@ -71,7 +80,7 @@ public class Controller {
         return  null;
     }
 
-    public Boolean cancelBuy(User _user, Ticket _ticket){
+    public Boolean cancelBuy(User _user, Ticket _ticket) throws UserException {
         User user = userController.getById(_user.getId());
         Ticket ticket = ticketController.getById(_ticket.getId());
 
@@ -92,6 +101,7 @@ public class Controller {
 
     public List<Ticket> listPurchasedTickets(User user){
         List<Ticket> tickets = new ArrayList<Ticket>();
+
         User _user = userController.getById(user.getId());
         List<UUID> ticketIDs = _user.getTickets();
 
@@ -107,5 +117,7 @@ public class Controller {
         userController.deleteAll();
         eventController.deleteAll();
         ticketController.deleteAll();
+        cardController.deleteAll();
+        commentController.deleteAll();
     }
 }

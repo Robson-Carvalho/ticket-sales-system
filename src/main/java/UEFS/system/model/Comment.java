@@ -3,9 +3,9 @@ package main.java.UEFS.system.model;
 import java.util.UUID;
 
 public class Comment {
-    private UUID id;
-    private UUID userID;
-    private UUID eventID;
+    private final UUID id;
+    private final UUID userID;
+    private final UUID eventID;
     private int rating;
     private String content;
 

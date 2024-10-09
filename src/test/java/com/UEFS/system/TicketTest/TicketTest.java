@@ -1,8 +1,9 @@
-package test.java.com.UEFS.system.unitary.TicketTest;
+package test.java.com.UEFS.system.TicketTest;
 
 import main.java.UEFS.system.controller.EventController;
 import main.java.UEFS.system.controller.TicketController;
 import main.java.UEFS.system.controller.UserController;
+import java.lang.Exception;
 import main.java.UEFS.system.model.Event;
 import main.java.UEFS.system.model.Ticket;
 import main.java.UEFS.system.model.User;
@@ -36,7 +37,7 @@ public class TicketTest {
     }
 
     @Test
-    public void ticketCreateTest() {
+    public void ticketCreateTest() throws Exception {
         Calendar calendar = Calendar.getInstance();
         calendar.set(2024, Calendar.SEPTEMBER, 30);
         Date data = calendar.getTime();
@@ -54,7 +55,7 @@ public class TicketTest {
     }
 
     @Test
-    public void ticketCancelTest() {
+    public void ticketCancelTest() throws Exception {
         Calendar calendar = Calendar.getInstance();
         calendar.set(2025, Calendar.SEPTEMBER, 30);
         Date data = calendar.getTime();
@@ -69,7 +70,7 @@ public class TicketTest {
     }
 
     @Test
-    public void testCancelTicketPastEvent() {
+    public void testCancelTicketPastEvent() throws Exception {
         Calendar calendar = Calendar.getInstance();
         calendar.set(2020, Calendar.JANUARY, 10);
         Date data = calendar.getTime();
@@ -84,7 +85,7 @@ public class TicketTest {
     }
 
     @Test
-    public void testReactivateTicket() {
+    public void testReactivateTicket() throws Exception {
         Calendar calendar = Calendar.getInstance();
         calendar.set(2025, Calendar.SEPTEMBER, 30);
         Date data = calendar.getTime();
@@ -102,7 +103,7 @@ public class TicketTest {
     }
 
     @Test
-    public void duplicateTicketTest() {
+    public void duplicateTicketTest() throws Exception {
         Calendar calendar = Calendar.getInstance();
         calendar.set(2024, Calendar.SEPTEMBER, 10);
         Date data = calendar.getTime();

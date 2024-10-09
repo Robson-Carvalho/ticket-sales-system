@@ -2,17 +2,17 @@ package main.java.UEFS.system.model;
 
 import java.util.UUID;
 
-public class MailBox {
+public class Mail {
     private final UUID id;
     private final UUID userID;
-    private final UUID transactionID;
     private final String subject;
+    private final String content;
 
-    public MailBox(UUID userID, UUID transactionID, String subject) {
+    public Mail(UUID userID, String subject, String content) {
         this.id = UUID.randomUUID();
         this.userID = userID;
-        this.transactionID = transactionID;
         this.subject = subject;
+        this.content = content;
     }
 
     public UUID getId() {
@@ -21,10 +21,6 @@ public class MailBox {
 
     public UUID getUserID() {
         return userID;
-    }
-
-    public UUID getTransactionID() {
-        return transactionID;
     }
 
     public String getSubject() {

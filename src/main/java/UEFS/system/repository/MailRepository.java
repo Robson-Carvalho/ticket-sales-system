@@ -6,7 +6,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import main.java.UEFS.system.interfaces.IRepository;
-import main.java.UEFS.system.model.MailBox;
+import main.java.UEFS.system.model.Mail;
 
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -16,18 +16,18 @@ import java.util.List;
 import java.util.UUID;
 
 
-public class MailBoxRepository  implements IRepository<MailBox> {
-    private static final String FILE_PATH = "src/main/java/UEFS/system/storage/mailBox.json";
-    private final List<MailBox> mailBox;
+public class MailRepository implements IRepository<Mail> {
+    private static final String FILE_PATH = "src/main/java/UEFS/system/storage/mails.json";
+    private final List<Mail> mails;
 
-    public MailBoxRepository() {
-        mailBox = loadMailBoxs();
+    public MailRepository() {
+        mails = loadMailBoxs();
     }
 
-    private List<MailBox> loadMailBoxs() {
-        List<MailBox> creditCardList = new ArrayList<>();
+    private List<Mail> loadMailBoxs() {
+        List<Mail> creditCardList = new ArrayList<>();
         try (FileReader reader = new FileReader(FILE_PATH)) {
-            Type listType = new TypeToken<ArrayList<MailBox>>() {}.getType();
+            Type listType = new TypeToken<ArrayList<Mail>>() {}.getType();
             creditCardList =  new Gson().fromJson(reader, listType);
         } catch (Exception e) {
             e.printStackTrace();
@@ -35,49 +35,49 @@ public class MailBoxRepository  implements IRepository<MailBox> {
         return creditCardList != null ? creditCardList : new ArrayList<>();
     }
 
-    private void saveMailBoxs() {
+    private void saveMails() {
         try (FileWriter writer = new FileWriter(FILE_PATH)) {
             Gson gson = new GsonBuilder()
                     .setPrettyPrinting()
                     .create();
-            gson.toJson(mailBox, writer);
+            gson.toJson(mails, writer);
         } catch (Exception e) {
             System.out.println("Error while saving mailBox");
         }
     }
 
     @Override
-    public MailBox findById(UUID id) {
+    public Mail findById(UUID id) {
         return loadMailBoxs().stream().filter(creditCard -> creditCard.getId().equals(id)).findFirst().orElse(null);
     }
 
     @Override
-    public List<MailBox> findAll() {
+    public List<Mail> findAll() {
         return loadMailBoxs();
     }
 
     @Override
-    public void save(MailBox creditCard) {
-        mailBox.add(creditCard);
-        saveMailBoxs();
+    public void save(Mail creditCard) {
+        mails.add(creditCard);
+        saveMails();
     }
 
     @Override
-    public void update(MailBox creditCard) {
+    public void update(Mail creditCard) {
         delete(creditCard.getId());
-        mailBox.add(creditCard);
-        saveMailBoxs();
+        mails.add(creditCard);
+        saveMails();
     }
 
     @Override
     public void delete(UUID id) {
-        mailBox.removeIf(creditCard -> creditCard.getId().equals(id));
-        saveMailBoxs();
+        mails.removeIf(creditCard -> creditCard.getId().equals(id));
+        saveMails();
     }
 
     @Override
     public void deleteAll() {
-        mailBox.clear();
-        saveMailBoxs();
+        mails.clear();
+        saveMails();
     }
 }

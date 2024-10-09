@@ -14,12 +14,22 @@ public class Transaction {
     private final Double amount;
     private final PaymentMethod paymentMethod;
 
-    public Transaction(UUID userID, UUID ticketID, UUID creditCardID, Date date, Double amount, PaymentMethod method) {
+    public Transaction(UUID userID, UUID ticketID, UUID creditCardID, Double amount, PaymentMethod method) {
         this.id = UUID.randomUUID();
         this.userID = userID;
         this.ticketID = ticketID;
         this.creditCardID = creditCardID;
-        this.date = date;
+        this.date = new Date();
+        this.amount = amount;
+        this.paymentMethod = method;
+    }
+
+    public Transaction(UUID userID, UUID ticketID, Double amount, PaymentMethod method) {
+        this.id = UUID.randomUUID();
+        this.userID = userID;
+        this.ticketID = ticketID;
+        this.creditCardID = null;
+        this.date = new Date();
         this.amount = amount;
         this.paymentMethod = method;
     }
@@ -49,10 +59,8 @@ public class Transaction {
     }
 
     public String getPaymentMethod() {
-        if(paymentMethod == null) return null;
-
         if(paymentMethod.equals(PaymentMethod.CREDIT_CARD)){
-            return "Cartão de Crédito/Débito";
+            return "Cartão";
         }
 
         return "Boleto";

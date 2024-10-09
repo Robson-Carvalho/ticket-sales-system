@@ -1,10 +1,11 @@
-package test.java.com.UEFS.system.integration.ControllerTest;
+package test.java.com.UEFS.system.ControllerTest;
 
 import java.util.Date;
 import java.util.Calendar;
 import java.util.List;
 
 import main.java.UEFS.system.controller.Controller;
+import java.lang.Exception;
 import main.java.UEFS.system.model.Event;
 import main.java.UEFS.system.model.Ticket;
 import main.java.UEFS.system.model.User;
@@ -32,7 +33,7 @@ public class ControllerTest {
     }
 
     @Test
-    public void testRegisterEventByAdmin() {
+    public void testRegisterEventByAdmin() throws Exception {
         User admin = controller.createUser("admin", "senha123", "Admin User", "00000000000", "admin@example.com", true);
 
         Calendar calendar = Calendar.getInstance();
@@ -48,7 +49,7 @@ public class ControllerTest {
     }
 
     @Test
-    public void testRegisterEventByCommonUser() {
+    public void testRegisterEventByCommonUser() throws Exception {
         User user = controller.createUser("johndoe", "senha123", "John Doe", "12345678901", "john.doe@example.com", false);
 
         Calendar calendar = Calendar.getInstance();
@@ -63,7 +64,7 @@ public class ControllerTest {
     }
 
     @Test
-    public void buyTicketTest() {
+    public void buyTicketTest() throws Exception {
         User user = controller.createUser("johndoe", "senha123", "John Doe", "12345678901", "john.doe@example.com", false);
 
         Calendar calendar = Calendar.getInstance();
@@ -82,9 +83,8 @@ public class ControllerTest {
         assertTrue(user.getTickets().contains(ticket.getId()));
     }
 
-
     @Test
-    public void cancelTicketTest() {
+    public void cancelTicketTest() throws Exception {
         User user = controller.createUser("johndoe", "senha123", "John Doe", "12345678901", "john.doe@example.com", false);
 
         Calendar calendar = Calendar.getInstance();
@@ -104,7 +104,7 @@ public class ControllerTest {
     }
 
     @Test
-    public void testListAvailableEvents() {
+    public void testListAvailableEvents() throws Exception {
         User admin = controller.createUser("admin", "senha123", "Admin User", "00000000000", "admin@example.com", true);
 
         Calendar calendar1 = Calendar.getInstance();
@@ -124,7 +124,7 @@ public class ControllerTest {
     }
 
     @Test
-    public void testListPurchasedTickets() {
+    public void testListPurchasedTickets() throws Exception {
         User user = controller.createUser("johndoe", "senha123", "John Doe", "12345678901", "john.doe@example.com", false);
 
         Calendar calendar = Calendar.getInstance();

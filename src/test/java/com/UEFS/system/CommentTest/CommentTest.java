@@ -1,8 +1,9 @@
-package test.java.com.UEFS.system.unitary.CommentTest;
+package test.java.com.UEFS.system.CommentTest;
 
 import main.java.UEFS.system.controller.CommentController;
 import main.java.UEFS.system.controller.EventController;
 import main.java.UEFS.system.controller.UserController;
+import main.java.UEFS.system.exception.UserException;
 import main.java.UEFS.system.model.Comment;
 import main.java.UEFS.system.model.Event;
 import main.java.UEFS.system.model.User;
@@ -35,7 +36,7 @@ public class CommentTest {
     }
 
     @Test
-    public void commentCreateTest() {
+    public void commentCreateTest() throws UserException {
         Calendar calendar = Calendar.getInstance();
         calendar.set(2020, Calendar.SEPTEMBER, 30);
         Date data = calendar.getTime();
@@ -56,7 +57,7 @@ public class CommentTest {
     }
 
     @Test
-    public void testCreateFutureEventComment() {
+    public void testCreateFutureEventComment() throws UserException {
         Calendar calendar = Calendar.getInstance();
         calendar.set(2026, Calendar.SEPTEMBER, 30);
         Date data = calendar.getTime();

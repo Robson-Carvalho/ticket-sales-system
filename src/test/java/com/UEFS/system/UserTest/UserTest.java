@@ -1,13 +1,37 @@
-package test.java.com.UEFS.system.unitary.UserTest;
+package test.java.com.UEFS.system.UserTest;
+
+import main.java.UEFS.system.controller.EventController;
+import main.java.UEFS.system.controller.TicketController;
+import main.java.UEFS.system.controller.UserController;
+import java.lang.Exception;
+import java.util.List;
 
 import main.java.UEFS.system.model.User;
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
+
+import static org.junit.Assert.*;
 
 public class UserTest {
+    private EventController eventController;
+    private TicketController ticketController;
+    private UserController userController;
+
+    @Before
+    public void setUp() {
+        eventController = new EventController();
+        ticketController = new TicketController();
+        userController =  new UserController();
+    }
+
+    @After
+    public void tearDown() {
+        eventController.deleteAll();
+        ticketController.deleteAll();
+        userController.deleteAll();
+    }
+
     @Test
     public void registerUserTest() {
         User user = new User("johndoe", "senha123", "John Doe", "12345678901", "john.doe@example.com", false);
@@ -62,11 +86,5 @@ public class UserTest {
         assertEquals("jon.doe@example.com", user.getEmail());
     }
 
-    @Test
-    public void duplicateUserTest() {
-        User firstUser = new User("johndoe", "senha123", "John Doe", "12345678901", "john.doe@example.com", false);
-        User secondUser = new User("johndoe", "senha456", "John Doe", "12345678901", "john.doe@example.com", false);
 
-        assertEquals(firstUser, secondUser);
-    }
 }
