@@ -1,0 +1,15 @@
+main.java.UEFS.system
+main.java.UEFS.system.controller
+main.java.UEFS.system.enums
+main.java.UEFS.system.exception
+main.java.UEFS.system.interfaces
+main.java.UEFS.system.model
+main.java.UEFS.system.repository
+main.java.UEFS.system.service
+main.java.UEFS.system.testFacade.UserTestFacade
+test.java.com.UEFS.system.CommonTests.UserTest
+test.java.com.UEFS.system.ControllerTest
+test.java.com.UEFS.system.CreditCardTest
+test.java.com.UEFS.system.EventTest
+test.java.com.UEFS.system.TicketTest
+test.java.com.UEFS.system.UserTest

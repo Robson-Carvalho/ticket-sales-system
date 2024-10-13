@@ -39,6 +39,10 @@ public class UserController {
         userService.delete(id);
     }
 
+    public User getByEmail(String email) {
+        return userService.getByEmail(email);
+    }
+
     public void getMailBox(){
 
     }

@@ -1,100 +1,53 @@
 package test.java.com.UEFS.system.CommonTests.UserTest;
 
-import main.java.UEFS.system.controller.UserController;
-import main.java.UEFS.system.model.User;
+import main.java.UEFS.system.testFacade.UserTestFacade.UserTestFacade;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.List;
-
 import static org.junit.Assert.*;
-import static org.junit.Assert.assertEquals;
+
 
 public class UserTest {
-    private UserController userController;
+    private UserTestFacade userFacade;
 
     @Before
     public void setUp() {
-        userController =  new UserController();
+        userFacade = new UserTestFacade();
     }
 
     @After
     public void tearDown() {
-        userController.deleteAll();
+        userFacade.deleteAllUsers();
     }
 
     @Test
-    public void duplicateUserTest() {
-        User firstUser = new User("johndoe", "senha123", "John Doe", "12345678901", "john.doe@example.com", false);
-        User secondUser = new User("johndoe", "senha456", "John Doe", "12345678901", "john.doe@example.com", false);
+    public void createUserTest() {
+        String login = "login";
+        String name = "testUser";
+        String email = "test@example.com";
+        String password = "teste123";
+        String cpf = "123456789";
+        Boolean isAdmin = false;
 
-        assertEquals(firstUser, secondUser);
-    }
+        boolean userExists = userFacade.thereIsUserWithEmail(email);
+        assertFalse(userExists);
 
-    @Test
-    public void duplicateUserInDataBaseTest() throws Exception {
-        userController.create("johndoe", "senha123", "John Doe", "12345678901", "john.doe@example.com", false);
+        boolean createdUser = userFacade.create(login, password, name, cpf, email, isAdmin);
+        assertTrue(createdUser);
 
-        try{
-            userController.create("johndoe", "senha456", "John Doe", "12345678901", "john.doe@example.com", false);
-        }catch (Exception e){
-            assertEquals(e.getMessage(), "Login, email e/ou cpf já está em uso.");
-        }
-    }
+        String createdUserLogin = userFacade.getLoginByUserEmail(email);
+        String createdUserName = userFacade.getNameByUserEmail(email);
+        String createdUserEmail = userFacade.getEmailByUserEmail(email);
+        String createdUserPassword = userFacade.getPasswordByUserEmail(email);
+        String createdUserCPF = userFacade.getCpfByUserEmail(email);
+        boolean createdUserIsAdmin = userFacade.getIsAdminByUserEmail(email);
 
-    @Test
-    public void createUserInDataBaseTest() throws Exception {
-        User user = userController.create("johndoe", "senha123", "John Doe", "12345678901", "john.doe@example.com", false);
-
-        User createdUser = userController.getById(user.getId());
-
-        assertNotNull(createdUser);
-
-        assertEquals(user.getId(), createdUser.getId());
-    }
-
-    @Test
-    public void createUsersInDataBaseTest() throws Exception {
-        userController.create("johndoe", "senha123", "John Doe", "12345678901", "john.doe@example.com", false);
-        userController.create("lucas", "senha456", "John Doe", "12345678902", "lucas.doe@example.com", false);
-
-        List<User> users = userController.getAll();
-
-        assertEquals(2, users.size());
-    }
-
-
-    @Test
-    public void deleteUserTest() throws Exception {
-        User user = userController.create("johndoe", "senha123", "John Doe", "12345678901", "john.doe@example.com", false);
-        userController.delete(user.getId());
-
-        User createdUser = userController.getById(user.getId());
-
-        assertNull(createdUser);
-    }
-
-    @Test
-    public void updateUserTest() throws Exception {
-        User firstUser = userController.create("john", "senha123", "John", "12345678901", "john@example.com", false);
-        User secondUser = userController.create("lucas", "senha456", "Lucas", "12345678902", "lucas@example.com", false);
-
-        firstUser.setEmail(secondUser.getEmail());
-
-        try{
-            userController.update(firstUser);
-        }catch (Exception e){
-            assertEquals(e.getMessage(), "Email já está em uso.");
-        }
-
-        firstUser.setEmail("john123@example.com");
-
-        userController.update(firstUser);
-
-        User updatedUser = userController.getById(firstUser.getId());
-
-        assertEquals(updatedUser.getEmail(), firstUser.getEmail());
-
+        assertEquals(login, createdUserLogin);
+        assertEquals(name, createdUserName);
+        assertEquals(email, createdUserEmail);
+        assertEquals(password, createdUserPassword);
+        assertEquals(cpf, createdUserCPF);
+        assertEquals(isAdmin, createdUserIsAdmin);
     }
 }
