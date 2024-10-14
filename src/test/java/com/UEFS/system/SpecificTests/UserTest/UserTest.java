@@ -1,4 +1,4 @@
-package test.java.com.UEFS.system.UserTest;
+package test.java.com.UEFS.system.SpecificTests.UserTest;
 
 import main.java.UEFS.system.controller.EventController;
 import main.java.UEFS.system.controller.TicketController;

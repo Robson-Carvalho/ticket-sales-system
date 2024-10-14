@@ -1,4 +1,4 @@
-package test.java.com.UEFS.system.EventTest;
+package test.java.com.UEFS.system.SpecificTests.EventTest;
 
 import java.util.Date;
 import java.util.List;

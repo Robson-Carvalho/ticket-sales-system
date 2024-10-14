@@ -23,6 +23,10 @@ public class UserController {
         return userService.getById(id);
     }
 
+    public User getByLogin(String login){
+        return userService.getByLogin(login);
+    }
+
     public List<User> getAll(){
         return userService.getAll();
     }
