@@ -51,6 +51,10 @@ public class UserController {
 
     }
 
+    public boolean login(String login, String password) {
+        return userService.login(login, password);
+    }
+
     public void deleteAll() {
         userService.deleteAll();
     }

@@ -83,4 +83,9 @@ public class UserService implements IService<User> {
 
         return null;
     }
+
+    public boolean login(String login, String password){
+        User user = this.getByLogin(login);
+        return user != null && user.getPassword().equals(password);
+    }
 }

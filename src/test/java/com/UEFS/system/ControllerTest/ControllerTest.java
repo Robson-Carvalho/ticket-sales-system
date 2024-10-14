@@ -124,7 +124,7 @@ public class ControllerTest {
     }
 
     @Test
-    public void dddtestListPurchasedTickets() throws Exception {
+    public void testListPurchasedTickets() throws Exception {
         User user = controller.createUser("johndoe", "senha123", "John Doe", "12345678901", "john.doe@example.com", false);
 
         Calendar calendar = Calendar.getInstance();

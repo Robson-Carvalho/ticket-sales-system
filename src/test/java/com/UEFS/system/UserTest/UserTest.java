@@ -85,6 +85,4 @@ public class UserTest {
         assertEquals("10987654321", user.getCpf());
         assertEquals("jon.doe@example.com", user.getEmail());
     }
-
-
 }
