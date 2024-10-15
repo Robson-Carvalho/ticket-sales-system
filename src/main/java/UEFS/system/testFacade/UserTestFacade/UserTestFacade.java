@@ -58,6 +58,11 @@ public class UserTestFacade {
         }
     }
 
+    public String getUserIdByEmail(String email) {
+        User user = userController.getByEmail(email);
+        return user.getId().toString();
+    }
+
     public String getLoginByUserEmail(String email) {
         User user = userController.getByEmail(email);
         return user.getLogin();

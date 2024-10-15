@@ -45,11 +45,6 @@ public class TicketTestFacade {
         ticketController.reactiveById(UUID.fromString(id));
     }
 
-    public boolean getIsAdminTicketId(String id){
-        Ticket ticket = ticketController.getById(UUID.fromString(id));
-        return ticket.isActive();
-    }
-
     public Ticket getById(String id){
         return ticketController.getById(UUID.fromString(id));
     }

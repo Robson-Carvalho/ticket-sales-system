@@ -10,7 +10,6 @@ import java.util.UUID;
 
 public class EventController {
     private final EventService eventService;
-
     private final UserController userController;
 
     public EventController() {
@@ -40,6 +39,7 @@ public class EventController {
     public Event getById(UUID id){
         return eventService.getById(id);
     }
+
 
     public List<Event> getAll(){
         return eventService.getAll();

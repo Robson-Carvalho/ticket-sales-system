@@ -59,7 +59,7 @@ public class TicketTest {
         assertEquals(eventId, ticketFacade.getEventByTicketId(ticketId));
         assertEquals(100.0, ticketFacade.getPriceByTicketId(ticketId), 0.0001);
         assertEquals("A1", ticketFacade.getSeatByTicketId(ticketId));
-        assertTrue(ticketFacade.getIsAdminTicketId(ticketId));
+        assertTrue(ticketFacade.getIsActive(ticketId));
     }
 
     @Test
@@ -88,7 +88,6 @@ public class TicketTest {
         assertFalse(ticketFacade.getIsActive(ticketId));
     }
 
-
     @Test
     public void testReactivateTicket() throws Exception {
         Calendar calendar = Calendar.getInstance();
@@ -114,7 +113,7 @@ public class TicketTest {
         assertFalse(ticketFacade.getIsActive(ticketId));
 
         ticketFacade.reactiveById(ticketId);
-        assertTrue(ticketFacade.getIsAdminTicketId(ticketId));
+        assertTrue(ticketFacade.getIsActive(ticketId));
     }
 
     @Test

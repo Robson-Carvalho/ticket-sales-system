@@ -6,6 +6,7 @@ import main.java.UEFS.system.model.User;
 import main.java.UEFS.system.repository.CommentRepository;
 import main.java.UEFS.system.interfaces.IService;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -44,6 +45,18 @@ public class CommentService implements IService<Comment> {
         List<Comment> filterComments;
         filterComments = (List<Comment>) this.getAll().stream().filter(event -> event.getUserID().equals(id)).findFirst().orElse(null);
         return  filterComments;
+    }
+
+    public List<Comment> getCommentsByEventId(UUID eventID) {
+        List<Comment> comments = new ArrayList<Comment>();
+
+        for (Comment comment : this.getAll()) {
+            if (comment.getEventID().equals(eventID)) {
+                comments.add(comment);
+            }
+        }
+
+        return comments;
     }
 
     @Override
