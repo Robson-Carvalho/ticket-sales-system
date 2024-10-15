@@ -30,6 +30,14 @@ public class CommentController {
         return commentService.getAllByUserId(id);
     }
 
+    public  List<Comment> getCommentsByEventId(UUID id){
+        return commentService.getCommentsByEventId(id);
+    }
+
+    public float getEventRatingByEventId(UUID id){
+        return commentService.getEventRatingByEventId(id);
+    }
+
     public void update(UUID id, String content, int rating){
         Comment oldComment = commentService.getById(id);
         oldComment.setContent(content);

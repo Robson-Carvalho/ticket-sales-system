@@ -1,6 +1,5 @@
 package main.java.UEFS.system.service;
 
-import main.java.UEFS.system.exception.UserException;
 import main.java.UEFS.system.model.User;
 import main.java.UEFS.system.repository.UserRepository;
 import main.java.UEFS.system.interfaces.IService;
@@ -16,9 +15,9 @@ public class UserService implements IService<User> {
     }
 
     @Override
-    public User create(User user) throws UserException {
+    public User create(User user) throws Exception {
          if(this.getByEmail(user.getEmail()) != null || this.getByCpf(user.getCpf()) != null || this.getByEmail(user.getEmail()) != null){
-             throw new UserException("Login, email e/ou cpf já está em uso.");
+             throw new SecurityException("Login, email e/ou cpf já está em uso.");
          }
 
         userRepository.save(user);
@@ -32,11 +31,11 @@ public class UserService implements IService<User> {
     public User getById(UUID id) {return userRepository.findById(id);}
 
     @Override
-    public void update(User user) throws UserException{
+    public void update(User user) throws Exception{
         User _user = this.getByEmail(user.getEmail());
 
         if(_user != null && !_user.getId().equals(user.getId())){
-            throw new UserException("Email já está em uso.");
+            throw new Exception("Email já está em uso.");
         }
 
         userRepository.update(user);

@@ -1,6 +1,5 @@
 package main.java.UEFS.system.controller;
 
-import main.java.UEFS.system.exception.UserException;
 import main.java.UEFS.system.model.Event;
 import main.java.UEFS.system.model.Ticket;
 import main.java.UEFS.system.model.User;
@@ -45,7 +44,7 @@ public class Controller {
         return eventController.getById(eventId);
     }
 
-    public User createUser(String login, String password, String name, String cpf, String email, Boolean isAdmin) throws UserException {
+    public User createUser(String login, String password, String name, String cpf, String email, Boolean isAdmin) throws Exception {
         return userController.create(login, password, name, cpf, email, isAdmin);
     }
 
@@ -67,7 +66,7 @@ public class Controller {
         }
     }
 
-    public Ticket buyTicket(User user, String eventName, String seat) throws UserException {
+    public Ticket buyTicket(User user, String eventName, String seat) throws Exception {
         if(userController.getById(user.getId()) == null){
             return null;
         }
@@ -84,7 +83,7 @@ public class Controller {
         return  null;
     }
 
-    public Boolean cancelBuy(User _user, Ticket _ticket) throws UserException {
+    public Boolean cancelBuy(User _user, Ticket _ticket) throws Exception {
         User user = userController.getById(_user.getId());
         Ticket ticket = ticketController.getById(_ticket.getId());
 

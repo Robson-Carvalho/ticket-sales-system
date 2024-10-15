@@ -89,7 +89,7 @@ public class TicketTest {
     }
 
     @Test
-    public void testReactivateTicket() throws Exception {
+    public void testReactivateTicket()  {
         Calendar calendar = Calendar.getInstance();
         calendar.set(2025, Calendar.SEPTEMBER, 10);
         String name = "Show de Rock";
@@ -117,7 +117,7 @@ public class TicketTest {
     }
 
     @Test
-    public void duplicateTicketTest() throws Exception {
+    public void duplicateTicketTest()  {
         Calendar calendar = Calendar.getInstance();
         calendar.set(2025, Calendar.SEPTEMBER, 10);
         String name = "Show de Rock";
@@ -136,6 +136,7 @@ public class TicketTest {
         String eventId = eventFacade.create(login, name, description, date);
 
         ticketFacade.create(eventId, 100.0, "A1");
+
         Exception exception = assertThrows(IllegalArgumentException.class, () -> {
             ticketFacade.create(eventId, 100.0, "A1");
         });

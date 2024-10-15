@@ -1,6 +1,5 @@
 package main.java.UEFS.system.controller;
 
-import main.java.UEFS.system.exception.UserException;
 import main.java.UEFS.system.model.User;
 import main.java.UEFS.system.service.UserService;
 
@@ -14,7 +13,7 @@ public class UserController {
         this.userService = new UserService();
     }
 
-    public User create(String login, String password, String name, String cpf, String email, Boolean isAdmin) throws UserException {
+    public User create(String login, String password, String name, String cpf, String email, Boolean isAdmin) throws Exception {
         User user = new User(login, password, name, cpf, email, isAdmin);
         return userService.create(user);
     }
@@ -35,7 +34,7 @@ public class UserController {
         User user = userService.getById(id);
     }
 
-    public void update(User user) throws UserException {
+    public void update(User user) throws Exception {
         userService.update(user);
     }
 

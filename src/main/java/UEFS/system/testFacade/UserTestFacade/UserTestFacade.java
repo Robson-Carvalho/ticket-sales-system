@@ -1,7 +1,6 @@
 package main.java.UEFS.system.testFacade.UserTestFacade;
 
 import main.java.UEFS.system.controller.UserController;
-import main.java.UEFS.system.exception.UserException;
 import main.java.UEFS.system.model.User;
 
 public class UserTestFacade {
@@ -16,7 +15,7 @@ public class UserTestFacade {
 
         try {
             user = userController.create(login, password, name, cpf, email, isAdmin);
-        } catch (UserException e) {
+        } catch (Exception e) {
             throw new SecurityException(e.getMessage());
         }
         return user != null;
@@ -29,7 +28,7 @@ public class UserTestFacade {
 
         try {
             userController.update(user);
-        } catch (UserException e) {
+        } catch (Exception e) {
             throw new RuntimeException(e);
         }
     }
@@ -41,7 +40,7 @@ public class UserTestFacade {
 
         try {
             userController.update(user);
-        } catch (UserException e) {
+        } catch (Exception e) {
             throw new RuntimeException(e);
         }
     }
@@ -53,7 +52,7 @@ public class UserTestFacade {
 
         try {
             userController.update(user);
-        } catch (UserException e) {
+        } catch (Exception e) {
             throw new RuntimeException(e);
         }
     }

@@ -59,6 +59,17 @@ public class CommentService implements IService<Comment> {
         return comments;
     }
 
+    public float getEventRatingByEventId(UUID eventID) {
+        List<Comment> comments = this.getCommentsByEventId(eventID);
+        int rating = 0;
+
+        for (Comment comment : comments) {
+            rating += comment.getRating();
+        }
+
+        return (float) rating / comments.size();
+    }
+
     @Override
     public Comment getById(UUID id) {
         return commentRepository.findById(id);

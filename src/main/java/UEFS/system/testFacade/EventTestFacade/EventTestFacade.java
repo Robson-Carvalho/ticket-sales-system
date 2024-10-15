@@ -1,5 +1,6 @@
 package main.java.UEFS.system.testFacade.EventTestFacade;
 
+import main.java.UEFS.system.controller.CommentController;
 import main.java.UEFS.system.controller.EventController;
 import main.java.UEFS.system.controller.UserController;
 import main.java.UEFS.system.model.Comment;
@@ -16,13 +17,13 @@ public class EventTestFacade {
     private final EventController eventController;
     private final UserController userController ;
     private final EventService eventService;
-    private final CommentService commentService;
+    private final CommentController commentController;
 
     public EventTestFacade() {
         eventController = new EventController();
         userController = new UserController();
         eventService = new EventService();
-        commentService = new CommentService();
+        commentController = new CommentController();
     }
 
     public void removeSeatByEventId(String seat, String id){
@@ -86,8 +87,8 @@ public class EventTestFacade {
         return _event.getId().toString();
     }
 
-    public int getQuantityCommentByEventId(String id){
-        List<Comment> comments = commentService.getCommentsByEventId(UUID.fromString(id));
+    public int getCommentQuantityByEventId(String id){
+        List<Comment> comments = commentController.getCommentsByEventId(UUID.fromString(id));
         return comments.size();
 
     }
