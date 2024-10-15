@@ -16,6 +16,7 @@ public class CardController {
 
     public Card create(UUID userID, String name, String brand, String number, String accountNumber, Date expiryDate, String cvv){
         Card card = new Card(userID, name, brand, accountNumber, number, expiryDate, cvv);
+
         return cardService.create(card);
     }
 
@@ -27,14 +28,17 @@ public class CardController {
         return cardService.getById(id);
     }
 
-    public Card disableCreditCard(UUID id){
+    public Card getCardByNumber(String number){
+        return cardService.getCardByNumber(number);
+    }
+
+    public void disableCreditCard(UUID id){
         Card card = getById(id);
 
         card.disable();
 
         cardService.update(card);
 
-        return card;
     }
 
     public List<Card> getAll(){

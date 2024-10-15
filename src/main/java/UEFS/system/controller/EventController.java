@@ -23,8 +23,14 @@ public class EventController {
 
         User _admin = userController.getById(admin.getId());
 
+        Date today = new Date();
+
         if(_admin == null || !_admin.isAdmin()) {
             throw new SecurityException("Somente administradores podem cadastrar eventos.");
+        }
+
+        if(today.after(date)){
+            throw new SecurityException("Não é possível criar evento com data anterior a atual.");
         }
 
         eventService.create(event);

@@ -1,8 +1,5 @@
 package main.java.UEFS.system.model;
 
-import com.google.gson.annotations.Expose;
-import main.java.UEFS.system.service.EventService;
-
 import java.util.Objects;
 import java.util.UUID;
 
@@ -11,19 +8,11 @@ import java.util.UUID;
  * Each ticket is associated with an event, has a unique identifier, a status, price, and code.
  */
 public class Ticket {
-    @Expose
-    private UUID id;
-    @Expose
-    private UUID eventID;
-    @Expose
+    private final UUID id;
+    private final UUID eventID;
     private Boolean status;
-    @Expose
-    private Double price;
-    @Expose
-    private String code;
-
-    @Expose(serialize = false)
-    private EventService eventService = new EventService();
+    private final Double price;
+    private final String code;
 
     /**
      * Constructs a new Ticket with the specified event, price, and code.
@@ -70,8 +59,12 @@ public class Ticket {
      *
      * @return the event associated with the ticket
      */
-    public Event getEvent() {
-        return eventService.getById(eventID);
+    public UUID getEventId() {
+        return this.eventID;
+    }
+
+    public void setStatus(Boolean status) {
+        this.status = status;
     }
 
     /**
@@ -99,30 +92,6 @@ public class Ticket {
      */
     public Boolean isActive() {
         return status;
-    }
-
-    /**
-     * Reactivates the ticket if the associated event is active.
-     */
-    public void reactive() {
-        Event event = eventService.getById(eventID);
-        if (event.isActive()) {
-            this.status = true;
-        }
-    }
-
-    /**
-     * Cancels the ticket if the associated event is active.
-     *
-     * @return true if the ticket was successfully canceled, false otherwise
-     */
-    public Boolean cancel() {
-        Event event = eventService.getById(eventID);
-        if (event.isActive()) {
-            this.status = false;
-            return true;
-        }
-        return false;
     }
 
     /**

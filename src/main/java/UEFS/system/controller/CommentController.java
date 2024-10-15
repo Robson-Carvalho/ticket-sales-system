@@ -26,6 +26,10 @@ public class CommentController {
         return commentService.getAll();
     }
 
+    public List<Comment> getAllByUserId(UUID id){
+        return commentService.getAllByUserId(id);
+    }
+
     public void update(UUID id, String content, int rating){
         Comment oldComment = commentService.getById(id);
         oldComment.setContent(content);

@@ -15,7 +15,9 @@ public class EventService implements IService<Event> {
     }
 
     @Override
-    public Event create(Event event) {eventRepository.save(event); return event;}
+    public Event create(Event event) {
+        eventRepository.save(event); return event;
+    }
 
     @Override
     public List<Event> getAll() {

@@ -41,6 +41,10 @@ public class Controller {
         return null;
     }
 
+    public Event getEventById(UUID eventId){
+        return eventController.getById(eventId);
+    }
+
     public User createUser(String login, String password, String name, String cpf, String email, Boolean isAdmin) throws UserException {
         return userController.create(login, password, name, cpf, email, isAdmin);
     }
@@ -87,7 +91,7 @@ public class Controller {
         if(user != null && ticket != null){
             _user.removeTicket(_ticket);
             userController.update(_user);
-            _ticket.cancel();
+            ticketController.cancelById(_ticket.getId());
             ticketController.update(_ticket);
             return true;
         }

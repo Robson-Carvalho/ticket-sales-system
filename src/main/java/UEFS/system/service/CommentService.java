@@ -40,6 +40,12 @@ public class CommentService implements IService<Comment> {
         return commentRepository.findAll();
     }
 
+    public List<Comment> getAllByUserId(UUID id) {
+        List<Comment> filterComments;
+        filterComments = (List<Comment>) this.getAll().stream().filter(event -> event.getUserID().equals(id)).findFirst().orElse(null);
+        return  filterComments;
+    }
+
     @Override
     public Comment getById(UUID id) {
         return commentRepository.findById(id);

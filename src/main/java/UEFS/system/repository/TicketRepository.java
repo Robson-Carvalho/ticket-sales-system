@@ -48,7 +48,13 @@ public class TicketRepository implements IRepository<Ticket> {
 
     @Override
     public Ticket findById(UUID id) {
-        return loadTickets().stream().filter(ticket -> ticket.getId().equals(id)).findFirst().orElse(null);
+        for (Ticket ticket : tickets) {
+            if(ticket.getId().equals(id)){
+                return ticket;
+            }
+        }
+
+        return null;
     }
 
     @Override

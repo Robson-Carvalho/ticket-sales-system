@@ -49,7 +49,7 @@ public class Card {
      * @return the name of the user
      */
     public String getUserName() {
-        return userName;
+        return this.userName;
     }
 
     /**
@@ -59,6 +59,10 @@ public class Card {
      */
     public UUID getId() {
         return id;
+    }
+
+    public boolean getStatus() {
+        return this.status;
     }
 
     /**

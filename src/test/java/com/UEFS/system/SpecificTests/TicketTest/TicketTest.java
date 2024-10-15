@@ -10,12 +10,11 @@ import main.java.UEFS.system.model.User;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
+
 import java.util.Calendar;
 import java.util.Date;
+
+import static org.junit.Assert.*;
 
 public class TicketTest {
     private EventController eventController;
@@ -39,7 +38,7 @@ public class TicketTest {
     @Test
     public void ticketCreateTest() throws Exception {
         Calendar calendar = Calendar.getInstance();
-        calendar.set(2024, Calendar.SEPTEMBER, 30);
+        calendar.set(2025, Calendar.SEPTEMBER, 30);
         Date data = calendar.getTime();
 
         User admin = userController.create("admin", "senha123", "Admin User", "00000000000", "admin@example.com", true);
@@ -48,7 +47,7 @@ public class TicketTest {
         Ticket ticket = ticketController.create(event, 100.0, "A1");
 
         assertNotNull(ticket);
-        assertEquals(event.getId(), ticket.getEvent().getId());
+        assertEquals(event.getId(), ticket.getEventId());
         assertEquals(100.0, ticket.getPrice(), 0.0001);
         assertEquals("A1", ticket.getCode());
         assertTrue(ticket.isActive());
@@ -65,11 +64,11 @@ public class TicketTest {
         Event event = eventController.create(admin , "Show de Rock 1", "Banda XYZ", data);
         Ticket ticket = ticketController.create(event, 100.0, "A1");
 
-        assertTrue(ticket.cancel());
+        assertTrue(ticketController.cancelById(ticket.getId()));
         assertFalse(ticket.isActive());
     }
 
-    @Test
+    @Test(expected = SecurityException.class)
     public void testCancelTicketPastEvent() throws Exception {
         Calendar calendar = Calendar.getInstance();
         calendar.set(2020, Calendar.JANUARY, 10);
@@ -80,7 +79,7 @@ public class TicketTest {
         Event event = eventController.create(admin, "Show de Rock 2", "Banda XYZ", data);
         Ticket ticket = ticketController.create(event, 100.0, "A1");
 
-        assertFalse(ticket.cancel());
+        assertFalse(ticketController.cancelById(ticket.getId()));
         assertTrue(ticket.isActive());
     }
 
@@ -95,26 +94,28 @@ public class TicketTest {
         Event event = eventController.create(admin, "Show de Rock", "Banda XYZ", data);
         Ticket ticket = ticketController.create(event, 100.0, "A1");
 
-        ticket.cancel();
+        ticketController.cancelById(ticket.getId());
         assertFalse(ticket.isActive());
 
-        ticket.reactive();
+        ticketController.reactiveById(ticket.getId());
         assertTrue(ticket.isActive());
     }
 
     @Test
     public void duplicateTicketTest() throws Exception {
         Calendar calendar = Calendar.getInstance();
-        calendar.set(2024, Calendar.SEPTEMBER, 10);
+        calendar.set(2025, Calendar.SEPTEMBER, 10);
         Date data = calendar.getTime();
 
         User admin = userController.create("admin", "senha123", "Admin User", "00000000000", "admin@example.com", true);
 
         Event event = eventController.create(admin, "Show de Rock","Banda XYZ", data);
-        Ticket firstTicket = ticketController.create(event, 100.0, "A1");
-        Ticket secondTicket = ticketController.create(event, 100.0, "A1");
+        ticketController.create(event, 100.0, "A1");
 
-        assertEquals(firstTicket, secondTicket);
-        assertEquals(firstTicket.hashCode(), secondTicket.hashCode());
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+             ticketController.create(event, 100.0, "A1");
+        });
+
+        assertEquals("Não é possível cadastrar o mesmo assento duas vezes para um único evento.", exception.getMessage());
     }
 }

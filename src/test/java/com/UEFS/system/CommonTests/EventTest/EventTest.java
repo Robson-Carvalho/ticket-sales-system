@@ -1,6 +1,5 @@
 package test.java.com.UEFS.system.CommonTests.EventTest;
 
-import main.java.UEFS.system.model.Event;
 import main.java.UEFS.system.testFacade.EventTestFacade.EventTestFacade;
 import main.java.UEFS.system.testFacade.UserTestFacade.UserTestFacade;
 import org.junit.After;
@@ -129,7 +128,7 @@ public class EventTest {
         assertTrue(eventFacade.getIsActiveByEventId(id));
     }
 
-    @Test
+    @Test(expected = SecurityException.class)
     public void inactiveEventTest() {
         Calendar calendar = Calendar.getInstance();
         calendar.set(2023, Calendar.SEPTEMBER, 10);
@@ -149,6 +148,5 @@ public class EventTest {
 
         assertFalse(eventFacade.getIsActiveByEventId(id));
     }
-
 }
 

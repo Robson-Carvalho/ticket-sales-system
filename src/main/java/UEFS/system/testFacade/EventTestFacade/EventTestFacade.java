@@ -5,7 +5,6 @@ import main.java.UEFS.system.controller.UserController;
 import main.java.UEFS.system.model.Event;
 import main.java.UEFS.system.model.User;
 
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
@@ -13,7 +12,6 @@ import java.util.UUID;
 public class EventTestFacade {
     private final EventController eventController;
     private final UserController userController ;
-
 
     public EventTestFacade() {
         eventController = new EventController();

@@ -6,6 +6,8 @@ import java.util.List;
 
 import main.java.UEFS.system.controller.Controller;
 import java.lang.Exception;
+import java.util.UUID;
+
 import main.java.UEFS.system.model.Event;
 import main.java.UEFS.system.model.Ticket;
 import main.java.UEFS.system.model.User;
@@ -37,7 +39,7 @@ public class ControllerTest {
         User admin = controller.createUser("admin", "senha123", "Admin User", "00000000000", "admin@example.com", true);
 
         Calendar calendar = Calendar.getInstance();
-        calendar.set(2024, Calendar.SEPTEMBER, 10);
+        calendar.set(2025, Calendar.SEPTEMBER, 10);
         Date data = calendar.getTime();
 
         Event event = controller.createEvent(admin, "Show de Rock", "Banda XYZ", data);
@@ -68,7 +70,7 @@ public class ControllerTest {
         User user = controller.createUser("johndoe", "senha123", "John Doe", "12345678901", "john.doe@example.com", false);
 
         Calendar calendar = Calendar.getInstance();
-        calendar.set(2024, Calendar.SEPTEMBER, 10);
+        calendar.set(2025, Calendar.SEPTEMBER, 10);
         Date data = calendar.getTime();
 
         User admin = controller.createUser("admin", "senha123", "Admin User", "00000000000", "admin@example.com", true);
@@ -77,8 +79,10 @@ public class ControllerTest {
 
         Ticket ticket = controller.buyTicket(user, "Show de Rock 1", "A1");
 
+        UUID eventId = ticket.getEventId();
+
         assertNotNull(ticket);
-        assertEquals("Show de Rock 1", ticket.getEvent().getName());
+        assertEquals("Show de Rock 1", controller.getEventById(eventId).getName());
         assertEquals("A1", ticket.getCode());
         assertTrue(user.getTickets().contains(ticket.getId()));
     }
@@ -128,7 +132,7 @@ public class ControllerTest {
         User user = controller.createUser("johndoe", "senha123", "John Doe", "12345678901", "john.doe@example.com", false);
 
         Calendar calendar = Calendar.getInstance();
-        calendar.set(2024, Calendar.SEPTEMBER, 10);
+        calendar.set(2025, Calendar.SEPTEMBER, 10);
         Date data = calendar.getTime();
 
         User admin = controller.createUser("admin", "senha123", "Admin User", "00000000000", "admin@example.com", true);

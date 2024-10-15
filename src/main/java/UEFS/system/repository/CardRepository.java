@@ -47,6 +47,7 @@ public class CardRepository implements IRepository<Card> {
     @Override
     public Card findById(UUID id) {
         return loadCards().stream().filter(creditCard -> creditCard.getId().equals(id)).findFirst().orElse(null);
+
     }
 
     @Override
