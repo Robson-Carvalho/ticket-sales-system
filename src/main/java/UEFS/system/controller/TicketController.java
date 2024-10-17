@@ -1,3 +1,14 @@
+/***************************
+ * Autor: Robson Carvalho de Souza
+ * Componente Curricular: MI de Programação
+ * Concluído em: 16/09/2024
+ * Declaro que este código foi elaborado por mim de forma individual e não contém nenhum
+ * trecho de código de outro colega ou de outro autor, tais como provindos de livros e
+ * apostilas, e páginas ou documentos eletrônicos da Internet. Qualquer trecho de código
+ * de outra autoria que não a minha está destacado com uma citação para o autor e a fonte
+ * do código, e estou ciente que estes trechos não serão considerados para fins de avaliação.
+ ******************************/
+
 package main.java.UEFS.system.controller;
 
 import main.java.UEFS.system.model.Event;
@@ -17,17 +28,17 @@ public class TicketController {
         this.eventService = new EventService();
     }
 
-    public Ticket create(Event event, String seat){
-        Ticket ticket = new Ticket(event, seat);
+    public Ticket create(UUID eventId, String seat){
+        Ticket ticket = new Ticket(eventId, seat);
         ticketService.create(ticket);
         return ticket;
     }
 
-    public Ticket create(Event event, Double price, String seat){
-        Ticket ticket = new Ticket(event, price, seat);
+    public Ticket create(UUID eventId, Double price, String seat){
+        Ticket ticket = new Ticket(eventId, price, seat);
         ticketService.create(ticket);
 
-        Event _event = eventService.getById(event.getId());
+        Event _event = eventService.getById(eventId);
 
         if(_event.getSeats().contains(seat)){
             throw new IllegalArgumentException("Não é possível cadastrar o mesmo assento duas vezes para um único evento.");

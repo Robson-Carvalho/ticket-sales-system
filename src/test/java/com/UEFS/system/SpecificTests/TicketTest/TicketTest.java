@@ -44,7 +44,7 @@ public class TicketTest {
         User admin = userController.create("admin", "senha123", "Admin User", "00000000000", "admin@example.com", true);
 
         Event event = eventController.create(admin, "Show de Rock", "Banda XYZ", data);
-        Ticket ticket = ticketController.create(event, 100.0, "A1");
+        Ticket ticket = ticketController.create(event.getId(), 100.0, "A1");
 
         assertNotNull(ticket);
         assertEquals(event.getId(), ticket.getEventId());
@@ -62,7 +62,7 @@ public class TicketTest {
         User admin = userController.create("admin", "senha123", "Admin User", "00000000000", "admin@example.com", true);
 
         Event event = eventController.create(admin , "Show de Rock 1", "Banda XYZ", data);
-        Ticket ticket = ticketController.create(event, 100.0, "A1");
+        Ticket ticket = ticketController.create(event.getId(), 100.0, "A1");
 
         assertTrue(ticketController.cancelById(ticket.getId()));
         assertFalse(ticket.isActive());
@@ -77,7 +77,7 @@ public class TicketTest {
         User admin = userController.create("admin", "senha123", "Admin User", "00000000000", "admin@example.com", true);
 
         Event event = eventController.create(admin, "Show de Rock 2", "Banda XYZ", data);
-        Ticket ticket = ticketController.create(event, 100.0, "A1");
+        Ticket ticket = ticketController.create(event.getId(), 100.0, "A1");
 
         assertFalse(ticketController.cancelById(ticket.getId()));
         assertTrue(ticket.isActive());
@@ -92,7 +92,7 @@ public class TicketTest {
         User admin = userController.create("admin", "senha123", "Admin User", "00000000000", "admin@example.com", true);
 
         Event event = eventController.create(admin, "Show de Rock", "Banda XYZ", data);
-        Ticket ticket = ticketController.create(event, 100.0, "A1");
+        Ticket ticket = ticketController.create(event.getId(), 100.0, "A1");
 
         ticketController.cancelById(ticket.getId());
         assertFalse(ticket.isActive());
@@ -110,10 +110,10 @@ public class TicketTest {
         User admin = userController.create("admin", "senha123", "Admin User", "00000000000", "admin@example.com", true);
 
         Event event = eventController.create(admin, "Show de Rock","Banda XYZ", data);
-        ticketController.create(event, 100.0, "A1");
+        ticketController.create(event.getId(), 100.0, "A1");
 
         Exception exception = assertThrows(IllegalArgumentException.class, () -> {
-             ticketController.create(event, 100.0, "A1");
+             ticketController.create(event.getId(), 100.0, "A1");
         });
 
         assertEquals("Não é possível cadastrar o mesmo assento duas vezes para um único evento.", exception.getMessage());

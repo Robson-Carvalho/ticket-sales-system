@@ -1,3 +1,14 @@
+/***************************
+ * Autor: Robson Carvalho de Souza
+ * Componente Curricular: MI de Programação
+ * Concluído em: 16/09/2024
+ * Declaro que este código foi elaborado por mim de forma individual e não contém nenhum
+ * trecho de código de outro colega ou de outro autor, tais como provindos de livros e
+ * apostilas, e páginas ou documentos eletrônicos da Internet. Qualquer trecho de código
+ * de outra autoria que não a minha está destacado com uma citação para o autor e a fonte
+ * do código, e estou ciente que estes trechos não serão considerados para fins de avaliação.
+ ******************************/
+
 package main.java.UEFS.system.controller;
 
 import main.java.UEFS.system.model.Event;
@@ -32,28 +43,16 @@ public class EventController {
             throw new SecurityException("Não é possível criar evento com data anterior a atual.");
         }
 
-        eventService.create(event);
-        return event;
+        return eventService.create(event);
     }
 
-    public Event getById(UUID id){
-        return eventService.getById(id);
-    }
+    public Event getById(UUID id){return eventService.getById(id);}
 
+    public List<Event> getAll(){return eventService.getAll();}
 
-    public List<Event> getAll(){
-        return eventService.getAll();
-    }
+    public void update(Event event) {eventService.update(event);}
 
-    public void update(Event event) {
-        eventService.update(event);
-    }
+    public void delete(UUID id) {eventService.delete(id);}
 
-    public void delete(UUID id) {
-        eventService.delete(id);
-    }
-
-    public void deleteAll() {
-        eventService.deleteAll();
-    }
+    public void deleteAll() {eventService.deleteAll();}
 }

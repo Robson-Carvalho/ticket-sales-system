@@ -1,5 +1,17 @@
+/***************************
+ * Autor: Robson Carvalho de Souza
+ * Componente Curricular: MI de Programação
+ * Concluído em: 16/09/2024
+ * Declaro que este código foi elaborado por mim de forma individual e não contém nenhum
+ * trecho de código de outro colega ou de outro autor, tais como provindos de livros e
+ * apostilas, e páginas ou documentos eletrônicos da Internet. Qualquer trecho de código
+ * de outra autoria que não a minha está destacado com uma citação para o autor e a fonte
+ * do código, e estou ciente que estes trechos não serão considerados para fins de avaliação.
+ ******************************/
+
 package main.java.UEFS.system.controller;
 
+import main.java.UEFS.system.model.Mail;
 import main.java.UEFS.system.model.User;
 import main.java.UEFS.system.service.UserService;
 
@@ -8,9 +20,11 @@ import java.util.UUID;
 
 public class UserController {
     private final UserService userService;
+    private final MailController mailController;
 
     public UserController() {
         this.userService = new UserService();
+        this.mailController = new MailController();
     }
 
     public User create(String login, String password, String name, String cpf, String email, Boolean isAdmin) throws Exception {
@@ -46,12 +60,8 @@ public class UserController {
         return userService.getByEmail(email);
     }
 
-    public void getMailBox(){
-
-    }
-
-    public void getLastMail(){
-
+    public List<Mail> getMailBox(UUID id){
+        return mailController.getMailsByUserId(id);
     }
 
     public boolean login(String login, String password) {
