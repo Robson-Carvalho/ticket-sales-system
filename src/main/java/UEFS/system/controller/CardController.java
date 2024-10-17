@@ -18,26 +18,89 @@ import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
+/**
+ * Controlador responsável pela gestão de cartões.
+ * Esta classe fornece métodos para criar, deletar, obter e gerenciar cartões
+ * através da interação com o serviço de cartões.
+ */
 public class CardController {
     private final CardService cardService;
 
+    /**
+     * Construtor do CardController.
+     * Inicializa o serviço de cartões.
+     */
     public CardController() {
         this.cardService = new CardService();
     }
 
-    public Card create(UUID userID, String name, String brand, String number, String accountNumber, Date expiryDate, String cvv){
+    /**
+     * Cria um novo cartão.
+     *
+     * @param userID       ID do usuário associado ao cartão.
+     * @param name         Nome do titular do cartão.
+     * @param brand        Marca do cartão.
+     * @param number       Número do cartão.
+     * @param accountNumber Número da conta associada ao cartão.
+     * @param expiryDate   Data de expiração do cartão.
+     * @param cvv          Código de segurança do cartão.
+     * @return O cartão criado.
+     */
+    public Card create(UUID userID, String name, String brand, String number, String accountNumber, Date expiryDate, String cvv) {
         return cardService.create(new Card(userID, name, brand, accountNumber, number, expiryDate, cvv));
     }
 
-    public void delete(UUID id){cardService.delete(id);}
+    /**
+     * Deleta um cartão pelo seu ID.
+     *
+     * @param id ID do cartão a ser deletado.
+     */
+    public void delete(UUID id) {
+        cardService.delete(id);
+    }
 
-    public Card getById(UUID id){return cardService.getById(id);}
+    /**
+     * Obtém um cartão pelo seu ID.
+     *
+     * @param id ID do cartão a ser obtido.
+     * @return O cartão correspondente ao ID fornecido.
+     */
+    public Card getById(UUID id) {
+        return cardService.getById(id);
+    }
 
-    public Card getCardByNumber(String number){return cardService.getCardByNumber(number);}
+    /**
+     * Obtém um cartão pelo seu número.
+     *
+     * @param number Número do cartão a ser buscado.
+     * @return O cartão correspondente ao número fornecido.
+     */
+    public Card getCardByNumber(String number) {
+        return cardService.getCardByNumber(number);
+    }
 
-    public void disable(UUID id){cardService.disable(id);}
+    /**
+     * Desativa um cartão pelo seu ID.
+     *
+     * @param id ID do cartão a ser desativado.
+     */
+    public void disable(UUID id) {
+        cardService.disable(id);
+    }
 
-    public List<Card> getAll(){return cardService.getAll();}
+    /**
+     * Obtém todos os cartões.
+     *
+     * @return Lista de todos os cartões.
+     */
+    public List<Card> getAll() {
+        return cardService.getAll();
+    }
 
-    public void deleteAll(){cardService.deleteAll();}
+    /**
+     * Deleta todos os cartões.
+     */
+    public void deleteAll() {
+        cardService.deleteAll();
+    }
 }

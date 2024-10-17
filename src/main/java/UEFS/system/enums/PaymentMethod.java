@@ -11,7 +11,17 @@
 
 package main.java.UEFS.system.enums;
 
+/**
+ * Enumeração que representa os métodos de pagamento disponíveis no sistema.
+ */
 public enum PaymentMethod {
+    /**
+     * Método de pagamento por ingresso.
+     */
     TICKET,
+
+    /**
+     * Método de pagamento por cartão de crédito.
+     */
     CREDIT_CARD,
 }

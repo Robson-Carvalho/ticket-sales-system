@@ -16,51 +16,110 @@ import main.java.UEFS.system.model.Comment;
 
 import java.util.UUID;
 
+/**
+ * Facade para facilitar a criação e manipulação de comentários durante os testes.
+ */
 public class CommentTestFacade {
     private final CommentController commentController;
 
+    /**
+     * Construtor que inicializa o controlador de comentários.
+     */
     public CommentTestFacade() {
         commentController = new CommentController();
     }
 
-    public String create(String userID, String eventID, int rating, String content){
+    /**
+     * Cria um novo comentário para um evento.
+     *
+     * @param userID ID do usuário que faz o comentário.
+     * @param eventID ID do evento no qual o comentário é feito.
+     * @param rating Avaliação do evento dada pelo usuário.
+     * @param content Conteúdo do comentário.
+     * @return ID do comentário criado.
+     */
+    public String create(String userID, String eventID, int rating, String content) {
         Comment comment = commentController.create(UUID.fromString(userID), UUID.fromString(eventID), rating, content);
         return comment.getId().toString();
     }
 
-    public Comment getById(String id){
+    /**
+     * Busca um comentário pelo seu ID.
+     *
+     * @param id ID do comentário.
+     * @return Objeto Comment correspondente ao ID.
+     */
+    public Comment getById(String id) {
         return commentController.getById(UUID.fromString(id));
     }
 
-    public String getContentById(String id){
+    /**
+     * Retorna o conteúdo de um comentário pelo seu ID.
+     *
+     * @param id ID do comentário.
+     * @return Conteúdo do comentário.
+     */
+    public String getContentById(String id) {
         Comment comment = commentController.getById(UUID.fromString(id));
         return comment.getContent();
     }
 
-    public int getRatingCommentById(String id){
+    /**
+     * Retorna a avaliação (rating) de um comentário pelo seu ID.
+     *
+     * @param id ID do comentário.
+     * @return Avaliação dada no comentário.
+     */
+    public int getRatingCommentById(String id) {
         Comment comment = commentController.getById(UUID.fromString(id));
         return comment.getRating();
     }
 
-    public String getUserIdById(String id){
+    /**
+     * Retorna o ID do usuário associado a um comentário.
+     *
+     * @param id ID do comentário.
+     * @return ID do usuário.
+     */
+    public String getUserIdById(String id) {
         Comment comment = commentController.getById(UUID.fromString(id));
         return comment.getUserID().toString();
     }
 
-    public String getEventIdById(String id){
+    /**
+     * Retorna o ID do evento associado a um comentário.
+     *
+     * @param id ID do comentário.
+     * @return ID do evento.
+     */
+    public String getEventIdById(String id) {
         Comment comment = commentController.getById(UUID.fromString(id));
         return comment.getEventID().toString();
     }
 
-    public float getEventRatingByEventId(String id){
+    /**
+     * Retorna a média de avaliações para um determinado evento.
+     *
+     * @param id ID do evento.
+     * @return Média das avaliações do evento.
+     */
+    public float getEventRatingByEventId(String id) {
         return commentController.getEventRatingByEventId(UUID.fromString(id));
     }
 
-    public void delete(String commentId){
+    /**
+     * Deleta um comentário pelo seu ID.
+     *
+     * @param commentId ID do comentário a ser deletado.
+     */
+    public void delete(String commentId) {
         commentController.delete(UUID.fromString(commentId));
     }
 
-    public void deleteAllComments(){
+    /**
+     * Deleta todos os comentários.
+     */
+    public void deleteAllComments() {
         commentController.deleteAll();
     }
 }

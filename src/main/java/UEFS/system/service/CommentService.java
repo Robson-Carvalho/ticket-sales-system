@@ -21,17 +21,31 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+/**
+ * Classe de serviço para gerenciar operações relacionadas a comentários.
+ * Implementa a interface IService para a entidade Comment.
+ */
 public class CommentService implements IService<Comment> {
     private final CommentRepository commentRepository;
     private final UserService userService;
     private final EventService eventService;
 
+    /**
+     * Construtor da classe que inicializa os repositórios necessários.
+     */
     public CommentService() {
         this.commentRepository = new CommentRepository();
         this.userService = new UserService();
         this.eventService = new EventService();
     }
 
+    /**
+     * Cria um novo comentário, associando-o a um evento e a um usuário.
+     *
+     * @param comment Comentário a ser criado.
+     * @return O comentário criado ou null se o evento ou usuário não existirem.
+     * @throws SecurityException Se o evento não estiver ativo.
+     */
     @Override
     public Comment create(Comment comment) {
         Event event = eventService.getById(comment.getEventID());
@@ -47,17 +61,34 @@ public class CommentService implements IService<Comment> {
         throw new SecurityException("Comentário só pode ser adicionando após a realização do evento.");
     }
 
+    /**
+     * Retorna todos os comentários salvos no repositório.
+     *
+     * @return Lista de todos os comentários.
+     */
     @Override
     public List<Comment> getAll() {
         return commentRepository.findAll();
     }
 
+    /**
+     * Retorna todos os comentários de um usuário específico.
+     *
+     * @param id ID do usuário cujos comentários serão filtrados.
+     * @return Lista de comentários do usuário.
+     */
     public List<Comment> getAllByUserId(UUID id) {
         List<Comment> filterComments;
         filterComments = (List<Comment>) this.getAll().stream().filter(event -> event.getUserID().equals(id)).findFirst().orElse(null);
         return  filterComments;
     }
 
+    /**
+     * Retorna todos os comentários associados a um evento específico.
+     *
+     * @param eventID ID do evento cujos comentários serão buscados.
+     * @return Lista de comentários do evento.
+     */
     public List<Comment> getCommentsByEventId(UUID eventID) {
         List<Comment> comments = new ArrayList<Comment>();
 
@@ -70,6 +101,12 @@ public class CommentService implements IService<Comment> {
         return comments;
     }
 
+    /**
+     * Calcula a média das avaliações dos comentários associados a um evento.
+     *
+     * @param eventID ID do evento cujas avaliações serão calculadas.
+     * @return Média das avaliações dos comentários.
+     */
     public float getEventRatingByEventId(UUID eventID) {
         List<Comment> comments = this.getCommentsByEventId(eventID);
         int rating = 0;
@@ -81,24 +118,42 @@ public class CommentService implements IService<Comment> {
         return (float) rating / comments.size();
     }
 
+    /**
+     * Busca um comentário pelo seu ID.
+     *
+     * @param id ID do comentário a ser buscado.
+     * @return Comentário encontrado ou null se não existir.
+     */
     @Override
     public Comment getById(UUID id) {
         return commentRepository.findById(id);
     }
 
+    /**
+     * Atualiza um comentário existente.
+     *
+     * @param comment Comentário a ser atualizado.
+     */
     @Override
     public void update(Comment comment) {
         commentRepository.save(comment);
     }
 
+    /**
+     * Deleta um comentário pelo seu ID.
+     *
+     * @param id ID do comentário a ser deletado.
+     */
     @Override
     public void delete(UUID id) {
         commentRepository.delete(id);
     }
 
+    /**
+     * Deleta todos os comentários do repositório.
+     */
     @Override
     public void deleteAll() {
         commentRepository.deleteAll();
     }
 }
-

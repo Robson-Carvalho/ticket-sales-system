@@ -11,60 +11,113 @@
 
 package main.java.UEFS.system.testFacade.TicketTestFacade;
 
-import main.java.UEFS.system.controller.EventController;
 import main.java.UEFS.system.controller.TicketController;
-import main.java.UEFS.system.model.Event;
 import main.java.UEFS.system.model.Ticket;
 
 import java.util.UUID;
 
+/**
+ * Facade para testes com tickets, fornecendo uma interface simplificada para a criação, consulta e manipulação de ingressos.
+ */
 public class TicketTestFacade {
     private final TicketController ticketController;
-    private final EventController eventController;
 
-    public TicketTestFacade(){
+    /**
+     * Construtor que inicializa o controlador de tickets.
+     */
+    public TicketTestFacade() {
         this.ticketController = new TicketController();
-        this.eventController = new EventController();
     }
 
-    public String create(String eventId, Double price, String seat){
+    /**
+     * Cria um novo ticket.
+     *
+     * @param eventId ID do evento para o qual o ticket é criado.
+     * @param price Preço do ticket.
+     * @param seat Assento associado ao ticket.
+     * @return ID do ticket criado.
+     */
+    public String create(String eventId, Double price, String seat) {
         Ticket ticket = ticketController.create(UUID.fromString(eventId), price, seat);
         return ticket.getId().toString();
     }
 
-    public String getEventByTicketId(String id){
+    /**
+     * Retorna o ID do evento associado ao ticket.
+     *
+     * @param id ID do ticket.
+     * @return ID do evento.
+     */
+    public String getEventByTicketId(String id) {
         Ticket ticket = ticketController.getById(UUID.fromString(id));
         return ticket.getEventId().toString();
     }
 
-    public Double getPriceByTicketId(String id){
+    /**
+     * Retorna o preço do ticket.
+     *
+     * @param id ID do ticket.
+     * @return Preço do ticket.
+     */
+    public Double getPriceByTicketId(String id) {
         Ticket ticket = ticketController.getById(UUID.fromString(id));
         return ticket.getPrice();
     }
 
-    public void cancelByTicketId(String id){
+    /**
+     * Cancela o ticket pelo seu ID.
+     *
+     * @param id ID do ticket.
+     */
+    public void cancelByTicketId(String id) {
         ticketController.cancelById(UUID.fromString(id));
     }
 
-    public String getSeatByTicketId(String id){
+    /**
+     * Retorna o código do assento associado ao ticket.
+     *
+     * @param id ID do ticket.
+     * @return Código do assento.
+     */
+    public String getSeatByTicketId(String id) {
         Ticket ticket = ticketController.getById(UUID.fromString(id));
         return ticket.getCode();
     }
 
-    public void reactiveById(String id){
+    /**
+     * Reativa um ticket cancelado pelo seu ID.
+     *
+     * @param id ID do ticket.
+     */
+    public void reactiveById(String id) {
         ticketController.reactiveById(UUID.fromString(id));
     }
 
-    public Ticket getById(String id){
+    /**
+     * Retorna o ticket pelo seu ID.
+     *
+     * @param id ID do ticket.
+     * @return Objeto Ticket correspondente ao ID.
+     */
+    public Ticket getById(String id) {
         return ticketController.getById(UUID.fromString(id));
     }
 
-    public boolean getIsActive(String id){
+    /**
+     * Verifica se o ticket está ativo.
+     *
+     * @param id ID do ticket.
+     * @return {@code true} se o ticket estiver ativo, {@code false} caso contrário.
+     */
+    public boolean getIsActive(String id) {
         Ticket ticket = ticketController.getById(UUID.fromString(id));
         return ticket.isActive();
     }
 
-    public void deleteAllTickets(){
+    /**
+     * Deleta todos os tickets.
+     */
+    public void deleteAllTickets() {
         ticketController.deleteAll();
     }
 }

@@ -25,16 +25,29 @@ public class MailController {
         this.mailService = new MailService();
     }
 
-    public void create(User user, Transaction transaction, String subject){
+    /**
+     * Cria um novo e-mail com o comprovante de compra do ingresso para o usuário.
+     *
+     * @param user        O usuário que comprou o ingresso.
+     * @param transaction A transação relacionada à compra.
+     * @param subject     O assunto do e-mail.
+     */
+    public void create(User user, Transaction transaction, String subject) {
         String content = "Olá, " + user.getName().split(" ")[0] + "!\n\n"
                 + "Comprovante de compra do ingresso para o evento.\n\n"
-                + "ID da transação: "+transaction.getId();
+                + "ID da transação: " + transaction.getId();
 
         Mail mail = new Mail(user.getId(), subject, content);
         mailService.create(mail);
     }
 
-    public List<Mail> getMailsByUserId(UUID id){
+    /**
+     * Obtém todos os e-mails relacionados ao usuário especificado pelo ID.
+     *
+     * @param id O UUID do usuário cujos e-mails serão buscados.
+     * @return Uma lista de e-mails pertencentes ao usuário.
+     */
+    public List<Mail> getMailsByUserId(UUID id) {
         List<Mail> mails = mailService.getAll();
         List<Mail> returnMails = new ArrayList<Mail>();
 
@@ -47,7 +60,10 @@ public class MailController {
         return returnMails;
     }
 
-    public void deleteAll(){
+    /**
+     * Deleta todos os e-mails armazenados.
+     */
+    public void deleteAll() {
         mailService.deleteAll();
     }
 }

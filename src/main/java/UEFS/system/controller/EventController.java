@@ -28,31 +28,75 @@ public class EventController {
         this.userController = new UserController();
     }
 
-    public Event create(User admin, String name, String description, Date date){
+    /**
+     * Cria um novo evento, se o usuário fornecido for um administrador e a data for válida.
+     *
+     * @param admin       O usuário que está criando o evento, deve ser um administrador.
+     * @param name        O nome do evento.
+     * @param description A descrição do evento.
+     * @param date        A data do evento.
+     * @return O evento criado.
+     * @throws SecurityException Se o usuário não for um administrador ou se a data for anterior à atual.
+     */
+    public Event create(User admin, String name, String description, Date date) {
         Event event = new Event(name, description, date);
 
         User _admin = userController.getById(admin.getId());
 
         Date today = new Date();
 
-        if(_admin == null || !_admin.isAdmin()) {
+        if (_admin == null || !_admin.isAdmin()) {
             throw new SecurityException("Somente administradores podem cadastrar eventos.");
         }
 
-        if(today.after(date)){
+        if (today.after(date)) {
             throw new SecurityException("Não é possível criar evento com data anterior a atual.");
         }
 
         return eventService.create(event);
     }
 
-    public Event getById(UUID id){return eventService.getById(id);}
+    /**
+     * Obtém um evento pelo seu ID.
+     *
+     * @param id O UUID do evento a ser buscado.
+     * @return O evento correspondente ao ID fornecido, ou null se não encontrado.
+     */
+    public Event getById(UUID id) {
+        return eventService.getById(id);
+    }
 
-    public List<Event> getAll(){return eventService.getAll();}
+    /**
+     * Obtém todos os eventos disponíveis.
+     *
+     * @return Uma lista de eventos.
+     */
+    public List<Event> getAll() {
+        return eventService.getAll();
+    }
 
-    public void update(Event event) {eventService.update(event);}
+    /**
+     * Atualiza as informações de um evento existente.
+     *
+     * @param event O evento a ser atualizado.
+     */
+    public void update(Event event) {
+        eventService.update(event);
+    }
 
-    public void delete(UUID id) {eventService.delete(id);}
+    /**
+     * Deleta um evento pelo seu ID.
+     *
+     * @param id O UUID do evento a ser deletado.
+     */
+    public void delete(UUID id) {
+        eventService.delete(id);
+    }
 
-    public void deleteAll() {eventService.deleteAll();}
+    /**
+     * Deleta todos os eventos.
+     */
+    public void deleteAll() {
+        eventService.deleteAll();
+    }
 }

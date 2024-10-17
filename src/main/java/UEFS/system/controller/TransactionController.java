@@ -34,57 +34,98 @@ public class TransactionController {
         this.mailController = new MailController();
     }
 
-    public UUID create(String email, UUID eventId, String seat){
+    /**
+     * Cria uma nova transação de compra de ingresso sem cartão de crédito.
+     *
+     * @param email   O email do usuário que está comprando o ingresso.
+     * @param eventId O UUID do evento associado à compra.
+     * @param seat    O assento associado ao ingresso.
+     * @return O UUID da transação criada.
+     */
+    public UUID create(String email, UUID eventId, String seat) {
         User user = userController.getByEmail(email);
-
         Ticket ticket = ticketController.create(eventId, seat);
-
         Transaction transaction = new Transaction(user.getId(), ticket.getId(), 0.0, PaymentMethod.TICKET);
-
         mailController.create(user, transaction, "Comprovante de compra");
-
         return transactionService.create(transaction).getId();
     }
 
-    public UUID create(String email, UUID eventId, UUID cardId, String seat){
+    /**
+     * Cria uma nova transação de compra de ingresso com cartão de crédito.
+     *
+     * @param email   O email do usuário que está comprando o ingresso.
+     * @param eventId O UUID do evento associado à compra.
+     * @param cardId  O UUID do cartão de crédito utilizado na compra.
+     * @param seat    O assento associado ao ingresso.
+     * @return O UUID da transação criada.
+     */
+    public UUID create(String email, UUID eventId, UUID cardId, String seat) {
         User user = userController.getByEmail(email);
         Card card = cardController.getById(cardId);
-
         Ticket ticket = ticketController.create(eventId, seat);
-
         Transaction transaction = new Transaction(user.getId(), ticket.getId(), card.getId(), 0.0, PaymentMethod.CREDIT_CARD);
-
         mailController.create(user, transaction, "Comprovante de compra");
-
         return transactionService.create(transaction).getId();
     }
 
-    public Transaction getById(UUID transactionId){
+    /**
+     * Obtém uma transação pelo ID.
+     *
+     * @param transactionId O UUID da transação a ser buscada.
+     * @return A transação correspondente ao ID.
+     */
+    public Transaction getById(UUID transactionId) {
         return transactionService.getById(transactionId);
     }
 
-    public Event getEventByPurchaseId(UUID purchaseId){
+    /**
+     * Obtém o evento associado a uma compra pelo ID da transação.
+     *
+     * @param purchaseId O UUID da compra.
+     * @return O evento associado à compra.
+     */
+    public Event getEventByPurchaseId(UUID purchaseId) {
         Transaction transaction = getById(purchaseId);
         Ticket ticket = ticketController.getById(transaction.getTicketID());
         return eventController.getById(ticket.getEventId());
     }
 
-    public String getUserLoginByPurchaseId(UUID purchaseId){
+    /**
+     * Obtém o login do usuário associado a uma compra pelo ID da transação.
+     *
+     * @param purchaseId O UUID da compra.
+     * @return O login do usuário associado à compra.
+     */
+    public String getUserLoginByPurchaseId(UUID purchaseId) {
         Transaction transaction = getById(purchaseId);
         return userController.getById(transaction.getUserID()).getLogin();
     }
 
-    public Ticket getTicketByPurchaseId(UUID purchaseId){
+    /**
+     * Obtém o ingresso associado a uma compra pelo ID da transação.
+     *
+     * @param purchaseId O UUID da compra.
+     * @return O ingresso associado à compra.
+     */
+    public Ticket getTicketByPurchaseId(UUID purchaseId) {
         return ticketController.getById(this.getById(purchaseId).getTicketID());
     }
 
-    public Card getCardByPurchaseID(UUID purchaseId){
+    /**
+     * Obtém o cartão de crédito associado a uma compra pelo ID da transação.
+     *
+     * @param purchaseId O UUID da compra.
+     * @return O cartão de crédito associado à compra.
+     */
+    public Card getCardByPurchaseID(UUID purchaseId) {
         Transaction transaction = getById(purchaseId);
         return cardController.getById(transaction.getCreditCardID());
     }
 
+    /**
+     * Deleta todas as transações.
+     */
     public void deleteAll() {
         transactionService.deleteAll();
     }
-
 }

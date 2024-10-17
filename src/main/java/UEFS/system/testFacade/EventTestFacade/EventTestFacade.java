@@ -17,19 +17,24 @@ import main.java.UEFS.system.controller.UserController;
 import main.java.UEFS.system.model.Comment;
 import main.java.UEFS.system.model.Event;
 import main.java.UEFS.system.model.User;
-import main.java.UEFS.system.service.CommentService;
 import main.java.UEFS.system.service.EventService;
 
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
+/**
+ * Facade para facilitar os testes com eventos, incluindo manipulação de assentos e comentários.
+ */
 public class EventTestFacade {
     private final EventController eventController;
-    private final UserController userController ;
+    private final UserController userController;
     private final EventService eventService;
     private final CommentController commentController;
 
+    /**
+     * Construtor que inicializa os controladores necessários.
+     */
     public EventTestFacade() {
         eventController = new EventController();
         userController = new UserController();
@@ -37,74 +42,159 @@ public class EventTestFacade {
         commentController = new CommentController();
     }
 
-    public void removeSeatByEventId(String seat, String id){
+    /**
+     * Remove um assento de um evento.
+     *
+     * @param seat Assento a ser removido.
+     * @param id ID do evento.
+     */
+    public void removeSeatByEventId(String seat, String id) {
         Event event = eventController.getById(UUID.fromString(id));
         event.removeSeat(seat);
         eventController.update(event);
     }
 
-    public void addSeatByEventId(String seat, String id){
+    /**
+     * Adiciona um assento a um evento.
+     *
+     * @param seat Assento a ser adicionado.
+     * @param id ID do evento.
+     */
+    public void addSeatByEventId(String seat, String id) {
         Event event = eventController.getById(UUID.fromString(id));
         event.addSeat(seat);
         eventController.update(event);
     }
 
-    public String create(String loginAdmin, String name, String description, Date date){
+    /**
+     * Cria um evento.
+     *
+     * @param loginAdmin Login do administrador que está criando o evento.
+     * @param name Nome do evento.
+     * @param description Descrição do evento.
+     * @param date Data do evento.
+     * @return ID do evento criado.
+     */
+    public String create(String loginAdmin, String name, String description, Date date) {
         User user = userController.getByLogin(loginAdmin);
         Event event = eventController.create(user, name, description, date);
         return event.getId().toString();
     }
 
-    public Event getById(String id){
+    /**
+     * Retorna um evento pelo seu ID.
+     *
+     * @param id ID do evento.
+     * @return Evento correspondente ao ID.
+     */
+    public Event getById(String id) {
         return eventController.getById(UUID.fromString(id));
     }
 
-    public String getNameByEventId(String id){
+    /**
+     * Retorna o nome de um evento pelo seu ID.
+     *
+     * @param id ID do evento.
+     * @return Nome do evento.
+     */
+    public String getNameByEventId(String id) {
         Event event = eventController.getById(UUID.fromString(id));
         return event.getName();
     }
 
-    public List<String> getSeatsByEventId(String id){
+    /**
+     * Retorna a lista de assentos de um evento pelo seu ID.
+     *
+     * @param id ID do evento.
+     * @return Lista de assentos.
+     */
+    public List<String> getSeatsByEventId(String id) {
         return eventController.getById(UUID.fromString(id)).getSeats();
     }
 
-    public String getDescriptionByEventId(String id){
+    /**
+     * Retorna a descrição de um evento pelo seu ID.
+     *
+     * @param id ID do evento.
+     * @return Descrição do evento.
+     */
+    public String getDescriptionByEventId(String id) {
         Event event = eventController.getById(UUID.fromString(id));
         return event.getDescription();
     }
 
-    public int getYearByEventId(String id){
+    /**
+     * Retorna o ano da data de um evento pelo seu ID.
+     *
+     * @param id ID do evento.
+     * @return Ano da data do evento.
+     */
+    public int getYearByEventId(String id) {
         Event event = eventController.getById(UUID.fromString(id));
         return event.getDate().getYear();
     }
 
-    public int getMonthByEventId(String id){
+    /**
+     * Retorna o mês da data de um evento pelo seu ID.
+     *
+     * @param id ID do evento.
+     * @return Mês da data do evento.
+     */
+    public int getMonthByEventId(String id) {
         Event event = eventController.getById(UUID.fromString(id));
         return event.getDate().getMonth();
     }
 
-    public int getDayByEventId(String id){
+    /**
+     * Retorna o dia da data de um evento pelo seu ID.
+     *
+     * @param id ID do evento.
+     * @return Dia da data do evento.
+     */
+    public int getDayByEventId(String id) {
         Event event = eventController.getById(UUID.fromString(id));
         return event.getDate().getDay();
     }
 
-    public boolean getIsActiveByEventId(String id){
+    /**
+     * Retorna se o evento está ativo pelo seu ID.
+     *
+     * @param id ID do evento.
+     * @return Status de atividade do evento.
+     */
+    public boolean getIsActiveByEventId(String id) {
         return eventController.getById(UUID.fromString(id)).isActive();
     }
 
-    public String addEventInDataBaseWithPastDate(String name, String description, Date date){
+    /**
+     * Adiciona um evento no banco de dados com uma data passada.
+     *
+     * @param name Nome do evento.
+     * @param description Descrição do evento.
+     * @param date Data do evento.
+     * @return ID do evento criado.
+     */
+    public String addEventInDataBaseWithPastDate(String name, String description, Date date) {
         Event event = new Event(name, description, date);
         Event _event = eventService.create(event);
         return _event.getId().toString();
     }
 
-    public int getCommentQuantityByEventId(String id){
+    /**
+     * Retorna a quantidade de comentários associados a um evento pelo seu ID.
+     *
+     * @param id ID do evento.
+     * @return Quantidade de comentários.
+     */
+    public int getCommentQuantityByEventId(String id) {
         List<Comment> comments = commentController.getCommentsByEventId(UUID.fromString(id));
         return comments.size();
-
     }
 
-    public void deleteAllEvents(){
+    /**
+     * Deleta todos os eventos.
+     */
+    public void deleteAllEvents() {
         eventController.deleteAll();
     }
 }
