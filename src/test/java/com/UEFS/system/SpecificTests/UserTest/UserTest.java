@@ -1,12 +1,10 @@
 package test.java.com.UEFS.system.SpecificTests.UserTest;
 
-import main.java.UEFS.system.controller.EventController;
-import main.java.UEFS.system.controller.TicketController;
-import main.java.UEFS.system.controller.UserController;
-import java.lang.Exception;
-import java.util.List;
+import main.java.com.UEFS.system.controller.EventController;
+import main.java.com.UEFS.system.controller.TicketController;
+import main.java.com.UEFS.system.controller.UserController;
 
-import main.java.UEFS.system.model.User;
+import main.java.com.UEFS.system.Models.User;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;

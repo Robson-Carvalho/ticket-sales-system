@@ -1,7 +1,7 @@
 package test.java.com.UEFS.system.CommonTests.EventTest;
 
-import main.java.UEFS.system.testFacade.EventTestFacade.EventTestFacade;
-import main.java.UEFS.system.testFacade.UserTestFacade.UserTestFacade;
+import main.java.com.UEFS.system.testFacade.EventTestFacade.EventTestFacade;
+import main.java.com.UEFS.system.testFacade.UserTestFacade.UserTestFacade;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;

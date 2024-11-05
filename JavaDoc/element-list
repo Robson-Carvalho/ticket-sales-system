@@ -1,10 +1,10 @@
 main.java.UEFS.system
 main.java.UEFS.system.controller
-main.java.UEFS.system.enums
-main.java.UEFS.system.interfaces
-main.java.UEFS.system.model
-main.java.UEFS.system.repository
-main.java.UEFS.system.service
+main.java.UEFS.system.Enums
+main.java.UEFS.system.Interfaces
+main.java.UEFS.system.Models
+main.java.UEFS.system.Repositories
+main.java.UEFS.system.Services
 main.java.UEFS.system.testFacade.CardTestFacade
 main.java.UEFS.system.testFacade.CommentTestFacade
 main.java.UEFS.system.testFacade.EventTestFacade

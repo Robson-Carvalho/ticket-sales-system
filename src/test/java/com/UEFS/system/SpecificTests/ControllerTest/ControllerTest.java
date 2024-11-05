@@ -4,13 +4,13 @@ import java.util.Date;
 import java.util.Calendar;
 import java.util.List;
 
-import main.java.UEFS.system.controller.Controller;
+import main.java.com.UEFS.system.controller.Controller;
 import java.lang.Exception;
 import java.util.UUID;
 
-import main.java.UEFS.system.model.Event;
-import main.java.UEFS.system.model.Ticket;
-import main.java.UEFS.system.model.User;
+import main.java.com.UEFS.system.Models.Event;
+import main.java.com.UEFS.system.Models.Ticket;
+import main.java.com.UEFS.system.Models.User;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;

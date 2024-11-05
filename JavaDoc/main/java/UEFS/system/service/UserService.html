@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta name="dc.created" content="2024-10-16">
-<meta name="description" content="declaration: package: main.java.UEFS.system.service, class: UserService">
+<meta name="description" content="declaration: package: main.java.UEFS.system.Services, class: UserService">
 <meta name="generator" content="javadoc/ClassWriter">
 <link rel="stylesheet" type="text/css" href="../../../../../resource-files/jquery-ui.min.css" title="Style">
 <link rel="stylesheet" type="text/css" href="../../../../../resource-files/stylesheet.css" title="Style">
@@ -40,7 +40,7 @@ loadScripts(document, 'script');</script>
 <div class="sub-nav">
 <div class="nav-content">
 <ol class="sub-nav-list">
-<li><a href="package-summary.html">main.java.UEFS.system.service</a></li>
+<li><a href="package-summary.html">main.java.UEFS.system.Services</a></li>
 <li><a href="UserService.html" class="current-selection">UserService</a></li>
 </ol>
 <div class="nav-list-search">
@@ -90,18 +90,18 @@ loadScripts(document, 'script');</script>
 <h1 title="Class UserService" class="title">Class UserService</h1>
 </div>
 <div class="inheritance" title="Inheritance Tree"><a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">java.lang.Object</a>
-<div class="inheritance">main.java.UEFS.system.service.UserService</div>
+<div class="inheritance">main.java.com.UEFS.system.Services.UserService</div>
 </div>
 <section class="class-description" id="class-description">
 <div class="horizontal-scroll">
 <dl class="notes">
 <dt>All Implemented Interfaces:</dt>
-<dd><code><a href="../interfaces/IService.html" title="interface in main.java.UEFS.system.interfaces">IService</a>&lt;<a href="../model/User.html" title="class in main.java.UEFS.system.model">User</a>&gt;</code></dd>
+<dd><code><a href="../interfaces/IService.html" title="interface in main.java.UEFS.system.Interfaces">IService</a>&lt;<a href="../model/User.html" title="class in main.java.UEFS.system.Models">User</a>&gt;</code></dd>
 </dl>
 <hr>
 <div class="type-signature"><span class="modifiers">public class </span><span class="element-name type-name-label">UserService</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a>
-implements <a href="../interfaces/IService.html" title="interface in main.java.UEFS.system.interfaces">IService</a>&lt;<a href="../model/User.html" title="class in main.java.UEFS.system.model">User</a>&gt;</span></div>
+implements <a href="../interfaces/IService.html" title="interface in main.java.UEFS.system.Interfaces">IService</a>&lt;<a href="../model/User.html" title="class in main.java.UEFS.system.Models">User</a>&gt;</span></div>
 <div class="block">Classe de serviço para gerenciar operações relacionadas a usuários.
  Implementa a interface IService para a entidade User.</div>
 </div>
@@ -134,8 +134,8 @@ implements <a href="../interfaces/IService.html" title="interface in main.java.U
 <div class="table-header col-first">Modifier and Type</div>
 <div class="table-header col-second">Method</div>
 <div class="table-header col-last">Description</div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="../model/User.html" title="class in main.java.UEFS.system.model">User</a></code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#create(main.java.UEFS.system.model.User)" class="member-name-link">create</a><wbr>(<a href="../model/User.html" title="class in main.java.UEFS.system.model">User</a>&nbsp;user)</code></div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="../model/User.html" title="class in main.java.UEFS.system.Models">User</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#create(main.java.UEFS.system.model.User)" class="member-name-link">create</a><wbr>(<a href="../model/User.html" title="class in main.java.UEFS.system.Models">User</a>&nbsp;user)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Cria um novo usuário e o salva no repositório, verificando se o login, email ou CPF já está em uso.</div>
 </div>
@@ -149,27 +149,27 @@ implements <a href="../interfaces/IService.html" title="interface in main.java.U
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Deleta todos os usuários do repositório.</div>
 </div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a><wbr>&lt;<a href="../model/User.html" title="class in main.java.UEFS.system.model">User</a>&gt;</code></div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a><wbr>&lt;<a href="../model/User.html" title="class in main.java.UEFS.system.Models">User</a>&gt;</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getAll()" class="member-name-link">getAll</a>()</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Retorna todos os usuários cadastrados no repositório.</div>
 </div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="../model/User.html" title="class in main.java.UEFS.system.model">User</a></code></div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="../model/User.html" title="class in main.java.UEFS.system.Models">User</a></code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getByCpf(java.lang.String)" class="member-name-link">getByCpf</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;cpf)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Busca um usuário pelo seu CPF.</div>
 </div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="../model/User.html" title="class in main.java.UEFS.system.model">User</a></code></div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="../model/User.html" title="class in main.java.UEFS.system.Models">User</a></code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getByEmail(java.lang.String)" class="member-name-link">getByEmail</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;email)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Busca um usuário pelo seu email.</div>
 </div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="../model/User.html" title="class in main.java.UEFS.system.model">User</a></code></div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="../model/User.html" title="class in main.java.UEFS.system.Models">User</a></code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getById(java.util.UUID)" class="member-name-link">getById</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/UUID.html" title="class or interface in java.util" class="external-link">UUID</a>&nbsp;id)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Busca um usuário pelo seu ID.</div>
 </div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="../model/User.html" title="class in main.java.UEFS.system.model">User</a></code></div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="../model/User.html" title="class in main.java.UEFS.system.Models">User</a></code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getByLogin(java.lang.String)" class="member-name-link">getByLogin</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;login)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Busca um usuário pelo seu login.</div>
@@ -181,7 +181,7 @@ implements <a href="../interfaces/IService.html" title="interface in main.java.U
 <div class="block">Verifica se um usuário pode fazer login com o login e senha fornecidos.</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#update(main.java.UEFS.system.model.User)" class="member-name-link">update</a><wbr>(<a href="../model/User.html" title="class in main.java.UEFS.system.model">User</a>&nbsp;user)</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#update(main.java.UEFS.system.model.User)" class="member-name-link">update</a><wbr>(<a href="../model/User.html" title="class in main.java.UEFS.system.Models">User</a>&nbsp;user)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Atualiza um usuário existente, verificando se o email já está em uso por outro usuário.</div>
 </div>
@@ -223,12 +223,12 @@ implements <a href="../interfaces/IService.html" title="interface in main.java.U
 <section class="detail" id="create(main.java.UEFS.system.model.User)">
 <h3>create</h3>
 <div class="horizontal-scroll">
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="../model/User.html" title="class in main.java.UEFS.system.model">User</a></span>&nbsp;<span class="element-name">create</span><wbr><span class="parameters">(<a href="../model/User.html" title="class in main.java.UEFS.system.model">User</a>&nbsp;user)</span>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="../model/User.html" title="class in main.java.UEFS.system.Models">User</a></span>&nbsp;<span class="element-name">create</span><wbr><span class="parameters">(<a href="../model/User.html" title="class in main.java.UEFS.system.Models">User</a>&nbsp;user)</span>
             throws <span class="exceptions"><a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/Exception.html" title="class or interface in java.lang" class="external-link">Exception</a></span></div>
 <div class="block">Cria um novo usuário e o salva no repositório, verificando se o login, email ou CPF já está em uso.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
-<dd><code><a href="../interfaces/IService.html#create(T)">create</a></code>&nbsp;in interface&nbsp;<code><a href="../interfaces/IService.html" title="interface in main.java.UEFS.system.interfaces">IService</a>&lt;<a href="../model/User.html" title="class in main.java.UEFS.system.model">User</a>&gt;</code></dd>
+<dd><code><a href="../interfaces/IService.html#create(T)">create</a></code>&nbsp;in interface&nbsp;<code><a href="../interfaces/IService.html" title="interface in main.java.UEFS.system.Interfaces">IService</a>&lt;<a href="../model/User.html" title="class in main.java.UEFS.system.Models">User</a>&gt;</code></dd>
 <dt>Parameters:</dt>
 <dd><code>user</code> - Usuário a ser criado.</dd>
 <dt>Returns:</dt>
@@ -244,11 +244,11 @@ implements <a href="../interfaces/IService.html" title="interface in main.java.U
 <section class="detail" id="getAll()">
 <h3>getAll</h3>
 <div class="horizontal-scroll">
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="../model/User.html" title="class in main.java.UEFS.system.model">User</a>&gt;</span>&nbsp;<span class="element-name">getAll</span>()</div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="../model/User.html" title="class in main.java.UEFS.system.Models">User</a>&gt;</span>&nbsp;<span class="element-name">getAll</span>()</div>
 <div class="block">Retorna todos os usuários cadastrados no repositório.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
-<dd><code><a href="../interfaces/IService.html#getAll()">getAll</a></code>&nbsp;in interface&nbsp;<code><a href="../interfaces/IService.html" title="interface in main.java.UEFS.system.interfaces">IService</a>&lt;<a href="../model/User.html" title="class in main.java.UEFS.system.model">User</a>&gt;</code></dd>
+<dd><code><a href="../interfaces/IService.html#getAll()">getAll</a></code>&nbsp;in interface&nbsp;<code><a href="../interfaces/IService.html" title="interface in main.java.UEFS.system.Interfaces">IService</a>&lt;<a href="../model/User.html" title="class in main.java.UEFS.system.Models">User</a>&gt;</code></dd>
 <dt>Returns:</dt>
 <dd>Lista de todos os usuários.</dd>
 </dl>
@@ -259,11 +259,11 @@ implements <a href="../interfaces/IService.html" title="interface in main.java.U
 <section class="detail" id="getById(java.util.UUID)">
 <h3>getById</h3>
 <div class="horizontal-scroll">
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="../model/User.html" title="class in main.java.UEFS.system.model">User</a></span>&nbsp;<span class="element-name">getById</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/UUID.html" title="class or interface in java.util" class="external-link">UUID</a>&nbsp;id)</span></div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="../model/User.html" title="class in main.java.UEFS.system.Models">User</a></span>&nbsp;<span class="element-name">getById</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/UUID.html" title="class or interface in java.util" class="external-link">UUID</a>&nbsp;id)</span></div>
 <div class="block">Busca um usuário pelo seu ID.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
-<dd><code><a href="../interfaces/IService.html#getById(java.util.UUID)">getById</a></code>&nbsp;in interface&nbsp;<code><a href="../interfaces/IService.html" title="interface in main.java.UEFS.system.interfaces">IService</a>&lt;<a href="../model/User.html" title="class in main.java.UEFS.system.model">User</a>&gt;</code></dd>
+<dd><code><a href="../interfaces/IService.html#getById(java.util.UUID)">getById</a></code>&nbsp;in interface&nbsp;<code><a href="../interfaces/IService.html" title="interface in main.java.UEFS.system.Interfaces">IService</a>&lt;<a href="../model/User.html" title="class in main.java.UEFS.system.Models">User</a>&gt;</code></dd>
 <dt>Parameters:</dt>
 <dd><code>id</code> - ID do usuário a ser buscado.</dd>
 <dt>Returns:</dt>
@@ -276,12 +276,12 @@ implements <a href="../interfaces/IService.html" title="interface in main.java.U
 <section class="detail" id="update(main.java.UEFS.system.model.User)">
 <h3>update</h3>
 <div class="horizontal-scroll">
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">update</span><wbr><span class="parameters">(<a href="../model/User.html" title="class in main.java.UEFS.system.model">User</a>&nbsp;user)</span>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">update</span><wbr><span class="parameters">(<a href="../model/User.html" title="class in main.java.UEFS.system.Models">User</a>&nbsp;user)</span>
             throws <span class="exceptions"><a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/Exception.html" title="class or interface in java.lang" class="external-link">Exception</a></span></div>
 <div class="block">Atualiza um usuário existente, verificando se o email já está em uso por outro usuário.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
-<dd><code><a href="../interfaces/IService.html#update(T)">update</a></code>&nbsp;in interface&nbsp;<code><a href="../interfaces/IService.html" title="interface in main.java.UEFS.system.interfaces">IService</a>&lt;<a href="../model/User.html" title="class in main.java.UEFS.system.model">User</a>&gt;</code></dd>
+<dd><code><a href="../interfaces/IService.html#update(T)">update</a></code>&nbsp;in interface&nbsp;<code><a href="../interfaces/IService.html" title="interface in main.java.UEFS.system.Interfaces">IService</a>&lt;<a href="../model/User.html" title="class in main.java.UEFS.system.Models">User</a>&gt;</code></dd>
 <dt>Parameters:</dt>
 <dd><code>user</code> - Usuário a ser atualizado.</dd>
 <dt>Throws:</dt>
@@ -298,7 +298,7 @@ implements <a href="../interfaces/IService.html" title="interface in main.java.U
 <div class="block">Deleta um usuário pelo seu ID.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
-<dd><code><a href="../interfaces/IService.html#delete(java.util.UUID)">delete</a></code>&nbsp;in interface&nbsp;<code><a href="../interfaces/IService.html" title="interface in main.java.UEFS.system.interfaces">IService</a>&lt;<a href="../model/User.html" title="class in main.java.UEFS.system.model">User</a>&gt;</code></dd>
+<dd><code><a href="../interfaces/IService.html#delete(java.util.UUID)">delete</a></code>&nbsp;in interface&nbsp;<code><a href="../interfaces/IService.html" title="interface in main.java.UEFS.system.Interfaces">IService</a>&lt;<a href="../model/User.html" title="class in main.java.UEFS.system.Models">User</a>&gt;</code></dd>
 <dt>Parameters:</dt>
 <dd><code>id</code> - ID do usuário a ser deletado.</dd>
 </dl>
@@ -313,7 +313,7 @@ implements <a href="../interfaces/IService.html" title="interface in main.java.U
 <div class="block">Deleta todos os usuários do repositório.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
-<dd><code><a href="../interfaces/IService.html#deleteAll()">deleteAll</a></code>&nbsp;in interface&nbsp;<code><a href="../interfaces/IService.html" title="interface in main.java.UEFS.system.interfaces">IService</a>&lt;<a href="../model/User.html" title="class in main.java.UEFS.system.model">User</a>&gt;</code></dd>
+<dd><code><a href="../interfaces/IService.html#deleteAll()">deleteAll</a></code>&nbsp;in interface&nbsp;<code><a href="../interfaces/IService.html" title="interface in main.java.UEFS.system.Interfaces">IService</a>&lt;<a href="../model/User.html" title="class in main.java.UEFS.system.Models">User</a>&gt;</code></dd>
 </dl>
 </div>
 </section>
@@ -322,7 +322,7 @@ implements <a href="../interfaces/IService.html" title="interface in main.java.U
 <section class="detail" id="getByLogin(java.lang.String)">
 <h3>getByLogin</h3>
 <div class="horizontal-scroll">
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="../model/User.html" title="class in main.java.UEFS.system.model">User</a></span>&nbsp;<span class="element-name">getByLogin</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;login)</span></div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="../model/User.html" title="class in main.java.UEFS.system.Models">User</a></span>&nbsp;<span class="element-name">getByLogin</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;login)</span></div>
 <div class="block">Busca um usuário pelo seu login.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
@@ -337,7 +337,7 @@ implements <a href="../interfaces/IService.html" title="interface in main.java.U
 <section class="detail" id="getByCpf(java.lang.String)">
 <h3>getByCpf</h3>
 <div class="horizontal-scroll">
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="../model/User.html" title="class in main.java.UEFS.system.model">User</a></span>&nbsp;<span class="element-name">getByCpf</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;cpf)</span></div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="../model/User.html" title="class in main.java.UEFS.system.Models">User</a></span>&nbsp;<span class="element-name">getByCpf</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;cpf)</span></div>
 <div class="block">Busca um usuário pelo seu CPF.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
@@ -352,7 +352,7 @@ implements <a href="../interfaces/IService.html" title="interface in main.java.U
 <section class="detail" id="getByEmail(java.lang.String)">
 <h3>getByEmail</h3>
 <div class="horizontal-scroll">
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="../model/User.html" title="class in main.java.UEFS.system.model">User</a></span>&nbsp;<span class="element-name">getByEmail</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;email)</span></div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="../model/User.html" title="class in main.java.UEFS.system.Models">User</a></span>&nbsp;<span class="element-name">getByEmail</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;email)</span></div>
 <div class="block">Busca um usuário pelo seu email.</div>
 <dl class="notes">
 <dt>Parameters:</dt>

@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta name="dc.created" content="2024-10-16">
-<meta name="description" content="declaration: package: main.java.UEFS.system.repository, class: TicketRepository">
+<meta name="description" content="declaration: package: main.java.UEFS.system.Repositories, class: TicketRepository">
 <meta name="generator" content="javadoc/ClassWriter">
 <link rel="stylesheet" type="text/css" href="../../../../../resource-files/jquery-ui.min.css" title="Style">
 <link rel="stylesheet" type="text/css" href="../../../../../resource-files/stylesheet.css" title="Style">
@@ -40,7 +40,7 @@ loadScripts(document, 'script');</script>
 <div class="sub-nav">
 <div class="nav-content">
 <ol class="sub-nav-list">
-<li><a href="package-summary.html">main.java.UEFS.system.repository</a></li>
+<li><a href="package-summary.html">main.java.UEFS.system.Repositories</a></li>
 <li><a href="TicketRepository.html" class="current-selection">TicketRepository</a></li>
 </ol>
 <div class="nav-list-search">
@@ -86,18 +86,18 @@ loadScripts(document, 'script');</script>
 <h1 title="Class TicketRepository" class="title">Class TicketRepository</h1>
 </div>
 <div class="inheritance" title="Inheritance Tree"><a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">java.lang.Object</a>
-<div class="inheritance">main.java.UEFS.system.repository.TicketRepository</div>
+<div class="inheritance">main.java.com.UEFS.system.Repositories.TicketRepository</div>
 </div>
 <section class="class-description" id="class-description">
 <div class="horizontal-scroll">
 <dl class="notes">
 <dt>All Implemented Interfaces:</dt>
-<dd><code><a href="../interfaces/IRepository.html" title="interface in main.java.UEFS.system.interfaces">IRepository</a>&lt;<a href="../model/Ticket.html" title="class in main.java.UEFS.system.model">Ticket</a>&gt;</code></dd>
+<dd><code><a href="../interfaces/IRepository.html" title="interface in main.java.UEFS.system.Interfaces">IRepository</a>&lt;<a href="../model/Ticket.html" title="class in main.java.UEFS.system.Models">Ticket</a>&gt;</code></dd>
 </dl>
 <hr>
 <div class="type-signature"><span class="modifiers">public class </span><span class="element-name type-name-label">TicketRepository</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a>
-implements <a href="../interfaces/IRepository.html" title="interface in main.java.UEFS.system.interfaces">IRepository</a>&lt;<a href="../model/Ticket.html" title="class in main.java.UEFS.system.model">Ticket</a>&gt;</span></div>
+implements <a href="../interfaces/IRepository.html" title="interface in main.java.UEFS.system.Interfaces">IRepository</a>&lt;<a href="../model/Ticket.html" title="class in main.java.UEFS.system.Models">Ticket</a>&gt;</span></div>
 <div class="block">Classe repositório para a entidade Ticket, responsável por gerenciar as operações de CRUD
  utilizando um arquivo JSON como armazenamento.</div>
 </div>
@@ -140,23 +140,23 @@ implements <a href="../interfaces/IRepository.html" title="interface in main.jav
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Deleta todos os tickets do repositório.</div>
 </div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a><wbr>&lt;<a href="../model/Ticket.html" title="class in main.java.UEFS.system.model">Ticket</a>&gt;</code></div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a><wbr>&lt;<a href="../model/Ticket.html" title="class in main.java.UEFS.system.Models">Ticket</a>&gt;</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#findAll()" class="member-name-link">findAll</a>()</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Retorna todos os tickets salvos.</div>
 </div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="../model/Ticket.html" title="class in main.java.UEFS.system.model">Ticket</a></code></div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="../model/Ticket.html" title="class in main.java.UEFS.system.Models">Ticket</a></code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#findById(java.util.UUID)" class="member-name-link">findById</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/UUID.html" title="class or interface in java.util" class="external-link">UUID</a>&nbsp;id)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Busca um ticket pelo seu ID.</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#save(main.java.UEFS.system.model.Ticket)" class="member-name-link">save</a><wbr>(<a href="../model/Ticket.html" title="class in main.java.UEFS.system.model">Ticket</a>&nbsp;ticket)</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#save(main.java.UEFS.system.model.Ticket)" class="member-name-link">save</a><wbr>(<a href="../model/Ticket.html" title="class in main.java.UEFS.system.Models">Ticket</a>&nbsp;ticket)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Salva um novo ticket no repositório e persiste no arquivo JSON.</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#update(main.java.UEFS.system.model.Ticket)" class="member-name-link">update</a><wbr>(<a href="../model/Ticket.html" title="class in main.java.UEFS.system.model">Ticket</a>&nbsp;ticket)</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#update(main.java.UEFS.system.model.Ticket)" class="member-name-link">update</a><wbr>(<a href="../model/Ticket.html" title="class in main.java.UEFS.system.Models">Ticket</a>&nbsp;ticket)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Atualiza um ticket existente, removendo o antigo e salvando a nova versão.</div>
 </div>
@@ -198,11 +198,11 @@ implements <a href="../interfaces/IRepository.html" title="interface in main.jav
 <section class="detail" id="findById(java.util.UUID)">
 <h3>findById</h3>
 <div class="horizontal-scroll">
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="../model/Ticket.html" title="class in main.java.UEFS.system.model">Ticket</a></span>&nbsp;<span class="element-name">findById</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/UUID.html" title="class or interface in java.util" class="external-link">UUID</a>&nbsp;id)</span></div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="../model/Ticket.html" title="class in main.java.UEFS.system.Models">Ticket</a></span>&nbsp;<span class="element-name">findById</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/UUID.html" title="class or interface in java.util" class="external-link">UUID</a>&nbsp;id)</span></div>
 <div class="block">Busca um ticket pelo seu ID.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
-<dd><code><a href="../interfaces/IRepository.html#findById(java.util.UUID)">findById</a></code>&nbsp;in interface&nbsp;<code><a href="../interfaces/IRepository.html" title="interface in main.java.UEFS.system.interfaces">IRepository</a>&lt;<a href="../model/Ticket.html" title="class in main.java.UEFS.system.model">Ticket</a>&gt;</code></dd>
+<dd><code><a href="../interfaces/IRepository.html#findById(java.util.UUID)">findById</a></code>&nbsp;in interface&nbsp;<code><a href="../interfaces/IRepository.html" title="interface in main.java.UEFS.system.Interfaces">IRepository</a>&lt;<a href="../model/Ticket.html" title="class in main.java.UEFS.system.Models">Ticket</a>&gt;</code></dd>
 <dt>Parameters:</dt>
 <dd><code>id</code> - ID do ticket a ser buscado.</dd>
 <dt>Returns:</dt>
@@ -215,11 +215,11 @@ implements <a href="../interfaces/IRepository.html" title="interface in main.jav
 <section class="detail" id="findAll()">
 <h3>findAll</h3>
 <div class="horizontal-scroll">
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="../model/Ticket.html" title="class in main.java.UEFS.system.model">Ticket</a>&gt;</span>&nbsp;<span class="element-name">findAll</span>()</div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="../model/Ticket.html" title="class in main.java.UEFS.system.Models">Ticket</a>&gt;</span>&nbsp;<span class="element-name">findAll</span>()</div>
 <div class="block">Retorna todos os tickets salvos.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
-<dd><code><a href="../interfaces/IRepository.html#findAll()">findAll</a></code>&nbsp;in interface&nbsp;<code><a href="../interfaces/IRepository.html" title="interface in main.java.UEFS.system.interfaces">IRepository</a>&lt;<a href="../model/Ticket.html" title="class in main.java.UEFS.system.model">Ticket</a>&gt;</code></dd>
+<dd><code><a href="../interfaces/IRepository.html#findAll()">findAll</a></code>&nbsp;in interface&nbsp;<code><a href="../interfaces/IRepository.html" title="interface in main.java.UEFS.system.Interfaces">IRepository</a>&lt;<a href="../model/Ticket.html" title="class in main.java.UEFS.system.Models">Ticket</a>&gt;</code></dd>
 <dt>Returns:</dt>
 <dd>Lista de todos os tickets.</dd>
 </dl>
@@ -230,11 +230,11 @@ implements <a href="../interfaces/IRepository.html" title="interface in main.jav
 <section class="detail" id="save(main.java.UEFS.system.model.Ticket)">
 <h3>save</h3>
 <div class="horizontal-scroll">
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">save</span><wbr><span class="parameters">(<a href="../model/Ticket.html" title="class in main.java.UEFS.system.model">Ticket</a>&nbsp;ticket)</span></div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">save</span><wbr><span class="parameters">(<a href="../model/Ticket.html" title="class in main.java.UEFS.system.Models">Ticket</a>&nbsp;ticket)</span></div>
 <div class="block">Salva um novo ticket no repositório e persiste no arquivo JSON.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
-<dd><code><a href="../interfaces/IRepository.html#save(T)">save</a></code>&nbsp;in interface&nbsp;<code><a href="../interfaces/IRepository.html" title="interface in main.java.UEFS.system.interfaces">IRepository</a>&lt;<a href="../model/Ticket.html" title="class in main.java.UEFS.system.model">Ticket</a>&gt;</code></dd>
+<dd><code><a href="../interfaces/IRepository.html#save(T)">save</a></code>&nbsp;in interface&nbsp;<code><a href="../interfaces/IRepository.html" title="interface in main.java.UEFS.system.Interfaces">IRepository</a>&lt;<a href="../model/Ticket.html" title="class in main.java.UEFS.system.Models">Ticket</a>&gt;</code></dd>
 <dt>Parameters:</dt>
 <dd><code>ticket</code> - Ticket a ser salvo.</dd>
 </dl>
@@ -245,11 +245,11 @@ implements <a href="../interfaces/IRepository.html" title="interface in main.jav
 <section class="detail" id="update(main.java.UEFS.system.model.Ticket)">
 <h3>update</h3>
 <div class="horizontal-scroll">
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">update</span><wbr><span class="parameters">(<a href="../model/Ticket.html" title="class in main.java.UEFS.system.model">Ticket</a>&nbsp;ticket)</span></div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">update</span><wbr><span class="parameters">(<a href="../model/Ticket.html" title="class in main.java.UEFS.system.Models">Ticket</a>&nbsp;ticket)</span></div>
 <div class="block">Atualiza um ticket existente, removendo o antigo e salvando a nova versão.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
-<dd><code><a href="../interfaces/IRepository.html#update(T)">update</a></code>&nbsp;in interface&nbsp;<code><a href="../interfaces/IRepository.html" title="interface in main.java.UEFS.system.interfaces">IRepository</a>&lt;<a href="../model/Ticket.html" title="class in main.java.UEFS.system.model">Ticket</a>&gt;</code></dd>
+<dd><code><a href="../interfaces/IRepository.html#update(T)">update</a></code>&nbsp;in interface&nbsp;<code><a href="../interfaces/IRepository.html" title="interface in main.java.UEFS.system.Interfaces">IRepository</a>&lt;<a href="../model/Ticket.html" title="class in main.java.UEFS.system.Models">Ticket</a>&gt;</code></dd>
 <dt>Parameters:</dt>
 <dd><code>ticket</code> - Ticket a ser atualizado.</dd>
 </dl>
@@ -264,7 +264,7 @@ implements <a href="../interfaces/IRepository.html" title="interface in main.jav
 <div class="block">Deleta um ticket pelo seu ID.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
-<dd><code><a href="../interfaces/IRepository.html#delete(java.util.UUID)">delete</a></code>&nbsp;in interface&nbsp;<code><a href="../interfaces/IRepository.html" title="interface in main.java.UEFS.system.interfaces">IRepository</a>&lt;<a href="../model/Ticket.html" title="class in main.java.UEFS.system.model">Ticket</a>&gt;</code></dd>
+<dd><code><a href="../interfaces/IRepository.html#delete(java.util.UUID)">delete</a></code>&nbsp;in interface&nbsp;<code><a href="../interfaces/IRepository.html" title="interface in main.java.UEFS.system.Interfaces">IRepository</a>&lt;<a href="../model/Ticket.html" title="class in main.java.UEFS.system.Models">Ticket</a>&gt;</code></dd>
 <dt>Parameters:</dt>
 <dd><code>id</code> - ID do ticket a ser deletado.</dd>
 </dl>
@@ -279,7 +279,7 @@ implements <a href="../interfaces/IRepository.html" title="interface in main.jav
 <div class="block">Deleta todos os tickets do repositório.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
-<dd><code><a href="../interfaces/IRepository.html#deleteAll()">deleteAll</a></code>&nbsp;in interface&nbsp;<code><a href="../interfaces/IRepository.html" title="interface in main.java.UEFS.system.interfaces">IRepository</a>&lt;<a href="../model/Ticket.html" title="class in main.java.UEFS.system.model">Ticket</a>&gt;</code></dd>
+<dd><code><a href="../interfaces/IRepository.html#deleteAll()">deleteAll</a></code>&nbsp;in interface&nbsp;<code><a href="../interfaces/IRepository.html" title="interface in main.java.UEFS.system.Interfaces">IRepository</a>&lt;<a href="../model/Ticket.html" title="class in main.java.UEFS.system.Models">Ticket</a>&gt;</code></dd>
 </dl>
 </div>
 </section>

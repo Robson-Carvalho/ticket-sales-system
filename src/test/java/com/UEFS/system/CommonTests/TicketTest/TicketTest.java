@@ -1,8 +1,8 @@
 package test.java.com.UEFS.system.CommonTests.TicketTest;
 
-import main.java.UEFS.system.testFacade.EventTestFacade.EventTestFacade;
-import main.java.UEFS.system.testFacade.TicketTestFacade.TicketTestFacade;
-import main.java.UEFS.system.testFacade.UserTestFacade.UserTestFacade;
+import main.java.com.UEFS.system.testFacade.EventTestFacade.EventTestFacade;
+import main.java.com.UEFS.system.testFacade.TicketTestFacade.TicketTestFacade;
+import main.java.com.UEFS.system.testFacade.UserTestFacade.UserTestFacade;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
