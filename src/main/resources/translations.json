@@ -1,0 +1,32 @@
+{
+  "homeScreen": {
+    "pt": {
+      "greeting": "Olá, JavaFX!",
+      "title": "Sistema De Venda de Ingressos",
+      "languageToggle": "Trocar para Inglês"
+    },
+    "en": {
+      "greeting": "Hello, JavaFX!",
+      "title": "Sistema De Venda de Ingressos",
+      "languageToggle": "Switch to Portuguese"
+    }
+  },
+  "signUpScreen": {
+    "pt": {
+      "greeting": "Olá, JavaFX!",
+      "title": "Sistema De Venda de Ingressos",
+      "languageToggle": "Trocar para Inglês",
+      "username": "Usuário",
+      "password": "Senha",
+      "login": "Entrar"
+    },
+    "en": {
+      "greeting": "Hello, JavaFX!",
+      "title": "Sistema De Venda de Ingressos",
+      "languageToggle": "Switch to Portuguese",
+      "username": "User",
+      "password": "Password",
+      "login": "Login"
+    }
+  }
+}
