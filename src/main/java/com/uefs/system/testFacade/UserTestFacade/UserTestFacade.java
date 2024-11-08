@@ -30,7 +30,7 @@ public class UserTestFacade {
     /**
      * Cria um novo usuário.
      *
-     * @param login Login do usuário.
+     * @param login SignUp do usuário.
      * @param password Senha do usuário.
      * @param name Nome do usuário.
      * @param cpf CPF do usuário.
@@ -114,7 +114,7 @@ public class UserTestFacade {
      * Retorna o login de um usuário baseado em seu email.
      *
      * @param email Email do usuário.
-     * @return Login do usuário.
+     * @return SignUp do usuário.
      */
     public String getLoginByUserEmail(String email) {
         User user = userController.getByEmail(email);
@@ -209,7 +209,7 @@ public class UserTestFacade {
     /**
      * Realiza o login de um usuário baseado no login e senha.
      *
-     * @param login Login do usuário.
+     * @param login SignUp do usuário.
      * @param password Senha do usuário.
      * @return True se o login foi bem-sucedido, false caso contrário.
      */

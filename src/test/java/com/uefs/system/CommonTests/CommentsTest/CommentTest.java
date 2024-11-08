@@ -1,6 +1,7 @@
 package com.uefs.system.CommonTests.CommentsTest;
 
 
+import com.uefs.system.controller.MailController;
 import com.uefs.system.testFacade.CommentTestFacade.CommentTestFacade;
 import com.uefs.system.testFacade.EventTestFacade.EventTestFacade;
 import com.uefs.system.testFacade.TicketTestFacade.TicketTestFacade;
@@ -19,6 +20,7 @@ public class CommentTest {
     private EventTestFacade eventTestFacadeFacade;
     private TicketTestFacade ticketTestFacade;
     private CommentTestFacade commentTestFacade;
+    private MailController mailController;
 
     @Before
     public void setUp() {
@@ -26,6 +28,7 @@ public class CommentTest {
         eventTestFacadeFacade = new EventTestFacade();
         ticketTestFacade = new TicketTestFacade();
         commentTestFacade = new CommentTestFacade();
+        mailController = new MailController();
     }
 
     @After
@@ -34,6 +37,7 @@ public class CommentTest {
         eventTestFacadeFacade.deleteAllEvents();
         ticketTestFacade.deleteAllTickets();
         commentTestFacade.deleteAllComments();
+        mailController.deleteAll();
     }
 
     @Test

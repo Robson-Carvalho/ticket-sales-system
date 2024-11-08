@@ -1,0 +1,40 @@
+/* Reset de margens, padding, bordas e fundos */
+* {
+    -fx-margin: 0;
+    -fx-padding: 0;
+    -fx-border-width: 0;
+    -fx-background-color: transparent;
+}
+
+/* Reset de fontes para garantir que todos os componentes tenham um estilo consistente */
+* {
+    -fx-font-family: "Arial", sans-serif;
+    -fx-font-size: 12px;
+    -fx-font-weight: normal;
+    -fx-text-fill: black;
+}
+
+/* Reset para layout containers (como StackPane, HBox, VBox) */
+StackPane, HBox, VBox, GridPane, Pane {
+    -fx-spacing: 0;
+    -fx-alignment: center;
+    -fx-padding: 0;
+}
+
+/* Reset para elementos de texto */
+Label, TextField, TextArea, Text {
+    -fx-padding: 0;
+    -fx-margin: 0;
+    -fx-border-width: 0;
+    -fx-border-color: transparent;
+    -fx-background-color: transparent;
+}
+
+/* Reset para Botões */
+Button {
+    -fx-padding: 0;
+    -fx-border-width: 0;
+    -fx-border-color: transparent;
+    -fx-background-color: transparent;
+    -fx-text-fill: black;
+}

@@ -42,7 +42,7 @@ public class UserService implements IService<User> {
     @Override
     public User create(User user) throws Exception {
         if (this.getByEmail(user.getEmail()) != null || this.getByCpf(user.getCpf()) != null || this.getByEmail(user.getEmail()) != null) {
-            throw new SecurityException("Login, email e/ou cpf já está em uso.");
+            throw new SecurityException("SignUp, email e/ou cpf já está em uso.");
         }
 
         userRepository.save(user);
@@ -108,7 +108,7 @@ public class UserService implements IService<User> {
     /**
      * Busca um usuário pelo seu login.
      *
-     * @param login Login do usuário a ser buscado.
+     * @param login SignUp do usuário a ser buscado.
      * @return Usuário encontrado ou null se não existir.
      */
     public User getByLogin(String login) {
@@ -162,7 +162,7 @@ public class UserService implements IService<User> {
     /**
      * Verifica se um usuário pode fazer login com o login e senha fornecidos.
      *
-     * @param login Login do usuário.
+     * @param login SignUp do usuário.
      * @param password Senha do usuário.
      * @return true se as credenciais estiverem corretas, false caso contrário.
      */

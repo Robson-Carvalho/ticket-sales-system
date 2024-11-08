@@ -5,15 +5,16 @@
 <modelVersion>4.0.0</modelVersion>
 
 <groupId>com.uefs.system</groupId>
-<artifactId>demo</artifactId>
+<artifactId>ticketSalesSystem</artifactId>
 <version>1.0-SNAPSHOT</version>
-<name>demo</name>
+<name>ticketSalesSystem</name>
 
 <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <junit.version>5.10.2</junit.version>  </properties>
 
 <dependencies>
+
     <dependency>
         <groupId>com.google.code.gson</groupId>
         <artifactId>gson</artifactId>

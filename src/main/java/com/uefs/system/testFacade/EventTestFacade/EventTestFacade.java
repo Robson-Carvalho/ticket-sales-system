@@ -69,7 +69,7 @@ public class EventTestFacade {
     /**
      * Cria um evento.
      *
-     * @param loginAdmin Login do administrador que está criando o evento.
+     * @param loginAdmin SignUp do administrador que está criando o evento.
      * @param name Nome do evento.
      * @param description Descrição do evento.
      * @param date Data do evento.

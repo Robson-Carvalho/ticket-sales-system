@@ -150,7 +150,7 @@ public class UserTest {
             userFacade.create(login2, password2, name2, cpf2, email2, isAdmin2);
         });
 
-        assertEquals("Login, email e/ou cpf já está em uso.", exception.getMessage());
+        assertEquals("SignUp, email e/ou cpf já está em uso.", exception.getMessage());
     }
 
     @Test

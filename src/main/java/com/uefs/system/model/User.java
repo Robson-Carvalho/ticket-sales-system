@@ -34,7 +34,7 @@ public class User {
     /**
      * Construtor principal que inicializa um usuário, podendo ser um administrador.
      *
-     * @param login    Login do usuário
+     * @param login    SignUp do usuário
      * @param password Senha do usuário
      * @param name     Nome completo do usuário
      * @param cpf      CPF do usuário
@@ -54,7 +54,7 @@ public class User {
     /**
      * Construtor alternativo que inicializa um usuário comum (não administrador).
      *
-     * @param login    Login do usuário
+     * @param login    SignUp do usuário
      * @param password Senha do usuário
      * @param name     Nome completo do usuário
      * @param cpf      CPF do usuário
@@ -82,7 +82,7 @@ public class User {
     /**
      * Retorna o login do usuário.
      *
-     * @return Login do usuário
+     * @return SignUp do usuário
      */
     public String getLogin() {
         return login;
@@ -172,7 +172,7 @@ public class User {
     /**
      * Verifica se o login e a senha fornecidos são válidos para o usuário.
      *
-     * @param login    Login fornecido
+     * @param login    SignUp fornecido
      * @param password Senha fornecida
      * @return true se as credenciais forem válidas, false caso contrário
      */

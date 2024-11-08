@@ -83,7 +83,7 @@ public class PurchaseTestFacade {
      * Retorna o login do usuário associado à compra.
      *
      * @param id ID da compra.
-     * @return Login do usuário.
+     * @return SignUp do usuário.
      */
     public String getUserLoginByPurchaseId(String id) {
         return transactionController.getUserLoginByPurchaseId(UUID.fromString(id));
