@@ -1,0 +1,14 @@
+{
+  "systemName": "Ticket Sale System",
+  "titleScreenLogin": "Welcome",
+  "subtitleScreenLogin": "Platform for purchasing tickets for the best events.",
+
+  "loginField": "Enter your Login",
+  "passwordField": "Enter your password",
+
+  "loginLabel": "Login",
+  "passwordLabel": "Password",
+
+  "signInButton": "Log In",
+  "toggleLanguageButton": "Change Language"
+}

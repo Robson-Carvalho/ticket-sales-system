@@ -1,5 +1,6 @@
 package com.uefs.system;
 
+import com.uefs.system.utils.LanguageManager;
 import com.uefs.system.view.NavigationManager;
 import javafx.application.Application;
 import javafx.stage.Stage;
@@ -7,18 +8,20 @@ import java.io.IOException;
 
 public class Main extends Application {
 
-    // quando o main for executado colocar alguns usuários no arquivo .json
-    // sempre que um testes for executado, limpar todos os database
-
     @Override
     public void start(Stage primaryStage) throws IOException {
-        NavigationManager navigationManager = NavigationManager.getInstance();
-        navigationManager.initialize(primaryStage);
+        LanguageManager languageManager = new LanguageManager();
 
-        navigationManager.addScene("signup", "/fxml/signup.fxml");
-        navigationManager.addScene("home", "/fxml/home.fxml");
+        NavigationManager navigationManager = new NavigationManager();
 
-        navigationManager.setScene("signup");
+        languageManager.addObserver(navigationManager);
+
+        navigationManager.initialize(primaryStage, languageManager);
+
+        navigationManager.addScene(languageManager,"signin", "/fxml/signin.fxml");
+        navigationManager.addScene(languageManager, "home", "/fxml/home.fxml");
+
+        navigationManager.setScene("signin");
     }
 
     public static void main(String[] args) {

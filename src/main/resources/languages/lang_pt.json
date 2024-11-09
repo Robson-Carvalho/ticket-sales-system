@@ -1,0 +1,14 @@
+{
+  "systemName": "Sistema de Venda de Ingressos",
+  "titleScreenLogin": "Bem-vindo",
+  "subtitleScreenLogin": "Plataforma de compra de ingressos dos melhores eventos.",
+
+  "loginField": "Entre com seu login",
+  "passwordField": "Entre com sua senha",
+
+  "loginLabel": "Login",
+  "passwordLabel": "Senha",
+
+  "signInButton": "Entrar",
+  "toggleLanguageButton": "Alterar Idioma"
+}

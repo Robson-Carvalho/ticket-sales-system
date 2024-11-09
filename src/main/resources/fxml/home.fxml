@@ -6,5 +6,5 @@
 
 <StackPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.uefs.system.view.controllers.HomeController">
     <Text text="Tela de Login" />
-    <Button text="Back to Login" fx:id="backButton" onAction="#handleBackToLogin"/>
+    <Button text="Back to Login" fx:id="backButton" onAction="#Logout"/>
 </StackPane>
