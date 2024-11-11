@@ -1,40 +1,85 @@
-/* Reset de margens, padding, bordas e fundos */
+/* Resetando margens e preenchimentos */
 * {
-    -fx-margin: 0;
     -fx-padding: 0;
+    -fx-margin: 0;
     -fx-border-width: 0;
-    -fx-background-color: transparent;
+    -fx-border-radius: 0;
+    -fx-background-radius: 0;
+    -fx-background-insets: 0;
 }
 
-/* Reset de fontes para garantir que todos os componentes tenham um estilo consistente */
-* {
-    -fx-font-family: "Arial", sans-serif;
-    -fx-font-size: 12px;
+/* Resetando texto */
+.label, .text, .text-input, .button {
+    -fx-font-size: 14px;
+    -fx-font-family: "Roboto Thin", "Arial";
+    -fx-text-fill: -fx-text-base-color;
     -fx-font-weight: normal;
-    -fx-text-fill: black;
 }
 
-/* Reset para layout containers (como StackPane, HBox, VBox) */
-StackPane, HBox, VBox, GridPane, Pane {
-    -fx-spacing: 0;
-    -fx-alignment: center;
-    -fx-padding: 0;
-}
-
-/* Reset para elementos de texto */
-Label, TextField, TextArea, Text {
-    -fx-padding: 0;
-    -fx-margin: 0;
+/* Resetando botoes */
+.button {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-background-insets: 0;
     -fx-border-width: 0;
+    -fx-border-radius: 0;
+}
+
+/* Resetando inputs de texto */
+.text-input {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-background-insets: 0;
+    -fx-border-width: 0;
+    -fx-prompt-text-fill: gray;
+}
+
+/* Resetando bordas dos containers */
+.hbox, .vbox, .pane, .anchor-pane, .stack-pane, .grid-pane, .border-pane {
+    -fx-border-width: 0;
+    -fx-border-radius: 0;
+    -fx-background-color: transparent;
+}
+
+.stack-pane{
+    -fx-padding: 0 0 28px 0;
+}
+
+/* Resetando tables */
+.table-view {
+    -fx-padding: 0;
+    -fx-border-color: transparent;
+    -fx-border-width: 0;
+}
+
+/* Resetando o ScrollPane */
+.scroll-pane {
+    -fx-padding: 0;
     -fx-border-color: transparent;
     -fx-background-color: transparent;
 }
 
-/* Reset para Botões */
-Button {
+.scroll-bar {
+    -fx-padding: 0;
+    -fx-background-color: transparent;
+}
+
+.scroll-bar .thumb {
+    -fx-background-color: transparent;
+}
+
+/* Resetando a seleção de items */
+.list-cell, .table-cell, .tree-cell, .choice-box, .combo-box {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
     -fx-padding: 0;
     -fx-border-width: 0;
-    -fx-border-color: transparent;
+}
+
+/* Resetando RadioButton e CheckBox */
+.radio-button, .check-box {
+    -fx-padding: 0;
     -fx-background-color: transparent;
-    -fx-text-fill: black;
+    -fx-border-width: 0;
+    -fx-border-color: transparent;
 }

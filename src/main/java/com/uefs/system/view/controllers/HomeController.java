@@ -10,14 +10,10 @@ public class HomeController implements ILanguageObserver {
     private final NavigationManager navigationManager = new NavigationManager();
     private final LanguageManager languageManager;
 
-    public HomeController(LanguageManager languageManager) {
-        this.languageManager = languageManager;
-    }
+    public HomeController(LanguageManager languageManager) {this.languageManager = languageManager;}
 
     @FXML
-    private void initialize() {
-        updateLanguage();
-    }
+    private void initialize() {updateLanguage();}
 
     @FXML
     private Button backButton;
@@ -28,7 +24,5 @@ public class HomeController implements ILanguageObserver {
     }
 
     @Override
-    public void updateLanguage() {
-        languageManager.loadLanguage();
-    }
+    public void updateLanguage() {languageManager.loadLanguage();}
 }

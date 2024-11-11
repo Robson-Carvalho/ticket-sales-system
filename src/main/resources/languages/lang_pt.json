@@ -1,14 +1,26 @@
 {
   "systemName": "Sistema de Venda de Ingressos",
-  "titleScreenLogin": "Bem-vindo",
-  "subtitleScreenLogin": "Plataforma de compra de ingressos dos melhores eventos.",
 
-  "loginField": "Entre com seu login",
-  "passwordField": "Entre com sua senha",
+  "titleScreenLogin": "Bem-vindo",
+  "subtitleScreenLogin": "Faça login na plataforma de compra de ingressos para os melhores eventos.",
+
+  "titleScreenSignUp": "Bem-vindo",
+  "subtitleScreenSignUp": "Cadastre-se na plataforma de compra de ingressos para os melhores eventos.",
+
+  "loginField": "Digite um login",
+  "nameField": "Digite seu nome",
+  "cpfField": "Digite seu CPF",
+  "emailField": "Digite seu e-mail",
+  "passwordField": "Digite sua senha",
 
   "loginLabel": "Login",
+  "nameLabel": "Nome",
+  "cpfLabel": "CPF",
+  "emailLabel": "E-mail",
   "passwordLabel": "Senha",
 
   "signInButton": "Entrar",
+  "signUpButton": "Cadastrar",
+  "registerButton": "Cadastra-se",
   "toggleLanguageButton": "Alterar Idioma"
 }

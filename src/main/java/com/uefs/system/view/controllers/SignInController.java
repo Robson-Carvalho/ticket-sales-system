@@ -17,6 +17,7 @@ public class SignInController implements ILanguageObserver {
     @FXML private Label passwordLabel;
     @FXML private Button signInButton;
     @FXML private Button toggleLanguageButton;
+    @FXML private Button signUpButton;
 
     private final NavigationManager navigationManager = new NavigationManager();
     private final LanguageManager languageManager;
@@ -49,9 +50,10 @@ public class SignInController implements ILanguageObserver {
     }
 
     @FXML
-    private void toggleLanguage() {
-        languageManager.toggleLanguage();
-    }
+    private void toggleLanguage() {languageManager.toggleLanguage();}
+
+    @FXML
+    private void navigationToSignUpScreen(){navigationManager.setScene("signup");}
 
     private boolean isValidLogin(String login, String password) {
         UserController userController = new UserController();
@@ -78,6 +80,7 @@ public class SignInController implements ILanguageObserver {
     public void updateLanguage() {
         titleScreenLogin.setText(languageManager.getText("titleScreenLogin"));
         subtitleScreenLogin.setText(languageManager.getText("subtitleScreenLogin"));
+        subtitleScreenLogin.setWrappingWidth(440);
 
         loginLabel.setText(languageManager.getText("loginLabel"));
         passwordLabel.setText(languageManager.getText("passwordLabel"));
@@ -86,6 +89,7 @@ public class SignInController implements ILanguageObserver {
         passwordField.setPromptText(languageManager.getText("passwordField"));
 
         signInButton.setText(languageManager.getText("signInButton"));
+        signUpButton.setText(languageManager.getText(("registerButton")));
         toggleLanguageButton.setText(languageManager.getText("toggleLanguageButton"));
     }
 }

@@ -1,14 +1,26 @@
 {
   "systemName": "Ticket Sale System",
-  "titleScreenLogin": "Welcome",
-  "subtitleScreenLogin": "Platform for purchasing tickets for the best events.",
 
-  "loginField": "Enter your Login",
-  "passwordField": "Enter your password",
+  "titleScreenLogin": "Welcome",
+  "subtitleScreenLogin": "Log in to the ticket purchasing platform for the best events.",
+
+  "titleScreenSignUp": "Welcome",
+  "subtitleScreenSignUp": "Register on the ticket purchasing platform for the best events.",
+
+  "loginField": "Type a login",
+  "nameField": "Type your name",
+  "cpfField": "Type your CPF",
+  "emailField": "Type your e-mail",
+  "passwordField": "Type your password",
 
   "loginLabel": "Login",
+  "nameLabel": "Name",
+  "cpfLabel": "CPF",
+  "emailLabel": "E-mail",
   "passwordLabel": "Password",
 
-  "signInButton": "Log In",
+  "signInButton": "Sing In",
+  "signUpButton": "Sign Up",
+  "registerButton": "Register",
   "toggleLanguageButton": "Change Language"
 }

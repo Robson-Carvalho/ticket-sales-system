@@ -32,12 +32,12 @@ public class NavigationManager implements ILanguageObserver {
         int screenHeight = screenSize.height;
         primaryStage.setWidth(screenWidth);
         primaryStage.setHeight(screenHeight);
+        primaryStage.setResizable(false);
     }
 
     public void addScene(LanguageManager languageManager, String name, String fxmlFilePath) throws IOException {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFilePath));
-
 
             loader.setControllerFactory(controllerClass -> {
                 try {

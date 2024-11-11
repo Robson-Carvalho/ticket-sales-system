@@ -19,6 +19,7 @@ public class Main extends Application {
         navigationManager.initialize(primaryStage, languageManager);
 
         navigationManager.addScene(languageManager,"signin", "/fxml/signin.fxml");
+        navigationManager.addScene(languageManager,"signup", "/fxml/signup.fxml");
         navigationManager.addScene(languageManager, "home", "/fxml/home.fxml");
 
         navigationManager.setScene("signin");

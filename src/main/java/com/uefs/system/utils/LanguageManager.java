@@ -31,7 +31,12 @@ public class LanguageManager {
     }
 
     public String getText(String key) {
-        return currentLanguage.get(key).getAsString();
+        try{
+            return currentLanguage.get(key).getAsString();
+        }catch (Exception e){
+            System.out.println("Text not found: "+e.getMessage());
+        }
+        return "None";
     }
 
     public String getLanguagePropertiesCurrent() {
