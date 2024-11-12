@@ -1,6 +1,7 @@
 package com.uefs.system.view;
 
 import com.uefs.system.Interface.ILanguageObserver;
+import com.uefs.system.emun.SceneEnum;
 import com.uefs.system.utils.LanguageManager;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -15,7 +16,7 @@ import java.util.Map;
 
 public class NavigationManager implements ILanguageObserver {
     private static Stage primaryStage;
-    private static Map<String, Scene> scenes = new HashMap<>();
+    private static final Map<String, Scene> scenes = new HashMap<>();
     private static LanguageManager languageManager;
 
     public NavigationManager() {}
@@ -35,7 +36,9 @@ public class NavigationManager implements ILanguageObserver {
         primaryStage.setResizable(false);
     }
 
-    public void addScene(LanguageManager languageManager, String name, String fxmlFilePath) throws IOException {
+    public void addScene(LanguageManager languageManager, SceneEnum screen, String fxmlFilePath) {
+        String name = screen.getValue();
+
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFilePath));
 
@@ -56,12 +59,13 @@ public class NavigationManager implements ILanguageObserver {
 
             scenes.put(name, scene);
         } catch (IOException e) {
-            System.out.println("Erro ao carregar FXML: " + fxmlFilePath);
-            e.printStackTrace();
+            System.out.println("Erro ao carregar FXML: " + fxmlFilePath + " "+ e.getMessage());
         }
     }
 
-    public void setScene(String name) {
+    public void setScene(SceneEnum screen) {
+        String name = screen.getValue();
+
         Scene scene = scenes.get(name);
         if (scene != null) {
             primaryStage.setScene(scene);
@@ -74,6 +78,6 @@ public class NavigationManager implements ILanguageObserver {
 
     @Override
     public void updateLanguage() {
-        primaryStage.setTitle(languageManager.getText("systemName"));
+        primaryStage.setTitle(languageManager.getText("system.titleBar"));
     }
 }

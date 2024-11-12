@@ -1,5 +1,6 @@
 package com.uefs.system;
 
+import com.uefs.system.emun.SceneEnum;
 import com.uefs.system.utils.LanguageManager;
 import com.uefs.system.view.NavigationManager;
 import javafx.application.Application;
@@ -11,18 +12,15 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws IOException {
         LanguageManager languageManager = new LanguageManager();
-
         NavigationManager navigationManager = new NavigationManager();
 
         languageManager.addObserver(navigationManager);
 
         navigationManager.initialize(primaryStage, languageManager);
-
-        navigationManager.addScene(languageManager,"signin", "/fxml/signin.fxml");
-        navigationManager.addScene(languageManager,"signup", "/fxml/signup.fxml");
-        navigationManager.addScene(languageManager, "home", "/fxml/home.fxml");
-
-        navigationManager.setScene("signin");
+        navigationManager.addScene(languageManager, SceneEnum.SIGNIN, "/fxml/signIn/signin.fxml");
+        navigationManager.addScene(languageManager, SceneEnum.SIGNUP, "/fxml/signUp/signup.fxml");
+        navigationManager.addScene(languageManager, SceneEnum.DASHBOARD, "/fxml/dashboard/dashboard.fxml");
+        navigationManager.setScene(SceneEnum.SIGNIN);
     }
 
     public static void main(String[] args) {

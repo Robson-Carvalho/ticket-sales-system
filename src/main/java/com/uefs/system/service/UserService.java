@@ -168,6 +168,6 @@ public class UserService implements IService<User> {
      */
     public boolean login(String login, String password) {
         User user = this.getByLogin(login);
-        return user != null && user.getPassword().equals(password);
+        return user != null && user.getLogin().equals(login) && user.getPassword().equals(password);
     }
 }

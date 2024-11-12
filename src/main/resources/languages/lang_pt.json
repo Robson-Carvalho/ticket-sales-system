@@ -1,26 +1,49 @@
 {
-  "systemName": "Sistema de Venda de Ingressos",
+  "system": {
+    "titleBar": "Sistema de Vendas de Ingressos"
+  },
 
-  "titleScreenLogin": "Bem-vindo",
-  "subtitleScreenLogin": "Faça login na plataforma de compra de ingressos para os melhores eventos.",
+  "screens": {
+    "signIn": {
+      "title": "Bem-vindo",
+      "subtitle": "Faça login na plataforma de compra de ingressos para os melhores eventos.",
 
-  "titleScreenSignUp": "Bem-vindo",
-  "subtitleScreenSignUp": "Cadastre-se na plataforma de compra de ingressos para os melhores eventos.",
+      "loginLabel": "Login",
+      "passwordLabel": "Senha",
 
-  "loginField": "Digite um login",
-  "nameField": "Digite seu nome",
-  "cpfField": "Digite seu CPF",
-  "emailField": "Digite seu e-mail",
-  "passwordField": "Digite sua senha",
+      "loginField": "Digite um login",
+      "passwordField": "Digite sua senha",
 
-  "loginLabel": "Login",
-  "nameLabel": "Nome",
-  "cpfLabel": "CPF",
-  "emailLabel": "E-mail",
-  "passwordLabel": "Senha",
+      "buttons": {
+        "signIn": "Entrar",
+        "register": "Registrar",
+        "toggleLanguage": "Mudar Idioma"
+      }
+    },
 
-  "signInButton": "Entrar",
-  "signUpButton": "Cadastrar",
-  "registerButton": "Cadastra-se",
-  "toggleLanguageButton": "Alterar Idioma"
+    "signUp": {
+      "title": "Bem-vindo",
+      "subtitle": "Faça login na plataforma de compra de ingressos para os melhores eventos.",
+
+      "loginField": "Digite um login",
+      "nameField": "Digite seu nome",
+      "cpfField": "Digite seu CPF",
+      "emailField": "Digite seu e-mail",
+      "passwordField": "Digite sua senha",
+
+      "loginLabel": "Login",
+      "nameLabel": "Nome",
+      "cpfLabel": "CPF",
+      "emailLabel": "E-mail",
+      "passwordLabel": "Senha",
+
+      "buttons": {
+        "signUp": "Cadastrar",
+        "signIn": "Entrar",
+        "toggleLanguage": "Mudar Idioma"
+      }
+    },
+
+    "dashboard": {}
+  }
 }

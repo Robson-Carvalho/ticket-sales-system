@@ -2,6 +2,8 @@ package com.uefs.system.view.controllers;
 
 import com.uefs.system.Interface.ILanguageObserver;
 import com.uefs.system.controller.UserController;
+import com.uefs.system.emun.SceneEnum;
+import com.uefs.system.model.User;
 import com.uefs.system.utils.LanguageManager;
 import com.uefs.system.view.NavigationManager;
 import javafx.fxml.FXML;
@@ -33,31 +35,25 @@ public class SignInController implements ILanguageObserver {
 
     @FXML
     private void handleSignIn() {
-        String login = loginField.getText();
-        String password = passwordField.getText();
-
-        System.out.println("Login: " + login);
-        System.out.println("Senha: " + password);
-
-        if (isValidLogin(login, password)) {
+        if(isValidLogin(loginField.getText(), passwordField.getText())) {
             loginField.setText("");
             passwordField.setText("");
             showLoginSuccessAlert();
-            navigationManager.setScene("home");
-        } else {
-            showLoginErrorAlert();
+            navigationManager.setScene(SceneEnum.DASHBOARD);
+            return;
         }
+       showLoginErrorAlert();
     }
 
     @FXML
     private void toggleLanguage() {languageManager.toggleLanguage();}
 
     @FXML
-    private void navigationToSignUpScreen(){navigationManager.setScene("signup");}
+    private void navigationToSignUpScreen(){navigationManager.setScene(SceneEnum.SIGNUP);}
 
     private boolean isValidLogin(String login, String password) {
         UserController userController = new UserController();
-        return  userController.login(login, password);
+        return userController.login(login, password);
     }
 
     private void showLoginSuccessAlert() {
@@ -78,18 +74,18 @@ public class SignInController implements ILanguageObserver {
 
     @Override
     public void updateLanguage() {
-        titleScreenLogin.setText(languageManager.getText("titleScreenLogin"));
-        subtitleScreenLogin.setText(languageManager.getText("subtitleScreenLogin"));
+        titleScreenLogin.setText(languageManager.getText("screens.signIn.title"));
+        subtitleScreenLogin.setText(languageManager.getText("screens.signIn.subtitle"));
         subtitleScreenLogin.setWrappingWidth(440);
 
-        loginLabel.setText(languageManager.getText("loginLabel"));
-        passwordLabel.setText(languageManager.getText("passwordLabel"));
+        loginLabel.setText(languageManager.getText("screens.signIn.loginLabel"));
+        passwordLabel.setText(languageManager.getText("screens.signIn.passwordLabel"));
 
-        loginField.setPromptText(languageManager.getText("loginField"));
-        passwordField.setPromptText(languageManager.getText("passwordField"));
+        loginField.setPromptText(languageManager.getText("screens.signIn.loginField"));
+        passwordField.setPromptText(languageManager.getText("screens.signIn.loginField"));
 
-        signInButton.setText(languageManager.getText("signInButton"));
-        signUpButton.setText(languageManager.getText(("registerButton")));
-        toggleLanguageButton.setText(languageManager.getText("toggleLanguageButton"));
+        signInButton.setText(languageManager.getText("screens.signIn.buttons.signIn"));
+        signUpButton.setText(languageManager.getText(("screens.signIn.buttons.register")));
+        toggleLanguageButton.setText(languageManager.getText("screens.signIn.buttons.toggleLanguage"));
     }
 }

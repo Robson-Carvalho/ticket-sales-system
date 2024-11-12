@@ -1,26 +1,50 @@
 {
-  "systemName": "Ticket Sale System",
+  "system": {
+    "titleBar": "Ticket Sale System"
+  },
 
-  "titleScreenLogin": "Welcome",
-  "subtitleScreenLogin": "Log in to the ticket purchasing platform for the best events.",
+  "screens":{
+    "signIn": {
+      "title": "Welcome",
+      "subtitle": "Log in to the ticket purchasing platform for the best events.",
 
-  "titleScreenSignUp": "Welcome",
-  "subtitleScreenSignUp": "Register on the ticket purchasing platform for the best events.",
+      "loginLabel": "Login",
+      "passwordLabel": "Password",
 
-  "loginField": "Type a login",
-  "nameField": "Type your name",
-  "cpfField": "Type your CPF",
-  "emailField": "Type your e-mail",
-  "passwordField": "Type your password",
+      "loginField": "Type a login",
+      "passwordField": "Type your password",
 
-  "loginLabel": "Login",
-  "nameLabel": "Name",
-  "cpfLabel": "CPF",
-  "emailLabel": "E-mail",
-  "passwordLabel": "Password",
+      "buttons": {
+        "signIn": "Sing In",
+        "register": "Register",
+        "toggleLanguage": "Change Language"
+      }
+    },
 
-  "signInButton": "Sing In",
-  "signUpButton": "Sign Up",
-  "registerButton": "Register",
-  "toggleLanguageButton": "Change Language"
+    "signUp": {
+      "title": "Welcome",
+      "subtitle": "Log in to the ticket purchasing platform for the best events.",
+
+      "loginField": "Type a login",
+      "nameField": "Type your name",
+      "cpfField": "Type your CPF",
+      "emailField": "Type your e-mail",
+      "passwordField": "Type your password",
+
+      "loginLabel": "Login",
+      "nameLabel": "Name",
+      "cpfLabel": "CPF",
+      "emailLabel": "E-mail",
+      "passwordLabel": "Password",
+
+      "buttons": {
+        "signUp": "Sing Up",
+        "signIn": "Sign In",
+        "toggleLanguage": "Change Language"
+      }
+    },
+
+    "dashboard": {
+    }
+  }
 }

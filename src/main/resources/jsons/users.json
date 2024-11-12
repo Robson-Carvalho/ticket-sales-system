@@ -8,5 +8,15 @@
     "email": "lia@example.com",
     "isAdmin": false,
     "tickets": []
+  },
+  {
+    "id": "acd99ce7-8c7d-4353-94bb-47845ce17fcd",
+    "login": "rcsouza16",
+    "password": "1234",
+    "name": "Robson Carvalho",
+    "cpf": "09609964516",
+    "email": "robsoncarvalho.tech@gmail.com",
+    "isAdmin": false,
+    "tickets": []
   }
 ]

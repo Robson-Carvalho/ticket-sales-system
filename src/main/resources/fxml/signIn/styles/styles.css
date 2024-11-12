@@ -1,4 +1,21 @@
-.stack-pane{
+/* Resetando margens e preenchimentos */
+* {
+    -fx-border-width: 0;
+    -fx-border-radius: 0;
+    -fx-background-radius: 0;
+}
+
+
+
+/* Resetando margens e preenchimentos */
+* {
+    -fx-border-width: 0;
+    -fx-border-radius: 0;
+    -fx-background-radius: 0;
+}
+
+
+.stack-pane {
     -fx-background-color: #f0f0f0;
 }
 
@@ -29,9 +46,8 @@
 }
 
 .texts{
-    -fx-pref-width: 100vw;
-    -fx-max-width: 100vw;
-    -fx-min-width: 100vw;
+    -fx-pref-width: 100%;
+    -fx-max-width: Infinity;
     -fx-spacing: 8px;
     -fx-padding: 0 0 12px 0;
 }
@@ -62,9 +78,8 @@
 }
 
 .input-field {
-    -fx-pref-width: 100vw;
-    -fx-max-width: 100vw;
-    -fx-min-width: 100vw;
+    -fx-pref-width: 100%;
+    -fx-max-width: Infinity;
     -fx-padding: 10px;
     -fx-background-color: #f0f0f0;
     -fx-border-radius: 5px;
@@ -79,9 +94,8 @@
 
 .buttons{
     -fx-padding: 8px 0 0 0;
-    -fx-pref-width: 100vw;
-    -fx-max-width: 100vw;
-    -fx-min-width: 100vw;
+    -fx-pref-width: 100%;
+    -fx-max-width: Infinity;
     -fx-spacing: 8px;
 }
 

@@ -1,0 +1,27 @@
+/* Resetando margens e preenchimentos */
+* {
+    -fx-border-width: 0;
+    -fx-border-radius: 0;
+    -fx-background-radius: 0;
+}
+
+
+
+/* Resetando margens e preenchimentos */
+* {
+    -fx-border-width: 0;
+    -fx-border-radius: 0;
+    -fx-background-radius: 0;
+}
+
+
+.stack-pane {
+    -fx-background-color: #ff0000;
+}
+
+.header{
+    -fx-pref-width: 1440px;
+    -fx-max-width: 1440px;
+    -fx-min-width: 1440px;
+    -fx-alignment: top-center;
+}

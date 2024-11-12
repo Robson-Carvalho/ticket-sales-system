@@ -30,14 +30,30 @@ public class LanguageManager {
         }
     }
 
-    public String getText(String key) {
-        try{
-            return currentLanguage.get(key).getAsString();
-        }catch (Exception e){
-            System.out.println("Text not found: "+e.getMessage());
+    public String getText(String keyPath) {
+        try {
+            return this.getNestedJsonValue(currentLanguage, keyPath);
+        } catch (Exception e) {
+            System.out.println("Text not found for key: " + keyPath + " - Error: " + e.getMessage());
+            return "None";
         }
-        return "None";
     }
+
+    private String getNestedJsonValue(JsonObject jsonObject, String keyPath) {
+        String[] keys = keyPath.split("\\.");
+
+        JsonElement currentElement = jsonObject;
+        for (String key : keys) {
+            if (currentElement == null || !currentElement.isJsonObject()) {
+                return "None";
+            }
+            jsonObject = currentElement.getAsJsonObject();
+            currentElement = jsonObject.get(key);
+        }
+
+        return currentElement != null && currentElement.isJsonPrimitive() ? currentElement.getAsString() : "None";
+    }
+
 
     public String getLanguagePropertiesCurrent() {
         try (FileInputStream fis = new FileInputStream(lang_properties_path)) {
