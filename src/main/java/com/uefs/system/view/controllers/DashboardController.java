@@ -13,17 +13,18 @@ public class DashboardController implements ILanguageObserver {
 
     public DashboardController(LanguageManager languageManager) {this.languageManager = languageManager;}
 
+    @FXML private Button logoutButton;
+
     @FXML
     private void initialize() {updateLanguage();}
 
     @FXML
-    private Button backButton;
-
-    @FXML
-    private void Logout() {
+    public void logout(){
         navigationManager.setScene(SceneEnum.SIGNIN);
     }
 
     @Override
-    public void updateLanguage() {languageManager.loadLanguage();}
+    public void updateLanguage() {
+        logoutButton.setText(languageManager.getText("screens.dashboard.logoutButton"));
+    }
 }

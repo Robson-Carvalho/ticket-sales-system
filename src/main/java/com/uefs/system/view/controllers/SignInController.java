@@ -9,6 +9,7 @@ import com.uefs.system.view.NavigationManager;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.text.Text;
+import javafx.stage.StageStyle;
 
 public class SignInController implements ILanguageObserver {
     @FXML private Text titleScreenLogin;
@@ -59,14 +60,16 @@ public class SignInController implements ILanguageObserver {
     private void showLoginSuccessAlert() {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Login bem-sucedido");
+        alert.initStyle(StageStyle.UNDECORATED);
         alert.setHeaderText(null);
         alert.setContentText("Você foi autenticado com sucesso!");
         alert.showAndWait();
     }
 
     private void showLoginErrorAlert() {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
+        Alert alert = new Alert(Alert.AlertType.WARNING);
         alert.setTitle("Erro de Login");
+        alert.initStyle(StageStyle.UNDECORATED);
         alert.setHeaderText(null);
         alert.setContentText("Usuário ou senha inválidos. Tente novamente.");
         alert.showAndWait();

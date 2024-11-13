@@ -1,27 +1,57 @@
-/* Resetando margens e preenchimentos */
 * {
     -fx-border-width: 0;
     -fx-border-radius: 0;
     -fx-background-radius: 0;
 }
 
-
-
-/* Resetando margens e preenchimentos */
 * {
     -fx-border-width: 0;
     -fx-border-radius: 0;
     -fx-background-radius: 0;
 }
-
 
 .stack-pane {
-    -fx-background-color: #ff0000;
+    -fx-background-color: #f9f9f9;
+}
+
+.body{
+    -fx-pref-width: 1440px;
+    -fx-max-width: 1440px;
+    -fx-min-width: 1440px;
+    -fx-alignment: top-center;
 }
 
 .header{
     -fx-pref-width: 1440px;
     -fx-max-width: 1440px;
     -fx-min-width: 1440px;
-    -fx-alignment: top-center;
 }
+
+.navbar{
+    -fx-pref-width: 1440px;
+    -fx-max-width: 1440px;
+    -fx-min-width: 1440px;
+}
+
+.bar{}
+
+.logo{
+    -fx-alignment: center-left;
+}
+
+
+.menu{
+    -fx-alignment: center;
+}
+
+.settings{
+    -fx-alignment: center-right;
+}
+
+.main{
+    -fx-pref-width: 1440px;
+    -fx-max-width: 1440px;
+    -fx-min-width: 1440px;
+}
+
+.section{}

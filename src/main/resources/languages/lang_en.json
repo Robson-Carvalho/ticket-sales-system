@@ -23,7 +23,7 @@
 
     "signUp": {
       "title": "Welcome",
-      "subtitle": "Log in to the ticket purchasing platform for the best events.",
+      "subtitle": "Log in to the platform and find your nearest event.",
 
       "loginField": "Type a login",
       "nameField": "Type your name",
@@ -45,6 +45,7 @@
     },
 
     "dashboard": {
+      "logoutButton": "Logout"
     }
   }
 }

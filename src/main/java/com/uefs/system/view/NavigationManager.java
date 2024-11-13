@@ -24,7 +24,7 @@ public class NavigationManager implements ILanguageObserver {
     public void initialize(Stage primaryStage, LanguageManager languageManager) {
         NavigationManager.primaryStage = primaryStage;
         NavigationManager.languageManager = languageManager;
-        primaryStage.setTitle(languageManager.getText("systemName"));
+        primaryStage.setTitle(languageManager.getText("system.titleBar"));
     }
 
     private void getScreenDimensions(){

@@ -6,7 +6,7 @@
   "screens": {
     "signIn": {
       "title": "Bem-vindo",
-      "subtitle": "Faça login na plataforma de compra de ingressos para os melhores eventos.",
+      "subtitle": "Faça login na plataforma e encontre seu evento o mais próximo de você.",
 
       "loginLabel": "Login",
       "passwordLabel": "Senha",
@@ -44,6 +44,8 @@
       }
     },
 
-    "dashboard": {}
+    "dashboard": {
+      "logoutButton": "Sair"
+    }
   }
 }

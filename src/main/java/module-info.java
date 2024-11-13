@@ -16,6 +16,7 @@ module com.uefs.system {
     opens com.uefs.system to javafx.graphics;
     opens com.uefs.system.view.controllers to javafx.fxml;
     exports com.uefs.system.view.controllers;
+    exports com.uefs.system.emun;
     exports com.uefs.system.utils;
     exports com.uefs.system.Interface;
     exports com.uefs.system.view;

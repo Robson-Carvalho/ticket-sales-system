@@ -17,9 +17,9 @@ public class Main extends Application {
         languageManager.addObserver(navigationManager);
 
         navigationManager.initialize(primaryStage, languageManager);
+        navigationManager.addScene(languageManager, SceneEnum.DASHBOARD, "/fxml/dashboard/dashboard.fxml");
         navigationManager.addScene(languageManager, SceneEnum.SIGNIN, "/fxml/signIn/signin.fxml");
         navigationManager.addScene(languageManager, SceneEnum.SIGNUP, "/fxml/signUp/signup.fxml");
-        navigationManager.addScene(languageManager, SceneEnum.DASHBOARD, "/fxml/dashboard/dashboard.fxml");
         navigationManager.setScene(SceneEnum.SIGNIN);
     }
 
