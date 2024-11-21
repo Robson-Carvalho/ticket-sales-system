@@ -41,11 +41,6 @@ public class UserController {
      */
     public User create(String login, String password, String name, String cpf, String email, Boolean isAdmin) throws Exception {
 
-        if(login != null && password != null && name != null && cpf != null && email != null && isAdmin != null) {
-            throw new Exception("400");
-        }else if(name != null && name.length() <= 2) {
-            throw new Exception("400");
-        }
 
         User user = new User(login, password, name, cpf, email, isAdmin);
         return userService.create(user);

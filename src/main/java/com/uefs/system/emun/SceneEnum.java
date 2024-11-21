@@ -3,7 +3,10 @@ package com.uefs.system.emun;
 public enum SceneEnum {
     DASHBOARD("dashboard"),
     SIGNUP("signup"),
-    SIGNIN("signin");
+    SIGNIN("signin"),
+    MAILBOX("mailBox"),
+    SETTINGS("settings"),
+    CARDS("cards");
 
     private final String value;
 

@@ -1,0 +1,60 @@
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.image.Image?>
+<StackPane xmlns="http://javafx.com/javafx"
+           xmlns:fx="http://javafx.com/fxml"
+           fx:controller="com.uefs.system.view.controllers.SettingsController"
+           stylesheets="@styles/styles.css" styleClass="stack-pane">
+    <GridPane styleClass="body">
+        <rowConstraints>
+            <RowConstraints percentHeight="10" />
+            <RowConstraints prefHeight="90" />
+        </rowConstraints>
+
+        <HBox GridPane.rowIndex="0" styleClass="header">
+            <VBox styleClass="navbar" alignment="center">
+                <GridPane styleClass="bar">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="ALWAYS" percentWidth="10" />
+                        <ColumnConstraints hgrow="ALWAYS" percentWidth="80" />
+                        <ColumnConstraints hgrow="ALWAYS" percentWidth="10" />
+                    </columnConstraints>
+
+                    <VBox GridPane.columnIndex="0" styleClass="logo">
+                        <ImageView fitHeight="48" fitWidth="48">
+                            <Image url="@images/logo.png" />
+                        </ImageView>
+                    </VBox>
+
+                    <HBox GridPane.columnIndex="1" styleClass="menu" spacing="120">
+                        <Button fx:id="home" text="Home" styleClass="link" onAction="#home" />
+                        <Button fx:id="mailBox" text="Mail Box" styleClass="link" onAction="#mailBox" />
+                        <Button fx:id="settings" text="Settings" styleClass="link" onAction="#settings" />
+                        <Button fx:id="cards" text="Cards" styleClass="link" onAction="#cards" />
+                    </HBox>
+
+                    <VBox GridPane.columnIndex="2" styleClass="logout-component">
+                        <Button fx:id="logoutButton" onAction="#logout" styleClass="logout-button" />
+                    </VBox>
+                </GridPane>
+            </VBox>
+        </HBox>
+
+        <VBox GridPane.rowIndex="1" styleClass="main">
+            <VBox spacing="24">
+                <Text styleClass="title-main" text="Configurações" />
+
+
+            </VBox>
+        </VBox>
+    </GridPane>
+</StackPane>

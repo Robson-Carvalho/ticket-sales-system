@@ -18,9 +18,12 @@ public class Main extends Application {
 
         navigationManager.initialize(primaryStage, languageManager);
         navigationManager.addScene(languageManager, SceneEnum.DASHBOARD, "/fxml/dashboard/dashboard.fxml");
+        navigationManager.addScene(languageManager, SceneEnum.MAILBOX, "/fxml/mailBox/mailBox.fxml");
+        navigationManager.addScene(languageManager, SceneEnum.SETTINGS, "/fxml/settings/settings.fxml");
         navigationManager.addScene(languageManager, SceneEnum.SIGNIN, "/fxml/signIn/signin.fxml");
         navigationManager.addScene(languageManager, SceneEnum.SIGNUP, "/fxml/signUp/signup.fxml");
-        navigationManager.setScene(SceneEnum.SIGNIN);
+        navigationManager.addScene(languageManager, SceneEnum.CARDS, "/fxml/cards/cards.fxml");
+        navigationManager.setScene(SceneEnum.DASHBOARD);
     }
 
     public static void main(String[] args) {

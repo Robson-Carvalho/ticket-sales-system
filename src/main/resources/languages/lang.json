@@ -1,0 +1,98 @@
+{
+  "pt_br": {
+    "system": {
+      "titleBar": "Sistema de Vendas de Ingressos"
+    },
+    "screens": {
+      "signIn": {
+        "title": "Bem-vindo",
+        "subtitle": "Faça login na plataforma e encontre seu evento o mais próximo de você.",
+        "loginLabel": "Login",
+        "passwordLabel": "Senha",
+        "loginField": "Digite um login",
+        "passwordField": "Digite sua senha",
+        "buttons": {
+          "signIn": "Entrar",
+          "register": "Registrar",
+          "toggleLanguage": "Mudar Idioma"
+        }
+      },
+      "signUp": {
+        "title": "Bem-vindo",
+        "subtitle": "Faça login na plataforma de compra de ingressos para os melhores eventos.",
+        "loginField": "Digite um login",
+        "nameField": "Digite seu nome",
+        "cpfField": "Digite seu CPF",
+        "emailField": "Digite seu e-mail",
+        "passwordField": "Digite sua senha",
+        "loginLabel": "Login",
+        "nameLabel": "Nome",
+        "cpfLabel": "CPF",
+        "emailLabel": "E-mail",
+        "passwordLabel": "Senha",
+        "buttons": {
+          "signUp": "Cadastrar",
+          "signIn": "Entrar",
+          "toggleLanguage": "Mudar Idioma"
+        }
+      },
+      "dashboard": {
+        "homeNavBar": "Home",
+        "buysNavBar": "Compras",
+        "mailBoxNavBar": "Caixa de E-mails",
+        "settingsNavBar": "Configurações",
+        "titleMainDashboard": "Lista de Eventos",
+        "cardsNavBar": "Cartões",
+        "logoutButton": "Sair"
+      }
+    }
+  },
+  "en_us": {
+    "system": {
+      "titleBar": "Ticket Sale System"
+    },
+    "screens": {
+      "signIn": {
+        "title": "Welcome",
+        "subtitle": "Log in to the ticket purchasing platform for the best events.",
+        "loginLabel": "Login",
+        "passwordLabel": "Password",
+        "loginField": "Type a login",
+        "passwordField": "Type your password",
+        "buttons": {
+          "signIn": "Sign In",
+          "register": "Register",
+          "toggleLanguage": "Change Language"
+        }
+      },
+      "signUp": {
+        "title": "Welcome",
+        "subtitle": "Log in to the platform and find your nearest event.",
+        "loginField": "Type a login",
+        "nameField": "Type your name",
+        "cpfField": "Type your CPF",
+        "emailField": "Type your e-mail",
+        "passwordField": "Type your password",
+        "loginLabel": "Login",
+        "nameLabel": "Name",
+        "cpfLabel": "CPF",
+        "emailLabel": "E-mail",
+        "passwordLabel": "Password",
+        "buttons": {
+          "signUp": "Sign Up",
+          "signIn": "Sign In",
+          "toggleLanguage": "Change Language"
+        }
+      },
+      "dashboard": {
+        "homeNavBar": "Home",
+        "buysNavBar": "Buys",
+        "mailBoxNavBar": "Mail Box",
+        "settingsNavBar": "Settings",
+        "titleMainDashboard": "List of Eventos",
+        "cardsNavBar": "Cars",
+        "logoutButton": "Logout"
+      }
+    }
+  }
+}

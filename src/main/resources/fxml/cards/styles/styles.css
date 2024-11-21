@@ -53,6 +53,12 @@
     -fx-min-height: 100%;
 }
 
+.title-main{
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #333333;
+}
+
 .link {
     -fx-font-size: 16px;
     -fx-font-weight: bold;
@@ -88,8 +94,49 @@
     -fx-text-fill: #333333;
 }
 
-.main{}
+.section-title {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #333333;
+}
 
-.section{
+.credit-card-list {
+    -fx-pref-height: 300px;
+    -fx-background-color: #f0f0f0;
+    -fx-border-radius: 5px;
+}
 
+.btn-primary {
+    -fx-background-color: #4CAF50;
+    -fx-text-fill: white;
+    -fx-padding: 8px 16px;
+    -fx-background-radius: 5px;
+    -fx-cursor: hand;
+}
+
+.btn-primary:hover {
+    -fx-background-color: #45a049;
+}
+
+.btn-danger {
+    -fx-background-color: #FF7369;
+    -fx-text-fill: white;
+    -fx-padding: 8px 16px;
+    -fx-background-radius: 5px;
+    -fx-cursor: hand;
+}
+
+.btn-danger:hover {
+    -fx-background-color: #f44336;
+}
+
+/* Estilos para as TextFields e ListView */
+TextField {
+    -fx-padding: 10px;
+    -fx-background-radius: 5px;
+    -fx-border-color: #ccc;
+}
+
+TextField:focused {
+    -fx-border-color: #4CAF50;
 }

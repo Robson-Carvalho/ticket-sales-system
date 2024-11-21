@@ -6,6 +6,9 @@ module com.uefs.system {
     requires javafx.web;
     requires javafx.media;
     requires com.google.gson;
+    requires annotations;
+    requires java.logging;
+    requires com.google.protobuf;
 
     opens com.uefs.system.model to com.google.gson;
     opens com.uefs.system.service to com.google.gson;
@@ -18,6 +21,7 @@ module com.uefs.system {
     exports com.uefs.system.view.controllers;
     exports com.uefs.system.emun;
     exports com.uefs.system.utils;
+    exports com.uefs.system.model;
     exports com.uefs.system.Interface;
     exports com.uefs.system.view;
     exports com.uefs.system;

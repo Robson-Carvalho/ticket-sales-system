@@ -1,28 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.StackPane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 
-<?import javafx.scene.text.Text?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<StackPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.uefs.system.view.controllers.DashboardController"
+<?import javafx.scene.text.Text?>
+
+<StackPane xmlns="http://javafx.com/javafx"
+           xmlns:fx="http://javafx.com/fxml"
+           fx:controller="com.uefs.system.view.controllers.MailBoxController"
            stylesheets="@styles/styles.css" styleClass="stack-pane">
     <GridPane styleClass="body">
         <rowConstraints>
-            <RowConstraints vgrow="ALWAYS" percentHeight="10" />
-            <RowConstraints vgrow="ALWAYS" prefHeight="90"/>
+            <RowConstraints  percentHeight="10" />
+            <RowConstraints  prefHeight="90"/>
         </rowConstraints>
 
         <HBox GridPane.rowIndex="0" styleClass="header">
             <VBox styleClass="navbar" alignment="center">
 
-                <GridPane>
+                <GridPane styleClass="bar">
                     <columnConstraints>
                         <ColumnConstraints hgrow="ALWAYS" percentWidth="10" />
                         <ColumnConstraints hgrow="ALWAYS" percentWidth="80"/>
@@ -36,11 +34,10 @@
                     </VBox>
 
                     <HBox GridPane.columnIndex="1" styleClass="menu" spacing="120">
-                        <Button fx:id="homeNavBar" styleClass="link" onAction="#navigationToHome"/>
-                        <Button fx:id="mailBoxNavBar"  styleClass="link" onAction="#navigationToMailBox" />
-                        <Button fx:id="buysNavBar" text="Cards" styleClass="link" onAction="#navigationToBuys" />
-                        <Button fx:id="cardsNavBar"  styleClass="link" onAction="#navigationToCards" />
-                        <Button fx:id="settingsNavBar"  styleClass="link" onAction="#navigationToSettings" />
+                        <Button fx:id="home" text="Home" styleClass="link" onAction="#home" />
+                        <Button fx:id="mailBox" text="Mail Box" styleClass="link" onAction="#mailBox" />
+                        <Button fx:id="settings" text="Settings" styleClass="link" onAction="#settings" />
+                        <Button fx:id="cards" text="Cards" styleClass="link" onAction="#cards" />
                     </HBox>
 
                     <VBox GridPane.columnIndex="2" styleClass="logout-component">
@@ -50,12 +47,14 @@
             </VBox>
         </HBox>
 
-        <VBox GridPane.rowIndex="1" styleClass="main" >
-            <VBox spacing="24" styleClass="section" >
-                <Text fx:id="titleMainDashboard" styleClass="title-main"  />
+        <VBox GridPane.rowIndex="1" styleClass="main">
 
-                <VBox fx:id="containerEvents" spacing="24"  />
+            <VBox spacing="24">
+                <Text styleClass="title-main" text="Caixa de E-mail" />
             </VBox>
+
+
         </VBox>
     </GridPane>
+
 </StackPane>
