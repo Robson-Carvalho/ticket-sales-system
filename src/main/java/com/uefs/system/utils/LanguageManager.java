@@ -25,7 +25,7 @@ public class LanguageManager {
         observers.add(observer);
     }
 
-    private void notifyObservers() {
+    public void notifyObservers() {
         for (ILanguageObserver observer : observers) {
             observer.updateLanguage();
         }

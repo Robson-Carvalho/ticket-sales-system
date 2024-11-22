@@ -5,6 +5,7 @@ import com.uefs.system.controller.UserController;
 import com.uefs.system.emun.SceneEnum;
 import com.uefs.system.model.User;
 import com.uefs.system.utils.LanguageManager;
+import com.uefs.system.utils.SessionManager;
 import com.uefs.system.view.NavigationManager;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -24,9 +25,11 @@ public class SignInController implements ILanguageObserver {
 
     private final NavigationManager navigationManager = new NavigationManager();
     private final LanguageManager languageManager;
+    private final SessionManager sessionManager;
 
-    public SignInController(LanguageManager languageManager) {
+    public SignInController(LanguageManager languageManager, SessionManager sessionManager) {
         this.languageManager = languageManager;
+        this.sessionManager = sessionManager;
     }
 
     @FXML
@@ -54,7 +57,15 @@ public class SignInController implements ILanguageObserver {
 
     private boolean isValidLogin(String login, String password) {
         UserController userController = new UserController();
-        return userController.login(login, password);
+
+        if(userController.login(login, password)){
+            User user = userController.getByLogin(login);
+            sessionManager.saveUserSession(user);
+            languageManager.notifyObservers();
+            return true;
+        }else{
+            return false;
+        }
     }
 
     private void showLoginSuccessAlert() {

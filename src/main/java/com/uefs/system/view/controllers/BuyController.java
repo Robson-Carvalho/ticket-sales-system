@@ -1,33 +1,25 @@
 package com.uefs.system.view.controllers;
 
 import com.uefs.system.Interface.ILanguageObserver;
-import com.uefs.system.controller.EventController;
 import com.uefs.system.emun.SceneEnum;
-import com.uefs.system.model.Event;
 import com.uefs.system.utils.LanguageManager;
 import com.uefs.system.utils.SessionManager;
 import com.uefs.system.view.NavigationManager;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.geometry.Insets;
 import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Priority;
-import javafx.scene.layout.Region;
+import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.List;
 
-public class SettingsController implements ILanguageObserver {
+public class BuyController implements ILanguageObserver {
     private final NavigationManager navigationManager = new NavigationManager();
-    private final SessionManager sessionManager;
     private final LanguageManager languageManager;
+    private final SessionManager sessionManager;
 
-    public SettingsController(LanguageManager languageManager, SessionManager sessionManager) {
+    public BuyController(LanguageManager languageManager, SessionManager sessionManager) {
         this.languageManager = languageManager;
         this.sessionManager = sessionManager;
     }
@@ -58,19 +50,6 @@ public class SettingsController implements ILanguageObserver {
 
     @FXML private void navigationToBuys(){navigationManager.setScene(SceneEnum.BUYS);}
 
-    // Life Cycle
-    @Override
-    public void updateLanguage() {
-        String userName = sessionManager.getName();
-
-        homeNavBar.setText(languageManager.getText("components.navbar.homeNavBar"));
-        mailBoxNavBar.setText(languageManager.getText("components.navbar.mailBoxNavBar"));
-        settingsNavBar.setText(languageManager.getText("components.navbar.settingsNavBar"));
-        buysNavBar.setText(languageManager.getText("components.navbar.buysNavBar"));
-        titleMain.setText(languageManager.getText("screens.settings.titleMain") + ", " + userName + "!");
-        cardsNavBar.setText(languageManager.getText("components.navbar.cardsNavBar"));
-        logoutButton.setText(languageManager.getText("components.navbar.logoutButton"));
-    }
 
     // Logic
     @FXML
@@ -78,4 +57,17 @@ public class SettingsController implements ILanguageObserver {
         sessionManager.clearUserSession();
         navigationManager.setScene(SceneEnum.SIGNIN);
     }
+
+    // Life Cycle
+    @Override
+    public void updateLanguage() {
+        homeNavBar.setText(languageManager.getText("components.navbar.homeNavBar"));
+        mailBoxNavBar.setText(languageManager.getText("components.navbar.mailBoxNavBar"));
+        settingsNavBar.setText(languageManager.getText("components.navbar.settingsNavBar"));
+        buysNavBar.setText(languageManager.getText("components.navbar.buysNavBar"));
+        titleMain.setText(languageManager.getText("screens.buys.titleMain"));
+        cardsNavBar.setText(languageManager.getText("components.navbar.cardsNavBar"));
+        logoutButton.setText(languageManager.getText("components.navbar.logoutButton"));
+    }
+
 }

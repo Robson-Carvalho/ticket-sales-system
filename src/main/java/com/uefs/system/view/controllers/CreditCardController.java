@@ -3,6 +3,7 @@ package com.uefs.system.view.controllers;
 import com.uefs.system.Interface.ILanguageObserver;
 import com.uefs.system.emun.SceneEnum;
 import com.uefs.system.utils.LanguageManager;
+import com.uefs.system.utils.SessionManager;
 import com.uefs.system.view.NavigationManager;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -11,102 +12,62 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 
 public class CreditCardController implements ILanguageObserver {
     private final NavigationManager navigationManager = new NavigationManager();
     private final LanguageManager languageManager;
+    private final SessionManager sessionManager;
 
-    public CreditCardController(LanguageManager languageManager) {
+    public CreditCardController(LanguageManager languageManager, SessionManager sessionManager) {
         this.languageManager = languageManager;
+        this.sessionManager = sessionManager;
     }
 
+    //    Initialize
+    @FXML
+    private void initialize() {
+        updateLanguage();
+    }
+
+    //    Components
+    @FXML private Button homeNavBar;
+    @FXML private Button mailBoxNavBar;
+    @FXML private Button settingsNavBar;
+    @FXML private Button cardsNavBar;
+    @FXML private Button buysNavBar;
+    @FXML private Text titleMain;
     @FXML private Button logoutButton;
-    @FXML private Button btnAddCard;
 
-    @FXML private Button  card;
-    @FXML private VBox containerCards;
+    // Navigation
+    @FXML private void navigationToCards(){navigationManager.setScene(SceneEnum.CARDS);}
 
+    @FXML private void navigationToHome(){navigationManager.setScene(SceneEnum.DASHBOARD);}
+
+    @FXML private void navigationToMailBox(){navigationManager.setScene(SceneEnum.MAILBOX);}
+
+    @FXML private void navigationToSettings(){navigationManager.setScene(SceneEnum.SETTINGS);}
+
+    @FXML private void navigationToBuys(){navigationManager.setScene(SceneEnum.BUYS);}
+
+
+    // Logic
     @FXML
-    private ListView<String> lvCreditCards;
-
-    @FXML
-    private Button btnDeleteCard;
-
-    @FXML
-    private TextField tfCardNumber;
-
-    @FXML
-    private TextField tfCardHolder;
-
-    @FXML
-    private void home(){
-        navigationManager.setScene(SceneEnum.DASHBOARD);
-    }
-
-    @FXML
-    private void cards(){
-        navigationManager.setScene(SceneEnum.CARDS);
-    }
-
-    @FXML
-    private void mailBox(){
-        navigationManager.setScene(SceneEnum.MAILBOX);
-    }
-
-    @FXML
-    private void settings(){
-        navigationManager.setScene(SceneEnum.SETTINGS);
-    }
-
-    @FXML
-    private void logout(){
+    public void logout(){
+        sessionManager.clearUserSession();
         navigationManager.setScene(SceneEnum.SIGNIN);
     }
 
-    // Lista observável de cartões
-    private final ObservableList<String> creditCards = FXCollections.observableArrayList();
-
-    // Inicialização
-    @FXML
-    public void initialize() {
-        // Inicializa a ListView com a lista de cartões
-        lvCreditCards.setItems(creditCards);
-
-        // Configura o comportamento do botão de excluir
-        btnDeleteCard.setDisable(true);
-
-        // Adiciona um listener para habilitar o botão de excluir apenas quando um cartão for selecionado
-        lvCreditCards.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-            btnDeleteCard.setDisable(newValue == null);
-        });
-    }
-
-    // Adicionar um novo cartão
-    public void addCard() {
-        String cardNumber = tfCardNumber.getText();
-        String cardHolder = tfCardHolder.getText();
-
-        if (!cardNumber.isEmpty() && !cardHolder.isEmpty()) {
-            // Adiciona o cartão à lista (aqui você pode usar um formato mais complexo, se necessário)
-            creditCards.add("Número do Cartão: " + cardNumber + " - Titular: " + cardHolder);
-            tfCardNumber.clear();
-            tfCardHolder.clear();
-        }
-    }
-
-    // Excluir cartão
-    @FXML
-    public void deleteCreditCard() {
-        String selectedCard = lvCreditCards.getSelectionModel().getSelectedItem();
-
-        if (selectedCard != null) {
-            // Remove o cartão selecionado da lista
-            creditCards.remove(selectedCard);
-        }
-    }
-
+    // Life Cycle
     @Override
     public void updateLanguage() {
-
+        homeNavBar.setText(languageManager.getText("components.navbar.homeNavBar"));
+        mailBoxNavBar.setText(languageManager.getText("components.navbar.mailBoxNavBar"));
+        settingsNavBar.setText(languageManager.getText("components.navbar.settingsNavBar"));
+        buysNavBar.setText(languageManager.getText("components.navbar.buysNavBar"));
+        titleMain.setText(languageManager.getText("screens.cards.titleMain"));
+        cardsNavBar.setText(languageManager.getText("components.navbar.cardsNavBar"));
+        logoutButton.setText(languageManager.getText("components.navbar.logoutButton"));
     }
+
 }

@@ -7,7 +7,7 @@
 }
 
 .stack-pane {
-    -fx-background-color: #f9f9f9;
+    -fx-background-color: #ffffff;
 }
 
 .body{
@@ -88,8 +88,6 @@
     -fx-text-fill: #333333;
 }
 
-.main{}
-
-.section{
+.main > .section > .container-events{
 
 }

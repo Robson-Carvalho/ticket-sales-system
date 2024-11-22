@@ -3,6 +3,8 @@ package com.uefs.system.view;
 import com.uefs.system.Interface.ILanguageObserver;
 import com.uefs.system.emun.SceneEnum;
 import com.uefs.system.utils.LanguageManager;
+import com.uefs.system.utils.SessionManager;
+import javafx.fxml.LoadException;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.fxml.FXMLLoader;
@@ -36,7 +38,7 @@ public class NavigationManager implements ILanguageObserver {
         primaryStage.setResizable(false);
     }
 
-    public void addScene(LanguageManager languageManager, SceneEnum screen, String fxmlFilePath) {
+    public void addScene(LanguageManager languageManager, SessionManager sessionManager, SceneEnum screen, String fxmlFilePath) {
         String name = screen.getValue();
 
         try {
@@ -44,12 +46,13 @@ public class NavigationManager implements ILanguageObserver {
 
             loader.setControllerFactory(controllerClass -> {
                 try {
-                    return controllerClass.getDeclaredConstructor(LanguageManager.class).newInstance(languageManager);
+                    return controllerClass.getDeclaredConstructor(LanguageManager.class, SessionManager.class).newInstance(languageManager, sessionManager);
                 } catch (InstantiationException | NoSuchMethodException | IllegalAccessException |
                          InvocationTargetException e) {
                     throw new RuntimeException(e);
                 }
             });
+
 
             Parent root = loader.load();
 
@@ -59,7 +62,7 @@ public class NavigationManager implements ILanguageObserver {
 
             scenes.put(name, scene);
         } catch (IOException e) {
-            System.out.println("Erro ao carregar FXML: " + fxmlFilePath + " "+ e.getMessage());
+            System.out.println("Erro ao carregar FXML: " + fxmlFilePath + "\n" + e.getMessage()+ "\n" + e.getCause());
         }
     }
 

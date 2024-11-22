@@ -3,6 +3,16 @@
     "system": {
       "titleBar": "Sistema de Vendas de Ingressos"
     },
+    "components": {
+      "navbar": {
+        "homeNavBar": "Home",
+        "buysNavBar": "Compras",
+        "mailBoxNavBar": "Caixa de E-mails",
+        "settingsNavBar": "Configurações",
+        "cardsNavBar": "Cartões",
+        "logoutButton": "Sair"
+      }
+    },
     "screens": {
       "signIn": {
         "title": "Bem-vindo",
@@ -37,19 +47,35 @@
         }
       },
       "dashboard": {
-        "homeNavBar": "Home",
-        "buysNavBar": "Compras",
-        "mailBoxNavBar": "Caixa de E-mails",
-        "settingsNavBar": "Configurações",
-        "titleMainDashboard": "Lista de Eventos",
-        "cardsNavBar": "Cartões",
-        "logoutButton": "Sair"
+        "titleMain": "Lista de Eventos"
+      },
+      "settings": {
+        "titleMain": "Configurações - Seja bem-vindo"
+      },
+      "buys": {
+        "titleMain": "Suas compras"
+      },
+      "mailBox": {
+        "titleMain": "E-mails"
+      },
+      "cards": {
+        "titleMain": "Gerenciador de Cartões"
       }
     }
   },
   "en_us": {
     "system": {
       "titleBar": "Ticket Sale System"
+    },
+    "components": {
+      "navbar": {
+        "homeNavBar": "Home",
+        "buysNavBar": "Buys",
+        "mailBoxNavBar": "Mail Box",
+        "settingsNavBar": "Settings",
+        "cardsNavBar": "Cards",
+        "logoutButton": "Logout"
+      }
     },
     "screens": {
       "signIn": {
@@ -85,13 +111,19 @@
         }
       },
       "dashboard": {
-        "homeNavBar": "Home",
-        "buysNavBar": "Buys",
-        "mailBoxNavBar": "Mail Box",
-        "settingsNavBar": "Settings",
-        "titleMainDashboard": "List of Eventos",
-        "cardsNavBar": "Cars",
-        "logoutButton": "Logout"
+        "titleMain": "List of Eventos"
+      },
+      "settings": {
+        "titleMain": "Settings - Welcome"
+      },
+      "buys": {
+        "titleMain": "Your buys"
+      },
+      "mailBox": {
+        "titleMain": "E-mails"
+      },
+      "cards": {
+        "titleMain": "Cards Manager"
       }
     }
   }

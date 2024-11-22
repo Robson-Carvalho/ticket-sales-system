@@ -15,7 +15,7 @@ public class PathsFile {
     }
 
     public static String getEventsJSON() {
-        return Paths.get(STORAGE_BASE_PATH, "example-events.json").toString();
+        return Paths.get(STORAGE_BASE_PATH, "events.json").toString();
     }
 
     public static String getTicketsJSON() {

@@ -52,6 +52,27 @@ public class User {
     }
 
     /**
+     * Construtor alternativo que inicializa um usuário com id.
+     *
+     * @param id    ID do usuário
+     * @param login    SignUp do usuário
+     * @param password Senha do usuário
+     * @param name     Nome completo do usuário
+     * @param cpf      CPF do usuário
+     * @param email    E-mail do usuário
+     * @param isAdmin  Indica se o usuário é administrador
+     */
+    public User(UUID id, String login, String password, String name, String cpf, String email, Boolean isAdmin) {
+        this.id = id;
+        this.login = login;
+        this.password = password;
+        this.name = name;
+        this.cpf = cpf;
+        this.email = email;
+        this.isAdmin = isAdmin;
+    }
+
+    /**
      * Construtor alternativo que inicializa um usuário comum (não administrador).
      *
      * @param login    SignUp do usuário
@@ -69,6 +90,7 @@ public class User {
         this.email = email;
         this.isAdmin = false;
     }
+
 
     /**
      * Retorna o ID único do usuário.

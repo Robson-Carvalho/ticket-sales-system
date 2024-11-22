@@ -5,6 +5,7 @@ import com.uefs.system.controller.UserController;
 import com.uefs.system.emun.SceneEnum;
 import com.uefs.system.model.User;
 import com.uefs.system.utils.LanguageManager;
+import com.uefs.system.utils.SessionManager;
 import com.uefs.system.view.NavigationManager;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -29,12 +30,14 @@ public class SignUpController implements ILanguageObserver {
     @FXML private Button signInButton;
     @FXML private Button toggleLanguageButton;
 
-    UserController userController = new UserController();
-    NavigationManager navigationManager = new NavigationManager();
-    LanguageManager languageManager;
+    private final  UserController userController = new UserController();
+    private final NavigationManager navigationManager = new NavigationManager();
+    private final LanguageManager languageManager;
+    private final SessionManager sessionManager;
 
-    public SignUpController(LanguageManager languageManager) {
+    public SignUpController(LanguageManager languageManager, SessionManager sessionManager) {
         this.languageManager = languageManager;
+        this.sessionManager = sessionManager;
     }
 
     @FXML

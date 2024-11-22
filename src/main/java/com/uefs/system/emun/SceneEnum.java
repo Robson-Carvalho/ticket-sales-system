@@ -6,7 +6,8 @@ public enum SceneEnum {
     SIGNIN("signin"),
     MAILBOX("mailBox"),
     SETTINGS("settings"),
-    CARDS("cards");
+    CARDS("cards"),
+    BUYS("buys");
 
     private final String value;
 

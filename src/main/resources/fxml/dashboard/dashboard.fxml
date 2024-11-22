@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<StackPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.uefs.system.view.controllers.CreditCardController"
+<StackPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.uefs.system.view.controllers.DashboardController"
            stylesheets="@styles/styles.css" styleClass="stack-pane">
     <GridPane styleClass="body">
         <rowConstraints>
@@ -54,7 +54,7 @@
             <VBox spacing="24" styleClass="section" >
                 <Text fx:id="titleMain" styleClass="title-main"  />
 
-
+                <VBox fx:id="containerEvents" styleClass="container-events" />
             </VBox>
         </VBox>
     </GridPane>
