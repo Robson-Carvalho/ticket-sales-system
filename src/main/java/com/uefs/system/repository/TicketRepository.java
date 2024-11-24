@@ -63,7 +63,6 @@ public class TicketRepository implements IRepository<Ticket> {
     private void saveTickets() {
         try (FileWriter writer = new FileWriter(FILE_PATH)) {
             Gson gson = new GsonBuilder()
-                    .excludeFieldsWithoutExposeAnnotation()
                     .setPrettyPrinting()
                     .create();
             gson.toJson(tickets, writer);

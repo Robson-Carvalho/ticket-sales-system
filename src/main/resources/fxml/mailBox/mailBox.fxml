@@ -11,6 +11,7 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
+<?import javafx.scene.control.ListView?>
 <StackPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.uefs.system.view.controllers.MailBoxController"
            stylesheets="@styles/styles.css" styleClass="stack-pane">
     <GridPane styleClass="body">
@@ -55,6 +56,7 @@
                 <Text fx:id="titleMain" styleClass="title-main"  />
 
 
+                <VBox fx:id="listMails" styleClass="list-mails" />
             </VBox>
         </VBox>
     </GridPane>

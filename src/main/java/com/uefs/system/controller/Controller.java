@@ -11,9 +11,7 @@
 
 package com.uefs.system.controller;
 
-import com.uefs.system.model.Event;
-import com.uefs.system.model.Ticket;
-import com.uefs.system.model.User;
+import com.uefs.system.model.*;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -149,6 +147,32 @@ public class Controller {
 
         return null;
     }
+
+    public Boolean purchase(User user, UUID eventId, String seat) throws Exception {
+        try{
+            transactionController.create(user.getEmail(), eventId, seat);
+            Ticket ticket = ticketController.create(eventId, seat);
+            user.addTicket(ticket);
+            userController.update(user);
+            return true;
+        }catch (Exception e) {
+            return false;
+        }
+    }
+
+    public Boolean purchase(User user, UUID eventId, String seat, String cardNumber) throws Exception {
+        try{
+            Card card = cardController.getCardByNumber(cardNumber);
+            transactionController.create(user.getEmail(), eventId, card.getId(), seat);
+            Ticket ticket = ticketController.create(eventId, seat);
+            user.addTicket(ticket);
+            userController.update(user);
+            return true;
+        }catch (Exception e){
+            return false;
+        }
+    }
+
 
     /**
      * Cancela a compra de um ingresso.

@@ -54,7 +54,6 @@
 }
 
 .link {
-    -fx-font-size: 16px;
     -fx-font-weight: bold;
     -fx-text-fill: #292929;
     -fx-background-color: transparent;
@@ -70,7 +69,6 @@
     -fx-font-weight: bold;
     -fx-background-radius: 8px;
     -fx-padding: 8px 32px;
-    -fx-font-size: 16px;
     -fx-background-color: #ff0000;
     -fx-text-fill: white;
 }
@@ -83,7 +81,6 @@
 
 /*Main*/
 .title-main{
-    -fx-font-size: 24px;
     -fx-font-weight: bold;
     -fx-text-fill: #333333;
 }

@@ -12,8 +12,10 @@
 package com.uefs.system.controller;
 
 import com.uefs.system.model.Event;
+import com.uefs.system.model.Ticket;
 import com.uefs.system.model.User;
 import com.uefs.system.service.EventService;
+import com.uefs.system.service.UserService;
 
 
 import java.util.Date;
@@ -93,6 +95,7 @@ public class EventController {
     public void delete(UUID id) {
         eventService.delete(id);
     }
+
 
     /**
      * Deleta todos os eventos.

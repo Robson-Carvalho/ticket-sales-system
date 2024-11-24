@@ -23,7 +23,7 @@
         "passwordField": "Digite sua senha",
         "buttons": {
           "signIn": "Entrar",
-          "register": "Registrar",
+          "register": "Cadastra-se",
           "toggleLanguage": "Mudar Idioma"
         }
       },
@@ -47,13 +47,26 @@
         }
       },
       "dashboard": {
-        "titleMain": "Lista de Eventos"
+        "titleMain": "Lista de Eventos",
+        "buyButton": "Comprar",
+        "selectOption": "Selecione",
+        "paymentMethodDefault": "Boleto"
       },
       "settings": {
-        "titleMain": "Configurações - Seja bem-vindo"
+        "titleMain": "Configurações - Bem-vindo",
+        "labelID": "ID",
+        "labelName": "Nome",
+        "labelLogin": "Usuário",
+        "labelEmail": "E-mail",
+        "labelPassword": "Senha",
+        "labelCPF": "CPF",
+        "submitButton": "Atualizar",
+        "cancelUpdate": "Cancelar",
+        "toggleLanguageButton": "Alterar Idioma",
+        "accessibilityCheckBox": "Habilitar Acessibilidade"
       },
       "buys": {
-        "titleMain": "Suas compras"
+        "titleMain": "Suas Compras"
       },
       "mailBox": {
         "titleMain": "E-mails"
@@ -66,7 +79,8 @@
         "labelCardNumber": "Número do Cartão",
         "labelExpirationDate": "Data de Validade",
         "labelCvv": "CVV",
-        "labelSelector": "Selecione a Bandeira"
+        "labelSelector": "Selecione a Bandeira",
+        "deleteCard": "Apagar"
       }
     }
   },
@@ -118,13 +132,26 @@
         }
       },
       "dashboard": {
-        "titleMain": "List of Eventos"
+        "titleMain": "List of Eventos",
+        "buyButton": "Buy",
+        "selectOption": "Select",
+        "paymentMethodDefault": "Ticket"
       },
       "settings": {
-        "titleMain": "Settings - Welcome"
-      },
+        "titleMain": "Settings - Welcome",
+        "labelID": "ID",
+        "labelName": "Name",
+        "labelLogin": "Login",
+        "labelEmail": "Email",
+        "labelPassword": "Password",
+        "labelCPF": "CPF",
+        "submitButton": "Update",
+        "cancelUpdate": "Cancel",
+        "toggleLanguageButton": "Toggle Language",
+        "accessibilityCheckBox": "Enable Accessibility"
+},
       "buys": {
-        "titleMain": "Your buys"
+        "titleMain": "Your Buys"
       },
       "mailBox": {
         "titleMain": "E-mails"
@@ -137,7 +164,8 @@
         "labelCardNumber": "Card Number",
         "labelExpirationDate": "Expiration Date",
         "labelCvv": "CVV",
-        "labelSelector": "Select Card Type"
+        "labelSelector": "Select Card Type",
+        "deleteCard": "Delete"
       }
     }
   }

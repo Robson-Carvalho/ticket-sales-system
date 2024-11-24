@@ -54,7 +54,6 @@
 }
 
 .link {
-    -fx-font-size: 16px;
     -fx-font-weight: bold;
     -fx-text-fill: #292929;
     -fx-background-color: transparent;
@@ -70,7 +69,6 @@
     -fx-font-weight: bold;
     -fx-background-radius: 8px;
     -fx-padding: 8px 32px;
-    -fx-font-size: 16px;
     -fx-background-color: #ff0000;
     -fx-text-fill: white;
 }
@@ -83,7 +81,109 @@
 
 /*Main*/
 .title-main{
-    -fx-font-size: 24px;
     -fx-font-weight: bold;
     -fx-text-fill: #333333;
 }
+
+.section > .form-container{}
+
+.section > .form-container > .group-input {
+    -fx-spacing: 8px;
+}
+
+.section > .form-container > .group-input > .label{
+    -fx-font-weight: bold;
+}
+
+.section > .form-container > .group-input > .input-field{
+    -fx-pref-width: 100%;
+    -fx-max-width: Infinity;
+    -fx-background-color: #f0f0f0;
+    -fx-border-radius: 5px;
+    -fx-border-color: #ccc;
+    -fx-border-width: 2px;
+}
+
+.section > .form-container > .group-input > .focus:focused {
+    -fx-border-color: #407BFF;
+}
+
+.section > .form-container > .group-input > .not-focus {
+    -fx-text-fill: rgba(124, 124, 124, 0.8);
+}
+
+.section > .form-container > .buttons {
+    -fx-alignment: center-left;
+    -fx-spacing: 16px;
+}
+
+.section > .form-container > .buttons > .submit {
+    -fx-background-color: #407BFF;
+    -fx-text-fill: white;
+    -fx-padding: 8px 48px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 8px;
+}
+
+.section > .form-container > .buttons > .submit:hover {
+    -fx-background-color: rgba(64, 123, 255, 0.8);
+    -fx-text-fill: white;
+    -fx-padding: 8px 48px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 8px;
+    -fx-cursor: hand;
+}
+
+.section > .form-container > .buttons > .cancel{
+    -fx-background-color: #ff574d;
+    -fx-text-fill: white;
+    -fx-padding: 8px 48px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 8px;
+}
+
+.section > .form-container > .buttons > .cancel:hover{
+    -fx-cursor: hand;
+    -fx-background-color: rgba(255, 87, 77, 0.6);
+}
+
+.section > .form-container > .buttons > .toggle {
+    -fx-background-color: white;
+    -fx-text-fill: #407BFF;
+    -fx-padding: 8px 48px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 8px;
+    -fx-border-color: #407BFF;
+    -fx-border-width: 1px;
+    -fx-border-radius: 8px;
+}
+
+.section > .form-container > .buttons > .toggle:hover{
+    -fx-background-color: white;
+    -fx-text-fill: rgba(64, 123, 255, 0.8);
+    -fx-padding: 8px 48px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 8px;
+    -fx-border-color: rgba(64, 123, 255, 0.8);
+    -fx-border-width: 1px;
+    -fx-border-radius: 8px;
+    -fx-cursor: hand;
+}
+
+
+.section > .form-container > .buttons > .checkbox {
+
+}
+
+
+.section > .form-container > .buttons > .checkbox {
+    -fx-font-weight: bold;
+    -fx-text-fill: #333333;
+}
+
+.section > .form-container > .buttons > .checkbox:hover {
+    -fx-font-weight: bold;
+    -fx-text-fill: rgba(51, 51, 51, 0.8);
+    -fx-cursor: hand;
+}
+

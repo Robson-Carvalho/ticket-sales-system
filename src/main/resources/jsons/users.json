@@ -1,12 +1,14 @@
 [
   {
-    "id": "e8b3ad30-fb22-46db-92a6-b8aeeefb239f",
-    "login": "robsparta",
-    "password": "1234",
-    "name": "Robson Carvalho",
-    "cpf": "987654321",
-    "email": "lia@example.com",
+    "id": "3213237d-d4d3-47fc-b419-ce0c75632e75",
+    "login": "sparta",
+    "password": "12345",
+    "name": "Robson Carvalho de Souza",
+    "cpf": "09609964516",
+    "email": "robsoncarvalho.tech@gmail",
     "isAdmin": false,
-    "tickets": []
+    "tickets": [
+      "b1655076-21cc-4840-bb50-8f64199baaea"
+    ]
   }
 ]

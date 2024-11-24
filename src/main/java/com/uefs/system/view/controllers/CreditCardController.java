@@ -4,6 +4,7 @@ import com.uefs.system.Interface.ILanguageObserver;
 import com.uefs.system.controller.CardController;
 import com.uefs.system.emun.SceneEnum;
 import com.uefs.system.model.Card;
+import com.uefs.system.utils.AccessibilityManager;
 import com.uefs.system.utils.LanguageManager;
 import com.uefs.system.utils.SessionManager;
 import com.uefs.system.view.NavigationManager;
@@ -23,12 +24,14 @@ import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 public class CreditCardController implements ILanguageObserver {
     private final NavigationManager navigationManager = new NavigationManager();
     private final LanguageManager languageManager;
     private final SessionManager sessionManager;
     private final CardController cardController = new CardController();
+    private final AccessibilityManager accessibilityManager = new AccessibilityManager();
 
     public CreditCardController(LanguageManager languageManager, SessionManager sessionManager) {
         this.languageManager = languageManager;
@@ -92,7 +95,7 @@ public class CreditCardController implements ILanguageObserver {
         List<Card> cc = new ArrayList<>();
 
         for (Card c : cardController.getAll()) {
-            if(c.getUserId().equals(sessionManager.getID())) {
+            if(c.getUserId().equals(UUID.fromString(sessionManager.getID()))) {
                 cc.add(c);
             }
         }
@@ -104,6 +107,10 @@ public class CreditCardController implements ILanguageObserver {
         scrollPane.setFitToWidth(true);
         scrollPane.setFitToHeight(true);
 
+        Boolean accessibilityIsActive = accessibilityManager.getAccessibilityPropertiesCurrent();
+
+        double fontSizeButton = accessibilityIsActive ? 16 : 14;
+        double fontSizeField = accessibilityIsActive ? 16 : 14;
 
         listView.setStyle("-fx-background-color: #f4f4f4; -fx-border-color: #ddd; -fx-border-width: 1px;");
 
@@ -116,14 +123,14 @@ public class CreditCardController implements ILanguageObserver {
                     setText(null);
                     setGraphic(null);
                 } else {
-                    Button removeButton = new Button("Remover");
+                    Button removeButton = new Button(languageManager.getText("screens.cards.deleteCard"));
                     removeButton.setStyle(
                             "-fx-background-color: #ff574d; " +
                             "-fx-text-fill: white; " +
                             "-fx-padding:  8px 48px; " +
                             "-fx-font-weight: bold;" +
                             "-fx-border-radius: 5px; " +
-                            "-fx-font-size: 16px;"+
+                            "-fx-font-size: "+fontSizeButton+"px;"+
                             "-fx-background-radius: 8px");
 
                     removeButton.setOnMouseEntered(e -> {
@@ -133,7 +140,7 @@ public class CreditCardController implements ILanguageObserver {
                                         "-fx-padding:  8px 48px; " +
                                         "-fx-font-weight: bold;" +
                                         "-fx-border-radius: 5px; " +
-                                        "-fx-font-size: 16px;"+
+                                        "-fx-font-size: "+fontSizeButton+"px;"+
                                         "-fx-background-radius: 8px;" +
                                         "-fx-cursor: hand");
                     });
@@ -146,7 +153,8 @@ public class CreditCardController implements ILanguageObserver {
                                         "-fx-font-weight: bold;" +
                                         "-fx-border-radius: 5px; " +
                                         "-fx-background-radius: 8px;"+
-                                        "-fx-font-size: 16px;");
+                                        "-fx-font-size: "+fontSizeButton+"px;"
+                        );
                     });
 
 
@@ -158,13 +166,13 @@ public class CreditCardController implements ILanguageObserver {
                     });
 
                     Label cardLabel = new Label(maskCardNumber(card.getCardNumber()));
-                    cardLabel.setStyle("-fx-font-size: 16px; -fx-padding: 5px; -fx-text-fill: #333;");
+                    cardLabel.setStyle("-fx-font-size:"+ fontSizeField+"px;" + "-fx-padding: 5px; -fx-text-fill: #333;");
 
                     HBox hBox = new HBox(10);
                     hBox.getChildren().add(cardLabel);
 
                     Region spacer = new Region();
-                    HBox.setHgrow(spacer, Priority.ALWAYS); // Faz o "spacer" crescer para preencher o espaço disponível
+                    HBox.setHgrow(spacer, Priority.ALWAYS);
                     hBox.getChildren().addAll(spacer, removeButton);
 
                     hBox.setStyle("-fx-background-color: #ffffff; -fx-padding: 10px; -fx-border-radius: 6px;");
@@ -174,37 +182,7 @@ public class CreditCardController implements ILanguageObserver {
         });
 
 
-// Aplicando a lista de cartões
         listView.setItems(cards);
-
-
-//        listView.setCellFactory(param -> new ListCell<Card>() {
-//            @Override
-//            protected void updateItem(Card card, boolean empty) {
-//                super.updateItem(card, empty);
-//                if (card == null || empty) {
-//                    setText(null);
-//                    setGraphic(null);
-//                } else {
-//                    Button removeButton = new Button("Remover");
-//                    removeButton.setOnAction(e -> {
-//                        cardController.delete(card.getId());
-//                        cards.remove(card);
-//                        messageAlert(Alert.AlertType.INFORMATION , "O cartão foi removido com sucesso.");
-//                        languageManager.notifyObservers();
-//                    });
-//
-//                    Label cardLabel = new Label(maskCardNumber(card.getCardNumber()));
-//                    cardLabel.setStyle("-fx-font-size: 16px; -fx-padding: 5px; -fx-text-fill: #333;");
-//
-//                    HBox hBox = new HBox(10);
-//                    hBox.getChildren().addAll(cardLabel, removeButton);
-//                    setGraphic(hBox);
-//                }
-//            }
-//        });
-//
-//        listView.setItems(cards);
     }
 
     private String maskCardNumber(String cardNumber) {
@@ -245,9 +223,7 @@ public class CreditCardController implements ILanguageObserver {
                 messageAlert(Alert.AlertType.WARNING, "Por favor, preencha todos os campos.");
             } else {
                 try{
-                    cardController.create(sessionManager.getID(), sessionManager.getName(), cardBrand, cardNumber, accountNumber, expirationDateValue, cvv);
-                    getCards();
-                    languageManager.notifyObservers();
+                    cardController.create(UUID.fromString(sessionManager.getID()), sessionManager.getName(), cardBrand, cardNumber, accountNumber, expirationDateValue, cvv);
                     messageAlert(Alert.AlertType.INFORMATION, "Cartão adicionando com suscesso.");
                 }catch (IllegalArgumentException e){
                     messageAlert(Alert.AlertType.WARNING, "Informações já eatão em uso.");
@@ -257,6 +233,8 @@ public class CreditCardController implements ILanguageObserver {
         } else {
             messageAlert(Alert.AlertType.ERROR,"Alguns campos não foram inicializados corretamente.");
         }
+
+        languageManager.notifyObservers();
     }
 
     @FXML private void cancelSubmit(){
@@ -284,13 +262,18 @@ public class CreditCardController implements ILanguageObserver {
     // Life Cycle
     @Override
     public void updateLanguage() {
+        Boolean accessibilityIsActive = accessibilityManager.getAccessibilityPropertiesCurrent();
+
         homeNavBar.setText(languageManager.getText("components.navbar.homeNavBar"));
         mailBoxNavBar.setText(languageManager.getText("components.navbar.mailBoxNavBar"));
         settingsNavBar.setText(languageManager.getText("components.navbar.settingsNavBar"));
         buysNavBar.setText(languageManager.getText("components.navbar.buysNavBar"));
-        titleMain.setText(languageManager.getText("screens.cards.titleMain"));
+        logoutButton.setText(languageManager.getText("components.navbar.logoutButton"));
         cardsNavBar.setText(languageManager.getText("components.navbar.cardsNavBar"));
         logoutButton.setText(languageManager.getText("components.navbar.logoutButton"));
+
+        titleMain.setText(languageManager.getText("screens.cards.titleMain"));
+
         submitButton.setText(languageManager.getText("screens.cards.submitButton"));
         labelAccountNumber.setText(languageManager.getText("screens.cards.labelAccountNumber"));
         labelCardNumber.setText(languageManager.getText("screens.cards.labelCardNumber"));
@@ -298,6 +281,40 @@ public class CreditCardController implements ILanguageObserver {
         labelCvv.setText(languageManager.getText("screens.cards.labelCvv"));
         labelSelector.setText(languageManager.getText("screens.cards.labelSelector"));
         cancelButton.setText(languageManager.getText("screens.cards.cancelButton"));
+
+        if (accessibilityIsActive) {
+            setFontSize(18, 28, 16, 16, 16);
+        }else{
+            setFontSize(16, 24, 14, 14, 14);
+        }
+
+        getCards();
+    }
+
+    private void setFontSize(double fontSizeNavBar, double fontSizeTitleMain, double fontSizeLabel, double fontSizeField, double fontSizeButton) {
+        homeNavBar.setStyle("-fx-font-size: " + fontSizeNavBar + "px;");
+        mailBoxNavBar.setStyle("-fx-font-size: " + fontSizeNavBar + "px;");
+        settingsNavBar.setStyle("-fx-font-size: " + fontSizeNavBar + "px;");
+        buysNavBar.setStyle("-fx-font-size: " + fontSizeNavBar + "px;");
+        cardsNavBar.setStyle("-fx-font-size: " + fontSizeNavBar + "px;");
+        logoutButton.setStyle("-fx-font-size: " + fontSizeNavBar + "px;");
+
+        titleMain.setStyle("-fx-font-size: " + fontSizeTitleMain + "px;");
+
+        labelAccountNumber.setStyle("-fx-font-size: " + fontSizeLabel + "px;");
+        labelCvv.setStyle("-fx-font-size: " + fontSizeLabel + "px;");
+        labelSelector.setStyle("-fx-font-size: " + fontSizeLabel + "px;");
+        labelCardNumber.setStyle("-fx-font-size: " + fontSizeLabel + "px;");
+        labelExpirationDate.setStyle("-fx-font-size: " + fontSizeLabel + "px;");
+
+        fieldAccountNumber.setStyle("-fx-font-size: " + fontSizeField + "px;");
+        fieldCardNumber.setStyle("-fx-font-size: " + fontSizeField + "px;");
+        expirationDate.setStyle("-fx-font-size: " + fontSizeField + "px;");
+        fieldCvv.setStyle("-fx-font-size: " + fontSizeField + "px;");
+        selectorBrand.setStyle("-fx-font-size: " + fontSizeField + "px;");
+
+        submitButton.setStyle("-fx-font-size: " + fontSizeButton + "px;");
+        cancelButton.setStyle("-fx-font-size: " + fontSizeButton + "px;");
     }
 
 }

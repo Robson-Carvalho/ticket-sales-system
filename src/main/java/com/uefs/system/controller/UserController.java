@@ -83,13 +83,12 @@ public class UserController {
      * @param email   O novo email do usuário.
      * @param password A nova senha do usuário.
      */
-    public void update(UUID id, String name, String email, String password) {
+    public void update(UUID id, String name, String email, String password) throws Exception {
         User user = userService.getById(id);
-        // Aqui você pode definir os novos valores para o usuário
-        // user.setName(name);
-        // user.setEmail(email);
-        // user.setPassword(password);
-        // userService.update(user);
+         user.setName(name);
+         user.setEmail(email);
+         user.setPassword(password);
+         userService.update(user);
     }
 
     /**

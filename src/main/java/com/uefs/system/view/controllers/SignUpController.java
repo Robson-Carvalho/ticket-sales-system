@@ -51,6 +51,7 @@ public class SignUpController implements ILanguageObserver {
             User user = userController.create(loginField.getText(), passwordField.getText(), nameField.getText(), cpfField.getText(),emailField.getText(), false);
             if(isValidLogin(user.getLogin(), user.getPassword())){
                 showLoginSuccessAlert();
+                sessionManager.saveUserSession(user);
                 navigationManager.setScene(SceneEnum.DASHBOARD);
             }else{
                 showLoginErrorAlert();
@@ -58,6 +59,8 @@ public class SignUpController implements ILanguageObserver {
         }catch (Exception e) {
             showLoginErrorAlert();
         }
+
+        languageManager.notifyObservers();
     }
 
     private boolean isValidLogin(String login, String password) {

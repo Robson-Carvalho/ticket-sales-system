@@ -11,6 +11,10 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.PasswordField?>
 <StackPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.uefs.system.view.controllers.SettingsController"
            stylesheets="@styles/styles.css" styleClass="stack-pane">
     <GridPane styleClass="body">
@@ -54,7 +58,44 @@
             <VBox spacing="24" styleClass="section" >
                 <Text fx:id="titleMain" styleClass="title-main"  />
 
+                <VBox styleClass="form-container" spacing="24">
+                    <VBox styleClass="group-input">
+                        <Label fx:id="labelID" text="ID" styleClass="label"  />
+                        <TextField fx:id="idField" styleClass="input-field, not-focus"/>
+                    </VBox>
 
+                    <VBox styleClass="group-input">
+                        <Label fx:id="labelLogin" text="Login" styleClass="label"  />
+                        <TextField fx:id="loginField" styleClass="input-field, not-focus"/>
+                    </VBox>
+
+                    <VBox styleClass="group-input">
+                        <Label fx:id="labelName" text="Nome" styleClass="label"  />
+                        <TextField fx:id="nameField" styleClass="input-field, focus"/>
+                    </VBox>
+
+                    <VBox styleClass="group-input">
+                        <Label fx:id="labelEmail" text="E-mail" styleClass="label"  />
+                        <TextField fx:id="emailField" styleClass="input-field, focus"/>
+                    </VBox>
+
+                    <VBox styleClass="group-input">
+                        <Label fx:id="labelPassword" text="Senha" styleClass="label"  />
+                        <TextField  fx:id="passwordField" styleClass="input-field, focus"/>
+                    </VBox>
+
+                    <VBox styleClass="group-input">
+                        <Label fx:id="labelCPF" text="CPF" styleClass="label"  />
+                        <TextField fx:id="cpfField" styleClass="input-field, not-focus"/>
+                    </VBox>
+
+                    <HBox styleClass="buttons">
+                        <Button fx:id="submitButton"  styleClass="submit" onAction="#handleUpdateUser"  />
+                        <Button fx:id="cancelButton" styleClass="cancel"  onAction="#cancelUpdate" />
+                        <Button fx:id="toggleLanguageButton" styleClass="toggle"  onAction="#toggleLanguage" />
+                        <CheckBox fx:id="accessibilityCheckBox" styleClass="checkbox" onAction="#toggleAccessibility" />
+                    </HBox>
+                </VBox>
             </VBox>
         </VBox>
     </GridPane>

@@ -42,23 +42,23 @@
                         </VBox>
 
                         <VBox styleClass="vbox-left, groupInput">
-                            <Label fx:id="passwordLabel" styleClass="label"  />
-                            <PasswordField fx:id="passwordField" styleClass="input-field"/>
-                        </VBox>
-
-                        <VBox styleClass="vbox-left, groupInput">
                             <Label fx:id="nameLabel" styleClass="label"  />
                             <TextField fx:id="nameField" styleClass="input-field"/>
                         </VBox>
 
                         <VBox styleClass="vbox-left, groupInput">
-                            <Label fx:id="cpfLabel" styleClass="label"  />
-                            <TextField fx:id="cpfField" styleClass="input-field"/>
+                            <Label fx:id="passwordLabel" styleClass="label"  />
+                            <PasswordField fx:id="passwordField" styleClass="input-field"/>
                         </VBox>
 
                         <VBox styleClass="vbox-left, groupInput">
                             <Label fx:id="emailLabel" styleClass="label"  />
                             <TextField fx:id="emailField" styleClass="input-field"/>
+                        </VBox>
+
+                        <VBox styleClass="vbox-left, groupInput">
+                            <Label fx:id="cpfLabel" styleClass="label"  />
+                            <TextField fx:id="cpfField" styleClass="input-field"/>
                         </VBox>
 
                         <VBox styleClass="buttons">

@@ -18,8 +18,8 @@ public class Mock {
                     "robsparta",
                     "1234",
                     "Robson Carvalho",
-                    "987654321",
-                    "lia@example.com",
+                    "09609964516",
+                    "rob@gmail.com",
                     false);
             try {
                 userService.create(user);

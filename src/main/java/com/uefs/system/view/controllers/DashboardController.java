@@ -2,34 +2,42 @@ package com.uefs.system.view.controllers;
 
 import com.uefs.system.Interface.ILanguageObserver;
 import com.uefs.system.controller.CardController;
+import com.uefs.system.controller.Controller;
 import com.uefs.system.controller.EventController;
+import com.uefs.system.controller.TicketController;
 import com.uefs.system.emun.SceneEnum;
 import com.uefs.system.model.Card;
 import com.uefs.system.model.Event;
+import com.uefs.system.model.Ticket;
+import com.uefs.system.utils.AccessibilityManager;
 import com.uefs.system.utils.LanguageManager;
 import com.uefs.system.utils.SessionManager;
 import com.uefs.system.view.NavigationManager;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
+import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import javafx.stage.StageStyle;
+
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
+import java.util.UUID;
 
 public class DashboardController implements ILanguageObserver {
     private final NavigationManager navigationManager = new NavigationManager();
+    private final AccessibilityManager accessibilityManager = new AccessibilityManager();
     private final SessionManager sessionManager;
     private final LanguageManager languageManager;
     private final EventController eventController = new EventController();
     private final CardController cardController = new CardController();
+    private final TicketController ticketController = new TicketController();
+    private final Controller controller = new Controller();
 
     public DashboardController(LanguageManager languageManager, SessionManager sessionManager) {
         this.languageManager = languageManager;
@@ -67,14 +75,36 @@ public class DashboardController implements ILanguageObserver {
     // Life Cycle
     @Override
     public void updateLanguage() {
+
+        Boolean accessibilityIsActive = accessibilityManager.getAccessibilityPropertiesCurrent();
+
         homeNavBar.setText(languageManager.getText("components.navbar.homeNavBar"));
         mailBoxNavBar.setText(languageManager.getText("components.navbar.mailBoxNavBar"));
         settingsNavBar.setText(languageManager.getText("components.navbar.settingsNavBar"));
         buysNavBar.setText(languageManager.getText("components.navbar.buysNavBar"));
-        titleMain.setText(languageManager.getText("screens.dashboard.titleMain"));
         cardsNavBar.setText(languageManager.getText("components.navbar.cardsNavBar"));
         logoutButton.setText(languageManager.getText("components.navbar.logoutButton"));
+
+        titleMain.setText(languageManager.getText("screens.dashboard.titleMain"));
+
+        if (accessibilityIsActive) {
+            setFontSize(18, 28, 16, 16, 16);
+        }else{
+            setFontSize(16, 24, 14, 14, 14);
+        }
+
         getEvents();
+    }
+
+    private void setFontSize(double fontSizeNavBar, double fontSizeTitleMain, double fontSizeLabel, double fontSizeField, double fontSizeButton) {
+        homeNavBar.setStyle("-fx-font-size: " + fontSizeNavBar + "px;");
+        mailBoxNavBar.setStyle("-fx-font-size: " + fontSizeNavBar + "px;");
+        settingsNavBar.setStyle("-fx-font-size: " + fontSizeNavBar + "px;");
+        buysNavBar.setStyle("-fx-font-size: " + fontSizeNavBar + "px;");
+        cardsNavBar.setStyle("-fx-font-size: " + fontSizeNavBar + "px;");
+        logoutButton.setStyle("-fx-font-size: " + fontSizeNavBar + "px;");
+
+        titleMain.setStyle("-fx-font-size: " + fontSizeTitleMain + "px;");
     }
 
     // Logic
@@ -82,6 +112,53 @@ public class DashboardController implements ILanguageObserver {
     public void logout(){
         sessionManager.clearUserSession();
         navigationManager.setScene(SceneEnum.SIGNIN);
+    }
+
+    private void messageAlert(Alert.AlertType type, String message) {
+        Alert alert = new Alert(type);
+        alert.initStyle(StageStyle.UNDECORATED);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
+
+    private void buyTicket(Event event, String seat, String paymentMethod, int seatsPurchased) {
+        int seats = event.getSeats().size();
+
+        if(seatsPurchased == seats && seats != 0){
+            messageAlert(Alert.AlertType.WARNING, "Assentos esgotados.");
+            return;
+        }
+
+        if(seats == 0){
+            messageAlert(Alert.AlertType.WARNING, "Ainda não há assentos cadastrados.");
+            return;
+        }
+
+        if(Objects.equals(seat, "Selecione") || Objects.equals(seat, "Select")){
+            messageAlert(Alert.AlertType.WARNING, "Por favor, selecione todos os campos.");
+            return;
+        }
+
+        try{
+            Boolean buy;
+
+            if(Objects.equals(paymentMethod, "Ticket") || Objects.equals(paymentMethod, "Boleto")){
+                buy = controller.purchase(sessionManager.loadUserSession(), event.getId(), seat);
+            }else{
+                buy = controller.purchase(sessionManager.loadUserSession(), event.getId(), seat, paymentMethod);
+            }
+
+            if(!buy){
+                messageAlert(Alert.AlertType.WARNING, "Por favor, selecione todos os campos.");
+            }else{
+                messageAlert(Alert.AlertType.INFORMATION, "Ingresso para evento "+event.getName()+" no assento "+seat+" comprado com sucesso!");
+            }
+        }catch (Exception e){
+            messageAlert(Alert.AlertType.ERROR, "Erro interno.");
+        }
+
+        languageManager.notifyObservers();
     }
 
     private void getEvents() {
@@ -97,8 +174,6 @@ public class DashboardController implements ILanguageObserver {
         eventsScrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
         eventsScrollPane.setPrefHeight(Region.USE_COMPUTED_SIZE);
 
-
-
         eventsScrollPane.setStyle(
                 "-fx-background-color: transparent; " +
                         "-fx-background-insets: 0; " +
@@ -109,17 +184,23 @@ public class DashboardController implements ILanguageObserver {
                         "-fx-scrollbar-thumb: transparent; "
         );
 
-
         VBox eventsVBox = new VBox();
         eventsVBox.setSpacing(16);
         eventsVBox.setStyle(
                 "-fx-background-color: #fff; " +
-                "-fx-border-color: transparent; " +
-                "-fx-border-width: 0;" +
-                "-fx-padding: 0 0 64px 0"
+                        "-fx-border-color: transparent; " +
+                        "-fx-border-width: 0;" +
+                        "-fx-padding: 0 0 64px 0"
         );
 
         VBox.setVgrow(eventsVBox, Priority.ALWAYS);
+
+        Boolean accessibilityIsActive = accessibilityManager.getAccessibilityPropertiesCurrent();
+
+        double fontSizeEventName = accessibilityIsActive ? 18 : 16;
+        double fontSizeEventDesc = accessibilityIsActive ? 16 : 14;
+        double fontSizeEventDate = accessibilityIsActive ? 16 : 14;
+        double fontSizeButton = accessibilityIsActive ? 18 : 16;
 
         if (events.isEmpty()) {
             HBox eventContainer = new HBox();
@@ -127,7 +208,8 @@ public class DashboardController implements ILanguageObserver {
             textContainer.setSpacing(5);
 
             Label eventName = new Label("Não há eventos");
-            eventName.setStyle("-fx-font-size: 16px; -fx-font-weight: bold;");
+
+            eventName.setStyle("-fx-font-size: " + fontSizeEventName + "px; -fx-font-weight: bold;");
 
             textContainer.getChildren().addAll(eventName);
 
@@ -142,7 +224,6 @@ public class DashboardController implements ILanguageObserver {
 
                 eventContainer.setStyle("-fx-background-color: rgba(222,222,222,0.5); -fx-background-radius: 5px;");
 
-
                 eventContainer.setOnMouseEntered(e -> {
                     eventContainer.setStyle("-fx-background-color: #DEDEDE; -fx-background-radius: 5px; -fx-cursor: hand;");
                 });
@@ -156,60 +237,94 @@ public class DashboardController implements ILanguageObserver {
                 });
 
                 Label eventName = new Label(event.getName());
-                eventName.setStyle("-fx-font-size: 16px; -fx-font-weight: bold;");
+                eventName.setStyle("-fx-font-size: " + fontSizeEventName + "px; -fx-font-weight: bold;");
 
                 Label eventDescription = new Label(event.getDescription());
-                eventDescription.setStyle("-fx-font-size: 14px; -fx-text-fill: #292929; -fx-text-alignment: justify;");
+                eventDescription.setStyle("-fx-font-size: " + fontSizeEventDesc + "px; -fx-text-fill: #292929; -fx-text-alignment: justify;");
                 eventDescription.setWrapText(true);
 
                 Label eventDate = new Label(dateFormat.format(event.getDate()));
-                eventDate.setStyle("-fx-font-size: 14px; -fx-text-fill: #666666;");
+                eventDate.setStyle("-fx-font-size: " + fontSizeEventDate + "px; -fx-text-fill: #666666;");
 
-                Button buyButton = new Button("Comprar");
+                Button buyButton = new Button(languageManager.getText("screens.dashboard.buyButton"));
                 buyButton.setStyle(
                         "-fx-background-color: #2E7D32;" +
                                 "-fx-text-fill: white;" +
-                                "-fx-font-size: 16px;" +
+                                "-fx-font-size: " + fontSizeButton + "px;" +
                                 "-fx-font-weight: bold;" +
                                 "-fx-background-radius: 8px;" +
                                 "-fx-padding: 8px 32px;"+
                                 "-fx-cursor: hand;"
                 );
-                buyButton.setOnAction(e -> {
-                    System.out.println("Comprando ingresso para " + event.getName());
-                });
 
+                ComboBox<String> seatsComboBox = new ComboBox<>();
 
-                List<Card> cards = cardController.getAll();
+                List<Ticket> tickets = ticketController.getAll();
 
-                ComboBox<String> paymentMethodComboBox = new ComboBox<>();
+                List<Ticket> ticketByCurrentEvent = new ArrayList<>();
 
-                for (Card card : cards) {
-                    if(card.getUserId().equals(sessionManager.getID())) {
-                        paymentMethodComboBox.getItems().add("**** **** **** "+card.getCardNumber().substring(card.getCardNumber().length() - 4));
-
+                for (Ticket ticket : tickets) {
+                    if(ticket.getEventId().equals(event.getId())){
+                        ticketByCurrentEvent.add(ticket);
                     }
                 }
 
-                paymentMethodComboBox.getItems().add("Boleto");
-                paymentMethodComboBox.setValue("Boleto");
+                List<String> seatsBuys = new ArrayList<>();
 
+                for(Ticket ticket : ticketByCurrentEvent){
+                    seatsBuys.add(ticket.getCode());
+                }
+
+                for(String seat: event.getSeats()){
+                    if(!seatsBuys.contains(seat)){
+                        seatsComboBox.getItems().add(seat);
+                    }
+                }
+
+                seatsComboBox.setValue(languageManager.getText("screens.dashboard.selectOption"));
+
+                seatsComboBox.setStyle(
+                        "-fx-background-color: #ffffff;" +
+                                "-fx-border-color: #4CAF50;" +
+                                "-fx-border-radius: 8px;" +
+                                "-fx-font-size: " + fontSizeButton + "px;" +
+                                "-fx-font-weight: bold;" +
+                                "-fx-background-radius: 8px;" +
+                                "-fx-padding: 3px 24px;"+
+                                "-fx-cursor: hand;"
+                );
+
+
+                List<Card> cards = cardController.getAll();
+                ComboBox<String> paymentMethodComboBox = new ComboBox<>();
+
+                for (Card card : cards) {
+                    if(card.getUserId().equals(UUID.fromString(sessionManager.getID()))) {
+                        paymentMethodComboBox.getItems().add(card.getCardNumber());
+                    }
+                }
+
+                paymentMethodComboBox.getItems().add(languageManager.getText("screens.dashboard.paymentMethodDefault"));
+                paymentMethodComboBox.setValue(languageManager.getText("screens.dashboard.paymentMethodDefault"));
 
                 paymentMethodComboBox.setStyle(
                         "-fx-background-color: #ffffff;" +
                                 "-fx-border-color: #4CAF50;" +
                                 "-fx-border-radius: 8px;" +
-                                "-fx-font-size: 16px;" +
+                                "-fx-font-size: " + fontSizeButton + "px;" +
                                 "-fx-font-weight: bold;" +
                                 "-fx-background-radius: 8px;" +
                                 "-fx-padding: 3px 24px;"+
                                 "-fx-cursor: hand;"
-
                 );
+
+                buyButton.setOnAction(e -> {
+                    buyTicket(event, seatsComboBox.getValue(), paymentMethodComboBox.getValue(), seatsBuys.size());
+                });
 
                 HBox hbox = new HBox();
                 hbox.setSpacing(10);
-                hbox.getChildren().addAll(paymentMethodComboBox, buyButton);
+                hbox.getChildren().addAll(paymentMethodComboBox, seatsComboBox, buyButton);
 
                 eventContainer.getChildren().addAll(eventName, eventDescription, eventDate, hbox);
 
@@ -221,6 +336,4 @@ public class DashboardController implements ILanguageObserver {
 
         containerEvents.getChildren().add(eventsScrollPane);
     }
-
-
 }

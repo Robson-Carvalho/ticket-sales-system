@@ -80,7 +80,7 @@
 
                     <VBox styleClass="group-input">
                         <Label fx:id="labelCvv" styleClass="label" />
-                        <TextField fx:id="fieldCvv" styleClass="input-field" promptText="Digite o CVV" />
+                        <TextField fx:id="fieldCvv" styleClass="input-field" />
                     </VBox>
 
                     <VBox styleClass="group-input">
