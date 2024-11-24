@@ -14,6 +14,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws IOException {
         new Mock();
+
         LanguageManager languageManager = new LanguageManager();
         NavigationManager navigationManager = new NavigationManager();
         SessionManager sessionManager = new SessionManager();

@@ -1,1 +1,68 @@
-[]
+[
+  {
+    "id": "263364e7-fc20-45a6-a963-348af5080df6",
+    "userID": "e8b3ad30-fb22-46db-92a6-b8aeeefb239f",
+    "userName": "Robson",
+    "brand": "Elo",
+    "accountNumber": "222222222222",
+    "number": "2222222222222222",
+    "expiryDate": "Nov 8, 2024, 12:00:00 AM",
+    "cvv": "111",
+    "status": true
+  },
+  {
+    "id": "bc52d268-ec91-4bf0-81d9-1df48a0429e0",
+    "userID": "e8b3ad30-fb22-46db-92a6-b8aeeefb239f",
+    "userName": "Robson",
+    "brand": "Elo",
+    "accountNumber": "333333333333",
+    "number": "3333333333333333",
+    "expiryDate": "Nov 8, 2024, 12:00:00 AM",
+    "cvv": "111",
+    "status": true
+  },
+  {
+    "id": "8acb7075-2042-4144-8187-cfb616a88493",
+    "userID": "e8b3ad30-fb22-46db-92a6-b8aeeefb239f",
+    "userName": "Robson",
+    "brand": "Visa",
+    "accountNumber": "555555555555",
+    "number": "5555555555555555",
+    "expiryDate": "Nov 8, 2024, 12:00:00 AM",
+    "cvv": "111",
+    "status": true
+  },
+  {
+    "id": "139a8560-d8fc-457d-8026-29a55d30e0b4",
+    "userID": "e8b3ad30-fb22-46db-92a6-b8aeeefb239f",
+    "userName": "Robson",
+    "brand": "Visa",
+    "accountNumber": "999999999999",
+    "number": "9999999999999999",
+    "expiryDate": "Nov 8, 2024, 12:00:00 AM",
+    "cvv": "111",
+    "status": true
+  },
+  {
+    "id": "30f05257-2c77-4a27-883e-7b6c916bdad8",
+    "userID": "e8b3ad30-fb22-46db-92a6-b8aeeefb239f",
+    "userName": "Robson",
+    "brand": "Visa",
+    "accountNumber": "099999999999",
+    "number": "9999999999434455",
+    "expiryDate": "Nov 15, 2024, 12:00:00 AM",
+    "cvv": "999",
+    "status": true
+  },
+  {
+    "id": "5bb791ac-81c1-45b6-9f96-3bf165042a1f",
+    "userID": "e8b3ad30-fb22-46db-92a6-b8aeeefb239f",
+    "userName": "Robson",
+    "brand": "Elo",
+    "accountNumber": "111111111111",
+    "number": "1111111111111111",
+    "expiryDate": "Nov 7, 2026, 12:00:00 AM",
+    "cvv": "111",
+    "status": true
+  }
+]

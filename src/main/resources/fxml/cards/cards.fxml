@@ -11,6 +11,14 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ComboBox?>
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.ListView?>
 <StackPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.uefs.system.view.controllers.CreditCardController"
            stylesheets="@styles/styles.css" styleClass="stack-pane">
     <GridPane styleClass="body">
@@ -54,7 +62,51 @@
             <VBox spacing="24" styleClass="section" >
                 <Text fx:id="titleMain" styleClass="title-main"  />
 
+                <VBox styleClass="form-container" spacing="24">
+                    <VBox styleClass="group-input">
+                        <Label fx:id="labelAccountNumber" styleClass="label"  />
+                        <TextField fx:id="fieldAccountNumber" styleClass="input-field"/>
+                    </VBox>
 
+                    <VBox styleClass="group-input">
+                        <Label fx:id="labelCardNumber" styleClass="label"  />
+                        <TextField fx:id="fieldCardNumber" styleClass="input-field"/>
+                    </VBox>
+
+                    <VBox styleClass="group-input">
+                        <Label fx:id="labelExpirationDate" styleClass="label" />
+                        <DatePicker fx:id="expirationDate" styleClass="expiration-date-field" />
+                    </VBox>
+
+                    <VBox styleClass="group-input">
+                        <Label fx:id="labelCvv" styleClass="label" />
+                        <TextField fx:id="fieldCvv" styleClass="input-field" promptText="Digite o CVV" />
+                    </VBox>
+
+                    <VBox styleClass="group-input">
+                        <Label fx:id="labelSelector"  styleClass="label-selector" />
+
+                        <ComboBox fx:id="selectorBrand" styleClass="selector-field" value="Visa">
+                            <items>
+                                <FXCollections fx:factory="observableArrayList">
+                                    <String fx:value="Visa" />
+                                    <String fx:value="Elo" />
+                                </FXCollections>
+                            </items>
+                        </ComboBox>
+                    </VBox>
+
+                    <HBox styleClass="buttons">
+                        <Button fx:id="submitButton" styleClass="submit" onAction="#handleRegisterCard" />
+                        <Button fx:id="cancelButton" styleClass="cancel" onAction="#cancelSubmit" />
+                    </HBox>
+
+
+                </VBox>
+
+                <VBox styleClass="list-cards">
+                    <ListView fx:id="listView" />
+                </VBox>
             </VBox>
         </VBox>
     </GridPane>

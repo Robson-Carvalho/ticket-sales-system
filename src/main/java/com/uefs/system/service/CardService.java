@@ -48,7 +48,16 @@ public class CardService implements IService<Card> {
             throw new IllegalArgumentException("Cartão com este número já existe.");
         }
 
+        List<Card> cards = this.getAll();
+
+        for (Card c : cards) {
+            if (c.getAccountNumber().equals(card.getAccountNumber()) || c.getCardNumber().substring(c.getCardNumber().length() - 4).equals(card.getCardNumber().substring(card.getCardNumber().length() - 4)) ) {
+                throw new IllegalArgumentException("Cartão com este número já existe.");
+            }
+        }
+
         cardRepository.save(card);
+
         return card;
     }
 

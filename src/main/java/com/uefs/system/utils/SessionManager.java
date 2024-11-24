@@ -73,13 +73,20 @@ public class SessionManager {
         }
     }
 
-
     public String getName() {
         User user = loadUserSession();
         if (user != null && user.getLogin() != null && !user.getLogin().isEmpty()) {
-            return user.getName() != null ? user.getName().split(" ")[0] : "Usuário";
+            return user.getName() != null ? user.getName().split(" ")[0] : "User not found.";
         }
-        return "Usuário";  // Retorna um nome padrão se o usuário não estiver logado ou se o nome for nulo
+        return "User not found.";
+    }
+
+    public UUID getID() {
+        User user = loadUserSession();
+        if (user != null && user.getId() != null) {
+            return user.getId() != null ? user.getId() : null;
+        }
+        return null;
     }
 
     // Limpa os dados da sessão

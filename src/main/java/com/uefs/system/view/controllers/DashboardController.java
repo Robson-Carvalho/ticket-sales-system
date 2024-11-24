@@ -1,8 +1,10 @@
 package com.uefs.system.view.controllers;
 
 import com.uefs.system.Interface.ILanguageObserver;
+import com.uefs.system.controller.CardController;
 import com.uefs.system.controller.EventController;
 import com.uefs.system.emun.SceneEnum;
+import com.uefs.system.model.Card;
 import com.uefs.system.model.Event;
 import com.uefs.system.utils.LanguageManager;
 import com.uefs.system.utils.SessionManager;
@@ -27,6 +29,7 @@ public class DashboardController implements ILanguageObserver {
     private final SessionManager sessionManager;
     private final LanguageManager languageManager;
     private final EventController eventController = new EventController();
+    private final CardController cardController = new CardController();
 
     public DashboardController(LanguageManager languageManager, SessionManager sessionManager) {
         this.languageManager = languageManager;
@@ -71,6 +74,7 @@ public class DashboardController implements ILanguageObserver {
         titleMain.setText(languageManager.getText("screens.dashboard.titleMain"));
         cardsNavBar.setText(languageManager.getText("components.navbar.cardsNavBar"));
         logoutButton.setText(languageManager.getText("components.navbar.logoutButton"));
+        getEvents();
     }
 
     // Logic
@@ -116,8 +120,6 @@ public class DashboardController implements ILanguageObserver {
         );
 
         VBox.setVgrow(eventsVBox, Priority.ALWAYS);
-
-
 
         if (events.isEmpty()) {
             HBox eventContainer = new HBox();
@@ -177,11 +179,22 @@ public class DashboardController implements ILanguageObserver {
                     System.out.println("Comprando ingresso para " + event.getName());
                 });
 
-                ComboBox<String> paymentMethodComboBox = new ComboBox<>();
-                paymentMethodComboBox.getItems().add("Boleto");
-                List<String> cards = new ArrayList<>();
 
+                List<Card> cards = cardController.getAll();
+
+                ComboBox<String> paymentMethodComboBox = new ComboBox<>();
+
+                for (Card card : cards) {
+                    if(card.getUserId().equals(sessionManager.getID())) {
+                        paymentMethodComboBox.getItems().add("**** **** **** "+card.getCardNumber().substring(card.getCardNumber().length() - 4));
+
+                    }
+                }
+
+                paymentMethodComboBox.getItems().add("Boleto");
                 paymentMethodComboBox.setValue("Boleto");
+
+
                 paymentMethodComboBox.setStyle(
                         "-fx-background-color: #ffffff;" +
                                 "-fx-border-color: #4CAF50;" +
@@ -193,7 +206,6 @@ public class DashboardController implements ILanguageObserver {
                                 "-fx-cursor: hand;"
 
                 );
-
 
                 HBox hbox = new HBox();
                 hbox.setSpacing(10);

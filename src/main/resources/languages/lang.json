@@ -59,7 +59,14 @@
         "titleMain": "E-mails"
       },
       "cards": {
-        "titleMain": "Gerenciador de Cartões"
+        "titleMain": "Gerenciador de Cartões",
+        "submitButton": "Cadastrar",
+        "cancelButton": "Cancelar",
+        "labelAccountNumber": "Número da Conta",
+        "labelCardNumber": "Número do Cartão",
+        "labelExpirationDate": "Data de Validade",
+        "labelCvv": "CVV",
+        "labelSelector": "Selecione a Bandeira"
       }
     }
   },
@@ -123,7 +130,14 @@
         "titleMain": "E-mails"
       },
       "cards": {
-        "titleMain": "Cards Manager"
+        "titleMain": "Cards Manager",
+        "submitButton": "Register",
+        "cancelButton": "Cancel",
+        "labelAccountNumber": "Account Number",
+        "labelCardNumber": "Card Number",
+        "labelExpirationDate": "Expiration Date",
+        "labelCvv": "CVV",
+        "labelSelector": "Select Card Type"
       }
     }
   }

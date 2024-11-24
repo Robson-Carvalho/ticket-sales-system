@@ -87,3 +87,84 @@
     -fx-font-weight: bold;
     -fx-text-fill: #333333;
 }
+
+.section > .form-container{}
+
+.section > .form-container > .group-input {
+    -fx-spacing: 8px;
+}
+
+.section > .form-container > .group-input > .label{
+    -fx-font-weight: bold;
+}
+
+.section > .form-container > .group-input > .input-field{
+    -fx-pref-width: 100%;
+    -fx-max-width: Infinity;
+    -fx-background-color: #f0f0f0;
+    -fx-border-radius: 5px;
+    -fx-border-color: #ccc;
+    -fx-font-size: 14px;
+    -fx-border-width: 2px;
+}
+
+.section > .form-container > .group-input > .expiration-date-field{
+    -fx-border-radius: 5px;
+    -fx-border-color: #ccc;
+    -fx-border-width: 2px;
+}
+
+.section > .form-container > .buttons {
+    -fx-spacing: 16px;
+}
+
+.section > .form-container > .buttons > .submit {
+    -fx-background-color: #407BFF;
+    -fx-text-fill: white;
+    -fx-padding: 8px 48px;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 8px;
+}
+
+.section > .form-container > .buttons > .cancel{
+    -fx-background-color: #ff574d;
+    -fx-text-fill: white;
+    -fx-padding: 8px 48px;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 8px;
+}
+
+.section > .form-container > .buttons > .cancel:hover{
+    -fx-cursor: hand;
+    -fx-background-color: rgba(255, 87, 77, 0.6);
+}
+
+.section > .form-container > .buttons > .submit:hover {
+    -fx-cursor: hand;
+    -fx-background-color: rgba(64, 123, 255, 0.6);
+}
+
+.section > .form-container > .group-input > .label-selector{
+    -fx-font-size: 14px;
+    -fx-padding: 0 0 8px 0;
+    -fx-font-weight: bold;
+}
+
+.section > .form-container > .group-input > .selector-field{
+    -fx-border-radius: 5px;
+    -fx-border-color: #ccc;
+    -fx-border-width: 2px;
+    -fx-padding: 0px 16px;
+}
+
+.section > .form-container > .group-input > .selector-field:hover{
+    -fx-cursor: hand;
+}
+
+
+.section > .list-cards {
+    -fx-padding: 0 0 42px 0;
+}
+
