@@ -65,18 +65,16 @@
 }
 
 .logout-button {
-    -fx-cursor: hand;
+    -fx-background-color: #ff574d;
+    -fx-text-fill: white;
+    -fx-padding: 8px 32px;
     -fx-font-weight: bold;
     -fx-background-radius: 8px;
-    -fx-padding: 8px 32px;
-    -fx-background-color: #ff0000;
-    -fx-text-fill: white;
 }
 
 .logout-button:hover{
-    -fx-background-color: #ff574d;
-    -fx-text-fill: #f9f9f9;
-    -fx-font-weight: bold;
+    -fx-background-color: rgba(255, 87, 77, 0.6);
+    -fx-cursor: hand;
 }
 
 /*Main*/

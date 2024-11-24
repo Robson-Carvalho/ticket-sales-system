@@ -14,8 +14,9 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws IOException {
         LanguageManager languageManager = new LanguageManager();
-        NavigationManager navigationManager = new NavigationManager();
         SessionManager sessionManager = new SessionManager();
+
+        NavigationManager navigationManager = new NavigationManager();
 
         languageManager.addObserver(navigationManager);
 

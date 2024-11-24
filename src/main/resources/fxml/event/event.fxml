@@ -12,7 +12,12 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.control.ListView?>
-<StackPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.uefs.system.view.controllers.MailBoxController"
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.collections.FXCollections?>
+<?import java.lang.String?>
+<StackPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.uefs.system.view.controllers.EventController"
            stylesheets="@styles/styles.css" styleClass="stack-pane">
     <GridPane styleClass="body">
         <rowConstraints>
@@ -55,8 +60,39 @@
             <VBox spacing="24" styleClass="section" >
                 <Text fx:id="titleMain" styleClass="title-main"  />
 
+                <VBox styleClass="form-container" spacing="24">
+                    <VBox styleClass="group-input">
+                        <Label fx:id="labelComment" styleClass="label"  />
+                        <TextField fx:id="commentField" styleClass="input-field"/>
+                    </VBox>
 
-                <VBox fx:id="listMails" />
+                    <VBox styleClass="group-input">
+                        <Label fx:id="labelSelector"  styleClass="label-selector" />
+
+                        <ComboBox fx:id="selectorRating" styleClass="selector-field" value="1">
+                            <items>
+                                <FXCollections fx:factory="observableArrayList">
+                                    <String fx:value="1" />
+                                    <String fx:value="2" />
+                                    <String fx:value="3" />
+                                    <String fx:value="4" />
+                                    <String fx:value="5" />
+                                </FXCollections>
+                            </items>
+                        </ComboBox>
+                    </VBox>
+
+                    <HBox styleClass="buttons">
+                        <Button fx:id="submitButton" styleClass="submit" onAction="#handleComment" />
+                        <Button fx:id="cancelButton" styleClass="cancel" onAction="#cancelComment" />
+                    </HBox>
+
+                </VBox>
+
+                <VBox spacing="16">
+                    <Text fx:id="subtitle" styleClass="subtitle"  />
+                    <VBox fx:id="listComments" />
+                </VBox>
             </VBox>
         </VBox>
     </GridPane>

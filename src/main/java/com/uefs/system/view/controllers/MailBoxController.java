@@ -74,7 +74,6 @@ public class MailBoxController implements ILanguageObserver {
     @FXML private void navigationToBuys(){navigationManager.setScene(SceneEnum.BUYS);}
 
     private void getMails() {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
         List<Mail> mails = mailController.getMailsByUserId(UUID.fromString(sessionManager.getID()));
 
         listMails.getChildren().clear();

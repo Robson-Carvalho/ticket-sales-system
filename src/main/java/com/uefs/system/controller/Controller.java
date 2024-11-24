@@ -152,8 +152,12 @@ public class Controller {
         try{
             transactionController.create(user.getEmail(), eventId, seat);
             Ticket ticket = ticketController.create(eventId, seat);
-            user.addTicket(ticket);
-            userController.update(user);
+
+            User u = userController.getById(user.getId());
+
+            u.addTicket(ticket);
+
+            userController.update(u);
             return true;
         }catch (Exception e) {
             return false;
@@ -165,8 +169,12 @@ public class Controller {
             Card card = cardController.getCardByNumber(cardNumber);
             transactionController.create(user.getEmail(), eventId, card.getId(), seat);
             Ticket ticket = ticketController.create(eventId, seat);
-            user.addTicket(ticket);
-            userController.update(user);
+
+            User u = userController.getById(user.getId());
+
+            u.addTicket(ticket);
+
+            userController.update(u);
             return true;
         }catch (Exception e){
             return false;

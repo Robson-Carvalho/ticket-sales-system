@@ -233,7 +233,7 @@ public class DashboardController implements ILanguageObserver {
                 });
 
                 eventContainer.setOnMouseClicked(e -> {
-                    System.out.println("Clique no evento: " + event.getName());
+                    navigationManager.setScene(languageManager, sessionManager, event);
                 });
 
                 Label eventName = new Label(event.getName());

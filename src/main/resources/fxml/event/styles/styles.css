@@ -83,6 +83,7 @@
     -fx-text-fill: #333333;
 }
 
+
 .section > .form-container{}
 
 .section > .form-container > .group-input {
@@ -102,11 +103,6 @@
     -fx-border-width: 2px;
 }
 
-.section > .form-container > .group-input > .expiration-date-field{
-    -fx-border-radius: 5px;
-    -fx-border-color: #ccc;
-    -fx-border-width: 2px;
-}
 
 .section > .form-container > .buttons {
     -fx-spacing: 16px;
@@ -155,7 +151,7 @@
 }
 
 
-.section > .list-cards {
+.section > .listComments {
     -fx-padding: 0 0 42px 0;
 }
 

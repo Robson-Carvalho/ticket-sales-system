@@ -54,6 +54,7 @@
             <VBox spacing="24" styleClass="section" >
                 <Text fx:id="titleMain" styleClass="title-main"  />
 
+                <VBox fx:id="containerEvents" styleClass="container-events" />
             </VBox>
         </VBox>
     </GridPane>

@@ -81,6 +81,15 @@
         "labelCvv": "CVV",
         "labelSelector": "Selecione a Bandeira",
         "deleteCard": "Apagar"
+      },
+      "event": {
+        "titleMain": "Evento",
+        "subtitle": "Comentários",
+        "ratingName": "Avaliação",
+        "labelComment": "Comentário",
+        "labelSelector": "Avaliação",
+        "submitButton": "Adicionar",
+        "cancelButton": "Cancelar"
       }
     }
   },
@@ -166,6 +175,15 @@
         "labelCvv": "CVV",
         "labelSelector": "Select Card Type",
         "deleteCard": "Delete"
+      },
+      "event": {
+        "titleMain": "Event",
+        "ratingName": "Rating",
+        "subtitle": "Comments",
+        "labelComment": "Comment",
+        "labelSelector": "Rating",
+        "submitButton": "To add",
+        "cancelButton": "Cancel"
       }
     }
   }
