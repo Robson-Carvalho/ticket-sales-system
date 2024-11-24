@@ -8,6 +8,7 @@ import com.uefs.system.emun.SceneEnum;
 import com.uefs.system.model.Card;
 import com.uefs.system.model.Event;
 import com.uefs.system.model.Ticket;
+import com.uefs.system.model.User;
 import com.uefs.system.utils.AccessibilityManager;
 import com.uefs.system.utils.LanguageManager;
 import com.uefs.system.utils.SessionManager;
@@ -43,13 +44,10 @@ public class BuyController implements ILanguageObserver {
         this.sessionManager = sessionManager;
     }
 
-    //    Initialize
-    @FXML
-    private void initialize() {
-        updateLanguage();
-    }
+    //   Initialize
+    @FXML private void initialize() {updateLanguage();}
 
-    //    Components
+    //   Components
     @FXML private Button homeNavBar;
     @FXML private Button mailBoxNavBar;
     @FXML private Button settingsNavBar;
@@ -57,32 +55,18 @@ public class BuyController implements ILanguageObserver {
     @FXML private Button buysNavBar;
     @FXML private Text titleMain;
     @FXML private Button logoutButton;
-
     @FXML private VBox containerEvents;
 
     // Navigation
     @FXML private void navigationToCards(){navigationManager.setScene(SceneEnum.CARDS);}
-
     @FXML private void navigationToHome(){navigationManager.setScene(SceneEnum.DASHBOARD);}
-
     @FXML private void navigationToMailBox(){navigationManager.setScene(SceneEnum.MAILBOX);}
-
     @FXML private void navigationToSettings(){navigationManager.setScene(SceneEnum.SETTINGS);}
-
     @FXML private void navigationToBuys(){navigationManager.setScene(SceneEnum.BUYS);}
+    @FXML public void logout(){sessionManager.clearUserSession(); navigationManager.setScene(SceneEnum.SIGNIN);}
 
-    // Logic
-    @FXML
-    public void logout(){
-        sessionManager.clearUserSession();
-        navigationManager.setScene(SceneEnum.SIGNIN);
-    }
-
-    // Life Cycle
-    @Override
-    public void updateLanguage() {
+    @Override public void updateLanguage() {
         Boolean accessibilityIsActive = accessibilityManager.getAccessibilityPropertiesCurrent();
-
 
         homeNavBar.setText(languageManager.getText("components.navbar.homeNavBar"));
         mailBoxNavBar.setText(languageManager.getText("components.navbar.mailBoxNavBar"));
@@ -113,24 +97,26 @@ public class BuyController implements ILanguageObserver {
     }
 
     private void getEvents() {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-
-        List<UUID> ticketsIDs = userController.getById(UUID.fromString(sessionManager.getID())).getTickets();
-
-        List<Ticket> tickets = new ArrayList<>();
-
-        for (UUID ticketID : ticketsIDs) {
-            tickets.add(ticketController.getById(ticketID));
-        }
+        List<Ticket> tickets = ticketController.getAll();
 
         List<Event> events = new ArrayList<>();
 
-        for (Ticket ticket : tickets) {
-            events.add(eventController.getById(ticket.getEventId()));
+        User user = userController.getById(UUID.fromString(sessionManager.getID()));
+
+        if (user.getTickets() != null) {
+            for (Ticket ticket : tickets) {
+                if (user.getTickets().contains(ticket.getId())) {
+                    Event event = eventController.getById(ticket.getEventId());
+
+                    if(event != null){
+                        events.add(event);
+                    }
+                }
+            }
         }
 
         containerEvents.getChildren().clear();
-
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
         ScrollPane eventsScrollPane = new ScrollPane();
         eventsScrollPane.setContent(containerEvents);
         eventsScrollPane.setFitToWidth(true);
@@ -219,4 +205,5 @@ public class BuyController implements ILanguageObserver {
 
         containerEvents.getChildren().add(eventsScrollPane);
     }
+
 }

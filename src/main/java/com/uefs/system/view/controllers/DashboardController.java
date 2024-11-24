@@ -155,6 +155,7 @@ public class DashboardController implements ILanguageObserver {
                 messageAlert(Alert.AlertType.INFORMATION, "Ingresso para evento "+event.getName()+" no assento "+seat+" comprado com sucesso!");
             }
         }catch (Exception e){
+            System.out.println(e.getMessage());
             messageAlert(Alert.AlertType.ERROR, "Erro interno.");
         }
 

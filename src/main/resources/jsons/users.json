@@ -2,14 +2,15 @@
   {
     "id": "3213237d-d4d3-47fc-b419-ce0c75632e75",
     "login": "sparta",
-    "password": "12345",
+    "password": "123456",
     "name": "Robson Carvalho de Souza",
     "cpf": "09609964516",
     "email": "robsoncarvalho.tech@gmail",
     "isAdmin": false,
     "tickets": [
-      "fc70f7f1-c9ac-4d4d-a985-0ddbb328e102",
-      "df55c3bc-47f7-4738-af1b-d9f8cdcb300f"
+      "93514678-1ca5-47be-b217-3d324575133e",
+      "e70f82b1-f35e-4bd8-b226-58d8712f5fd0",
+      "f2655777-74f1-4c6c-bea6-cc8df806ae7e"
     ]
   }
 ]
