@@ -28,23 +28,21 @@ import java.util.UUID;
 
 public class BuyController implements ILanguageObserver {
     private final NavigationManager navigationManager = new NavigationManager();
-    private final LanguageManager languageManager;
-    private final SessionManager sessionManager;
     private final AccessibilityManager accessibilityManager = new AccessibilityManager();
     private final EventController eventController = new EventController();
     private final UserController userController = new UserController();
     private final TicketController ticketController = new TicketController();
 
+    private final LanguageManager languageManager;
+    private final SessionManager sessionManager;
 
     public BuyController(LanguageManager languageManager, SessionManager sessionManager) {
         this.languageManager = languageManager;
         this.sessionManager = sessionManager;
     }
 
-    //   Initialize
     @FXML private void initialize() {updateLanguage();}
 
-    //   Components
     @FXML private Button homeNavBar;
     @FXML private Button mailBoxNavBar;
     @FXML private Button settingsNavBar;
@@ -54,7 +52,6 @@ public class BuyController implements ILanguageObserver {
     @FXML private Button logoutButton;
     @FXML private VBox containerEvents;
 
-    // Navigation
     @FXML private void navigationToCards(){navigationManager.setScene(SceneEnum.CARDS);}
     @FXML private void navigationToHome(){navigationManager.setScene(SceneEnum.DASHBOARD);}
     @FXML private void navigationToMailBox(){navigationManager.setScene(SceneEnum.MAILBOX);}
@@ -204,10 +201,18 @@ public class BuyController implements ILanguageObserver {
                 Label eventDate = new Label(dateFormat.format(event.getDate()));
                 eventDate.setStyle("-fx-font-size: " + fontSizeEventDate + "px; -fx-text-fill: #666666;");
 
+                Label seat = new Label(languageManager.getText("screens.buys.seatText")+": "+ticket.getCode());
+                seat.setStyle("-fx-font-size: " + fontSizeEventName + "px; -fx-font-weight: bold;");
+
                 Label priceEvent = new Label(languageManager.getText("screens.buys.price")+" R$ "+ticket.getPrice());
                 priceEvent.setStyle("-fx-font-size: " + fontSizeEventName + "px; -fx-font-weight: bold;");
 
-                eventContainer.getChildren().addAll(eventName, eventDescription, eventDate, priceEvent);
+                HBox hbox = new HBox();
+                hbox.setSpacing(10);
+                hbox.getChildren().addAll(priceEvent,seat,eventDate);
+
+
+                eventContainer.getChildren().addAll(eventName, eventDescription, hbox);
 
                 eventsVBox.getChildren().add(eventContainer);
             }
@@ -217,5 +222,4 @@ public class BuyController implements ILanguageObserver {
 
         containerEvents.getChildren().add(eventsScrollPane);
     }
-
 }

@@ -1,12 +1,11 @@
 package com.uefs.system.view.controllers;
 
 import com.uefs.system.Interface.ILanguageObserver;
-import com.uefs.system.controller.CardController;
-import com.uefs.system.controller.Controller;
+import com.uefs.system.controller.*;
 import com.uefs.system.controller.EventController;
-import com.uefs.system.controller.TicketController;
 import com.uefs.system.emun.SceneEnum;
 import com.uefs.system.model.Card;
+import com.uefs.system.model.Comment;
 import com.uefs.system.model.Event;
 import com.uefs.system.model.Ticket;
 import com.uefs.system.utils.AccessibilityManager;
@@ -23,6 +22,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.StageStyle;
 
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -32,26 +32,23 @@ import java.util.UUID;
 public class DashboardController implements ILanguageObserver {
     private final NavigationManager navigationManager = new NavigationManager();
     private final AccessibilityManager accessibilityManager = new AccessibilityManager();
-    private final SessionManager sessionManager;
-    private final LanguageManager languageManager;
     private final EventController eventController = new EventController();
     private final CardController cardController = new CardController();
+    private final CommentController commentController = new CommentController();
     private final TicketController ticketController = new TicketController();
     private final Controller controller = new Controller();
+
+    private final SessionManager sessionManager;
+    private final LanguageManager languageManager;
 
     public DashboardController(LanguageManager languageManager, SessionManager sessionManager) {
         this.languageManager = languageManager;
         this.sessionManager = sessionManager;
     }
 
-    //    Initialize
     @FXML
-    private void initialize() {
-        updateLanguage();
-        getEvents();
-    }
+    private void initialize() {updateLanguage();}
 
-    //    Components
     @FXML private Button homeNavBar;
     @FXML private Button mailBoxNavBar;
     @FXML private Button settingsNavBar;
@@ -61,20 +58,18 @@ public class DashboardController implements ILanguageObserver {
     @FXML private VBox containerEvents;
     @FXML private Button logoutButton;
 
-    // Navigation
     @FXML private void navigationToCards(){navigationManager.setScene(SceneEnum.CARDS);}
-
     @FXML private void navigationToHome(){navigationManager.setScene(SceneEnum.DASHBOARD);}
-
     @FXML private void navigationToMailBox(){navigationManager.setScene(SceneEnum.MAILBOX);}
-
     @FXML private void navigationToSettings(){navigationManager.setScene(SceneEnum.SETTINGS);}
-
     @FXML private void navigationToBuys(){navigationManager.setScene(SceneEnum.BUYS);}
 
-    // Life Cycle
-    @Override
-    public void updateLanguage() {
+    @FXML public void logout(){
+        sessionManager.clearUserSession();
+        navigationManager.setScene(SceneEnum.SIGNIN);
+    }
+
+    @Override public void updateLanguage() {
         Boolean accessibilityIsActive = accessibilityManager.getAccessibilityPropertiesCurrent();
 
         homeNavBar.setText(languageManager.getText("components.navbar.homeNavBar"));
@@ -104,13 +99,6 @@ public class DashboardController implements ILanguageObserver {
         logoutButton.setStyle("-fx-font-size: " + fontSizeNavBar + "px;");
 
         titleMain.setStyle("-fx-font-size: " + fontSizeTitleMain + "px;");
-    }
-
-    // Logic
-    @FXML
-    public void logout(){
-        sessionManager.clearUserSession();
-        navigationManager.setScene(SceneEnum.SIGNIN);
     }
 
     private void messageAlert(Alert.AlertType type, String message) {
@@ -230,9 +218,6 @@ public class DashboardController implements ILanguageObserver {
                 eventDescription.setStyle("-fx-font-size: " + fontSizeEventDesc + "px; -fx-text-fill: #292929; -fx-text-alignment: justify;");
                 eventDescription.setWrapText(true);
 
-                Label eventDate = new Label(dateFormat.format(event.getDate()));
-                eventDate.setStyle("-fx-font-size: " + fontSizeEventDate + "px; -fx-text-fill: #666666;");
-
                 Button buyButton = new Button(languageManager.getText("screens.dashboard.buyButton"));
                 buyButton.setStyle(
                         "-fx-background-color: #2E7D32;" +
@@ -313,7 +298,20 @@ public class DashboardController implements ILanguageObserver {
                 hbox.setSpacing(10);
                 hbox.getChildren().addAll(paymentMethodComboBox, seatsComboBox, buyButton);
 
-                eventContainer.getChildren().addAll(eventName, eventDescription, eventDate, hbox);
+                Label rating = new Label(languageManager.getText("screens.dashboard.ratingText")+": "+calculateRating(event.getId())+"/5");
+                rating.setStyle("-fx-font-size: " + fontSizeEventDate + "px; -fx-font-weight: bold;");
+
+                Label price = new Label(languageManager.getText("screens.dashboard.priceText")+": R$ "+event.getPrice());
+                price.setStyle("-fx-font-size: " + fontSizeEventDate + "px; -fx-font-weight: bold;");
+
+                Label eventDate = new Label(languageManager.getText("screens.dashboard.dateText")+": "+dateFormat.format(event.getDate()));
+                eventDate.setStyle("-fx-font-size: " + fontSizeEventDate + "px; -fx-text-fill: #666666;");
+
+                HBox hboxTwo = new HBox();
+                hboxTwo.setSpacing(10);
+                hboxTwo.getChildren().addAll(rating, price,eventDate);
+
+                eventContainer.getChildren().addAll(eventName, eventDescription, hboxTwo, hbox);
 
                 eventsVBox.getChildren().add(eventContainer);
             }
@@ -322,5 +320,29 @@ public class DashboardController implements ILanguageObserver {
         eventsScrollPane.setContent(eventsVBox);
 
         containerEvents.getChildren().add(eventsScrollPane);
+    }
+
+    public String calculateRating(UUID eventID) {
+        List<Comment> comments = commentController.getCommentsByEventId(eventID);
+
+        if(comments != null && !comments.isEmpty()){
+            int sum = 0;
+
+            for(Comment comment : comments){
+                sum += comment.getRating();
+            }
+
+            double result = (double) sum / comments.size();
+
+            return formatWithOneDecimalPlace(result);
+
+        }else{
+            return  "0";
+        }
+    }
+
+    public static String formatWithOneDecimalPlace(double number) {
+        DecimalFormat df = new DecimalFormat("#.#");
+        return df.format(number);
     }
 }

@@ -28,17 +28,19 @@ import java.util.UUID;
 
 public class CreditCardController implements ILanguageObserver {
     private final NavigationManager navigationManager = new NavigationManager();
-    private final LanguageManager languageManager;
-    private final SessionManager sessionManager;
     private final CardController cardController = new CardController();
     private final AccessibilityManager accessibilityManager = new AccessibilityManager();
+
+    private final LanguageManager languageManager;
+    private final SessionManager sessionManager;
 
     public CreditCardController(LanguageManager languageManager, SessionManager sessionManager) {
         this.languageManager = languageManager;
         this.sessionManager = sessionManager;
     }
 
-    //    Components
+    private ObservableList<Card> cards;
+
     @FXML private Button homeNavBar;
     @FXML private Button mailBoxNavBar;
     @FXML private Button settingsNavBar;
@@ -61,13 +63,113 @@ public class CreditCardController implements ILanguageObserver {
     @FXML private ComboBox selectorBrand;
     @FXML private ListView<Card> listView;
 
-    private ObservableList<Card> cards;
+    @FXML private void initialize() {updateLanguage();setConfig();}
+    @FXML private void navigationToCards(){navigationManager.setScene(SceneEnum.CARDS);}
+    @FXML private void navigationToHome(){navigationManager.setScene(SceneEnum.DASHBOARD);}
+    @FXML private void navigationToMailBox(){navigationManager.setScene(SceneEnum.MAILBOX);}
+    @FXML private void navigationToSettings(){navigationManager.setScene(SceneEnum.SETTINGS);}
+    @FXML private void navigationToBuys(){navigationManager.setScene(SceneEnum.BUYS);}
+    @FXML private void handleRegisterCard(){
+        if (fieldAccountNumber != null && fieldCardNumber != null && expirationDate != null && fieldCvv != null && selectorBrand != null) {
+            String accountNumber = fieldAccountNumber.getText();
+            String cardNumber = fieldCardNumber.getText();
+            LocalDate localDate = expirationDate.getValue();
 
-    //    Initialize
-    @FXML private void initialize() {
-        updateLanguage();
+            if(localDate == null) {
+                messageAlert(Alert.AlertType.WARNING, languageManager.getText("messagesAlert.fieldNotWrite"));
+                return;
+            }
+
+            Date expirationDateValue = Date.from(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
+
+            String cvv = fieldCvv.getText();
+            String cardBrand = (String) selectorBrand.getValue();
+
+            if (accountNumber.isEmpty() || cardNumber.isEmpty() || cvv.isEmpty() || cardBrand == null) {
+                messageAlert(Alert.AlertType.WARNING, languageManager.getText("messagesAlert.fieldNotWrite"));
+            } else {
+                try{
+                    cardController.create(UUID.fromString(sessionManager.getID()), sessionManager.getName(), cardBrand, cardNumber, accountNumber, expirationDateValue, cvv);
+                    messageAlert(Alert.AlertType.INFORMATION, languageManager.getText("messagesAlert.cardCreatedSuccess"));
+                }catch (IllegalArgumentException e){
+                    messageAlert(Alert.AlertType.WARNING, languageManager.getText("messagesAlert.cardCreatedError"));
+                }
+
+            }
+        } else {
+            messageAlert(Alert.AlertType.WARNING, languageManager.getText("messagesAlert.operationError"));
+        }
+
+        languageManager.notifyObservers();
+    }
+    @FXML private void cancelSubmit(){
+        fieldCvv.setText("");
+        fieldAccountNumber.setText("");
+        fieldCardNumber.setText("");
+        expirationDate.setValue(null);
+    }
+
+    @FXML
+    public void logout(){
+        sessionManager.clearUserSession();
+        navigationManager.setScene(SceneEnum.SIGNIN);
+    }
+
+    @Override
+    public void updateLanguage() {
+        Boolean accessibilityIsActive = accessibilityManager.getAccessibilityPropertiesCurrent();
+
+        homeNavBar.setText(languageManager.getText("components.navbar.homeNavBar"));
+        mailBoxNavBar.setText(languageManager.getText("components.navbar.mailBoxNavBar"));
+        settingsNavBar.setText(languageManager.getText("components.navbar.settingsNavBar"));
+        buysNavBar.setText(languageManager.getText("components.navbar.buysNavBar"));
+        logoutButton.setText(languageManager.getText("components.navbar.logoutButton"));
+        cardsNavBar.setText(languageManager.getText("components.navbar.cardsNavBar"));
+        logoutButton.setText(languageManager.getText("components.navbar.logoutButton"));
+
+        titleMain.setText(languageManager.getText("screens.cards.titleMain"));
+
+        submitButton.setText(languageManager.getText("screens.cards.submitButton"));
+        labelAccountNumber.setText(languageManager.getText("screens.cards.labelAccountNumber"));
+        labelCardNumber.setText(languageManager.getText("screens.cards.labelCardNumber"));
+        labelExpirationDate.setText(languageManager.getText("screens.cards.labelExpirationDate"));
+        labelCvv.setText(languageManager.getText("screens.cards.labelCvv"));
+        labelSelector.setText(languageManager.getText("screens.cards.labelSelector"));
+        cancelButton.setText(languageManager.getText("screens.cards.cancelButton"));
+
+        if (accessibilityIsActive) {
+            setFontSize(18, 28, 16, 16, 16);
+        }else{
+            setFontSize(16, 24, 14, 14, 14);
+        }
+
         getCards();
-        setConfig();
+    }
+
+    private void setFontSize(double fontSizeNavBar, double fontSizeTitleMain, double fontSizeLabel, double fontSizeField, double fontSizeButton) {
+        homeNavBar.setStyle("-fx-font-size: " + fontSizeNavBar + "px;");
+        mailBoxNavBar.setStyle("-fx-font-size: " + fontSizeNavBar + "px;");
+        settingsNavBar.setStyle("-fx-font-size: " + fontSizeNavBar + "px;");
+        buysNavBar.setStyle("-fx-font-size: " + fontSizeNavBar + "px;");
+        cardsNavBar.setStyle("-fx-font-size: " + fontSizeNavBar + "px;");
+        logoutButton.setStyle("-fx-font-size: " + fontSizeNavBar + "px;");
+
+        titleMain.setStyle("-fx-font-size: " + fontSizeTitleMain + "px;");
+
+        labelAccountNumber.setStyle("-fx-font-size: " + fontSizeLabel + "px;");
+        labelCvv.setStyle("-fx-font-size: " + fontSizeLabel + "px;");
+        labelSelector.setStyle("-fx-font-size: " + fontSizeLabel + "px;");
+        labelCardNumber.setStyle("-fx-font-size: " + fontSizeLabel + "px;");
+        labelExpirationDate.setStyle("-fx-font-size: " + fontSizeLabel + "px;");
+
+        fieldAccountNumber.setStyle("-fx-font-size: " + fontSizeField + "px;");
+        fieldCardNumber.setStyle("-fx-font-size: " + fontSizeField + "px;");
+        expirationDate.setStyle("-fx-font-size: " + fontSizeField + "px;");
+        fieldCvv.setStyle("-fx-font-size: " + fontSizeField + "px;");
+        selectorBrand.setStyle("-fx-font-size: " + fontSizeField + "px;");
+
+        submitButton.setStyle("-fx-font-size: " + fontSizeButton + "px;");
+        cancelButton.setStyle("-fx-font-size: " + fontSizeButton + "px;");
     }
 
     private void setConfig(){
@@ -126,12 +228,12 @@ public class CreditCardController implements ILanguageObserver {
                     Button removeButton = new Button(languageManager.getText("screens.cards.deleteCard"));
                     removeButton.setStyle(
                             "-fx-background-color: #ff574d; " +
-                            "-fx-text-fill: white; " +
-                            "-fx-padding:  8px 48px; " +
-                            "-fx-font-weight: bold;" +
-                            "-fx-border-radius: 5px; " +
-                            "-fx-font-size: "+fontSizeButton+"px;"+
-                            "-fx-background-radius: 8px");
+                                    "-fx-text-fill: white; " +
+                                    "-fx-padding:  8px 48px; " +
+                                    "-fx-font-weight: bold;" +
+                                    "-fx-border-radius: 5px; " +
+                                    "-fx-font-size: "+fontSizeButton+"px;"+
+                                    "-fx-background-radius: 8px");
 
                     removeButton.setOnMouseEntered(e -> {
                         removeButton.setStyle(
@@ -192,58 +294,6 @@ public class CreditCardController implements ILanguageObserver {
         return "**** **** **** " + cardNumber.substring(cardNumber.length() - 4);
     }
 
-    // Navigation
-    @FXML private void navigationToCards(){navigationManager.setScene(SceneEnum.CARDS);}
-
-    @FXML private void navigationToHome(){navigationManager.setScene(SceneEnum.DASHBOARD);}
-
-    @FXML private void navigationToMailBox(){navigationManager.setScene(SceneEnum.MAILBOX);}
-
-    @FXML private void navigationToSettings(){navigationManager.setScene(SceneEnum.SETTINGS);}
-
-    @FXML private void navigationToBuys(){navigationManager.setScene(SceneEnum.BUYS);}
-
-    @FXML private void handleRegisterCard(){
-        if (fieldAccountNumber != null && fieldCardNumber != null && expirationDate != null && fieldCvv != null && selectorBrand != null) {
-            String accountNumber = fieldAccountNumber.getText();
-            String cardNumber = fieldCardNumber.getText();
-            LocalDate localDate = expirationDate.getValue();
-
-            if(localDate == null) {
-                messageAlert(Alert.AlertType.WARNING, languageManager.getText("messagesAlert.fieldNotWrite"));
-                return;
-            }
-
-            Date expirationDateValue = Date.from(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
-
-            String cvv = fieldCvv.getText();
-            String cardBrand = (String) selectorBrand.getValue();
-
-            if (accountNumber.isEmpty() || cardNumber.isEmpty() || cvv.isEmpty() || cardBrand == null) {
-                messageAlert(Alert.AlertType.WARNING, languageManager.getText("messagesAlert.fieldNotWrite"));
-            } else {
-                try{
-                    cardController.create(UUID.fromString(sessionManager.getID()), sessionManager.getName(), cardBrand, cardNumber, accountNumber, expirationDateValue, cvv);
-                    messageAlert(Alert.AlertType.WARNING, languageManager.getText("messagesAlert.cardCreatedSuccess"));
-                }catch (IllegalArgumentException e){
-                    messageAlert(Alert.AlertType.WARNING, languageManager.getText("messagesAlert.cardCreatedError"));
-                }
-
-            }
-        } else {
-            messageAlert(Alert.AlertType.WARNING, languageManager.getText("messagesAlert.operationError"));
-        }
-
-        languageManager.notifyObservers();
-    }
-
-    @FXML private void cancelSubmit(){
-        fieldCvv.setText("");
-        fieldAccountNumber.setText("");
-        fieldCardNumber.setText("");
-        expirationDate.setValue(null);
-    }
-
     private void messageAlert(Alert.AlertType type, String message) {
         Alert alert = new Alert(type);
         alert.initStyle(StageStyle.UNDECORATED);
@@ -251,70 +301,4 @@ public class CreditCardController implements ILanguageObserver {
         alert.setContentText(message);
         alert.showAndWait();
     }
-
-    // Logic
-    @FXML
-    public void logout(){
-        sessionManager.clearUserSession();
-        navigationManager.setScene(SceneEnum.SIGNIN);
-    }
-
-    // Life Cycle
-    @Override
-    public void updateLanguage() {
-        Boolean accessibilityIsActive = accessibilityManager.getAccessibilityPropertiesCurrent();
-
-        homeNavBar.setText(languageManager.getText("components.navbar.homeNavBar"));
-        mailBoxNavBar.setText(languageManager.getText("components.navbar.mailBoxNavBar"));
-        settingsNavBar.setText(languageManager.getText("components.navbar.settingsNavBar"));
-        buysNavBar.setText(languageManager.getText("components.navbar.buysNavBar"));
-        logoutButton.setText(languageManager.getText("components.navbar.logoutButton"));
-        cardsNavBar.setText(languageManager.getText("components.navbar.cardsNavBar"));
-        logoutButton.setText(languageManager.getText("components.navbar.logoutButton"));
-
-        titleMain.setText(languageManager.getText("screens.cards.titleMain"));
-
-        submitButton.setText(languageManager.getText("screens.cards.submitButton"));
-        labelAccountNumber.setText(languageManager.getText("screens.cards.labelAccountNumber"));
-        labelCardNumber.setText(languageManager.getText("screens.cards.labelCardNumber"));
-        labelExpirationDate.setText(languageManager.getText("screens.cards.labelExpirationDate"));
-        labelCvv.setText(languageManager.getText("screens.cards.labelCvv"));
-        labelSelector.setText(languageManager.getText("screens.cards.labelSelector"));
-        cancelButton.setText(languageManager.getText("screens.cards.cancelButton"));
-
-        if (accessibilityIsActive) {
-            setFontSize(18, 28, 16, 16, 16);
-        }else{
-            setFontSize(16, 24, 14, 14, 14);
-        }
-
-        getCards();
-    }
-
-    private void setFontSize(double fontSizeNavBar, double fontSizeTitleMain, double fontSizeLabel, double fontSizeField, double fontSizeButton) {
-        homeNavBar.setStyle("-fx-font-size: " + fontSizeNavBar + "px;");
-        mailBoxNavBar.setStyle("-fx-font-size: " + fontSizeNavBar + "px;");
-        settingsNavBar.setStyle("-fx-font-size: " + fontSizeNavBar + "px;");
-        buysNavBar.setStyle("-fx-font-size: " + fontSizeNavBar + "px;");
-        cardsNavBar.setStyle("-fx-font-size: " + fontSizeNavBar + "px;");
-        logoutButton.setStyle("-fx-font-size: " + fontSizeNavBar + "px;");
-
-        titleMain.setStyle("-fx-font-size: " + fontSizeTitleMain + "px;");
-
-        labelAccountNumber.setStyle("-fx-font-size: " + fontSizeLabel + "px;");
-        labelCvv.setStyle("-fx-font-size: " + fontSizeLabel + "px;");
-        labelSelector.setStyle("-fx-font-size: " + fontSizeLabel + "px;");
-        labelCardNumber.setStyle("-fx-font-size: " + fontSizeLabel + "px;");
-        labelExpirationDate.setStyle("-fx-font-size: " + fontSizeLabel + "px;");
-
-        fieldAccountNumber.setStyle("-fx-font-size: " + fontSizeField + "px;");
-        fieldCardNumber.setStyle("-fx-font-size: " + fontSizeField + "px;");
-        expirationDate.setStyle("-fx-font-size: " + fontSizeField + "px;");
-        fieldCvv.setStyle("-fx-font-size: " + fontSizeField + "px;");
-        selectorBrand.setStyle("-fx-font-size: " + fontSizeField + "px;");
-
-        submitButton.setStyle("-fx-font-size: " + fontSizeButton + "px;");
-        cancelButton.setStyle("-fx-font-size: " + fontSizeButton + "px;");
-    }
-
 }

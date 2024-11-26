@@ -1,15 +1,5 @@
 [
   {
-    "id": "60db6669-6c2c-4d7f-86dc-81c51f903572",
-    "login": "sparta",
-    "password": "1",
-    "name": "robson",
-    "cpf": "09609964516",
-    "email": "rob@gmail.com",
-    "isAdmin": false,
-    "tickets": []
-  },
-  {
     "id": "53e7a8cb-4f8f-417c-9bf9-f4de962ff900",
     "login": "lu",
     "password": "12",
@@ -19,6 +9,18 @@
     "isAdmin": false,
     "tickets": [
       "5324028a-d5b0-47b3-b670-216683d3cc36"
+    ]
+  },
+  {
+    "id": "60db6669-6c2c-4d7f-86dc-81c51f903572",
+    "login": "sparta",
+    "password": "ola",
+    "name": "Robson",
+    "cpf": "09609964516",
+    "email": "rob@gmail.com",
+    "isAdmin": false,
+    "tickets": [
+      "38f2c3f1-dbdf-4dcb-a616-633b2a39d6f6"
     ]
   }
 ]

@@ -51,7 +51,10 @@
         "buyButton": "Comprar",
         "selectOption": "Selecione",
         "paymentMethodDefault": "Boleto",
-        "notFoundEvents": "Não há eventos cadastrados"
+        "notFoundEvents": "Não há eventos cadastrados",
+        "ratingText": "Avaliação",
+        "dateText": "Data",
+        "priceText": "Preço"
       },
       "settings": {
         "titleMain": "Configurações - Bem-vindo",
@@ -69,7 +72,8 @@
       "buys": {
         "titleMain": "Seus Ingressos",
         "notFoundTicket": "Não há ingressos comprados",
-        "price": "Preço"
+        "price": "Preço",
+        "seatText": "Assento"
       },
       "mailBox": {
         "titleMain": "E-mails",
@@ -217,7 +221,10 @@
         "buyButton": "Buy",
         "selectOption": "Select",
         "paymentMethodDefault": "Ticket",
-        "notFoundEvents": "There are no registered events"
+        "notFoundEvents": "There are no registered events",
+        "ratingText": "Rating",
+        "dateText": "Date",
+        "priceText": "Price"
       },
       "settings": {
         "titleMain": "Settings - Welcome",
@@ -235,7 +242,8 @@
       "buys": {
         "titleMain": "Your Tickets",
         "notFoundTicket": "No tickets purchased",
-        "price": "Price"
+        "price": "Price",
+        "seatText": "Seat"
       },
       "mailBox": {
         "titleMain": "E-mails",

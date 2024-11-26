@@ -2,7 +2,7 @@
   {
     "id": "af23e7b6-d35e-4d6b-927b-8a3c3f46b9f2",
     "name": "Feira Gastronômica Internacional",
-    "description": "Uma celebração aos sabores do mundo, com pratos típicos de mais de 20 países e apresentações culturais.",
+    "description": "Uma celebração única aos sabores do mundo, oferecendo uma grande variedade de pratos típicos de mais de 20 países. Durante o evento, os participantes terão a oportunidade de saborear comidas tradicionais de diferentes culturas, preparadas por chefs renomados. Além disso, haverá apresentações culturais, como danças e músicas típicas, proporcionando uma experiência sensorial completa. Ideal para quem deseja explorar novos sabores e se encantar com as tradições gastronômicas globais.",
     "price": 50.0,
     "date": "Dec 12, 2024, 3:00:00 PM",
     "seats": ["C1", "C2", "C3", "C4", "D1"]
@@ -10,7 +10,7 @@
   {
     "id": "b3244a65-77e8-4966-b02e-9f2b1e7c8a5d",
     "name": "Concerto de Música Clássica",
-    "description": "Uma noite mágica com as melhores obras de Beethoven e Mozart interpretadas por uma orquestra sinfônica renomada.",
+    "description": "Uma noite mágica dedicada às obras-primas dos compositores clássicos mais famosos, como Beethoven e Mozart. Este concerto será interpretado por uma orquestra sinfônica renomada, oferecendo ao público uma imersão completa na beleza da música clássica. O evento contará com peças icônicas que irão tocar o coração dos amantes da música e proporcionar uma experiência única de prazer auditivo. Ideal para quem aprecia a arte da música e deseja vivenciar a majestade de uma orquestra ao vivo.",
     "price": 120.0,
     "date": "Jan 15, 2025, 8:00:00 PM",
     "seats": ["A1", "A2", "B1", "B2", "C1"]
@@ -18,7 +18,7 @@
   {
     "id": "c8745d9b-a81e-4667-a00c-305b21f832e1",
     "name": "Oficina de Arte para Crianças",
-    "description": "Atividades interativas e criativas para crianças explorarem suas habilidades artísticas.",
+    "description": "Uma atividade interativa e criativa para crianças, oferecendo uma oportunidade única de explorar suas habilidades artísticas. Durante a oficina, os participantes poderão experimentar diferentes técnicas de pintura, escultura e artesanato, desenvolvendo sua criatividade e expressão pessoal. Com a orientação de educadores especializados, as crianças aprenderão a se comunicar por meio da arte e a criar obras que refletem suas próprias ideias e sentimentos. Este evento é uma excelente forma de incentivar a imaginação e o desenvolvimento artístico dos pequenos.",
     "price": 30.0,
     "date": "Feb 20, 2025, 10:00:00 AM",
     "seats": ["K1", "K2", "L1", "L2", "M1"]
@@ -26,7 +26,7 @@
   {
     "id": "d9342f76-c54b-4d6a-a01b-4f2c5e7a9b3e",
     "name": "Workshop de Tecnologia e Inovação",
-    "description": "Discussões e práticas sobre as tendências mais recentes em tecnologia, incluindo IA e blockchain.",
+    "description": "Este workshop oferece uma abordagem prática e interativa sobre as tendências mais recentes em tecnologia e inovação, incluindo Inteligência Artificial (IA), blockchain e outras inovações disruptivas. Os participantes terão a chance de discutir como essas tecnologias estão moldando o futuro e poderão realizar atividades práticas para aplicar os conceitos aprendidos. Com especialistas da área e líderes de pensamento, o evento será uma excelente oportunidade para quem deseja se manter atualizado sobre o impacto das novas tecnologias no mercado e na sociedade.",
     "price": 150.0,
     "date": "Mar 8, 2025, 2:00:00 PM",
     "seats": ["T1", "T2", "T3", "T4", "T5"]
@@ -34,7 +34,7 @@
   {
     "id": "e0342d76-f45b-4d6a-a31c-2a5b4e9c8b2f",
     "name": "Festival de Cinema Independente",
-    "description": "Exibição de filmes independentes com presença de diretores e sessões de perguntas e respostas.",
+    "description": "Este festival oferece uma plataforma para cineastas independentes apresentarem seus filmes ao público, incluindo uma seleção de obras inovadoras e de vanguarda. Durante o evento, os participantes terão a oportunidade de assistir a filmes exclusivos, participar de sessões de perguntas e respostas com os diretores e discutir as diferentes abordagens do cinema independente. O festival será um excelente espaço para quem deseja descobrir novos talentos no mundo do cinema e explorar narrativas únicas e criativas que não são vistas nos cinemas tradicionais.",
     "price": 80.0,
     "date": "Apr 18, 2025, 5:00:00 PM",
     "seats": ["F1", "F2", "F3", "F4", "F5"]

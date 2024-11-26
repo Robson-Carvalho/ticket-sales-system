@@ -6,5 +6,13 @@
     "date": "Nov 26, 2024, 12:05:23 PM",
     "amount": 0.0,
     "paymentMethod": "TICKET"
+  },
+  {
+    "id": "64dc213c-bfe8-4883-94f7-8bb13b1fb21a",
+    "userID": "60db6669-6c2c-4d7f-86dc-81c51f903572",
+    "ticketID": "f412e0ae-da22-4d95-94b7-30926083a7f8",
+    "date": "Nov 26, 2024, 3:46:53 PM",
+    "amount": 0.0,
+    "paymentMethod": "TICKET"
   }
 ]

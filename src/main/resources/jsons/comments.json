@@ -5,5 +5,19 @@
     "eventID": "e0342d76-f45b-4d6a-a31c-2a5b4e9c8b2f",
     "rating": 5,
     "content": "Foi muito bom!"
+  },
+  {
+    "id": "69533409-d031-4428-983a-5d3bb5ac00a2",
+    "userID": "60db6669-6c2c-4d7f-86dc-81c51f903572",
+    "eventID": "e0342d76-f45b-4d6a-a31c-2a5b4e9c8b2f",
+    "rating": 2,
+    "content": "ruim"
+  },
+  {
+    "id": "8342b227-26f4-458b-955f-0526dd79837d",
+    "userID": "60db6669-6c2c-4d7f-86dc-81c51f903572",
+    "eventID": "e0342d76-f45b-4d6a-a31c-2a5b4e9c8b2f",
+    "rating": 4,
+    "content": "Bom"
   }
 ]

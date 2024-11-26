@@ -34,24 +34,20 @@ import java.util.UUID;
 
 public class MailBoxController implements ILanguageObserver {
     private final NavigationManager navigationManager = new NavigationManager();
-    private final SessionManager sessionManager;
-    private final LanguageManager languageManager;
     private final AccessibilityManager accessibilityManager = new AccessibilityManager();
     private final MailController mailController = new MailController();
+    private final SessionManager sessionManager;
+    private final LanguageManager languageManager;
 
     public MailBoxController(LanguageManager languageManager, SessionManager sessionManager) {
         this.languageManager = languageManager;
         this.sessionManager = sessionManager;
     }
 
-    //    Initialize
-    @FXML
-    private void initialize() {
+    @FXML private void initialize() {
         updateLanguage();
-        getMails();
     }
 
-    //    Components
     @FXML private Button homeNavBar;
     @FXML private Button mailBoxNavBar;
     @FXML private Button settingsNavBar;
@@ -59,19 +55,52 @@ public class MailBoxController implements ILanguageObserver {
     @FXML private Button buysNavBar;
     @FXML private Text titleMain;
     @FXML private Button logoutButton;
-
     @FXML private VBox listMails;
 
-    // Navigation
+
     @FXML private void navigationToCards(){navigationManager.setScene(SceneEnum.CARDS);}
-
     @FXML private void navigationToHome(){navigationManager.setScene(SceneEnum.DASHBOARD);}
-
     @FXML private void navigationToMailBox(){navigationManager.setScene(SceneEnum.MAILBOX);}
-
     @FXML private void navigationToSettings(){navigationManager.setScene(SceneEnum.SETTINGS);}
-
     @FXML private void navigationToBuys(){navigationManager.setScene(SceneEnum.BUYS);}
+
+    @FXML public void logout(){
+        sessionManager.clearUserSession();
+        navigationManager.setScene(SceneEnum.SIGNIN);
+    }
+
+
+    @Override public void updateLanguage() {
+        Boolean accessibilityIsActive = accessibilityManager.getAccessibilityPropertiesCurrent();
+
+        homeNavBar.setText(languageManager.getText("components.navbar.homeNavBar"));
+        mailBoxNavBar.setText(languageManager.getText("components.navbar.mailBoxNavBar"));
+        settingsNavBar.setText(languageManager.getText("components.navbar.settingsNavBar"));
+        buysNavBar.setText(languageManager.getText("components.navbar.buysNavBar"));
+        titleMain.setText(languageManager.getText("screens.mailBox.titleMain"));
+        cardsNavBar.setText(languageManager.getText("components.navbar.cardsNavBar"));
+        logoutButton.setText(languageManager.getText("components.navbar.logoutButton"));
+
+        if (accessibilityIsActive) {
+            setFontSize(18, 28, 16, 16, 16);
+        }else{
+            setFontSize(16, 24, 14, 14, 14);
+        }
+
+        getMails();
+    }
+
+    private void setFontSize(double fontSizeNavBar, double fontSizeTitleMain, double fontSizeLabel, double fontSizeField, double fontSizeButton) {
+        homeNavBar.setStyle("-fx-font-size: " + fontSizeNavBar + "px;");
+        mailBoxNavBar.setStyle("-fx-font-size: " + fontSizeNavBar + "px;");
+        settingsNavBar.setStyle("-fx-font-size: " + fontSizeNavBar + "px;");
+        buysNavBar.setStyle("-fx-font-size: " + fontSizeNavBar + "px;");
+        cardsNavBar.setStyle("-fx-font-size: " + fontSizeNavBar + "px;");
+        logoutButton.setStyle("-fx-font-size: " + fontSizeNavBar + "px;");
+
+        titleMain.setStyle("-fx-font-size: " + fontSizeTitleMain + "px;");
+    }
+
 
     private void getMails() {
         List<Mail> mails = new ArrayList<>();
@@ -153,45 +182,5 @@ public class MailBoxController implements ILanguageObserver {
         mailsScrollPane.setContent(eventsVBox);
 
         listMails.getChildren().add(mailsScrollPane);
-    }
-
-    // Life Cycle
-    @Override
-    public void updateLanguage() {
-        Boolean accessibilityIsActive = accessibilityManager.getAccessibilityPropertiesCurrent();
-
-        homeNavBar.setText(languageManager.getText("components.navbar.homeNavBar"));
-        mailBoxNavBar.setText(languageManager.getText("components.navbar.mailBoxNavBar"));
-        settingsNavBar.setText(languageManager.getText("components.navbar.settingsNavBar"));
-        buysNavBar.setText(languageManager.getText("components.navbar.buysNavBar"));
-        titleMain.setText(languageManager.getText("screens.mailBox.titleMain"));
-        cardsNavBar.setText(languageManager.getText("components.navbar.cardsNavBar"));
-        logoutButton.setText(languageManager.getText("components.navbar.logoutButton"));
-
-        if (accessibilityIsActive) {
-            setFontSize(18, 28, 16, 16, 16);
-        }else{
-            setFontSize(16, 24, 14, 14, 14);
-        }
-
-        getMails();
-    }
-
-    private void setFontSize(double fontSizeNavBar, double fontSizeTitleMain, double fontSizeLabel, double fontSizeField, double fontSizeButton) {
-        homeNavBar.setStyle("-fx-font-size: " + fontSizeNavBar + "px;");
-        mailBoxNavBar.setStyle("-fx-font-size: " + fontSizeNavBar + "px;");
-        settingsNavBar.setStyle("-fx-font-size: " + fontSizeNavBar + "px;");
-        buysNavBar.setStyle("-fx-font-size: " + fontSizeNavBar + "px;");
-        cardsNavBar.setStyle("-fx-font-size: " + fontSizeNavBar + "px;");
-        logoutButton.setStyle("-fx-font-size: " + fontSizeNavBar + "px;");
-
-        titleMain.setStyle("-fx-font-size: " + fontSizeTitleMain + "px;");
-    }
-
-        // Logic
-    @FXML
-    public void logout(){
-        sessionManager.clearUserSession();
-        navigationManager.setScene(SceneEnum.SIGNIN);
     }
 }

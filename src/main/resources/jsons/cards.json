@@ -1,1 +1,13 @@
-[]
+[
+  {
+    "id": "ad0749c6-d56f-410c-b59e-a80163fdd717",
+    "userID": "60db6669-6c2c-4d7f-86dc-81c51f903572",
+    "userName": "Robson",
+    "brand": "Elo",
+    "accountNumber": "333333333333",
+    "number": "3333333333333333",
+    "expiryDate": "Nov 7, 2024, 12:00:00 AM",
+    "cvv": "333",
+    "status": true
+  }
+]

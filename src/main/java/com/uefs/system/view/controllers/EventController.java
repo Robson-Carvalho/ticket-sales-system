@@ -27,14 +27,13 @@ import java.util.UUID;
 
 public class EventController implements ILanguageObserver {
     private final NavigationManager navigationManager = new NavigationManager();
-    private final LanguageManager languageManager;
-    private final SessionManager sessionManager;
     private final AccessibilityManager accessibilityManager = new AccessibilityManager();
     private final CommentController commentController = new CommentController();
     private final UserController userController = new UserController();
     private final TicketController ticketController = new TicketController();
+    private final LanguageManager languageManager;
+    private final SessionManager sessionManager;
     private final Event event;
-
 
     public EventController(LanguageManager languageManager, SessionManager sessionManager, Event event) {
         this.languageManager = languageManager;
@@ -42,14 +41,11 @@ public class EventController implements ILanguageObserver {
         this.event = event;
     }
 
-    //    Initialize
-    @FXML
-    private void initialize() {
+    @FXML private void initialize() {
         updateLanguage();
         getComments();
     }
 
-    //    Components
     @FXML private Button homeNavBar;
     @FXML private Button mailBoxNavBar;
     @FXML private Button settingsNavBar;
@@ -68,31 +64,16 @@ public class EventController implements ILanguageObserver {
     @FXML private Button submitButton;
     @FXML private Button cancelButton;
 
-
-    // Navigation
     @FXML private void navigationToCards(){navigationManager.setScene(SceneEnum.CARDS);}
-
     @FXML private void navigationToHome(){navigationManager.setScene(SceneEnum.DASHBOARD);}
-
     @FXML private void navigationToMailBox(){navigationManager.setScene(SceneEnum.MAILBOX);}
-
     @FXML private void navigationToSettings(){navigationManager.setScene(SceneEnum.SETTINGS);}
-
     @FXML private void navigationToBuys(){navigationManager.setScene(SceneEnum.BUYS);}
 
-    // Logic
     @FXML
     public void logout(){
         sessionManager.clearUserSession();
         navigationManager.setScene(SceneEnum.SIGNIN);
-    }
-
-    private void messageAlert(Alert.AlertType type, String message) {
-        Alert alert = new Alert(type);
-        alert.initStyle(StageStyle.UNDECORATED);
-        alert.setHeaderText(null);
-        alert.setContentText(message);
-        alert.showAndWait();
     }
 
     @FXML private void handleComment(){
@@ -139,9 +120,7 @@ public class EventController implements ILanguageObserver {
         selectorRating.setValue("1");
     }
 
-    // Life Cycle
-    @Override
-    public void updateLanguage() {
+    @Override public void updateLanguage() {
         Boolean accessibilityIsActive = accessibilityManager.getAccessibilityPropertiesCurrent();
 
         homeNavBar.setText(languageManager.getText("components.navbar.homeNavBar"));
@@ -185,6 +164,14 @@ public class EventController implements ILanguageObserver {
 
         submitButton.setStyle("-fx-font-size: " + fontSizeButton + "px;");
         cancelButton.setStyle("-fx-font-size: " + fontSizeButton + "px;");
+    }
+
+    private void messageAlert(Alert.AlertType type, String message) {
+        Alert alert = new Alert(type);
+        alert.initStyle(StageStyle.UNDECORATED);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 
     public void getComments(){
@@ -246,14 +233,6 @@ public class EventController implements ILanguageObserver {
                 commentContainer.setSpacing(10);
 
                 commentContainer.setStyle("-fx-background-color: rgba(222,222,222,0.5); -fx-background-radius: 5px;");
-
-                commentContainer.setOnMouseEntered(e -> {
-                    commentContainer.setStyle("-fx-background-color: #DEDEDE; -fx-background-radius: 5px; -fx-cursor: hand;");
-                });
-
-                commentContainer.setOnMouseExited(e -> {
-                    commentContainer.setStyle("-fx-background-color: rgba(222,222,222,0.5); -fx-background-radius: 5px;");
-                });
 
                 User user = userController.getById(comment.getUserID());
 
