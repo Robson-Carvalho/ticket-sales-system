@@ -49,6 +49,7 @@ public class SignUpController implements ILanguageObserver {
     private void handleSignUp() {
         try {
             User user = userController.create(loginField.getText(), passwordField.getText(), nameField.getText(), cpfField.getText(),emailField.getText(), false);
+
             if(isValidLogin(user.getLogin(), user.getPassword())){
                 showLoginSuccessAlert();
                 sessionManager.saveUserSession(user);
@@ -80,7 +81,7 @@ public class SignUpController implements ILanguageObserver {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Erro de Login");
         alert.setHeaderText(null);
-        alert.setContentText("Usuário ou senha inválidos. Tente novamente.");
+        alert.setContentText("Usuário e/ou senha inválidos. Tente novamente.");
         alert.showAndWait();
     }
 

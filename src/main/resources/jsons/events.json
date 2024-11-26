@@ -1,30 +1,42 @@
 [
   {
-    "id": "c8745d9b-a81e-4667-a00c-305b21f832f5",
-    "name": "Show de Rock",
-    "description": "Ainda assim, existem dúvidas a respeito de como o surgimento do comércio virtual é uma das consequências das condições inegavelmente apropriadas.",
-    "date": "Nov 21, 2024, 10:00:39 PM",
-    "seats": ["A1", "A2", "A3", "A4", "B1"]
+    "id": "af23e7b6-d35e-4d6b-927b-8a3c3f46b9f2",
+    "name": "Feira Gastronômica Internacional",
+    "description": "Uma celebração aos sabores do mundo, com pratos típicos de mais de 20 países e apresentações culturais.",
+    "price": 50.0,
+    "date": "Dec 12, 2024, 3:00:00 PM",
+    "seats": ["C1", "C2", "C3", "C4", "D1"]
   },
   {
-    "id": "0d773ff8-b861-453e-8dab-802b814a1642",
-    "name": "Show de Rock",
-    "description": "Ainda assim, existem dúvidas a respeito de como o surgimento do comércio virtual é uma das consequências das condições inegavelmente apropriadas.",
-    "date": "Nov 21, 2024, 10:01:54 PM",
-    "seats": ["A1", "A2"]
+    "id": "b3244a65-77e8-4966-b02e-9f2b1e7c8a5d",
+    "name": "Concerto de Música Clássica",
+    "description": "Uma noite mágica com as melhores obras de Beethoven e Mozart interpretadas por uma orquestra sinfônica renomada.",
+    "price": 120.0,
+    "date": "Jan 15, 2025, 8:00:00 PM",
+    "seats": ["A1", "A2", "B1", "B2", "C1"]
   },
   {
-    "id": "080bf432-088b-45ac-b0fd-9ce82acfd9e5",
-    "name": "Show de Rock",
-    "description": "Ainda assim, existem dúvidas a respeito de como o surgimento do comércio virtual é uma das consequências das condições inegavelmente apropriadas.",
-    "date": "Nov 21, 2024, 10:02:18 PM",
-    "seats": []
+    "id": "c8745d9b-a81e-4667-a00c-305b21f832e1",
+    "name": "Oficina de Arte para Crianças",
+    "description": "Atividades interativas e criativas para crianças explorarem suas habilidades artísticas.",
+    "price": 30.0,
+    "date": "Feb 20, 2025, 10:00:00 AM",
+    "seats": ["K1", "K2", "L1", "L2", "M1"]
   },
   {
-    "id": "1d921643-9640-4ccd-8d89-35e8969ccd66",
-    "name": "Show de Rock",
-    "description": "Ainda assim, existem dúvidas a respeito de como o surgimento do comércio virtual é uma das consequências das condições inegavelmente apropriadas.",
-    "date": "Nov 21, 2024, 10:02:37 PM",
-    "seats": ["A1", "A2", "A3", "A4", "B1", "C1", "D1"]
+    "id": "d9342f76-c54b-4d6a-a01b-4f2c5e7a9b3e",
+    "name": "Workshop de Tecnologia e Inovação",
+    "description": "Discussões e práticas sobre as tendências mais recentes em tecnologia, incluindo IA e blockchain.",
+    "price": 150.0,
+    "date": "Mar 8, 2025, 2:00:00 PM",
+    "seats": ["T1", "T2", "T3", "T4", "T5"]
+  },
+  {
+    "id": "e0342d76-f45b-4d6a-a31c-2a5b4e9c8b2f",
+    "name": "Festival de Cinema Independente",
+    "description": "Exibição de filmes independentes com presença de diretores e sessões de perguntas e respostas.",
+    "price": 80.0,
+    "date": "Apr 18, 2025, 5:00:00 PM",
+    "seats": ["F1", "F2", "F3", "F4", "F5"]
   }
 ]

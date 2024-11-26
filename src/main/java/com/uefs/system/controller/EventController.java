@@ -38,11 +38,12 @@ public class EventController {
      * @param name        O nome do evento.
      * @param description A descrição do evento.
      * @param date        A data do evento.
+     * @param price       O preço do evento.
      * @return O evento criado.
      * @throws SecurityException Se o usuário não for um administrador ou se a data for anterior à atual.
      */
-    public Event create(User admin, String name, String description, Date date) {
-        Event event = new Event(name, description, date);
+    public Event create(User admin, String name, String description, Date date, Double price) {
+        Event event = new Event(name, description, date, price);
 
         User _admin = userController.getById(admin.getId());
 
@@ -92,9 +93,7 @@ public class EventController {
      *
      * @param id O UUID do evento a ser deletado.
      */
-    public void delete(UUID id) {
-        eventService.delete(id);
-    }
+    public void delete(UUID id) {eventService.delete(id);}
 
 
     /**

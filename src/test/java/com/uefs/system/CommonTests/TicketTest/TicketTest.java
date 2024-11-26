@@ -49,7 +49,7 @@ public class TicketTest {
 
         userFacade.create(login, password, nameUser, cpf, email, isAdmin);
 
-        String eventId = eventFacade.create(login, name, description, date);
+        String eventId = eventFacade.create(login, name, description, date, 100.0);
 
         assertNotNull(eventFacade.getById(eventId));
 
@@ -79,7 +79,7 @@ public class TicketTest {
 
         userFacade.create(login, password, nameUser, cpf, email, isAdmin);
 
-        String eventId = eventFacade.create(login, name, description, date);
+        String eventId = eventFacade.create(login, name, description, date, 100.3);
 
         String ticketId = ticketFacade.create(eventId, 100.0, "A1");
 
@@ -105,7 +105,7 @@ public class TicketTest {
 
         userFacade.create(login, password, nameUser, cpf, email, isAdmin);
 
-        String eventId = eventFacade.create(login, name, description, date);
+        String eventId = eventFacade.create(login, name, description, date, 100.3);
 
         String ticketId = ticketFacade.create(eventId, 100.0, "A1");
 
@@ -133,7 +133,7 @@ public class TicketTest {
 
         userFacade.create(login, password, nameUser, cpf, email, isAdmin);
 
-        String eventId = eventFacade.create(login, name, description, date);
+        String eventId = eventFacade.create(login, name, description, date, 100.3);
 
         ticketFacade.create(eventId, 100.0, "A1");
         ticketFacade.create(eventId, 100.0, "A1");

@@ -53,12 +53,8 @@ public class CommentService implements IService<Comment> {
 
         if(user == null || event == null) return null;
 
-        if(!event.isActive()){
-            commentRepository.save(comment);
-            return comment;
-        }
-
-        throw new SecurityException("Comentário só pode ser adicionando após a realização do evento.");
+        commentRepository.save(comment);
+        return comment;
     }
 
     /**

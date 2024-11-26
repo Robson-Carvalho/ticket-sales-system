@@ -74,7 +74,11 @@ public class MailBoxController implements ILanguageObserver {
     @FXML private void navigationToBuys(){navigationManager.setScene(SceneEnum.BUYS);}
 
     private void getMails() {
-        List<Mail> mails = mailController.getMailsByUserId(UUID.fromString(sessionManager.getID()));
+        List<Mail> mails = new ArrayList<>();
+
+        if(sessionManager.isSessionActive()){
+            mails = mailController.getMailsByUserId(UUID.fromString(sessionManager.getID()));
+        }
 
         listMails.getChildren().clear();
 
@@ -116,7 +120,7 @@ public class MailBoxController implements ILanguageObserver {
             VBox textContainer = new VBox();
             textContainer.setSpacing(5);
 
-            Label notFoundEmails = new Label("Não há e-mails");
+            Label notFoundEmails = new Label(languageManager.getText("screens.mailBox.notFoundMails"));
 
             notFoundEmails.setStyle("-fx-font-size: " + fontSizeSubjectName + "px; -fx-font-weight: bold;");
 
@@ -125,21 +129,14 @@ public class MailBoxController implements ILanguageObserver {
             mailContainer.getChildren().addAll(textContainer);
 
             eventsVBox.getChildren().add(mailContainer);
+
         } else {
-            for (Mail mail : mails) {
+            for (Mail mail : mails.reversed()) {
                 VBox mailContainer = new VBox();
                 mailContainer.setPadding(new Insets(16));
                 mailContainer.setSpacing(10);
 
                 mailContainer.setStyle("-fx-background-color: rgba(222,222,222,0.5); -fx-background-radius: 5px;");
-
-                mailContainer.setOnMouseEntered(e -> {
-                    mailContainer.setStyle("-fx-background-color: #DEDEDE; -fx-background-radius: 5px; -fx-cursor: hand;");
-                });
-
-                mailContainer.setOnMouseExited(e -> {
-                    mailContainer.setStyle("-fx-background-color: rgba(222,222,222,0.5); -fx-background-radius: 5px;");
-                });
 
                 Label eventName = new Label(mail.getSubject());
                 eventName.setStyle("-fx-font-size: " + fontSizeSubjectName + "px; -fx-font-weight: bold;");

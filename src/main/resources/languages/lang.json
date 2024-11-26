@@ -50,7 +50,8 @@
         "titleMain": "Lista de Eventos",
         "buyButton": "Comprar",
         "selectOption": "Selecione",
-        "paymentMethodDefault": "Boleto"
+        "paymentMethodDefault": "Boleto",
+        "notFoundEvents": "Não há eventos cadastrados"
       },
       "settings": {
         "titleMain": "Configurações - Bem-vindo",
@@ -66,10 +67,13 @@
         "accessibilityCheckBox": "Habilitar Acessibilidade"
       },
       "buys": {
-        "titleMain": "Suas Compras"
+        "titleMain": "Seus Ingressos",
+        "notFoundTicket": "Não há ingressos comprados",
+        "price": "Preço"
       },
       "mailBox": {
-        "titleMain": "E-mails"
+        "titleMain": "E-mails",
+        "notFoundMails": "Não há e-mails"
       },
       "cards": {
         "titleMain": "Gerenciador de Cartões",
@@ -91,6 +95,74 @@
         "submitButton": "Adicionar",
         "cancelButton": "Cancelar"
       }
+    },
+    "messagesAlert": {
+      "fieldNotWrite": "Por favor, preencha todos os campos",
+
+      "loginSuccess": "Usuário logado com sucesso.",
+      "loginError": "Usuário e/ou senha incorretos.",
+      "logoutSuccess": "Usuário deslogado com sucesso.",
+      "sessionExpired": "Sessão expirada. Por favor, faça login novamente.",
+
+
+      "userCreatedSuccess": "Usuário cadastrado com sucesso.",
+      "userCreatedError": "Erro ao cadastrar o usuário. Tente novamente.",
+      "userAlreadyExists": "Usuário já existe. Por favor, tente outro e-mail.",
+
+
+      "passwordResetSuccess": "Senha redefinida com sucesso.",
+      "passwordResetError": "Erro ao redefinir a senha. Verifique suas informações e tente novamente.",
+      "passwordResetEmailSent": "E-mail para redefinição de senha enviado com sucesso.",
+      "passwordResetEmailError": "Erro ao enviar o e-mail de redefinição de senha.",
+
+
+      "commentAddedSuccess": "Comentário adicionado com sucesso.",
+      "commentAddedError": "Erro ao adicionar comentário. Tente novamente.",
+      "commentDeletedSuccess": "Comentário deletado com sucesso.",
+      "commentDeletedError": "Erro ao deletar o comentário. Tente novamente.",
+
+
+      "cardCreatedSuccess": "Cartão criado com sucesso.",
+      "cardCreatedError": "Erro ao criar o cartão. Tente novamente.",
+      "cardDeletedSuccess": "Cartão deletado com sucesso.",
+      "cardDeletedError": "Erro ao deletar o cartão. Tente novamente.",
+      "cardUpdatedSuccess": "Cartão atualizado com sucesso.",
+      "cardUpdatedError": "Erro ao atualizar o cartão. Tente novamente.",
+
+
+      "operationSuccess": "Operação concluída com sucesso.",
+      "operationError": "Erro ao realizar a operação. Tente novamente.",
+
+
+      "fileUploadSuccess": "Arquivo enviado com sucesso.",
+      "fileUploadError": "Erro ao enviar o arquivo. Tente novamente.",
+      "fileDownloadSuccess": "Arquivo baixado com sucesso.",
+      "fileDownloadError": "Erro ao baixar o arquivo. Tente novamente.",
+      "fileDeleteSuccess": "Arquivo deletado com sucesso.",
+      "fileDeleteError": "Erro ao deletar o arquivo. Tente novamente.",
+
+
+      "profileUpdateSuccess": "Perfil atualizado com sucesso.",
+      "profileUpdateError": "Erro ao atualizar o perfil. Tente novamente.",
+
+
+      "paymentSuccess": "Pagamento realizado com sucesso.",
+      "paymentError": "Erro ao processar o pagamento. Tente novamente.",
+      "paymentRefundSuccess": "Reembolso realizado com sucesso.",
+      "paymentRefundError": "Erro ao processar o reembolso. Tente novamente.",
+
+
+      "accessDenied": "Acesso negado. Você não tem permissão para realizar esta ação.",
+      "permissionUpdatedSuccess": "Permissões atualizadas com sucesso.",
+      "permissionUpdatedError": "Erro ao atualizar as permissões. Tente novamente.",
+
+
+      "unexpectedError": "Ocorreu um erro inesperado. Por favor, tente novamente mais tarde.",
+      "networkError": "Erro de conexão. Verifique sua internet e tente novamente.",
+
+
+      "settingsUpdatedSuccess": "Configurações atualizadas com sucesso.",
+      "settingsUpdatedError": "Erro ao atualizar as configurações. Tente novamente."
     }
   },
   "en_us": {
@@ -144,7 +216,8 @@
         "titleMain": "List of Eventos",
         "buyButton": "Buy",
         "selectOption": "Select",
-        "paymentMethodDefault": "Ticket"
+        "paymentMethodDefault": "Ticket",
+        "notFoundEvents": "There are no registered events"
       },
       "settings": {
         "titleMain": "Settings - Welcome",
@@ -160,10 +233,13 @@
         "accessibilityCheckBox": "Enable Accessibility"
 },
       "buys": {
-        "titleMain": "Your Buys"
+        "titleMain": "Your Tickets",
+        "notFoundTicket": "No tickets purchased",
+        "price": "Price"
       },
       "mailBox": {
-        "titleMain": "E-mails"
+        "titleMain": "E-mails",
+        "notFoundMails": "There are no emails"
       },
       "cards": {
         "titleMain": "Cards Manager",
@@ -185,6 +261,76 @@
         "submitButton": "To add",
         "cancelButton": "Cancel"
       }
+    },
+    "messagesAlert": {
+
+      "loginSuccess": "User logged in successfully.",
+      "loginError": "Incorrect username and/or password.",
+      "logoutSuccess": "User logged out successfully.",
+      "sessionExpired": "Session expired. Please log in again.",
+
+
+      "userCreatedSuccess": "User registered successfully.",
+      "userCreatedError": "Error registering the user. Please try again.",
+      "userAlreadyExists": "User already exists. Please try another email.",
+
+
+      "passwordResetSuccess": "Password reset successfully.",
+      "passwordResetError": "Error resetting the password. Please check your information and try again.",
+      "passwordResetEmailSent": "Password reset email sent successfully.",
+      "passwordResetEmailError": "Error sending the password reset email.",
+
+
+      "commentAddedSuccess": "Comment added successfully.",
+      "commentAddedError": "Error adding the comment. Please try again.",
+      "commentDeletedSuccess": "Comment deleted successfully.",
+      "commentDeletedError": "Error deleting the comment. Please try again.",
+
+
+      "cardCreatedSuccess": "Card created successfully.",
+      "cardCreatedError": "Error creating the card. Please try again.",
+      "cardDeletedSuccess": "Card deleted successfully.",
+      "cardDeletedError": "Error deleting the card. Please try again.",
+      "cardUpdatedSuccess": "Card updated successfully.",
+      "cardUpdatedError": "Error updating the card. Please try again.",
+
+
+      "operationSuccess": "Operation completed successfully.",
+      "operationError": "Error performing the operation. Please try again.",
+
+
+      "fileUploadSuccess": "File uploaded successfully.",
+      "fileUploadError": "Error uploading the file. Please try again.",
+      "fileDownloadSuccess": "File downloaded successfully.",
+      "fileDownloadError": "Error downloading the file. Please try again.",
+      "fileDeleteSuccess": "File deleted successfully.",
+      "fileDeleteError": "Error deleting the file. Please try again.",
+
+
+      "profileUpdateSuccess": "Profile updated successfully.",
+      "profileUpdateError": "Error updating the profile. Please try again.",
+
+
+      "paymentSuccess": "Payment processed successfully.",
+      "paymentError": "Error processing the payment. Please try again.",
+      "paymentRefundSuccess": "Refund processed successfully.",
+      "paymentRefundError": "Error processing the refund. Please try again.",
+
+
+      "accessDenied": "Access denied. You do not have permission to perform this action.",
+      "permissionUpdatedSuccess": "Permissions updated successfully.",
+      "permissionUpdatedError": "Error updating the permissions. Please try again.",
+
+
+      "unexpectedError": "An unexpected error occurred. Please try again later.",
+      "networkError": "Connection error. Check your internet and try again.",
+
+
+      "settingsUpdatedSuccess": "Settings updated successfully.",
+      "settingsUpdatedError": "Error updating the settings. Please try again."
     }
   }
 }
+
+
+

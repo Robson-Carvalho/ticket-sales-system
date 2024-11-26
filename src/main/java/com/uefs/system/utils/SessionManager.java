@@ -1,6 +1,7 @@
 package com.uefs.system.utils;
 
 import com.google.gson.*;
+import com.uefs.system.controller.UserController;
 import com.uefs.system.model.User;
 
 import java.io.*;
@@ -9,6 +10,7 @@ import java.util.UUID;
 
 public class SessionManager {
     private static final String SESSION_FILE_PATH = PathsFile.getSession();
+    private final UserController userController = new  UserController();
 
     public void saveUserSession(User user) {
         JsonObject sessionData = new JsonObject();
@@ -172,9 +174,15 @@ public class SessionManager {
             String jsonString = new String(Files.readAllBytes(sessionFilePath));
             JsonObject sessionData = JsonParser.parseString(jsonString).getAsJsonObject();
 
+            String id = sessionData.get("id").getAsString();
 
-            String login = sessionData.get("login").getAsString();
-            return login != null && !login.isEmpty();
+            if(id == null || id.isEmpty()) return false;
+
+            User user = userController.getById(UUID.fromString(id));
+
+            if(user == null) clearUserSession();
+
+            return user != null && !user.getLogin().isEmpty();
         } catch (IOException | JsonParseException e) {
             System.out.println("Erro ao verificar a sessão: " + e.getMessage());
             return false;

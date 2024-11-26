@@ -1,16 +1,24 @@
 [
   {
-    "id": "3213237d-d4d3-47fc-b419-ce0c75632e75",
+    "id": "60db6669-6c2c-4d7f-86dc-81c51f903572",
     "login": "sparta",
-    "password": "123456",
-    "name": "Robson Carvalho de Souza",
+    "password": "1",
+    "name": "robson",
     "cpf": "09609964516",
-    "email": "robsoncarvalho.tech@gmail",
+    "email": "rob@gmail.com",
+    "isAdmin": false,
+    "tickets": []
+  },
+  {
+    "id": "53e7a8cb-4f8f-417c-9bf9-f4de962ff900",
+    "login": "lu",
+    "password": "12",
+    "name": "Luana",
+    "cpf": "09609964511",
+    "email": "lu@gmail.com",
     "isAdmin": false,
     "tickets": [
-      "93514678-1ca5-47be-b217-3d324575133e",
-      "e70f82b1-f35e-4bd8-b226-58d8712f5fd0",
-      "f2655777-74f1-4c6c-bea6-cc8df806ae7e"
+      "5324028a-d5b0-47b3-b670-216683d3cc36"
     ]
   }
 ]

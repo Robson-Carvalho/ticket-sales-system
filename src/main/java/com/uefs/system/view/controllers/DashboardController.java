@@ -75,7 +75,6 @@ public class DashboardController implements ILanguageObserver {
     // Life Cycle
     @Override
     public void updateLanguage() {
-
         Boolean accessibilityIsActive = accessibilityManager.getAccessibilityPropertiesCurrent();
 
         homeNavBar.setText(languageManager.getText("components.navbar.homeNavBar"));
@@ -122,41 +121,28 @@ public class DashboardController implements ILanguageObserver {
         alert.showAndWait();
     }
 
-    private void buyTicket(Event event, String seat, String paymentMethod, int seatsPurchased) {
+    private void buyTicket(Event event, String seat, String paymentMethod, int seatsPurchased)  {
         int seats = event.getSeats().size();
 
         if(seatsPurchased == seats && seats != 0){
             messageAlert(Alert.AlertType.WARNING, "Assentos esgotados.");
-            return;
-        }
-
-        if(seats == 0){
+        }else if(seats == 0){
             messageAlert(Alert.AlertType.WARNING, "Ainda não há assentos cadastrados.");
-            return;
-        }
-
-        if(Objects.equals(seat, "Selecione") || Objects.equals(seat, "Select")){
+        }else if(Objects.equals(seat, "Selecione") || Objects.equals(seat, "Select")){
             messageAlert(Alert.AlertType.WARNING, "Por favor, selecione todos os campos.");
-            return;
-        }
+        }else{
+            try {
+                if(Objects.equals(paymentMethod, "Ticket") || Objects.equals(paymentMethod, "Boleto")){
+                    controller.purchase(sessionManager.loadUserSession(), event.getId(), seat);
+                }else{
+                    controller.purchase(sessionManager.loadUserSession(), event.getId(), seat, paymentMethod);
+                }
 
-        try{
-            Boolean buy;
-
-            if(Objects.equals(paymentMethod, "Ticket") || Objects.equals(paymentMethod, "Boleto")){
-                buy = controller.purchase(sessionManager.loadUserSession(), event.getId(), seat);
-            }else{
-                buy = controller.purchase(sessionManager.loadUserSession(), event.getId(), seat, paymentMethod);
-            }
-
-            if(!buy){
-                messageAlert(Alert.AlertType.WARNING, "Por favor, selecione todos os campos.");
-            }else{
                 messageAlert(Alert.AlertType.INFORMATION, "Ingresso para evento "+event.getName()+" no assento "+seat+" comprado com sucesso!");
+            }catch (Exception e){
+                System.out.println("Error: " + e);
+                messageAlert(Alert.AlertType.ERROR, "Erro ao comprar ingresso.");
             }
-        }catch (Exception e){
-            System.out.println(e.getMessage());
-            messageAlert(Alert.AlertType.ERROR, "Erro interno.");
         }
 
         languageManager.notifyObservers();
@@ -208,7 +194,7 @@ public class DashboardController implements ILanguageObserver {
             VBox textContainer = new VBox();
             textContainer.setSpacing(5);
 
-            Label eventName = new Label("Não há eventos");
+            Label eventName = new Label(languageManager.getText("screens.dashboard.notFoundEvents"));
 
             eventName.setStyle("-fx-font-size: " + fontSizeEventName + "px; -fx-font-weight: bold;");
 
@@ -218,7 +204,7 @@ public class DashboardController implements ILanguageObserver {
 
             eventsVBox.getChildren().add(eventContainer);
         } else {
-            for (Event event : events) {
+            for (Event event : events.reversed()) {
                 VBox eventContainer = new VBox();
                 eventContainer.setPadding(new Insets(16));
                 eventContainer.setSpacing(10);

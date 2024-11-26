@@ -54,6 +54,7 @@ public class TicketController {
         Ticket ticket = new Ticket(eventId, price, seat);
         ticketService.create(ticket);
 
+        /*
         Event _event = eventService.getById(eventId);
 
         if (_event.getSeats().contains(seat)) {
@@ -62,6 +63,7 @@ public class TicketController {
 
         _event.addSeat(seat);
         eventService.update(_event);
+         */
 
         return ticket;
     }

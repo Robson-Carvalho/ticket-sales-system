@@ -26,6 +26,7 @@ public class Event {
     private final String name;
     private final String description;
     private final Date date;
+    private final Double price;
     private final List<String> seats = new ArrayList<>();
 
     /**
@@ -36,12 +37,23 @@ public class Event {
      * @param description Descrição do evento
      * @param date        Data do evento
      */
-    public Event(String name, String description, Date date) {
+    public Event(String name, String description, Date date, Double price) {
+        this.price = price;
         this.id = UUID.randomUUID();
         this.name = name;
         this.description = description;
         this.date = date;
     }
+
+    /**
+     * Retorna o preço do evento.
+     *
+     * @return Preço do evento.
+     */
+    public Double getPrice() {
+        return price;
+    }
+
 
     /**
      * Retorna o ID único do evento.

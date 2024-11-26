@@ -43,7 +43,7 @@ public class TicketTest {
 
         User admin = userController.create("admin", "senha123", "Admin User", "00000000000", "admin@example.com", true);
 
-        Event event = eventController.create(admin, "Show de Rock", "Banda XYZ", data);
+        Event event = eventController.create(admin, "Show de Rock", "Banda XYZ", data, 10.2);
         Ticket ticket = ticketController.create(event.getId(), 100.0, "A1");
 
         assertNotNull(ticket);
@@ -61,7 +61,7 @@ public class TicketTest {
 
         User admin = userController.create("admin", "senha123", "Admin User", "00000000000", "admin@example.com", true);
 
-        Event event = eventController.create(admin , "Show de Rock 1", "Banda XYZ", data);
+        Event event = eventController.create(admin , "Show de Rock 1", "Banda XYZ", data,10.2);
         Ticket ticket = ticketController.create(event.getId(), 100.0, "A1");
 
         assertTrue(ticketController.cancelById(ticket.getId()));
@@ -76,7 +76,7 @@ public class TicketTest {
 
         User admin = userController.create("admin", "senha123", "Admin User", "00000000000", "admin@example.com", true);
 
-        Event event = eventController.create(admin, "Show de Rock 2", "Banda XYZ", data);
+        Event event = eventController.create(admin, "Show de Rock 2", "Banda XYZ", data,10.2);
         Ticket ticket = ticketController.create(event.getId(), 100.0, "A1");
 
         assertFalse(ticketController.cancelById(ticket.getId()));
@@ -91,7 +91,7 @@ public class TicketTest {
 
         User admin = userController.create("admin", "senha123", "Admin User", "00000000000", "admin@example.com", true);
 
-        Event event = eventController.create(admin, "Show de Rock", "Banda XYZ", data);
+        Event event = eventController.create(admin, "Show de Rock", "Banda XYZ", data, 10.2);
         Ticket ticket = ticketController.create(event.getId(), 100.0, "A1");
 
         ticketController.cancelById(ticket.getId());
@@ -109,7 +109,7 @@ public class TicketTest {
 
         User admin = userController.create("admin", "senha123", "Admin User", "00000000000", "admin@example.com", true);
 
-        Event event = eventController.create(admin, "Show de Rock","Banda XYZ", data);
+        Event event = eventController.create(admin, "Show de Rock","Banda XYZ", data, 10.2);
         ticketController.create(event.getId(), 100.0, "A1");
 
         Exception exception = assertThrows(IllegalArgumentException.class, () -> {

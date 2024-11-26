@@ -64,7 +64,7 @@ public class PurchaseTest {
         userFacade.create(login, password, nameUser, cpf, email, isAdmin);
         userFacade.create(login1, password1, nameUser1, cpf1, email1, isAdmin1);
 
-        String eventId = eventFacade.create(login, name, description, date);
+        String eventId = eventFacade.create(login, name, description, date, 100.4);
 
         assertNotNull(eventFacade.getById(eventId));
 
@@ -113,7 +113,7 @@ public class PurchaseTest {
         String cardId = cardFacade.create(email1, cardNumber, expiryDate, cvv);
         assertNotNull(cardFacade.getById(cardId));
 
-        String eventId = eventFacade.create(login, name, description, date);
+        String eventId = eventFacade.create(login, name, description, date, 100.3);
 
         assertNotNull(eventFacade.getById(eventId));
 
@@ -153,7 +153,7 @@ public class PurchaseTest {
         userFacade.create(login, password, nameUser, cpf, email, isAdmin);
         userFacade.create(login1, password1, nameUser1, cpf1, email1, isAdmin1);
 
-        String eventId = eventFacade.create(login, name, description, date);
+        String eventId = eventFacade.create(login, name, description, date, 100.3);
 
         assertNotNull(eventFacade.getById(eventId));
 
@@ -200,7 +200,7 @@ public class PurchaseTest {
         String cardId = cardFacade.create(email1, cardNumber, expiryDate, cvv);
         assertNotNull(cardFacade.getById(cardId));
 
-        String eventId = eventFacade.create(login, name, description, date);
+        String eventId = eventFacade.create(login, name, description, date, 100.3);
 
         assertNotNull(eventFacade.getById(eventId));
 

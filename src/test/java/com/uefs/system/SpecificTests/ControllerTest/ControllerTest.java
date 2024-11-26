@@ -42,7 +42,7 @@ public class ControllerTest {
         calendar.set(2025, Calendar.SEPTEMBER, 10);
         Date data = calendar.getTime();
 
-        Event event = controller.createEvent(admin, "Show de Rock", "Banda XYZ", data);
+        Event event = controller.createEvent(admin, "Show de Rock", "Banda XYZ", data, 10.2);
 
         assertNotNull(event);
         assertEquals("Show de Rock", event.getName());
@@ -59,7 +59,7 @@ public class ControllerTest {
         Date data = calendar.getTime();
 
         Exception exception = assertThrows(SecurityException.class, () -> {
-            controller.createEvent(user, "Peça de Teatro", "Grupo ABC", data);
+            controller.createEvent(user, "Peça de Teatro", "Grupo ABC", data, 10.2);
         });
 
         assertEquals("Somente administradores podem cadastrar eventos.", exception.getMessage());
@@ -74,7 +74,7 @@ public class ControllerTest {
         Date data = calendar.getTime();
 
         User admin = controller.createUser("admin", "senha123", "Admin User", "00000000000", "admin@example.com", true);
-        controller.createEvent(admin, "Show de Rock 1", "Banda XYZ", data);
+        controller.createEvent(admin, "Show de Rock 1", "Banda XYZ", data, 10.2);
         controller.addSeatToEvent("Show de Rock 1", "A1");
 
         Ticket ticket = controller.buyTicket(user, "Show de Rock 1", "A1");
@@ -96,7 +96,7 @@ public class ControllerTest {
         Date data = calendar.getTime();
 
         User admin = controller.createUser("admin", "senha123", "Admin User", "00000000000", "admin@example.com", true);
-        controller.createEvent(admin, "Show de Rock", "Banda XYZ", data);
+        controller.createEvent(admin, "Show de Rock", "Banda XYZ", data, 10.2);
         controller.addSeatToEvent("Show de Rock", "A1");
         Ticket ticket = controller.buyTicket(user, "Show de Rock", "A1");
 
@@ -119,8 +119,8 @@ public class ControllerTest {
         calendar2.set(2025, Calendar.SEPTEMBER, 25);
         Date date2 = calendar2.getTime();
 
-        controller.createEvent(admin, "Show de Rock", "Banda XYZ", date1);
-        controller.createEvent(admin, "Peça de Teatro", "Grupo ABC", date2);
+        controller.createEvent(admin, "Show de Rock", "Banda XYZ", date1, 10.2);
+        controller.createEvent(admin, "Peça de Teatro", "Grupo ABC", date2, 10.2);
 
         List<Event> event = controller.listAvailableEvents();
 
@@ -136,7 +136,7 @@ public class ControllerTest {
         Date data = calendar.getTime();
 
         User admin = controller.createUser("admin", "senha123", "Admin User", "00000000000", "admin@example.com", true);
-        controller.createEvent(admin, "Show de Rock", "Banda XYZ", data);
+        controller.createEvent(admin, "Show de Rock", "Banda XYZ", data, 10.2);
         controller.addSeatToEvent("Show de Rock", "A1");
         controller.buyTicket(user, "Show de Rock", "A1");
 

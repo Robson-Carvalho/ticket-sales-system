@@ -1,27 +1,9 @@
 [
   {
-    "id": "d96d3af9-8cc5-4751-aff6-61a99fc2d8e0",
-    "userID": "3213237d-d4d3-47fc-b419-ce0c75632e75",
-    "ticketID": "23120548-9fdf-4ddb-a3ce-ea21c322f1e7",
-    "creditCardID": "eb1c4d46-1a97-438a-8f72-ba35feb305db",
-    "date": "Nov 24, 2024, 8:44:37 PM",
-    "amount": 0.0,
-    "paymentMethod": "CREDIT_CARD"
-  },
-  {
-    "id": "1ee0c79b-db9a-4478-8077-bd77019b7e1a",
-    "userID": "3213237d-d4d3-47fc-b419-ce0c75632e75",
-    "ticketID": "14d8edb6-4e08-435f-a409-9e6d19adc0c5",
-    "creditCardID": "eb1c4d46-1a97-438a-8f72-ba35feb305db",
-    "date": "Nov 24, 2024, 8:45:11 PM",
-    "amount": 0.0,
-    "paymentMethod": "CREDIT_CARD"
-  },
-  {
-    "id": "13e81019-5d2a-4883-a1ce-a84ba666b0cc",
-    "userID": "3213237d-d4d3-47fc-b419-ce0c75632e75",
-    "ticketID": "d6141d69-abc4-446d-ac14-b66d378bbed8",
-    "date": "Nov 24, 2024, 8:45:18 PM",
+    "id": "2ffc392f-3e20-47ec-a8c0-2dec19841a3c",
+    "userID": "53e7a8cb-4f8f-417c-9bf9-f4de962ff900",
+    "ticketID": "5cf477e9-3e1c-466c-9e86-3e60b8998c1a",
+    "date": "Nov 26, 2024, 12:05:23 PM",
     "amount": 0.0,
     "paymentMethod": "TICKET"
   }

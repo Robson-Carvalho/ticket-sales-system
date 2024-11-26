@@ -5,7 +5,6 @@ import com.uefs.system.controller.EventController;
 import com.uefs.system.controller.TicketController;
 import com.uefs.system.controller.UserController;
 import com.uefs.system.emun.SceneEnum;
-import com.uefs.system.model.Card;
 import com.uefs.system.model.Event;
 import com.uefs.system.model.Ticket;
 import com.uefs.system.model.User;
@@ -13,8 +12,6 @@ import com.uefs.system.utils.AccessibilityManager;
 import com.uefs.system.utils.LanguageManager;
 import com.uefs.system.utils.SessionManager;
 import com.uefs.system.view.NavigationManager;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.scene.control.*;
@@ -101,15 +98,25 @@ public class BuyController implements ILanguageObserver {
 
         List<Event> events = new ArrayList<>();
 
-        User user = userController.getById(UUID.fromString(sessionManager.getID()));
+        List<Ticket> ticketsUser = new ArrayList<>();
 
-        if (user.getTickets() != null) {
-            for (Ticket ticket : tickets) {
-                if (user.getTickets().contains(ticket.getId())) {
-                    Event event = eventController.getById(ticket.getEventId());
+        User user = null;
 
-                    if(event != null){
-                        events.add(event);
+        if(sessionManager.isSessionActive()){
+            user = userController.getById(UUID.fromString(sessionManager.getID()));
+        }
+
+        if (user != null && user.getTickets() != null) {
+            if(!tickets.isEmpty()){
+                for (Ticket ticket : tickets) {
+                    if (user.getTickets().contains(ticket.getId())) {
+
+                        ticketsUser.add(ticket);
+                        Event event = eventController.getById(ticket.getEventId());
+
+                        if(event != null){
+                            events.add(event);
+                        }
                     }
                 }
             }
@@ -156,7 +163,7 @@ public class BuyController implements ILanguageObserver {
             VBox textContainer = new VBox();
             textContainer.setSpacing(5);
 
-            Label eventName = new Label("Não há eventos");
+            Label eventName = new Label(languageManager.getText("screens.buys.notFoundTicket"));
 
             eventName.setStyle("-fx-font-size: " + fontSizeEventName + "px; -fx-font-weight: bold;");
 
@@ -166,10 +173,12 @@ public class BuyController implements ILanguageObserver {
 
             eventsVBox.getChildren().add(eventContainer);
         } else {
-            for (Event event : events) {
+            for (Ticket ticket : ticketsUser.reversed()) {
                 VBox eventContainer = new VBox();
                 eventContainer.setPadding(new Insets(16));
                 eventContainer.setSpacing(10);
+
+                Event event = eventController.getById(ticket.getEventId());
 
                 eventContainer.setStyle("-fx-background-color: rgba(222,222,222,0.5); -fx-background-radius: 5px;");
 
@@ -195,7 +204,10 @@ public class BuyController implements ILanguageObserver {
                 Label eventDate = new Label(dateFormat.format(event.getDate()));
                 eventDate.setStyle("-fx-font-size: " + fontSizeEventDate + "px; -fx-text-fill: #666666;");
 
-                eventContainer.getChildren().addAll(eventName, eventDescription, eventDate);
+                Label priceEvent = new Label(languageManager.getText("screens.buys.price")+" R$ "+ticket.getPrice());
+                priceEvent.setStyle("-fx-font-size: " + fontSizeEventName + "px; -fx-font-weight: bold;");
+
+                eventContainer.getChildren().addAll(eventName, eventDescription, eventDate, priceEvent);
 
                 eventsVBox.getChildren().add(eventContainer);
             }

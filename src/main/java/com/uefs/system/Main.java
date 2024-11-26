@@ -1,7 +1,6 @@
 package com.uefs.system;
 
 import com.uefs.system.emun.SceneEnum;
-import com.uefs.system.mock.Mock;
 import com.uefs.system.utils.LanguageManager;
 import com.uefs.system.utils.SessionManager;
 import com.uefs.system.view.NavigationManager;

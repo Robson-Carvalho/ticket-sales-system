@@ -2,6 +2,7 @@ package com.uefs.system.view.controllers;
 
 import com.uefs.system.Interface.ILanguageObserver;
 import com.uefs.system.controller.CommentController;
+import com.uefs.system.controller.TicketController;
 import com.uefs.system.controller.UserController;
 import com.uefs.system.emun.SceneEnum;
 import com.uefs.system.model.*;
@@ -31,6 +32,7 @@ public class EventController implements ILanguageObserver {
     private final AccessibilityManager accessibilityManager = new AccessibilityManager();
     private final CommentController commentController = new CommentController();
     private final UserController userController = new UserController();
+    private final TicketController ticketController = new TicketController();
     private final Event event;
 
 
@@ -94,22 +96,42 @@ public class EventController implements ILanguageObserver {
     }
 
     @FXML private void handleComment(){
-        if(Objects.equals(commentField.getText(), "")){
-            messageAlert(Alert.AlertType.WARNING, "Escreva algo para comentar.");
-            return;
+        List<Ticket> tickets = ticketController.getAll();
+
+        boolean isBuy = false;
+
+        User user = userController.getById(UUID.fromString(sessionManager.getID()));
+
+        if (user.getTickets() != null) {
+            for (Ticket ticket : tickets) {
+                if (user.getTickets().contains(ticket.getId()) && ticket.getEventId().equals(event.getId())) {
+                    isBuy = true;
+                    break;
+                }
+            }
         }
 
-        String ratingString = (String) selectorRating.getValue();
-        int rating = Integer.parseInt(ratingString);
+        if(isBuy){
+            if(Objects.equals(commentField.getText(), "")){
+                messageAlert(Alert.AlertType.WARNING, "Escreva algo para comentar.");
+                return;
+            }
 
-        try{
-            commentController.create(UUID.fromString(sessionManager.getID()), event.getId(), rating, commentField.getText());
-            messageAlert(Alert.AlertType.INFORMATION, "Comentário adicionado com sucesso.");
-        }catch (Exception e){
-            messageAlert(Alert.AlertType.ERROR, "Erro interno.");
+            String ratingString = (String) selectorRating.getValue();
+            int rating = Integer.parseInt(ratingString);
+
+            try{
+                commentController.create(UUID.fromString(sessionManager.getID()), event.getId(), rating, commentField.getText());
+                messageAlert(Alert.AlertType.INFORMATION, "Comentário adicionado com sucesso.");
+                this.cancelComment();
+            }catch (SecurityException e){
+                messageAlert(Alert.AlertType.WARNING, e.getMessage());
+            }
+
+            languageManager.notifyObservers();
+        }else{
+            messageAlert(Alert.AlertType.WARNING, "É necessário ter comprado o ingresso para comentar.");
         }
-
-        languageManager.notifyObservers();
     }
 
     @FXML private void cancelComment(){

@@ -1,20 +1,8 @@
 [
   {
-    "id": "d978f061-6810-4fea-b326-af412d59aa99",
-    "userID": "3213237d-d4d3-47fc-b419-ce0c75632e75",
+    "id": "f5b3623b-0c14-4025-aad0-08c335c93dd9",
+    "userID": "53e7a8cb-4f8f-417c-9bf9-f4de962ff900",
     "subject": "Comprovante de compra",
-    "content": "Olá, Robson!\n\nComprovante de compra do ingresso para o evento.\n\nID da transação: d96d3af9-8cc5-4751-aff6-61a99fc2d8e0"
-  },
-  {
-    "id": "d8524d81-c858-400f-93bb-04f0ce418715",
-    "userID": "3213237d-d4d3-47fc-b419-ce0c75632e75",
-    "subject": "Comprovante de compra",
-    "content": "Olá, Robson!\n\nComprovante de compra do ingresso para o evento.\n\nID da transação: 1ee0c79b-db9a-4478-8077-bd77019b7e1a"
-  },
-  {
-    "id": "e6738eff-1357-4e2f-ba3b-f5f418765afe",
-    "userID": "3213237d-d4d3-47fc-b419-ce0c75632e75",
-    "subject": "Comprovante de compra",
-    "content": "Olá, Robson!\n\nComprovante de compra do ingresso para o evento.\n\nID da transação: 13e81019-5d2a-4883-a1ce-a84ba666b0cc"
+    "content": "Olá, Luana!\n\nComprovante de compra do ingresso para o evento.\n\nID da transação: 2ffc392f-3e20-47ec-a8c0-2dec19841a3c"
   }
 ]

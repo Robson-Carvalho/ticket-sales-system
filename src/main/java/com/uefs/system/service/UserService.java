@@ -41,11 +41,18 @@ public class UserService implements IService<User> {
      */
     @Override
     public User create(User user) throws Exception {
+        User u = getByLogin(user.getLogin());
+
+        if(u != null && u.getLogin() != null) {
+            throw new SecurityException("SignUp, email e/ou cpf já está em uso.");
+        }
+
         if (this.getByEmail(user.getEmail()) != null || this.getByCpf(user.getCpf()) != null || this.getByEmail(user.getEmail()) != null) {
             throw new SecurityException("SignUp, email e/ou cpf já está em uso.");
         }
 
         userRepository.save(user);
+
         return user;
     }
 

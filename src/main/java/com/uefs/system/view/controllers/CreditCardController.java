@@ -161,7 +161,7 @@ public class CreditCardController implements ILanguageObserver {
                     removeButton.setOnAction(e -> {
                         cardController.delete(card.getId());
                         cards.remove(card);
-                        messageAlert(Alert.AlertType.INFORMATION , "O cartão foi removido com sucesso.");
+                        messageAlert(Alert.AlertType.INFORMATION, languageManager.getText("messagesAlert.cardDeletedSuccess"));
                         languageManager.notifyObservers();
                     });
 
@@ -210,7 +210,7 @@ public class CreditCardController implements ILanguageObserver {
             LocalDate localDate = expirationDate.getValue();
 
             if(localDate == null) {
-                messageAlert(Alert.AlertType.WARNING, "Por favor, preencha todos os campos.");
+                messageAlert(Alert.AlertType.WARNING, languageManager.getText("messagesAlert.fieldNotWrite"));
                 return;
             }
 
@@ -220,18 +220,18 @@ public class CreditCardController implements ILanguageObserver {
             String cardBrand = (String) selectorBrand.getValue();
 
             if (accountNumber.isEmpty() || cardNumber.isEmpty() || cvv.isEmpty() || cardBrand == null) {
-                messageAlert(Alert.AlertType.WARNING, "Por favor, preencha todos os campos.");
+                messageAlert(Alert.AlertType.WARNING, languageManager.getText("messagesAlert.fieldNotWrite"));
             } else {
                 try{
                     cardController.create(UUID.fromString(sessionManager.getID()), sessionManager.getName(), cardBrand, cardNumber, accountNumber, expirationDateValue, cvv);
-                    messageAlert(Alert.AlertType.INFORMATION, "Cartão adicionando com suscesso.");
+                    messageAlert(Alert.AlertType.WARNING, languageManager.getText("messagesAlert.cardCreatedSuccess"));
                 }catch (IllegalArgumentException e){
-                    messageAlert(Alert.AlertType.WARNING, "Informações já eatão em uso.");
+                    messageAlert(Alert.AlertType.WARNING, languageManager.getText("messagesAlert.cardCreatedError"));
                 }
 
             }
         } else {
-            messageAlert(Alert.AlertType.ERROR,"Alguns campos não foram inicializados corretamente.");
+            messageAlert(Alert.AlertType.WARNING, languageManager.getText("messagesAlert.operationError"));
         }
 
         languageManager.notifyObservers();

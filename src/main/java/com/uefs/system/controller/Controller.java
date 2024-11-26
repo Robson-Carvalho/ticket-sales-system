@@ -96,12 +96,13 @@ public class Controller {
      * @param name        Nome do evento.
      * @param description Descrição do evento.
      * @param date        Data do evento.
+     * @param price       O preço do evento.
      * @return O evento criado.
      * @throws SecurityException Se o usuário não for um administrador.
      */
-    public Event createEvent(User admin, String name, String description, Date date) {
+    public Event createEvent(User admin, String name, String description, Date date, Double price) {
         if (admin.isAdmin()) {
-            return eventController.create(admin, name, description, date);
+            return eventController.create(admin, name, description, date, price);
         }
 
         throw new SecurityException("Somente administradores podem cadastrar eventos.");
@@ -139,7 +140,7 @@ public class Controller {
         Event event = getEventByName(eventName);
 
         if (event != null) {
-            Ticket ticket = ticketController.create(event.getId(), seat);
+            Ticket ticket = ticketController.create(event.getId(),seat);
             user.addTicket(ticket);
             userController.update(user);
             return ticket;
@@ -148,36 +149,41 @@ public class Controller {
         return null;
     }
 
-    public Boolean purchase(User user, UUID eventId, String seat) throws Exception {
+    public void purchase(User user, UUID eventId, String seat) throws Exception {
         try{
             transactionController.create(user.getEmail(), eventId, seat);
-            Ticket ticket = ticketController.create(eventId, seat);
+
+            Event event = getEventById(eventId);
+
+            Ticket ticket = ticketController.create(eventId, event.getPrice() , seat);
 
             User u = userController.getById(user.getId());
 
             u.addTicket(ticket);
 
             userController.update(u);
-            return true;
         }catch (Exception e) {
-            return false;
+            System.out.println(e);
         }
     }
 
-    public Boolean purchase(User user, UUID eventId, String seat, String cardNumber) throws Exception {
+    public void purchase(User user, UUID eventId, String seat, String cardNumber) throws Exception {
         try{
             Card card = cardController.getCardByNumber(cardNumber);
+
             transactionController.create(user.getEmail(), eventId, card.getId(), seat);
-            Ticket ticket = ticketController.create(eventId, seat);
+
+            Event event = getEventById(eventId);
+
+            Ticket ticket = ticketController.create(eventId, event.getPrice(), seat);
 
             User u = userController.getById(user.getId());
 
             u.addTicket(ticket);
 
             userController.update(u);
-            return true;
         }catch (Exception e){
-            return false;
+            System.out.println(e);
         }
     }
 

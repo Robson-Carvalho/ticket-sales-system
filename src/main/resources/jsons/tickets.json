@@ -1,23 +1,9 @@
 [
   {
-    "id": "93514678-1ca5-47be-b217-3d324575133e",
-    "eventID": "c8745d9b-a81e-4667-a00c-305b21f832f5",
+    "id": "5324028a-d5b0-47b3-b670-216683d3cc36",
+    "eventID": "e0342d76-f45b-4d6a-a31c-2a5b4e9c8b2f",
     "status": true,
-    "price": 0.0,
-    "code": "A1"
-  },
-  {
-    "id": "e70f82b1-f35e-4bd8-b226-58d8712f5fd0",
-    "eventID": "1d921643-9640-4ccd-8d89-35e8969ccd66",
-    "status": true,
-    "price": 0.0,
-    "code": "C1"
-  },
-  {
-    "id": "f2655777-74f1-4c6c-bea6-cc8df806ae7e",
-    "eventID": "0d773ff8-b861-453e-8dab-802b814a1642",
-    "status": true,
-    "price": 0.0,
-    "code": "A1"
+    "price": 80.0,
+    "code": "F2"
   }
 ]

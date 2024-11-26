@@ -40,8 +40,6 @@ public class UserController {
      * @throws Exception Se ocorrer um erro ao criar o usuário.
      */
     public User create(String login, String password, String name, String cpf, String email, Boolean isAdmin) throws Exception {
-
-
         User user = new User(login, password, name, cpf, email, isAdmin);
         return userService.create(user);
     }

@@ -45,7 +45,7 @@ public class EventTest {
 
         userFacade.create(login, password, nameUser, cpf, email, isAdmin);
 
-        String id = eventFacade.create(login, name, description, date);
+        String id = eventFacade.create(login, name, description, date, 10.2);
 
         assertNotNull(eventFacade.getById(id));
         assertEquals("Show de Rock", eventFacade.getNameByEventId(id));
@@ -72,7 +72,7 @@ public class EventTest {
 
         userFacade.create(login, password, nameUser, cpf, email, isAdmin);
 
-        String id = eventFacade.create(login, name, description, date);
+        String id = eventFacade.create(login, name, description, date, 10.2);
 
         eventFacade.addSeatByEventId("A1", id);
 
@@ -97,7 +97,7 @@ public class EventTest {
 
         userFacade.create(login, password, nameUser, cpf, email, isAdmin);
 
-        String id = eventFacade.create(login, name, description, date);
+        String id = eventFacade.create(login, name, description, date, 10.2);
 
         eventFacade.addSeatByEventId("A1", id);
 
@@ -123,7 +123,7 @@ public class EventTest {
         Boolean isAdmin = true;
 
         userFacade.create(login, password, nameUser, cpf, email, isAdmin);
-        String id = eventFacade.create(login, name, description, date);
+        String id = eventFacade.create(login, name, description, date, 10.2);
 
         assertTrue(eventFacade.getIsActiveByEventId(id));
     }
@@ -144,7 +144,7 @@ public class EventTest {
         Boolean isAdmin = true;
 
         userFacade.create(login, password, nameUser, cpf, email, isAdmin);
-        String id = eventFacade.create(login, name, description, date);
+        String id = eventFacade.create(login, name, description, date, 10.2);
 
         assertFalse(eventFacade.getIsActiveByEventId(id));
     }

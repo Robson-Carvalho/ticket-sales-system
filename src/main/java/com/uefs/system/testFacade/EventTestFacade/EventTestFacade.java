@@ -73,11 +73,12 @@ public class EventTestFacade {
      * @param name Nome do evento.
      * @param description Descrição do evento.
      * @param date Data do evento.
+     * @param price O preço do evento.
      * @return ID do evento criado.
      */
-    public String create(String loginAdmin, String name, String description, Date date) {
+    public String create(String loginAdmin, String name, String description, Date date, Double price) {
         User user = userController.getByLogin(loginAdmin);
-        Event event = eventController.create(user, name, description, date);
+        Event event = eventController.create(user, name, description, date, price);
         return event.getId().toString();
     }
 
@@ -172,10 +173,11 @@ public class EventTestFacade {
      * @param name Nome do evento.
      * @param description Descrição do evento.
      * @param date Data do evento.
+     * @param price O preço do evento.
      * @return ID do evento criado.
      */
-    public String addEventInDataBaseWithPastDate(String name, String description, Date date) {
-        Event event = new Event(name, description, date);
+    public String addEventInDataBaseWithPastDate(String name, String description, Date date, Double price) {
+        Event event = new Event(name, description, date, price);
         Event _event = eventService.create(event);
         return _event.getId().toString();
     }

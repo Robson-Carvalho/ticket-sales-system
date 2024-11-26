@@ -57,7 +57,7 @@ public class CommentTest {
 
         userTestFacade.create(login, password, nameUser, cpf, email, isAdmin);
 
-        String eventId = eventTestFacadeFacade.addEventInDataBaseWithPastDate(name, description, date);
+        String eventId = eventTestFacadeFacade.addEventInDataBaseWithPastDate(name, description, date, 10.4);
 
         String commentId = commentTestFacade.create(userTestFacade.getUserIdByEmail(email), eventId, 2, "Bom evento!");
 
@@ -93,7 +93,7 @@ public class CommentTest {
         userTestFacade.create(_login, _password, _nameUser, _cpf, _email, _isAdmin);
         userTestFacade.create(login, password, nameUser, cpf, email, isAdmin);
 
-        String eventId = eventTestFacadeFacade.create(_login, name, description, date);
+        String eventId = eventTestFacadeFacade.create(_login, name, description, date, 10.2);
 
         Exception exception = assertThrows(SecurityException.class, () -> {
             commentTestFacade.create(userTestFacade.getUserIdByEmail(email), eventId, 4, "Bom evento!");
@@ -118,8 +118,8 @@ public class CommentTest {
 
         userTestFacade.create(login, password, nameUser, cpf, email, isAdmin);
 
-        String firstEventId = eventTestFacadeFacade.addEventInDataBaseWithPastDate("Show de Rock", "Evento musical", date);
-        String secondEventId = eventTestFacadeFacade.addEventInDataBaseWithPastDate("Jogo do Bahia", "Evento esportivo", date);
+        String firstEventId = eventTestFacadeFacade.addEventInDataBaseWithPastDate("Show de Rock", "Evento musical", date, 10.2);
+        String secondEventId = eventTestFacadeFacade.addEventInDataBaseWithPastDate("Jogo do Bahia", "Evento esportivo", date, 10.2);
 
         String c1Id = commentTestFacade.create(userTestFacade.getUserIdByEmail(email), firstEventId, 4, "Bom evento!");
         String c2Id = commentTestFacade.create(userTestFacade.getUserIdByEmail(email), secondEventId, 5, "Bom evento!");
@@ -149,7 +149,7 @@ public class CommentTest {
 
         userTestFacade.create(login, password, nameUser, cpf, email, isAdmin);
 
-        String eventId = eventTestFacadeFacade.addEventInDataBaseWithPastDate("Show de Rock", "Evento musical", date);
+        String eventId = eventTestFacadeFacade.addEventInDataBaseWithPastDate("Show de Rock", "Evento musical", date, 10.2);
 
         String c1Id = commentTestFacade.create(userTestFacade.getUserIdByEmail(email), eventId, 4, "Bom evento, mas pode melhorar!");
         String c2Id = commentTestFacade.create(userTestFacade.getUserIdByEmail(email), eventId, 5, "Bom evento!");
@@ -175,7 +175,7 @@ public class CommentTest {
 
         userTestFacade.create(login, password, nameUser, cpf, email, isAdmin);
 
-        String eventId = eventTestFacadeFacade.addEventInDataBaseWithPastDate("Show de Rock", "Evento musical", date);
+        String eventId = eventTestFacadeFacade.addEventInDataBaseWithPastDate("Show de Rock", "Evento musical", date, 10.2);
 
         String c1Id = commentTestFacade.create(userTestFacade.getUserIdByEmail(email), eventId, 4, "Bom evento, mas pode melhorar!");
         assertNotNull(commentTestFacade.getById(c1Id));
