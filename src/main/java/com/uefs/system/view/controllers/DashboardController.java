@@ -113,11 +113,11 @@ public class DashboardController implements ILanguageObserver {
         int seats = event.getSeats().size();
 
         if(seatsPurchased == seats && seats != 0){
-            messageAlert(Alert.AlertType.WARNING, "Assentos esgotados.");
+            messageAlert(Alert.AlertType.WARNING, languageManager.getText("screens.dashboard.messagesAlert.seatsSoldOut"));
         }else if(seats == 0){
-            messageAlert(Alert.AlertType.WARNING, "Ainda não há assentos cadastrados.");
+            messageAlert(Alert.AlertType.WARNING, languageManager.getText("screens.dashboard.messagesAlert.unregisteredSeats"));
         }else if(Objects.equals(seat, "Selecione") || Objects.equals(seat, "Select")){
-            messageAlert(Alert.AlertType.WARNING, "Por favor, selecione todos os campos.");
+            messageAlert(Alert.AlertType.WARNING, languageManager.getText("screens.dashboard.messagesAlert.pleaseSelectAllFields"));
         }else{
             try {
                 if(Objects.equals(paymentMethod, "Ticket") || Objects.equals(paymentMethod, "Boleto")){
@@ -126,7 +126,7 @@ public class DashboardController implements ILanguageObserver {
                     controller.purchase(sessionManager.loadUserSession(), event.getId(), seat, paymentMethod);
                 }
 
-                messageAlert(Alert.AlertType.INFORMATION, "Ingresso para evento "+event.getName()+" no assento "+seat+" comprado com sucesso!");
+                messageAlert(Alert.AlertType.INFORMATION, languageManager.getText("screens.dashboard.messagesAlert.purchaseSuccessful")+event.getName()+" - "+seat);
             }catch (Exception e){
                 System.out.println("Error: " + e);
                 messageAlert(Alert.AlertType.ERROR, "Erro ao comprar ingresso.");
@@ -337,7 +337,7 @@ public class DashboardController implements ILanguageObserver {
             return formatWithOneDecimalPlace(result);
 
         }else{
-            return  "0";
+            return "0";
         }
     }
 

@@ -42,14 +42,13 @@ public class TransactionController {
      * Cria uma nova transação de compra de ingresso sem cartão de crédito.
      *
      * @param email   O email do usuário que está comprando o ingresso.
-     * @param eventId O UUID do evento associado à compra.
+     * @param ticketID O UUID do ingresso associado à compra.
      * @param seat    O assento associado ao ingresso.
      * @return O UUID da transação criada.
      */
-    public UUID create(String email, UUID eventId, String seat) {
+    public UUID create(String email, UUID ticketID, String seat) {
         User user = userController.getByEmail(email);
-        Ticket ticket = ticketController.create(eventId, seat);
-        Transaction transaction = new Transaction(user.getId(), ticket.getId(), 0.0, PaymentMethod.TICKET);
+        Transaction transaction = new Transaction(user.getId(), ticketID, 0.0, PaymentMethod.TICKET);
         mailController.create(user, transaction, "Comprovante de compra");
         return transactionService.create(transaction).getId();
     }
@@ -58,16 +57,15 @@ public class TransactionController {
      * Cria uma nova transação de compra de ingresso com cartão de crédito.
      *
      * @param email   O email do usuário que está comprando o ingresso.
-     * @param eventId O UUID do evento associado à compra.
+     * @param ticketID O UUID do ingresso associado à compra.
      * @param cardId  O UUID do cartão de crédito utilizado na compra.
      * @param seat    O assento associado ao ingresso.
      * @return O UUID da transação criada.
      */
-    public UUID create(String email, UUID eventId, UUID cardId, String seat) {
+    public UUID create(String email, UUID ticketID, UUID cardId, String seat) {
         User user = userController.getByEmail(email);
         Card card = cardController.getById(cardId);
-        Ticket ticket = ticketController.create(eventId, seat);
-        Transaction transaction = new Transaction(user.getId(), ticket.getId(), card.getId(), 0.0, PaymentMethod.CREDIT_CARD);
+        Transaction transaction = new Transaction(user.getId(), ticketID, card.getId(), 0.0, PaymentMethod.CREDIT_CARD);
         mailController.create(user, transaction, "Comprovante de compra");
         return transactionService.create(transaction).getId();
     }

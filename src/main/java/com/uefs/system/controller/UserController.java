@@ -64,6 +64,10 @@ public class UserController {
         return userService.getByLogin(login);
     }
 
+    public User getByCPF(String cpf){
+        return userService.getByCpf(cpf);
+    }
+
     /**
      * Obtém todos os usuários.
      *

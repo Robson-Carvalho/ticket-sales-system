@@ -46,7 +46,7 @@ public class TicketService implements IService<Ticket> {
     @Override
     public Ticket create(Ticket ticket) {
         ticketRepository.save(ticket);
-        return ticket;
+        return this.getById(ticket.getId());
     }
 
     /**

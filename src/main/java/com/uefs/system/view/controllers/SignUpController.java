@@ -10,6 +10,7 @@ import com.uefs.system.view.NavigationManager;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.text.Text;
+import javafx.stage.StageStyle;
 
 public class SignUpController implements ILanguageObserver {
     @FXML private Text titleScreenSignUp;
@@ -48,42 +49,41 @@ public class SignUpController implements ILanguageObserver {
     @FXML
     private void handleSignUp() {
         try {
+            if(userController.getByCPF(cpfField.getText()) != null || userController.getByEmail(emailField.getText()) != null || userController.getByLogin(loginField.getText()) != null) {
+                messageAlert(Alert.AlertType.WARNING, languageManager.getText("messagesAlert.userAlreadyExists"));
+                return;
+            }
+
             User user = userController.create(loginField.getText(), passwordField.getText(), nameField.getText(), cpfField.getText(),emailField.getText(), false);
 
             if(isValidLogin(user.getLogin(), user.getPassword())){
-                showLoginSuccessAlert();
+                messageAlert(Alert.AlertType.INFORMATION, languageManager.getText("messagesAlert.userCreatedSuccess"));
                 sessionManager.saveUserSession(user);
                 navigationManager.setScene(SceneEnum.DASHBOARD);
             }else{
-                showLoginErrorAlert();
+                messageAlert(Alert.AlertType.WARNING, languageManager.getText("messagesAlert.userCreatedError"));
             }
         }catch (Exception e) {
-            showLoginErrorAlert();
+            messageAlert(Alert.AlertType.WARNING, languageManager.getText("messagesAlert.userCreatedError"));
         }
 
         languageManager.notifyObservers();
     }
+
+    private void messageAlert(Alert.AlertType type, String message) {
+        Alert alert = new Alert(type);
+        alert.initStyle(StageStyle.UNDECORATED);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
+
 
     private boolean isValidLogin(String login, String password) {
         UserController userController = new UserController();
         return userController.login(login, password);
     }
 
-    private void showLoginSuccessAlert() {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Login bem-sucedido");
-        alert.setHeaderText(null);
-        alert.setContentText("Você foi autenticado com sucesso!");
-        alert.showAndWait();
-    }
-
-    private void showLoginErrorAlert() {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("Erro de Login");
-        alert.setHeaderText(null);
-        alert.setContentText("Usuário e/ou senha inválidos. Tente novamente.");
-        alert.showAndWait();
-    }
 
     @FXML
     private void navigationToSignIn(){navigationManager.setScene(SceneEnum.SIGNIN);}

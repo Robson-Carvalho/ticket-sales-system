@@ -69,7 +69,6 @@ public class MailBoxController implements ILanguageObserver {
         navigationManager.setScene(SceneEnum.SIGNIN);
     }
 
-
     @Override public void updateLanguage() {
         Boolean accessibilityIsActive = accessibilityManager.getAccessibilityPropertiesCurrent();
 

@@ -1,17 +1,9 @@
 [
   {
-    "id": "2ffc392f-3e20-47ec-a8c0-2dec19841a3c",
-    "userID": "53e7a8cb-4f8f-417c-9bf9-f4de962ff900",
-    "ticketID": "5cf477e9-3e1c-466c-9e86-3e60b8998c1a",
-    "date": "Nov 26, 2024, 12:05:23 PM",
-    "amount": 0.0,
-    "paymentMethod": "TICKET"
-  },
-  {
-    "id": "64dc213c-bfe8-4883-94f7-8bb13b1fb21a",
-    "userID": "60db6669-6c2c-4d7f-86dc-81c51f903572",
-    "ticketID": "f412e0ae-da22-4d95-94b7-30926083a7f8",
-    "date": "Nov 26, 2024, 3:46:53 PM",
+    "id": "f6a7e129-4c41-4f85-a070-cd9e23a83322",
+    "userID": "3cd88509-d75e-46c3-a313-9dd65bd33abd",
+    "ticketID": "f3bd1659-2479-4d8e-a9af-62eddfa2a484",
+    "date": "Nov 29, 2024, 3:10:19 PM",
     "amount": 0.0,
     "paymentMethod": "TICKET"
   }

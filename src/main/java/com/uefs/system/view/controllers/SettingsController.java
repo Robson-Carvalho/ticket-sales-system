@@ -130,14 +130,14 @@ public class SettingsController implements ILanguageObserver {
         String password = passwordField.getText();
 
         if(name.isEmpty() || email.isEmpty() || password.isEmpty()){
-            messageAlert(Alert.AlertType.WARNING, "Por favor, preencha todos os campos.");
+            messageAlert(Alert.AlertType.WARNING, languageManager.getText("screens.settings.messageAlert.fillAllFields"));
         }else{
             try{
                 userController.update(UUID.fromString(sessionManager.getID()), name, email, password);
                 sessionManager.updateSession(name, email, password);
-                messageAlert(Alert.AlertType.INFORMATION, "Usuário atulizado com sucesso!");
+                messageAlert(Alert.AlertType.INFORMATION, languageManager.getText("screens.settings.messageAlert.userUpdatedSuccessfully"));
             }catch (Exception e){
-                messageAlert(Alert.AlertType.WARNING, "E-mail já está em uso!");
+                messageAlert(Alert.AlertType.WARNING, languageManager.getText("screens.settings.messageAlert.emailAlreadyInUse"));
             }
         }
 

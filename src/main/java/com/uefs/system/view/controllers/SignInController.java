@@ -44,11 +44,11 @@ public class SignInController implements ILanguageObserver {
         if(isValidLogin(loginField.getText(), passwordField.getText())) {
             loginField.setText("");
             passwordField.setText("");
-            showLoginSuccessAlert();
+            messageAlert(Alert.AlertType.INFORMATION, languageManager.getText("messagesAlert.loginSuccess"));
             navigationManager.setScene(SceneEnum.DASHBOARD);
             return;
         }
-       showLoginErrorAlert();
+        messageAlert(Alert.AlertType.WARNING, languageManager.getText("messagesAlert.loginError"));
     }
 
     @FXML
@@ -70,21 +70,11 @@ public class SignInController implements ILanguageObserver {
         }
     }
 
-    private void showLoginSuccessAlert() {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Login bem-sucedido");
+    private void messageAlert(Alert.AlertType type, String message) {
+        Alert alert = new Alert(type);
         alert.initStyle(StageStyle.UNDECORATED);
         alert.setHeaderText(null);
-        alert.setContentText("Você foi autenticado com sucesso!");
-        alert.showAndWait();
-    }
-
-    private void showLoginErrorAlert() {
-        Alert alert = new Alert(Alert.AlertType.WARNING);
-        alert.setTitle("Erro de Login");
-        alert.initStyle(StageStyle.UNDECORATED);
-        alert.setHeaderText(null);
-        alert.setContentText("Usuário ou senha inválidos. Tente novamente.");
+        alert.setContentText(message);
         alert.showAndWait();
     }
 

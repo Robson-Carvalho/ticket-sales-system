@@ -1,16 +1,9 @@
 [
   {
-    "id": "5324028a-d5b0-47b3-b670-216683d3cc36",
+    "id": "f3bd1659-2479-4d8e-a9af-62eddfa2a484",
     "eventID": "e0342d76-f45b-4d6a-a31c-2a5b4e9c8b2f",
     "status": true,
     "price": 80.0,
-    "code": "F2"
-  },
-  {
-    "id": "38f2c3f1-dbdf-4dcb-a616-633b2a39d6f6",
-    "eventID": "e0342d76-f45b-4d6a-a31c-2a5b4e9c8b2f",
-    "status": true,
-    "price": 80.0,
-    "code": "F4"
+    "code": "F1"
   }
 ]

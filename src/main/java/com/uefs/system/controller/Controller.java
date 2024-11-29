@@ -151,19 +151,19 @@ public class Controller {
 
     public void purchase(User user, UUID eventId, String seat) throws Exception {
         try{
-            transactionController.create(user.getEmail(), eventId, seat);
-
             Event event = getEventById(eventId);
 
             Ticket ticket = ticketController.create(eventId, event.getPrice() , seat);
 
             User u = userController.getById(user.getId());
 
+            transactionController.create(u.getEmail(), ticket.getId(), seat);
+
             u.addTicket(ticket);
 
             userController.update(u);
         }catch (Exception e) {
-            System.out.println(e);
+            System.out.println(e.getMessage());
         }
     }
 
@@ -171,22 +171,21 @@ public class Controller {
         try{
             Card card = cardController.getCardByNumber(cardNumber);
 
-            transactionController.create(user.getEmail(), eventId, card.getId(), seat);
-
             Event event = getEventById(eventId);
 
             Ticket ticket = ticketController.create(eventId, event.getPrice(), seat);
 
             User u = userController.getById(user.getId());
 
+            transactionController.create(user.getEmail(), ticket.getId(), card.getId(), seat);
+
             u.addTicket(ticket);
 
             userController.update(u);
         }catch (Exception e){
-            System.out.println(e);
+            System.out.println(e.getMessage());
         }
     }
-
 
     /**
      * Cancela a compra de um ingresso.

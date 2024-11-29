@@ -52,20 +52,7 @@ public class TicketController {
      */
     public Ticket create(UUID eventId, Double price, String seat) {
         Ticket ticket = new Ticket(eventId, price, seat);
-        ticketService.create(ticket);
-
-        /*
-        Event _event = eventService.getById(eventId);
-
-        if (_event.getSeats().contains(seat)) {
-            throw new IllegalArgumentException("Não é possível cadastrar o mesmo assento duas vezes para um único evento.");
-        }
-
-        _event.addSeat(seat);
-        eventService.update(_event);
-         */
-
-        return ticket;
+        return ticketService.create(ticket);
     }
 
     /**

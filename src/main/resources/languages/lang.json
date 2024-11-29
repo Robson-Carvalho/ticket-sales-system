@@ -54,7 +54,13 @@
         "notFoundEvents": "Não há eventos cadastrados",
         "ratingText": "Avaliação",
         "dateText": "Data",
-        "priceText": "Preço"
+        "priceText": "Preço",
+        "messagesAlert":{
+          "seatsSoldOut.":"Assentos esgotados.",
+          "unregisteredSeats": "Assentos não cadastrados.",
+          "pleaseSelectAllFields": "Por favor, selecione todos os campos.",
+          "purchaseSuccessful": "Ingresso para evento comprado com suscesso! Segue o nome do evento e o ingreso: "
+        }
       },
       "settings": {
         "titleMain": "Configurações - Bem-vindo",
@@ -67,7 +73,12 @@
         "submitButton": "Atualizar",
         "cancelUpdate": "Cancelar",
         "toggleLanguageButton": "Alterar Idioma",
-        "accessibilityCheckBox": "Habilitar Acessibilidade"
+        "accessibilityCheckBox": "Habilitar Acessibilidade",
+        "messagesAlert":{
+          "fillAllFields": "Por favor, preencha todos os campos.",
+          "userUpdatedSuccessfully": "Usuário atualizado com sucesso!",
+          "emailAlreadyInUse": "E-mail já está em uso!"
+        }
       },
       "buys": {
         "titleMain": "Seus Ingressos",
@@ -97,7 +108,13 @@
         "labelComment": "Comentário",
         "labelSelector": "Avaliação",
         "submitButton": "Adicionar",
-        "cancelButton": "Cancelar"
+        "cancelButton": "Cancelar",
+        "messagesAlert":{
+          "writeComment": "Escreva algo para comentar.",
+          "errorAddingComment": "Erro ao adicionar comentário.",
+          "commentAddedSuccessfully": "Comentário adicionado com sucesso.",
+          "purchaseRequiredToComment": "É necessário ter comprado o ingresso para comentar."
+        }
       }
     },
     "messagesAlert": {
@@ -111,7 +128,7 @@
 
       "userCreatedSuccess": "Usuário cadastrado com sucesso.",
       "userCreatedError": "Erro ao cadastrar o usuário. Tente novamente.",
-      "userAlreadyExists": "Usuário já existe. Por favor, tente outro e-mail.",
+      "userAlreadyExists": "Usuário já existe. Por favor, tente outro login, e-mail e/ou CPF",
 
 
       "passwordResetSuccess": "Senha redefinida com sucesso.",
@@ -224,7 +241,13 @@
         "notFoundEvents": "There are no registered events",
         "ratingText": "Rating",
         "dateText": "Date",
-        "priceText": "Price"
+        "priceText": "Price",
+        "messagesAlert":{
+          "seatsSoldOut.":"Seats sold out.",
+          "unregisteredSeats": "Unregistered seats.",
+          "pleaseSelectAllFields": "Please select all fields.",
+          "purchaseSuccessful": "Event ticket successfully purchased! Here is the name of the event and the ticket: "
+        }
       },
       "settings": {
         "titleMain": "Settings - Welcome",
@@ -237,7 +260,12 @@
         "submitButton": "Update",
         "cancelUpdate": "Cancel",
         "toggleLanguageButton": "Toggle Language",
-        "accessibilityCheckBox": "Enable Accessibility"
+        "accessibilityCheckBox": "Enable Accessibility",
+        "messagesAlert":{
+          "fillAllFields": "Please fill in all fields.",
+          "userUpdatedSuccessfully": "User updated successfully!",
+          "emailAlreadyInUse": "Email is already in use!"
+        }
 },
       "buys": {
         "titleMain": "Your Tickets",
@@ -267,7 +295,13 @@
         "labelComment": "Comment",
         "labelSelector": "Rating",
         "submitButton": "To add",
-        "cancelButton": "Cancel"
+        "cancelButton": "Cancel",
+        "messagesAlert":{
+          "writeComment": "Write something to comment.",
+          "errorAddingComment": "Error adding comment.",
+          "commentAddedSuccessfully": "Comment added successfully.",
+          "purchaseRequiredToComment": "You need to have purchased a ticket to comment."
+        }
       }
     },
     "messagesAlert": {
@@ -280,7 +314,7 @@
 
       "userCreatedSuccess": "User registered successfully.",
       "userCreatedError": "Error registering the user. Please try again.",
-      "userAlreadyExists": "User already exists. Please try another email.",
+      "userAlreadyExists": "User already exists. Please try another login, email and/or CPF",
 
 
       "passwordResetSuccess": "Password reset successfully.",

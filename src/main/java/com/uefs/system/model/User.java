@@ -208,8 +208,9 @@ public class User {
      * @param ticket Ingresso a ser adicionado
      */
     public void addTicket(Ticket ticket) {
-        if (!tickets.contains(ticket.getId())) {
-            this.tickets.add(ticket.getId());
+        UUID _id = ticket.getId();
+        if (_id != null && !tickets.contains(_id)) {
+            this.tickets.add(_id);
         }
     }
 

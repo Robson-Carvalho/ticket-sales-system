@@ -94,7 +94,7 @@ public class EventController implements ILanguageObserver {
 
         if(isBuy){
             if(Objects.equals(commentField.getText(), "")){
-                messageAlert(Alert.AlertType.WARNING, "Escreva algo para comentar.");
+                messageAlert(Alert.AlertType.WARNING, languageManager.getText("screens.event.messagesAlert.writeComment"));
                 return;
             }
 
@@ -103,15 +103,15 @@ public class EventController implements ILanguageObserver {
 
             try{
                 commentController.create(UUID.fromString(sessionManager.getID()), event.getId(), rating, commentField.getText());
-                messageAlert(Alert.AlertType.INFORMATION, "Comentário adicionado com sucesso.");
+                messageAlert(Alert.AlertType.INFORMATION, languageManager.getText("screens.event.messagesAlert.commentAddedSuccessfully"));
                 this.cancelComment();
             }catch (SecurityException e){
-                messageAlert(Alert.AlertType.WARNING, e.getMessage());
+                messageAlert(Alert.AlertType.WARNING, languageManager.getText("screens.event.messagesAlert.errorAddingComment"));
             }
 
             languageManager.notifyObservers();
         }else{
-            messageAlert(Alert.AlertType.WARNING, "É necessário ter comprado o ingresso para comentar.");
+            messageAlert(Alert.AlertType.WARNING, languageManager.getText("screens.event.messagesAlert.purchaseRequiredToComment"));
         }
     }
 
