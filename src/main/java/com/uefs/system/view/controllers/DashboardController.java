@@ -47,7 +47,9 @@ public class DashboardController implements ILanguageObserver {
     }
 
     @FXML
-    private void initialize() {updateLanguage();}
+    private void initialize() {
+        updateLanguage();
+    }
 
     @FXML private Button homeNavBar;
     @FXML private Button mailBoxNavBar;
@@ -138,6 +140,7 @@ public class DashboardController implements ILanguageObserver {
 
     private void getEvents() {
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+
         List<Event> events = eventController.getAll();
 
         containerEvents.getChildren().clear();
@@ -149,24 +152,11 @@ public class DashboardController implements ILanguageObserver {
         eventsScrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
         eventsScrollPane.setPrefHeight(Region.USE_COMPUTED_SIZE);
 
-        eventsScrollPane.setStyle(
-                "-fx-background-color: transparent; " +
-                        "-fx-background-insets: 0; " +
-                        "-fx-padding: 0; " +
-                        "-fx-border-color: transparent; " +
-                        "-fx-border-width: 0; " +
-                        "-fx-scrollbar-track-color: transparent; " +
-                        "-fx-scrollbar-thumb: transparent; "
-        );
+        eventsScrollPane.setStyle("-fx-background-color: transparent; " + "-fx-background-insets: 0; " + "-fx-padding: 0; " + "-fx-border-color: transparent; " + "-fx-border-width: 0; " + "-fx-scrollbar-track-color: transparent; " + "-fx-scrollbar-thumb: transparent; ");
 
         VBox eventsVBox = new VBox();
         eventsVBox.setSpacing(16);
-        eventsVBox.setStyle(
-                "-fx-background-color: #fff; " +
-                        "-fx-border-color: transparent; " +
-                        "-fx-border-width: 0;" +
-                        "-fx-padding: 0 0 64px 0"
-        );
+        eventsVBox.setStyle("-fx-background-color: #fff; " + "-fx-border-color: transparent; " + "-fx-border-width: 0;" + "-fx-padding: 0 0 64px 0");
 
         VBox.setVgrow(eventsVBox, Priority.ALWAYS);
 
@@ -271,7 +261,13 @@ public class DashboardController implements ILanguageObserver {
                 ComboBox<String> paymentMethodComboBox = new ComboBox<>();
 
                 for (Card card : cards) {
-                    if(card.getUserId().equals(UUID.fromString(sessionManager.getID()))) {
+                    UUID _id = null;
+
+                    if(sessionManager.isSessionActive()){
+                        _id = UUID.fromString(sessionManager.getID());
+                    }
+
+                    if(card.getUserId().equals(_id)) {
                         paymentMethodComboBox.getItems().add(card.getCardNumber());
                     }
                 }

@@ -6,5 +6,14 @@
     "date": "Nov 29, 2024, 3:10:19 PM",
     "amount": 0.0,
     "paymentMethod": "TICKET"
+  },
+  {
+    "id": "235ba7d9-f5ab-44d7-9490-6890688e0732",
+    "userID": "3cd88509-d75e-46c3-a313-9dd65bd33abd",
+    "ticketID": "b8a20200-c951-4567-8e5a-58102474fa6e",
+    "creditCardID": "8f30e784-e28a-4661-84e8-de7a6a146f05",
+    "date": "Nov 29, 2024, 3:59:12 PM",
+    "amount": 0.0,
+    "paymentMethod": "CREDIT_CARD"
   }
 ]

@@ -55,7 +55,6 @@ public class NavigationManager implements ILanguageObserver {
                 }
             });
 
-
             Parent root = loader.load();
 
             languageManager.addObserver(loader.getController());

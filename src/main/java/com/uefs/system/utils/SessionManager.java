@@ -12,6 +12,8 @@ public class SessionManager {
     private static final String SESSION_FILE_PATH = PathsFile.getSession();
     private final UserController userController = new  UserController();
 
+    public SessionManager(){}
+
     public void saveUserSession(User user) {
         JsonObject sessionData = new JsonObject();
         sessionData.addProperty("id", user.getId().toString());
@@ -87,7 +89,7 @@ public class SessionManager {
 
     public void updateSession(String name, String email, String password) {
         JsonObject sessionData = new JsonObject();
-        sessionData.addProperty("id", this.getID().toString());
+        sessionData.addProperty("id", this.getID());
         sessionData.addProperty("login", this.getLogin());
         sessionData.addProperty("name", name);
         sessionData.addProperty("cpf", this.getCPF());
@@ -103,11 +105,6 @@ public class SessionManager {
     }
 
     public User loadUserSession() {
-        if (!Files.exists(Paths.get(SESSION_FILE_PATH))) {
-            System.out.println("Arquivo de sessão não encontrado.");
-            return null;
-        }
-
         try {
             String jsonString = new String(Files.readAllBytes(Paths.get(SESSION_FILE_PATH)));
             JsonObject sessionData = JsonParser.parseString(jsonString).getAsJsonObject();

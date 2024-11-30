@@ -197,7 +197,13 @@ public class CreditCardController implements ILanguageObserver {
         List<Card> cc = new ArrayList<>();
 
         for (Card c : cardController.getAll()) {
-            if(c.getUserId().equals(UUID.fromString(sessionManager.getID()))) {
+            UUID _id = null;
+
+            if(sessionManager.isSessionActive()){
+                _id = UUID.fromString(sessionManager.getID());
+            }
+
+            if(c.getUserId().equals(_id)) {
                 cc.add(c);
             }
         }

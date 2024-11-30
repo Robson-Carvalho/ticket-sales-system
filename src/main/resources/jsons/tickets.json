@@ -5,5 +5,12 @@
     "status": true,
     "price": 80.0,
     "code": "F1"
+  },
+  {
+    "id": "b8a20200-c951-4567-8e5a-58102474fa6e",
+    "eventID": "e0342d76-f45b-4d6a-a31c-2a5b4e9c8b2f",
+    "status": true,
+    "price": 80.0,
+    "code": "F3"
   }
 ]
